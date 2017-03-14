@@ -1,4 +1,4 @@
-package com.tannerowens.healthandfitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app;
 
 /**
  * Created by Tanner on 3/11/2017.
@@ -6,6 +6,8 @@ package com.tannerowens.healthandfitnessrpg;
  */
 
 public class Currency {
+
+    String id;
     int amount; //Integer containing the number of a resource within the currency object
     String resource; //String containing the type of resource; e.g. gold, wood, stone, silver spoon
 
@@ -15,6 +17,7 @@ public class Currency {
      * @param resource
      */
     public Currency(int amount, String resource) {
+        this.id =;
         this.amount = amount;
         this.resource = resource;
     }
@@ -25,8 +28,13 @@ public class Currency {
      * @param amount
      * @return
      */
-    public boolean updateResource(int amount){
-        this.amount = this.amount - amount;
+    public boolean updateResource(int amount, boolean add){
+        if(add){
+            this.amount = this.amount + amount;
+        }
+        else {
+            this.amount = this.amount - amount;
+        }
         return true;
     }
 
@@ -44,5 +52,13 @@ public class Currency {
 
     public void setResource(String resource) {
         this.resource = resource;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

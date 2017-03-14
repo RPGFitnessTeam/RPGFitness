@@ -1,4 +1,4 @@
-package com.tannerowens.healthandfitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -114,7 +114,7 @@ public class TilePopUp extends Activity{
     private void purchaseBuilding(String buildingName){
         Building newBuilding;
         ArrayList<Currency> userCurrency = user.getCurrency();
-        ArrayList<Currency> = new ArrayList<Currency>()
+        ArrayList<Currency> = new ArrayList<Currency>();
         if(buildingName == "buildingName1" && userCurrency > 100){
             newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());

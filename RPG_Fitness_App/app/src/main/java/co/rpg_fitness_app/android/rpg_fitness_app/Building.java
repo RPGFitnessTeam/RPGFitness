@@ -1,4 +1,4 @@
-package com.tannerowens.healthandfitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Building {
 
+    String id;
     String name;//Name of the building.
     ArrayList<Currency> cost;//Cost of the building upgrade in various resources.
     String category;//Buildings fall into specific categories and can be upgraded within that category.
@@ -19,30 +20,32 @@ public class Building {
 
 
     public Building(String name) {
+        this.id =;
         if (name == "building1"){
             this.name = name;
-            this.cost = db.getCurrencyforthisshit;
+            //this.cost = db.getCurrencyforthisshit;
             this.category = "category1";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
         else if (name == "building2"){
             this.name = name;
-            this.cost = new ArrayList<Currency>(100);
+            this.cost = new ArrayList<>();
             this.category = "category2";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
         else if (name == "building3"){
             this.name = name;
-            this.cost = new ArrayList<Currency>(100);
+            this.cost = new ArrayList<>();
             this.category = "category3";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
     }
 
     public Building(String name, ArrayList<Currency> cost, String category, int tier, ArrayList<Boost> boost){
+        this.id =;
         this.name = name;
         this.cost = cost;
         this.category = category;
@@ -52,7 +55,9 @@ public class Building {
 
     public void upgradeBuilding(){
         this.setTier(this.getTier() + 1);
-        this.setBoost(this.getBoost().add(new Boost()));
+        for (int i = 0; 1<this.boost.size(); i++){
+            boost.get(i).updateBoost(1);
+        }
     }
 
     public String getName() {
@@ -93,5 +98,13 @@ public class Building {
 
     public void setBoost(ArrayList<Boost> boost) {
         this.boost = boost;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
