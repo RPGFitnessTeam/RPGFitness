@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Character">
+        <activity android:name=".character_Package.Character">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,18 +17,18 @@
         </activity>
 
 
-        <activity android:name=".ItemPopUpHelm"
+        <activity android:name=".character_Package.ItemPopUpHelm"
             android:theme="@style/AppTheme.popUpCharacterScreen"
             android:exported="true"
             ></activity>
 
-        <activity android:name=".CharacterActivity"
+        <activity android:name=".character_Package.CharacterActivity"
             android:theme="@style/AppTheme"
             android:exported="true"
             ></activity>
 
 
-        <activity android:name=".characterCreationActivity"
+        <activity android:name=".character_Package.characterCreationActivity"
             android:theme="@style/AppTheme"
             android:exported="true"
             ></activity>

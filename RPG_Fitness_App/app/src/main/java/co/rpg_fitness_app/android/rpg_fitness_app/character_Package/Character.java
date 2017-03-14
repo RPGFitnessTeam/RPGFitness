@@ -1,14 +1,8 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Currency;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 
 public class Character {
 
@@ -19,7 +13,7 @@ public class Character {
      */
     private ArrayList<Gear> activeGear;
     private ArrayList<Gear> inactiveGear;
-    private ArrayList<co.rpg_fitness_app.android.rpg_fitness_app.Currency> moneyChest;
+    private ArrayList<Currency> moneyChest;
     private ArrayList<Boost> activeBoosts;
 
 
@@ -81,13 +75,20 @@ public class Character {
         this.activeBoosts = activeBoosts;
     }
 
-    public ArrayList<co.rpg_fitness_app.android.rpg_fitness_app.Currency> getMoneyChest() {
+    public ArrayList<Currency> getMoneyChest() {
         return moneyChest;
     }
 
-    public void setMoneyChest(ArrayList<co.rpg_fitness_app.android.rpg_fitness_app.Currency> moneyChest) {
+    public void setMoneyChest(ArrayList<Currency> moneyChest) {
         this.moneyChest = moneyChest;
     }
+
+    public String getID()
+    {
+        //TODO: Implement
+        return null;
+    }
+
 
 
 
@@ -125,7 +126,7 @@ public class Character {
     // adds a new piece of gear. First the method checks if the category is already in use and
     // adds it to the corresponding slot if not. If there is already a piece of gear equiped in
     // that slot it adds it to the inactive gear list
-    boolean addGear(Gear newGear)
+    public boolean addGear(Gear newGear)
     {
         boolean ret = false;
         String category = newGear.getCategory();
@@ -281,7 +282,7 @@ public class Character {
 
 
 
-    ArrayList<Gear> retrieveGearInCategory(String category)
+    public ArrayList<Gear> retrieveGearInCategory(String category)
     {
         int index = -1;
         if( category == "Helm") index = 0;
@@ -306,7 +307,5 @@ public class Character {
 
         return ret;
     }
-
-
 
 }

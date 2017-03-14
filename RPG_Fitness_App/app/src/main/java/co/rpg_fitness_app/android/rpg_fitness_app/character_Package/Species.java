@@ -1,4 +1,4 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 /**
  * Created by awhit on 3/11/2017.
@@ -29,6 +29,12 @@ public class Species {
     {
         name = null;
         description = null;
+    }
+
+    public String getID()
+    {
+        //TODO: Implement
+        return null;
     }
 
 

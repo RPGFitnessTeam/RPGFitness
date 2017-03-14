@@ -1,6 +1,8 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import java.util.ArrayList;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
 
 /**
  * Created by Tanner on 3/9/2017.

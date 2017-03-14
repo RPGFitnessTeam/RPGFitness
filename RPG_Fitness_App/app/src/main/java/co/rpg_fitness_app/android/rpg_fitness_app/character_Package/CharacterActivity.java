@@ -1,10 +1,12 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by awhit on 3/13/2017.

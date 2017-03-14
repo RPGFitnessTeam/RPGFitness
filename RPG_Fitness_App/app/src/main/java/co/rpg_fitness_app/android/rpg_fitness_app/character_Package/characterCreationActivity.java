@@ -1,4 +1,4 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,8 +13,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import java.lang.*;
 
-import java.util.ArrayList;
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
 /**
  * Created by Adikan on 3/13/2017.
  * Allows users to customize their name, gear and species for their character. These activities are

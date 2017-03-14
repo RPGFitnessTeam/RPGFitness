@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
+
 import static org.junit.Assert.*;
 
 /**

@@ -1,14 +1,14 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
 
 /**
  * Created by awhit on 3/13/2017.
