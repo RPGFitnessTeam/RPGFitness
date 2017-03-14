@@ -2,9 +2,13 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Currency;
 
 public class Character extends AppCompatActivity {
 
@@ -15,7 +19,7 @@ public class Character extends AppCompatActivity {
      */
     private ArrayList<Gear> activeGear;
     private ArrayList<Gear> inactiveGear;
-    // private ArrayList<Currency> moneyChest;
+    private ArrayList<co.rpg_fitness_app.android.rpg_fitness_app.Currency> moneyChest;
 
 
     @Override
@@ -81,7 +85,7 @@ public class Character extends AppCompatActivity {
         return ret;
     }
 
-    boolean removeGear(Gear gearDeleted) {
+    public boolean removeGear(Gear gearDeleted) {
         boolean succ = false;
         for (int i = 0; i < activeGear.size(); i++) {
             if (activeGear.get(i).equals(gearDeleted)) {
@@ -155,6 +159,5 @@ public class Character extends AppCompatActivity {
 
         return ret;
     }
-
 
 }
