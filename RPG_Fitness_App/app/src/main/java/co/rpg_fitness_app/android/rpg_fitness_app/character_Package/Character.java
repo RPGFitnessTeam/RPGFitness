@@ -13,7 +13,7 @@ public class Character {
      */
     private ArrayList<Gear> activeGear;
     private ArrayList<Gear> inactiveGear;
-    private ArrayList<Currency> moneyChest;
+    private Currency moneyChest;
     private ArrayList<Boost> activeBoosts;
 
 
@@ -51,11 +51,11 @@ public class Character {
         this.activeGear = activeGear;
     }
 
-    public Species getMySpecies() {
+    public Species getSpecies() {
         return mySpecies;
     }
 
-    public void setMySpecies(Species mySpecies) {
+    public void setSpecies(Species mySpecies) {
         this.mySpecies = mySpecies;
     }
 
@@ -75,11 +75,11 @@ public class Character {
         this.activeBoosts = activeBoosts;
     }
 
-    public ArrayList<Currency> getMoneyChest() {
+    public Currency getCurrency() {
         return moneyChest;
     }
 
-    public void setMoneyChest(ArrayList<Currency> moneyChest) {
+    public void setMoneyChest(Currency moneyChest) {
         this.moneyChest = moneyChest;
     }
 
@@ -135,7 +135,7 @@ public class Character {
             if(activeGear.get(0) == null)
             {
                 activeGear.add(0, newGear);
-                activeBoosts.addAll(newGear.getBoost());
+                activeBoosts.add(newGear.getBoost());
                 ret = true;
             }
         }
@@ -144,7 +144,7 @@ public class Character {
             if(activeGear.get(1) == null)
             {
                 activeGear.add(1, newGear);
-                activeBoosts.addAll(newGear.getBoost());
+                activeBoosts.add(newGear.getBoost());
                 ret = true;
             }
         }
@@ -153,7 +153,7 @@ public class Character {
             if(activeGear.get(2) == null)
             {
                 activeGear.add(2, newGear);
-                activeBoosts.addAll(newGear.getBoost());
+                activeBoosts.add(newGear.getBoost());
                 ret = true;
             }
         }
@@ -162,7 +162,7 @@ public class Character {
             if(activeGear.get(3) == null)
             {
                 activeGear.add(3, newGear);
-                activeBoosts.addAll(newGear.getBoost());
+                activeBoosts.add(newGear.getBoost());
                 ret = true;
             }
         }
@@ -171,7 +171,7 @@ public class Character {
             if(activeGear.get(4) == null)
             {
                 activeGear.add(4, newGear);
-                activeBoosts.addAll(newGear.getBoost());
+                activeBoosts.add(newGear.getBoost());
                 ret = true;
             }
         }
@@ -196,14 +196,14 @@ public class Character {
             if(activeGear.get(0) == null)
             {
                 activeGear.add(0, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(0);
                 activeGear.remove(0);
                 activeGear.add(0, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
 
             }
@@ -213,14 +213,14 @@ public class Character {
             if(activeGear.get(1) == null)
             {
                 activeGear.add(1, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(1);
                 activeGear.remove(1);
                 activeGear.add(1, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
 
             }
@@ -230,14 +230,14 @@ public class Character {
             if(activeGear.get(2) == null)
             {
                 activeGear.add(2, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(2);
                 activeGear.remove(2);
                 activeGear.add(2, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
 
             }
@@ -247,14 +247,14 @@ public class Character {
             if(activeGear.get(3) == null)
             {
                 activeGear.add(3, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(3);
                 activeGear.remove(3);
                 activeGear.add(3, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
 
             }
@@ -264,14 +264,14 @@ public class Character {
             if(activeGear.get(4) == null)
             {
                 activeGear.add(4, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(4);
                 activeGear.remove(4);
                 activeGear.add(4, equip);
-                activeBoosts.addAll(equip.getBoost());
+                activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
 
             }
