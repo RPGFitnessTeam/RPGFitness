@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 public class Tile implements Serializable {
 
+    String id;
     boolean isLocked;//Whether the tile is locked or unlocked. Determines whether a building can exist.
     Building myBuilding;//Instance of a Building object associated with this tile.
     Currency tileCost;//Cost to unlock this tile using Currency object.
@@ -20,6 +21,7 @@ public class Tile implements Serializable {
      * Default constructor to create new tile, initialize attributes to a locked tile with no building
      */
     public Tile(int tileNumber){
+        this.id =;
         this.isLocked = true;
         this.myBuilding = null;
         this.tileCost = new Currency(100, "wood");
@@ -33,6 +35,7 @@ public class Tile implements Serializable {
      * @param myBuilding users initial building (castle)
      */
     public Tile(boolean isLocked, Building myBuilding){
+        this.id =;
         this.isLocked = isLocked;
         this.myBuilding = myBuilding;
         this.tileCost = null;
@@ -68,5 +71,13 @@ public class Tile implements Serializable {
 
     public void setTileNumber(int tileNumber) {
         this.tileNumber = tileNumber;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
