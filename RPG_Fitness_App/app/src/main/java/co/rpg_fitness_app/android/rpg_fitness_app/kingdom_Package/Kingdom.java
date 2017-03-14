@@ -15,11 +15,9 @@ public class Kingdom implements Serializable {
     public Kingdom() {
         this.myGrid = new ArrayList<>(20);
         Tile tile;
-        for (int i = 0; i<=3; i++){
-            for (int j=0; j<=3; j++){
+        for (int i = 0; i<=19; i++){
                 tile = new Tile(i);
                 myGrid.set(i, tile);
-            }
         }
     }
 
