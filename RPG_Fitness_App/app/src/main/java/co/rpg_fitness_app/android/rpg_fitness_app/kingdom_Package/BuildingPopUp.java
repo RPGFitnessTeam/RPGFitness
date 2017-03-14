@@ -86,12 +86,13 @@ public class BuildingPopUp extends Activity {
         return false;
     }
 
+    //TODO: fix method to reflect changes in the database structure
     private void populateTemplate(){
         Building building = tile.getMyBuilding();
-        String upgradeCost = Integer.toString(tile.getTileCost().getAmount());
-        String upgradeResource = tile.getTileCost().getResource();
+        Currency upgradeCost = tile.getTileCost();
+        //String upgradeResource = tile.getTileCost().getResource();
         Button upgradeButton = (Button) findViewById(R.id.upgradeBuildingButton);
-        upgradeButton.setText("Upgrade Cost: "+upgradeCost+" "+upgradeResource);
+        //upgradeButton.setText("Upgrade Cost: "+upgradeCost+" "+upgradeResource);
         TextView name = (TextView) findViewById(R.id.buildingName);
         name.setText(tile.getMyBuilding().getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
