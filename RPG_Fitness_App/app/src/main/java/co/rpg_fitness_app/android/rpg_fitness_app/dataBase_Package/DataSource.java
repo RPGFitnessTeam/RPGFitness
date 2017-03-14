@@ -10,6 +10,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Species;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
+
 public class DataSource {
 
     private Context mContext;
@@ -44,7 +53,7 @@ public class DataSource {
         ContentValues values = new ContentValues(3);
         values.put(BoostTable.COLUMN_ID, boost.getID());
         values.put(BoostTable.COLUMN_AMOUNT, boost.getAmount());
-        values.put(BoostTable.COLUMN_TYPE, boost.getType());
+        values.put(BoostTable.COLUMN_TYPE, boost.getBoostType());
 
         mDatabase.insert(BoostTable.TABlE_BOOSTS, null, values);
         cursor.close();
@@ -241,8 +250,8 @@ public class DataSource {
         values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getID());
 
         mDatabase.insert(CharacterTable.TABLE_CHARACTER, null, values);
-        insertCurrency(character.getCost());
-        insertBoost(character.getSpecies());
+        insertCurrency(character.getCurrency());
+        insertSpecies(character.getSpecies());
 
         cursor.close();
         return true;

@@ -59,7 +59,7 @@ public class CharacterTest {
     @Test
     public void getDefaultMySpecies() throws Exception {
         Character testChar = new Character();
-        assertNull(testChar.getMySpecies());
+        assertNull(testChar.getSpecies());
     }
 
     @Test
@@ -68,10 +68,10 @@ public class CharacterTest {
         Species Orc = new Species();
         Orc.setDescription("A fearsome greenskin Humanoid");
         Orc.setName("Orc");
-        testChar.setMySpecies(Orc);
+        testChar.setSpecies(Orc);
 
 
-        assertEquals(Orc, testChar.getMySpecies());
+        assertEquals(Orc, testChar.getSpecies());
 
 
     }
@@ -116,19 +116,12 @@ public class CharacterTest {
     @Test
     public void getDefaultMoneyChest() throws Exception {
         Character testChar = new Character();
-        assertNull(testChar.getMoneyChest());
+        assertNull(testChar.getCurrency());
     }
 
     @Test
     public void setMoneyChest() throws Exception {
-        Character testChar = new Character();
-
-        Currency testCurr = new Currency(50, "gold");
-        ArrayList<Currency> currList = new ArrayList<Currency>();
-        currList.add(testCurr);
-
-        testChar.setMoneyChest(currList);
-        assertEquals(currList, testChar);
+        //TODO MAKE THIS TEST
 
     }
 
