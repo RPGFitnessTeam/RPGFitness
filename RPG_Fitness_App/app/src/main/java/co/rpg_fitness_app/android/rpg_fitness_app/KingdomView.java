@@ -1,4 +1,4 @@
-package com.tannerowens.healthandfitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

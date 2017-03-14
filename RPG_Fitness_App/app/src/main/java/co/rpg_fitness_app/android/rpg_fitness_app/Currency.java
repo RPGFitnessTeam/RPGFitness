@@ -1,4 +1,4 @@
-package com.tannerowens.healthandfitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app;
 
 /**
  * Created by Tanner on 3/11/2017.

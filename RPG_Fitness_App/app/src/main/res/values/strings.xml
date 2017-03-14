@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">RPG_Fitness_App</string>
+    <string name="name">Name</string>
+    <string name="nameXML">Name</string>
+    <string name="character_s_name">Character\'s Name</string>
+    <string name="character_s_species">Character\'s Species</string>
+    <string name="chest">Chest</string>
+    <string name="helm">Helm</string>
+    <string name="legs">Legs</string>
+    <string name="off_hand">Off Hand</string>
+    <string name="textview">TextView</string>
+    <string name="weapon">Weapon</string>
+    <string name="textview_Species">TextView</string>
 </resources>
