@@ -15,6 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".ItemPopUpHelm"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".CharacterActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            ></activity>
+
+
+        <activity android:name=".characterCreationActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            ></activity>
+
+
     </application>
 
 </manifest>
