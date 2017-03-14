@@ -1,4 +1,4 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import java.io.Serializable;
 

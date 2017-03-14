@@ -2,6 +2,8 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import org.junit.Test;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Species;
+
 import static org.junit.Assert.*;
 
 /**

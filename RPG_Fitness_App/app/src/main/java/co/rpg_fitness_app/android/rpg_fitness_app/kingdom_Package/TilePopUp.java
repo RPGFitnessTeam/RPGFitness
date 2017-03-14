@@ -1,4 +1,4 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by Tanner on 3/11/2017.

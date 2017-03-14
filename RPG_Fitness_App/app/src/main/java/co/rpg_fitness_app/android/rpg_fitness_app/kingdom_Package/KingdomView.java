@@ -1,4 +1,4 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,6 +6,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class KingdomView extends AppCompatActivity {
 
