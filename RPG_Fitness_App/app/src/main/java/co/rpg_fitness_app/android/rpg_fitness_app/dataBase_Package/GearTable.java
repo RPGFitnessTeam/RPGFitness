@@ -4,6 +4,8 @@ package co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package;
  * Created by Austin on 3/11/2017.
  */
 
+
+//TODO: Add integers for isOwned and isEquipped
 public class GearTable {
 
     public static final String TABLE_GEAR = "Gear";

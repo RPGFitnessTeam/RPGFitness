@@ -19,6 +19,16 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
+
+
+
+
+//TODO: Add integers for isOwned and isEquipped
+
+
+
 public class DataSource {
 
     private Context mContext;
