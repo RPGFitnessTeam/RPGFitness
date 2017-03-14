@@ -12,10 +12,8 @@ public class Kingdom implements Serializable {
 
     ArrayList<Tile> myGrid;//2D ArrayList of Tile objects to represent the kingdom map.
 
-    //MIGHT BE INCORRECT!!
     public Kingdom() {
-
-        this.myGrid = new ArrayList<Tile>(20);
+        this.myGrid = new ArrayList<>(20);
         Tile tile;
         for (int i = 0; i<=3; i++){
             for (int j=0; j<=3; j++){
