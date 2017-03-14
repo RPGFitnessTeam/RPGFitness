@@ -9,12 +9,19 @@ import java.util.ArrayList;
 public class Gear {
 
 
+    /**
+     * attributes for the Gear class. Each gear object has a name, a category
+     * (helm, chest, weapon, offhand and legs), a cost (in the form of an array list so that
+     * multiple currencies can be used for one item) and an array list of boosts that designate
+     * the positive effects the gear performs.
+     */
     private String name;
     private String category;
-    //private ArrayList<Currency> cost;
+    private ArrayList<Currency> cost;
     ArrayList<Boost> boost;
 
 
+    // default constructor
     public Gear()
     {
         name = null;
@@ -23,6 +30,8 @@ public class Gear {
         boost = new ArrayList<>();
     }
 
+
+    // getters and setters for all the attributes
 
     public String getCategory() {
         return category;
@@ -40,6 +49,14 @@ public class Gear {
         this.name = name;
     }
 
+
+    public ArrayList<Currency> getCost() {
+        return cost;
+    }
+
+    public void setCost(ArrayList<Currency> cost) {
+        this.cost = cost;
+    }
 
     public ArrayList<Boost> getBoost() {
         return boost;
