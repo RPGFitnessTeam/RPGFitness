@@ -19,8 +19,8 @@ public class Gear {
      */
     private String name;
     private String category;
-    private ArrayList<Currency> cost;
-    ArrayList<Boost> boost;
+    private Currency cost;
+    Boost boost;
 
 
     // default constructor
@@ -29,7 +29,7 @@ public class Gear {
         name = null;
         category = null;
         //cost = null;
-        boost = new ArrayList<>();
+        boost = null;
     }
 
 
@@ -52,19 +52,19 @@ public class Gear {
     }
 
 
-    public ArrayList<Currency> getCost() {
+    public Currency getCost() {
         return cost;
     }
 
-    public void setCost(ArrayList<Currency> cost) {
+    public void setCost(Currency currency) {
         this.cost = cost;
     }
 
-    public ArrayList<Boost> getBoost() {
+    public Boost getBoost() {
         return boost;
     }
 
-    public void setBoost(ArrayList<Boost> boost) {
+    public void setBoost(Boost boost) {
         this.boost = boost;
     }
 
