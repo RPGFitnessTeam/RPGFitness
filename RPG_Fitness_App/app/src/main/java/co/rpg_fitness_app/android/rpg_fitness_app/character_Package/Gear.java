@@ -1,6 +1,8 @@
-package co.rpg_fitness_app.android.rpg_fitness_app;
+package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import java.util.ArrayList;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 
 /**
  * Created by awhit on 3/11/2017.
@@ -65,5 +67,12 @@ public class Gear {
     public void setBoost(ArrayList<Boost> boost) {
         this.boost = boost;
     }
+
+    public String getID()
+    {
+        //TODO: Implement
+        return null;
+    }
+
 
 }

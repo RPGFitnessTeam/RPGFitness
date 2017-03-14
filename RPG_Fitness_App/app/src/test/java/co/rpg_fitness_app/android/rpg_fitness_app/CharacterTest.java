@@ -2,8 +2,13 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Species;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 
 import static org.junit.Assert.*;
 
