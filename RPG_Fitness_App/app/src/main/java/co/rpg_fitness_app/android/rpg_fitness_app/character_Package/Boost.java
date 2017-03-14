@@ -9,6 +9,9 @@ import java.util.UUID;
 public class Boost {
 
 
+    private int amount;
+    private String ID;
+    private String boostType;
 
     public int getAmount() {
         return amount;
@@ -26,20 +29,24 @@ public class Boost {
         this.boostType = boostType;
     }
 
-    private int amount;
-    private String ID;
-    private String boostType;
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getID()
+    {
+        return ID;
+    }
+
 
     public Boost(){
         amount = 0;
         boostType = null;
+        ID =  UUID.randomUUID().toString();
     }
 
-    public boolean setID()
-    {
-        ID =  UUID.randomUUID().toString();
-        return true;
-    }
+
 
     public boolean updateBoost(int amount)
     {
@@ -47,10 +54,7 @@ public class Boost {
         return true;
     }
 
-    public String getID()
-    {
-        //TODO: Implement
-        return null;
-    }
+
+
 
 }
