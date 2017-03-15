@@ -23,7 +23,7 @@ public class KingdomActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kingdom_view);
+        setContentView(R.layout.kingdom_main);
 
         this.kingdom = (Kingdom) getIntent().getSerializableExtra("kingdom");
         configureBackButton();
@@ -56,7 +56,8 @@ public class KingdomActivity extends Activity {
         tileButton = getTileButton(tileNumber);
         //CASE mystery tile
         if (tile.isLocked){
-            tileButton.setBackgroundResource(R.drawable);
+            //TODO: find proper pathing for R.drawable
+            //tileButton.setBackgroundResource(R.drawable);
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -68,7 +69,7 @@ public class KingdomActivity extends Activity {
         }
         //CASE empty tile
         else if(building == null){
-            tileButton.setBackgroundResource(R.drawable);
+           // tileButton.setBackgroundResource(R.drawable);
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -109,7 +110,7 @@ public class KingdomActivity extends Activity {
             Building building = tile.getMyBuilding();
             tileButton = getTileButton(tileNumber);
             if (requestCode == 1) {
-                tileButton.setBackgroundResource(R.drawable);//set as open tile
+                //tileButton.setBackgroundResource(R.drawable);//set as open tile
             }
             else {
                 String buildingName = building.getName();
@@ -128,7 +129,7 @@ public class KingdomActivity extends Activity {
     private ImageButton getTileButton(int tileNumber){
         ImageButton tileButton;
         switch (tileNumber) {
-            case 1:
+            /*case 1:
                 tileButton = (ImageButton) findViewById(R.id.tileButton1);
                 break;
 
@@ -141,7 +142,7 @@ public class KingdomActivity extends Activity {
                 break;
             case 4:
                 tileButton = (ImageButton) findViewById(R.id.tileButton4);
-                break;
+                break;*/
 
             default:
                 tileButton = null;
@@ -151,23 +152,23 @@ public class KingdomActivity extends Activity {
     }
 
     private void setBuildingImage(ImageButton tileButton, String buildingName){
-        switch (buildingName) {
-            case "building1":
-                tileButton.setBackgroundResource(R.drawable);
-                break;
-
-            case "building2":
-                tileButton.setBackgroundResource(R.drawable);
-                break;
-
-            case "building3":
-                tileButton.setBackgroundResource(R.drawable);
-                break;
-
-            default:
-                tileButton.setBackgroundResource(R.drawable);
-                break;
-        }
+//        switch (buildingName) {
+//            case "building1":
+//                tileButton.setBackgroundResource(R.drawable);
+//                break;
+//
+//            case "building2":
+//                tileButton.setBackgroundResource(R.drawable);
+//                break;
+//
+//            case "building3":
+//                tileButton.setBackgroundResource(R.drawable);
+//                break;
+//
+//            default:
+//                tileButton.setBackgroundResource(R.drawable);
+//                break;
+//        }
     }
 
     /*private void configureMysteryButton(int tileNumber, Tile tile){
