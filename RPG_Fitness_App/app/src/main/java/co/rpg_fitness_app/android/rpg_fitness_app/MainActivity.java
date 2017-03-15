@@ -3,14 +3,15 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+import javax.sql.DataSource;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
 
@@ -25,9 +26,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mDataSource = new DataSource(this);
+        //TODO: uncomment once DB is implemented
+        /*mDataSource = new DataSource(this);
         mDataSource.open();
-        mDataSource.seedDatabase();
+        mDataSource.seedDatabase();*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getKingdom() {
-        this.kingdom = mDataSource.getAllKingdoms();
+        //this.kingdom = mDataSource.getAllKingdoms();
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
         }
