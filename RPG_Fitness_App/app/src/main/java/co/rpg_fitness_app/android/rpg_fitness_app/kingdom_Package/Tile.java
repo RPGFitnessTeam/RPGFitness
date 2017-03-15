@@ -1,6 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by Tanner on 3/9/2017.
@@ -11,18 +12,25 @@ import java.io.Serializable;
 
 public class Tile implements Serializable {
 
+    String id;
     boolean isLocked;//Whether the tile is locked or unlocked. Determines whether a building can exist.
     Building myBuilding;//Instance of a Building object associated with this tile.
     Currency tileCost;//Cost to unlock this tile using Currency object.
     int tileNumber;
 
-    /**
-     * Default constructor to create new tile, initialize attributes to a locked tile with no building
-     */
-    public Tile(int tileNumber){
+    public Tile(){
+        this.id = UUID.randomUUID().toString();
         this.isLocked = true;
         this.myBuilding = null;
-        this.tileCost = new Currency(100, "wood");
+        this.tileCost = new Currency();
+        this.tileNumber = 0;
+    }
+
+    public Tile(int tileNumber){
+        this.id = UUID.randomUUID().toString();
+        this.isLocked = true;
+        this.myBuilding = null;
+        this.tileCost = new Currency();
         this.tileNumber = tileNumber;
     }
 
@@ -33,6 +41,7 @@ public class Tile implements Serializable {
      * @param myBuilding users initial building (castle)
      */
     public Tile(boolean isLocked, Building myBuilding){
+        this.id = UUID.randomUUID().toString();
         this.isLocked = isLocked;
         this.myBuilding = myBuilding;
         this.tileCost = null;
@@ -68,5 +77,13 @@ public class Tile implements Serializable {
 
     public void setTileNumber(int tileNumber) {
         this.tileNumber = tileNumber;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

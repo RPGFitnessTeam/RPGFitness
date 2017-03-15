@@ -1,50 +1,56 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
 
-/**
- * Created by Tanner on 3/9/2017.
- * Class for buildings. Each tile can have up to one building associated with it. Each building has
- * a cost associated to construct/upgrade. Each building once built offers benefits by increasing
- * the amount of a resource you may receive from a quest.
- */
-
 public class Building {
 
+    String id;
     String name;//Name of the building.
-    ArrayList<Currency> cost;//Cost of the building upgrade in various resources.
+    Currency cost;//Cost of the building upgrade in various resources.
     String category;//Buildings fall into specific categories and can be upgraded within that category.
     int tier;//Buildings must be upgraded in order, the tier number determines which building comes next in the series
     ArrayList<Boost> boost;//Additional perks of owning this building.
 
 
+    public Building() {
+        this.id = UUID.randomUUID().toString();
+        this.name = null;
+        this.cost = null;
+        this.category = null;
+        this.tier = 0;
+        this.boost = null;
+    }
+
     public Building(String name) {
+        this.id = UUID.randomUUID().toString();
         if (name == "building1"){
             this.name = name;
-            this.cost = db.getCurrencyforthisshit;
+            this.cost = new Currency();
             this.category = "category1";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
         else if (name == "building2"){
             this.name = name;
-            this.cost = new ArrayList<Currency>(100);
+            this.cost = new Currency();
             this.category = "category2";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
         else if (name == "building3"){
             this.name = name;
-            this.cost = new ArrayList<Currency>(100);
+            this.cost = new Currency();
             this.category = "category3";
             this.tier = 1;
-            this.boost = new ArrayList<Boost>();
+            this.boost = new ArrayList<>();
         }
     }
 
-    public Building(String name, ArrayList<Currency> cost, String category, int tier, ArrayList<Boost> boost){
+    public Building(String name, Currency cost, String category, int tier, ArrayList<Boost> boost){
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;
         this.category = category;
@@ -54,7 +60,9 @@ public class Building {
 
     public void upgradeBuilding(){
         this.setTier(this.getTier() + 1);
-        this.setBoost(this.getBoost().add(new Boost()));
+        for (int i = 0; 1<this.boost.size(); i++){
+            boost.get(i).updateBoost(1);
+        }
     }
 
     public String getName() {
@@ -65,11 +73,11 @@ public class Building {
         this.name = name;
     }
 
-    public ArrayList<Currency> getCost() {
+    public Currency getCost() {
         return cost;
     }
 
-    public void setCost(ArrayList<Currency> cost) {
+    public void setCost(Currency cost) {
         this.cost = cost;
     }
 
@@ -95,5 +103,13 @@ public class Building {
 
     public void setBoost(ArrayList<Boost> boost) {
         this.boost = boost;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
