@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
+import java.util.UUID;
+
 /**
  * Created by Tanner on 3/11/2017.
  * Class for currency types. Currency can be gold, stone, wood, special resources, or gear

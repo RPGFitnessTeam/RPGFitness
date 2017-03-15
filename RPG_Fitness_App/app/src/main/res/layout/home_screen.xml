@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="6">
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/fitnessLogMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/scroll" />
+
+            <ImageButton
+                android:id="@+id/kingdomMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/castle" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/fitnessLogText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fitness Log"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/kingdomText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kingdom"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/tipsMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/question_mark_symbol" />
+
+            <ImageButton
+                android:id="@+id/QuestsMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/quest_map" />
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/fitnessLogText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tips"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/kingdomText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Quests"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/goalsMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/shield" />
+
+            <ImageButton
+                android:id="@+id/characterMainButton"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/knight" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/fitnessLogText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Goals"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/kingdomText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Character"
+                android:fontFamily="casual"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>

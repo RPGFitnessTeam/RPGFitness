@@ -1,6 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 
@@ -19,8 +20,11 @@ public class Gear {
      */
     private String name;
     private String category;
-    private ArrayList<Currency> cost;
-    ArrayList<Boost> boost;
+    private Currency cost;
+    private boolean equipped;
+    private boolean owned;
+    private Boost boost;
+    private String ID;
 
 
     // default constructor
@@ -28,12 +32,31 @@ public class Gear {
     {
         name = null;
         category = null;
-        //cost = null;
-        boost = new ArrayList<>();
+        equipped = false;
+        boost = null;
+        cost = null;
+        owned = false;
+        ID = UUID.randomUUID().toString();
     }
 
 
     // getters and setters for all the attributes
+
+    public boolean isOwned() {
+        return owned;
+    }
+
+    public void setOwned(boolean owned) {
+        this.owned = owned;
+    }
+
+    public boolean isEquipped() {
+        return equipped;
+    }
+
+    public void setEquipped(boolean equipped) {
+        this.equipped = equipped;
+    }
 
     public String getCategory() {
         return category;
@@ -52,19 +75,19 @@ public class Gear {
     }
 
 
-    public ArrayList<Currency> getCost() {
+    public Currency getCost() {
         return cost;
     }
 
-    public void setCost(ArrayList<Currency> cost) {
+    public void setCost(Currency currency) {
         this.cost = cost;
     }
 
-    public ArrayList<Boost> getBoost() {
+    public Boost getBoost() {
         return boost;
     }
 
-    public void setBoost(ArrayList<Boost> boost) {
+    public void setBoost(Boost boost) {
         this.boost = boost;
     }
 

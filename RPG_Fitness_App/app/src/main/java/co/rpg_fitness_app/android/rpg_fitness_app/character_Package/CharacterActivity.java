@@ -14,6 +14,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class CharacterActivity extends Activity{
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
