@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.LogEntry;
+
 /**
  * Created by Austin on 3/14/2017.
  */

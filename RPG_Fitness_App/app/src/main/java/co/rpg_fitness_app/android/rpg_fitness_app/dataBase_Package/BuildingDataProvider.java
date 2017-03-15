@@ -21,9 +21,10 @@ public class BuildingDataProvider {
         // Below here is where we will add all items to the database
     }
 
+    //TODO Building needs getID method
     private static void addBuilding(Building building) {
         buildingList.add(building);
-        buildingMap.put(building.getID(), building);
+        //buildingMap.put(building.getID(), building);
     }
 }
 

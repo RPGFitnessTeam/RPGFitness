@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
+
 /**
  * Created by Austin on 3/14/2017.
  */
@@ -19,9 +21,10 @@ public class KingdomDataProvider {
         // Below here is where we will add all items to the database
     }
 
+    //TODO: add getID for kingdom
     private static void addKingdom(Kingdom kingdom) {
         kingdomList.add(kingdom);
-        kingdomMap.put(kingdom.getID(), kingdom);
+        //kingdomMap.put(kingdom.getID(), kingdom);
     }
 }
 

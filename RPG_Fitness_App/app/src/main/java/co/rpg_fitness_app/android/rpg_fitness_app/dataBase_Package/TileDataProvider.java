@@ -21,9 +21,10 @@ public class TileDataProvider {
         // Below here is where we will add all items to the database
     }
 
+    //TODO: tileMap needs getID
     private static void addTile(Tile tile) {
         tileList.add(tile);
-        tileMap.put(tile.getID(), tile);
+        //tileMap.put(tile.getID(), tile);
     }
 }
 

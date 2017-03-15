@@ -11,4 +11,54 @@
     <string name="textview">TextView</string>
     <string name="weapon">Weapon</string>
     <string name="textview_Species">TextView</string>
+    <string-array name="Fitness_Categories">
+        <item>Nutrition</item>
+        <item>Sleep</item>
+        <item>Fitness</item>
+        <item>Weight</item>
+    </string-array>
+    <string name="n0">
+         <a href="https://goo.gl/qUjMwl">Beginners Guide to Eating Better</a>
+       </string>
+    <string name="n1">
+         <a href="https://goo.gl/H9xO7c">Top 10 Tips for Everyday Health</a>
+       </string>
+    <string name="n2">
+         <a href="https://goo.gl/azGYjd">Gaining Muscle Through Diet</a>
+       </string>
+    <string name="n3">
+         <a href="https://goo.gl/azGYjd">Advice from Dietitians</a>
+       </string>
+    <string name="w0">
+         <a href="https://goo.gl/jKXX7k">26 Weight Loss Tips That Are Actually Evidence-Based</a>
+        </string>
+    <string name="w1">
+         <a href="https://goo.gl/aVi5JD">Lessons in Weight Loss from Japan</a>
+        </string>
+    <string name="w2">
+         <a href="https://goo.gl/8bdHxe">Losing Weight and Keeping it off</a>
+        </string>
+    <string name="w3">
+         <a href="https://goo.gl/mi8pFG">Tips for Burning Fat</a>
+        </string>
+    <string name="e0">
+            <a href="https://goo.gl/mLFlO4">The 25 Golden Rules of Running</a>
+        </string>
+    <string name="e1">
+            <a href="https://goo.gl/q8T0Ve">Strength Training to Build Muscle Mass</a>
+        </string>
+    <string name="e2">
+            <a href="https://goo.gl/H57rzI">8 Beginner Swimming Mistakes</a>
+        </string>
+    <string name="e3">
+            <a href="https://goo.gl/PqCgL4">Essential Cycling Advice</a>
+        </string>
+    <string name="s0">
+        <a href="https://goo.gl/EKiHDm">How to Sleep Better</a></string>
+    <string name="s1">
+        <a href="https://goo.gl/iqSp1m">Healthy Sleep Habits</a></string>
+    <string name="s2">
+        <a href="https://goo.gl/eQ2d1f">Steps to Sweet Dreams</a></string>
+    <string name="s3">
+        <a href="https://goo.gl/3AN1kN">Stop Anxiety When You\'re Falling Asleep</a></string>
 </resources>

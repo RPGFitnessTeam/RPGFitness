@@ -8,8 +8,10 @@ import java.util.Map;
  * Created by Austin on 3/14/2017.
  */
 
+
+//TODO: implement quest methods
 public class QuestDataProvider {
-    public static ArrayList<Quest> questList;
+/*    public static ArrayList<Quest> questList;
     public static Map<String, Quest> questMap;
 
     static {
@@ -22,6 +24,6 @@ public class QuestDataProvider {
     private static void addQuest(Quest quest) {
         questList.add(quest);
         questMap.put(quest.getID(), quest);
-    }
+    }*/
 }
 
