@@ -28,6 +28,10 @@ public class Goal {
         this.isMasterQuest = isMasterQuest;
     }
 
+    public LogEntry getGoalActivity() {return goalActivity; }
+
+    public void setGoalActivity(LogEntry goalActivity) {this.goalActivity = goalActivity;}
+
     public String getGoalId() {
         return goalId;
     }

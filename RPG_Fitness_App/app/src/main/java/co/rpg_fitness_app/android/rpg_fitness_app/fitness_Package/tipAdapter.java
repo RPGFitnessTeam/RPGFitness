@@ -19,6 +19,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
  * Created by Arthur Clark on 3/12/2017.
  */
 
+// Custom adapter class for ExpandableListView for displaying tips
 public class tipAdapter extends BaseExpandableListAdapter {
     private List<String> fitnessCategories;
     private HashMap<String,List<Tips>> tipMap;
