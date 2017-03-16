@@ -4,17 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ExpandableListView;
-
-//import co.rpg_fitness_app.android.rpg_fitness_app.
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
-
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 
+// Activity Class for displaying tips
 public class TipMaster extends AppCompatActivity {
     private List<Tips> tipList = new ArrayList<Tips>();
     private List<Tips> exerciseTipList = new ArrayList<Tips>();
@@ -91,6 +88,8 @@ public class TipMaster extends AppCompatActivity {
             public boolean getNextRandomTip() {
                 return true;
             }
+
+            // Methods for populating ListView, will be done in the database when it is ready
             public void fillNutritionTipList() {
                 this.addTip(R.string.n0, UUID.randomUUID().toString(), "nutrition", false, false);
                 this.addTip(R.string.n1, UUID.randomUUID().toString(), "nutrition", false, false);

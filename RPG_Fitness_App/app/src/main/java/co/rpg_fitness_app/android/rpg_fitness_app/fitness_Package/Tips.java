@@ -4,7 +4,9 @@ package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
  * Created by Arthur on 3/11/2017.
  */
 
+
 public class Tips {
+
     private int message;
     private String id;
     private String type;
@@ -20,7 +22,7 @@ public class Tips {
         thumbsUp = false;
         thumbsDown = false;
     }
-
+    // TODO: Implement beenVisited, thumbsUp, and thumbsDown
     public Tips(int message, String id, String type, boolean beenVisited, boolean thumbsUp,
                 boolean thumbsDown) {
         this.message = message;
