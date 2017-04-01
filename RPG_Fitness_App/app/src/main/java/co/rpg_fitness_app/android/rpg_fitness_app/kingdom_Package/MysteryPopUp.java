@@ -32,20 +32,9 @@ public class MysteryPopUp extends Activity {
         getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
         configureExitButton();
         configureUnlockButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {

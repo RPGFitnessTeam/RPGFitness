@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
@@ -35,30 +33,19 @@ public class TilePopUp extends Activity{
         getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
         configureExitButton();
         configurePurchaseButton();
         populateTemplate();
     }
 
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void configureExitButton() {
+        Button Button = (Button) findViewById(R.id.exitTilePopUp);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-    }
-
-    private void configureExitButton() {
-        //Button Button = (Button) findViewById(R.id.exitTilePopUp);
-//        Button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
     }
 
     private void configurePurchaseButton() {
