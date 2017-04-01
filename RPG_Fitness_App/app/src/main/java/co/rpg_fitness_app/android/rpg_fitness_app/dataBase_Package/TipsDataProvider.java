@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Tips;
+
 /**
  * Created by Austin on 3/14/2017.
  */
@@ -19,9 +21,11 @@ public class TipsDataProvider {
         // Below here is where we will add all items to the database
     }
 
+
+    //TODO: add getID for tips
     private static void addTips(Tips tips) {
         tipsList.add(tips);
-        tipsMap.put(tips.getID(), tips);
+        //tipsMap.put(tips.getID(), tips);
     }
 }
 

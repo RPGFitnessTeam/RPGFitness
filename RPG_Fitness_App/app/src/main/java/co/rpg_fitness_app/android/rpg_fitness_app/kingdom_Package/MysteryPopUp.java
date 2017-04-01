@@ -73,10 +73,10 @@ public class MysteryPopUp extends Activity {
     }
 
     private void populateTemplate(){
-        String unlockCost = Integer.toString(tile.getTileCost().getAmount());
-        String unlockResource = tile.getTileCost().getResource();
+        Currency unlockCost = tile.getTileCost();
         Button unlockButton = (Button) findViewById(R.id.unlockMysteryTile);
-        unlockButton.setText("Unlock Cost: "+unlockCost+" "+unlockResource);
+        //TODO find what method unlockResource is under
+        //unlockButton.setText("Unlock Cost: "+unlockCost+" "+unlockResource);
         TextView name = (TextView) findViewById(R.id.mysteryTileName);
         name.setText("Mystery Tile");
         TextView description = (TextView) findViewById(R.id.mysteryTileDescription);

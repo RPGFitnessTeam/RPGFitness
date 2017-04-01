@@ -74,15 +74,16 @@ public class BuildingPopUp extends Activity {
     }
 
 
+    //TODO fix this method to match data base
     private boolean upgradeBuilding(Tile tile){
-        Building building = tile.getMyBuilding();
+        /*Building building = tile.getMyBuilding();
         if(user.getCurrency() > tile.getTileCost()){
             //MAKE FUNCTION TO UPGRADE BUILDING AND KEEP TRACK OF UPGRADES AND STATS
             //THIS FUNCTION SHOULD PROBABLY BE IN BUILDING CLASS
             building.upgradeBuilding();
             user.decreaseCurrency(building.getCost());
             return true;
-        }
+        } */
         return false;
     }
 

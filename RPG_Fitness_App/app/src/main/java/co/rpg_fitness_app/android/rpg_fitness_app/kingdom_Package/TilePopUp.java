@@ -52,13 +52,13 @@ public class TilePopUp extends Activity{
     }
 
     private void configureExitButton() {
-        Button Button = (Button) findViewById(R.id.exitTilePopUp);
-        Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        //Button Button = (Button) findViewById(R.id.exitTilePopUp);
+//        Button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
     }
 
     private void configurePurchaseButton() {
@@ -114,9 +114,9 @@ public class TilePopUp extends Activity{
 
 
     private void purchaseBuilding(String buildingName){
-        Building newBuilding;
-        ArrayList<Currency> userCurrency = user.getCurrency();
-        ArrayList<Currency> = new ArrayList<Currency>();
+       /* Building newBuilding;
+        Currency userCurrency = user.getCurrency();
+        //ArrayList<Currency> = new ArrayList<Currency>();
         if(buildingName == "buildingName1" && userCurrency > 100){
             newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
@@ -135,7 +135,7 @@ public class TilePopUp extends Activity{
         else {
             return;
         }
-        tile.setMyBuilding(newBuilding);
+        tile.setMyBuilding(newBuilding);*/
     }
 
 }
