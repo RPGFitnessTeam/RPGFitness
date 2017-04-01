@@ -19,7 +19,6 @@
 
         <activity android:name=".character_Package.ItemPopUpHelm"
             android:theme="@style/AppTheme.popUpCharacterScreen"
-            android:exported="true"
             ></activity>
 
         <activity android:name=".character_Package.CharacterActivity"
