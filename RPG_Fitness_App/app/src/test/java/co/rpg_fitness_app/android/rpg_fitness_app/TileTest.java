@@ -2,7 +2,13 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Tanner on 3/12/2017.
@@ -39,7 +45,7 @@ public class TileTest {
     @Test
     public void getTileCost() throws Exception {
         Tile tileTest = new Tile(false, new Building("building1"));
-        Currency c = new Currency(1, "wood");
+        Currency c = new Currency();
         tileTest.setTileCost(c);
         assertSame(c, tileTest.getTileCost());
     }
@@ -47,7 +53,7 @@ public class TileTest {
     @Test
     public void setTileCost() throws Exception {
         Tile tileTest = new Tile(false, new Building("building1"));
-        Currency c = new Currency(1, "wood");
+        Currency c = new Currency();
         tileTest.setTileCost(c);
         assertSame(c, tileTest.getTileCost());
     }
@@ -68,7 +74,7 @@ public class TileTest {
     @Test
     public void getId() throws Exception {
         Tile tileTest = new Tile(1);
-        whatistheid;
+        //whatistheid;
         assertSame("test", tileTest.getId());
     }
 

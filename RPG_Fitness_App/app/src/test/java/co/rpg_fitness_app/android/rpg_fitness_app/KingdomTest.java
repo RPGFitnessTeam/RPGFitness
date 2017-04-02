@@ -3,8 +3,11 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created by Tanner on 3/12/2017.
