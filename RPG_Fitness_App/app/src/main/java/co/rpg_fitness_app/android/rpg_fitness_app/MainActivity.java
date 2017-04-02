@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
 
+        kingdom = new Kingdom();//TESTING
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO start the kingdom activity to create the view
-                kingdom = new Kingdom();
                 Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
                 startIntent.putExtra("kingdom", kingdom);
                 startActivity(startIntent);

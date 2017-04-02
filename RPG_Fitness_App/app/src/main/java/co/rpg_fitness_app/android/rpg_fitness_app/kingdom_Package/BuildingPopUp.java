@@ -29,23 +29,12 @@ public class BuildingPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-
-        configureBackButton();
+        
         configureExitButton();
         configureUpgradeButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {

@@ -30,7 +30,7 @@ public class TilePopUp extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
         configureExitButton();
@@ -101,7 +101,12 @@ public class TilePopUp extends Activity{
 
 
     private void purchaseBuilding(String buildingName){
-       /* Building newBuilding;
+        //////////test code////////////////
+        Building newBuilding = new Building(buildingName);
+        tile.setMyBuilding(newBuilding);
+        //////////////////////////////////
+
+        /*Building newBuilding;
         Currency userCurrency = user.getCurrency();
         //ArrayList<Currency> = new ArrayList<Currency>();
         if(buildingName == "buildingName1" && userCurrency > 100){
