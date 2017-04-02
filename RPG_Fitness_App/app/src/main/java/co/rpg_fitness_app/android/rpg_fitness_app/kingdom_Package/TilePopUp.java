@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
@@ -32,33 +30,22 @@ public class TilePopUp extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
         configureExitButton();
         configurePurchaseButton();
         populateTemplate();
     }
 
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void configureExitButton() {
+        Button Button = (Button) findViewById(R.id.exitTilePopUp);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-    }
-
-    private void configureExitButton() {
-        //Button Button = (Button) findViewById(R.id.exitTilePopUp);
-//        Button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
     }
 
     private void configurePurchaseButton() {
@@ -67,11 +54,15 @@ public class TilePopUp extends Activity{
         Button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building1");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building1")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    finish();
+                }
             }
         });
         //purchase building2
@@ -79,11 +70,15 @@ public class TilePopUp extends Activity{
         Button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building2");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building2")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else{
+                    finish();
+                }
             }
         });
         //purchase building3
@@ -91,11 +86,15 @@ public class TilePopUp extends Activity{
         Button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building3");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building3")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    finish();
+                }
             }
         });
     }
@@ -113,29 +112,32 @@ public class TilePopUp extends Activity{
     }
 
 
-    private void purchaseBuilding(String buildingName){
-       /* Building newBuilding;
+    private boolean purchaseBuilding(String buildingName){
+        //////////test code////////////////
+        Building newBuilding = new Building(buildingName);
+        tile.setMyBuilding(newBuilding);
+        return true;
+        //////////////////////////////////
+
+        /*Building newBuilding = new Building(buildingName;
         Currency userCurrency = user.getCurrency();
-        //ArrayList<Currency> = new ArrayList<Currency>();
         if(buildingName == "buildingName1" && userCurrency > 100){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else if(buildingName == "buildingName2" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else if(buildingName == "buildingName3" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else {
-            return;
+            return false;
         }
-        tile.setMyBuilding(newBuilding);*/
+        tile.setMyBuilding(newBuilding);
+        return true;*/
     }
 
 }

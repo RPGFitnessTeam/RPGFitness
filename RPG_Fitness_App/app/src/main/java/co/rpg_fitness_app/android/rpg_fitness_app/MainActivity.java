@@ -2,21 +2,17 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-//import javax.sql.DataSource;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+
+//import javax.sql.DataSource;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
 
+        kingdom = new Kingdom();//TESTING
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO start the kingdom activity to create the view
+                Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
+                startIntent.putExtra("kingdom", kingdom);
+                startActivity(startIntent);
             }
         });
 

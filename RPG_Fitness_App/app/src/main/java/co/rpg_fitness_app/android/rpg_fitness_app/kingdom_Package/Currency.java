@@ -1,5 +1,6 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -7,7 +8,7 @@ import java.util.UUID;
  * Class for currency types. Currency can be gold, stone, wood, special resources, or gear
  */
 
-public class Currency {
+public class Currency implements Serializable {
 
     String id;
     int wood; //Integer containing the number of a resource within the currency object

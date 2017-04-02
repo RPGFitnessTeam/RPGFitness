@@ -12,7 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/mysteryTileName"
         android:layout_weight="1"
-        android:text="description" />
+        android:text="description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/mysteryTileName"
@@ -21,19 +22,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/exitMysteryTilePopUp"
+        android:layout_toStartOf="@+id/exitMysteryTilePopUp"
         android:layout_weight="1"
         android:text="Mystery Tile Name"
-        android:layout_toLeftOf="@+id/exitMysteryTilePopUp"
-        android:layout_toStartOf="@+id/exitMysteryTilePopUp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <Button
         android:id="@+id/unlockMysteryTile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Unlock Cost"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
-        android:text="Unlock Cost" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/exitMysteryTilePopUp"

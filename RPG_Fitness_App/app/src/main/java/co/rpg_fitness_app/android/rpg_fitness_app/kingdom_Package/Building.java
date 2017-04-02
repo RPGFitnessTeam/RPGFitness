@@ -1,11 +1,12 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
 
-public class Building {
+public class Building implements Serializable {
 
     String id;
     String name;//Name of the building.

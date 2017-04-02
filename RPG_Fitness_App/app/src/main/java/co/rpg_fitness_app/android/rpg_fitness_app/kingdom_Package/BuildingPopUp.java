@@ -29,23 +29,12 @@ public class BuildingPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-
-        configureBackButton();
+        
         configureExitButton();
         configureUpgradeButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {
@@ -67,8 +56,11 @@ public class BuildingPopUp extends Activity {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
                     setResult(1, resultData);
+                    finish();
                 }
-                finish();
+                else {
+                    finish();
+                }
             }
         });
     }
@@ -76,26 +68,30 @@ public class BuildingPopUp extends Activity {
 
     //TODO fix this method to match data base
     private boolean upgradeBuilding(Tile tile){
+        //////TEST CODE///////////////
+        Building building = tile.getMyBuilding();
+        building.upgradeBuilding();
+        return true;
+        //////////////////////////////
         /*Building building = tile.getMyBuilding();
-        if(user.getCurrency() > tile.getTileCost()){
+        if(user.getCurrency() > building.getCost()){
             //MAKE FUNCTION TO UPGRADE BUILDING AND KEEP TRACK OF UPGRADES AND STATS
             //THIS FUNCTION SHOULD PROBABLY BE IN BUILDING CLASS
             building.upgradeBuilding();
             user.decreaseCurrency(building.getCost());
             return true;
-        } */
-        return false;
+        }
+        return false;*/
     }
 
     //TODO: fix method to reflect changes in the database structure
     private void populateTemplate(){
         Building building = tile.getMyBuilding();
-        Currency upgradeCost = tile.getTileCost();
-        //String upgradeResource = tile.getTileCost().getResource();
+        Currency upgradeCost = building.getCost();
         Button upgradeButton = (Button) findViewById(R.id.upgradeBuildingButton);
-        //upgradeButton.setText("Upgrade Cost: "+upgradeCost+" "+upgradeResource);
+        upgradeButton.setText("Upgrade Cost: \n"+upgradeCost.getGold()+" Gold\n"+upgradeCost.getWood()+" Wood\n"+upgradeCost.getStone()+" Stone");
         TextView name = (TextView) findViewById(R.id.buildingName);
-        name.setText(tile.getMyBuilding().getName());
+        name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
         description.setText("Tier: "+building.getTier()+"\nBoost: "+building.getBoost()+"\nCategory: "+building.getCategory());
     }
