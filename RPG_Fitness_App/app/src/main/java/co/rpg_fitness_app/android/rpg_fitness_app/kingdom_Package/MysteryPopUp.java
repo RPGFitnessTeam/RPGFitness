@@ -29,7 +29,7 @@ public class MysteryPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
         configureExitButton();
@@ -77,6 +77,7 @@ public class MysteryPopUp extends Activity {
      *
      * STILL NEED TO GET USERS CURRENCY AND CHECK IF SUFFICIENT
      */
+    //TODO decrease user currency
     private void unlockTile(){
         Currency cost = tile.getTileCost();
         tile.setLocked(false);

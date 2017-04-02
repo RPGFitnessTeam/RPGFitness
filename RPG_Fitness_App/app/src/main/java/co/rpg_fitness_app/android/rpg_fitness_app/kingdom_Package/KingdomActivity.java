@@ -100,7 +100,7 @@ public class KingdomActivity extends Activity {
         //CASE mystery tile
         if (tile.isLocked){
             //TODO: find proper pathing for R.drawable
-            tileButton.setBackgroundResource(R.drawable.castle);
+            tileButton.setBackgroundResource(R.drawable.castle);//set as mystery tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -112,7 +112,7 @@ public class KingdomActivity extends Activity {
         }
         //CASE empty tile
         else if(building == null){
-           // tileButton.setBackgroundResource(R.drawable);
+            tileButton.setBackgroundResource(R.drawable.knight);//set as open tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -146,18 +146,22 @@ public class KingdomActivity extends Activity {
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
+        final Tile tile;
         ImageButton tileButton;
         if(resultCode == 1) {
-            Tile tile = (Tile) data.getSerializableExtra("tile");
+            tile = (Tile) data.getSerializableExtra("tile");
             int tileNumber = tile.getTileNumber();
             Building building = tile.getMyBuilding();
             tileButton = getTileButton(tileNumber);
+
+            ///////////////////mystery tile was unlocked////////////////
             if (requestCode == 1) {
-                tileButton.setBackgroundResource(R.drawable.knight);//set as open tile
+                configureTileButton(tile.getTileNumber(), tile);
             }
+            //////////////////building was bought or upgraded////////////
             else {
-                String buildingName = building.getName();
-                setBuildingImage(tileButton, buildingName);
+                configureTileButton(tile.getTileNumber(), tile);
+
                 ////ONLY NEED THESE IF WE ARE CHANGING BUILDING IMAGE ON UPGRADE///
                 if (requestCode == 2) {
 
@@ -259,23 +263,23 @@ public class KingdomActivity extends Activity {
     }
 
     private void setBuildingImage(ImageButton tileButton, String buildingName){
-/*        switch (buildingName) {
+        switch (buildingName) {
             case "building1":
-                tileButton.setBackgroundResource(R.drawable);
+                tileButton.setBackgroundResource(R.drawable.shield);
                 break;
 
             case "building2":
-                tileButton.setBackgroundResource(R.drawable);
+                tileButton.setBackgroundResource(R.drawable.shield);
                 break;
 
             case "building3":
-                tileButton.setBackgroundResource(R.drawable);
+                tileButton.setBackgroundResource(R.drawable.shield);
                 break;
 
             default:
-                tileButton.setBackgroundResource(R.drawable);
+                tileButton.setBackgroundResource(R.drawable.knight);
                 break;
-        }*/
+        }
     }
 
     /*private void configureMysteryButton(int tileNumber, Tile tile){

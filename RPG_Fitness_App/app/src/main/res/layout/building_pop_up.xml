@@ -12,7 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/buildingName"
         android:layout_weight="1"
-        android:text="description" />
+        android:text="description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/buildingName"
@@ -24,16 +25,16 @@
         android:layout_toLeftOf="@+id/exitBuildingPopUp"
         android:layout_toStartOf="@+id/exitBuildingPopUp"
         android:layout_weight="1"
-        android:text="Building Name" />
+        android:text="Building Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <Button
         android:id="@+id/upgradeBuildingButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Upgrade"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
-        android:text="Upgrade" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/exitBuildingPopUp"
