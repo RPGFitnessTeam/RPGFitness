@@ -47,6 +47,21 @@ public class LogEntry {
         this.ID = ID;
         this.activity = activity;
         //set date;
+
+        switch (activity) {
+            case 1:
+                typeName = "Exercise";
+                break;
+            case 2:
+                typeName = "Nutrition";
+                break;
+            case 3:
+                typeName = "Sleep";
+                break;
+            case 4:
+                typeName = "Weight";
+                break;
+        }
     }
 
     public String[] getSubtypes()
@@ -231,7 +246,7 @@ public class LogEntry {
     }
 
     public String getTypeName() {
-        return typeName;
+       return typeName;
     }
 
     public void setTypeName(String typeName) {
