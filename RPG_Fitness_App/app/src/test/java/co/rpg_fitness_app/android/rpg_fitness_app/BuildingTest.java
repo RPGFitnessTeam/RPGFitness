@@ -16,17 +16,13 @@ import static org.junit.Assert.assertSame;
 public class BuildingTest {
     @Test
     public void upgradeBuilding() throws Exception {
-        Currency cur = new Currency();
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
         Building buildingTest = new Building("building1");
         buildingTest.upgradeBuilding();
-        b.get(0).updateBoost(1);
+        boo.updateBoost(1);
         assertSame(2, buildingTest.getTier());
-        assertSame(b, buildingTest.getBoost());
+        assertSame(boo, buildingTest.getGoldBoost());*/
     }
 
     @Test
@@ -56,16 +52,11 @@ public class BuildingTest {
 
     @Test
     public void setCost() throws Exception {
-        Currency cur = new Currency();
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
         Building buildingTest = new Building("building1");
-        c.add(new Currency());
         buildingTest.setCost(cur);
-        assertSame(c, buildingTest.getCost());
+        assertSame(cur, buildingTest.getCost());*/
     }
 
     @Test
@@ -96,29 +87,21 @@ public class BuildingTest {
     }
 
     @Test
-    public void getBoost() throws Exception {
-        Currency cur = new Currency();
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+    public void getGoldBoost() throws Exception {
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
         Building buildingTest = new Building("building1");
-        assertSame(b, buildingTest.getBoost());
+        assertSame(boo, buildingTest.getGoldBoost());*/
     }
 
     @Test
-    public void setBoost() throws Exception {
+    public void setGoldBoost() throws Exception {
         Currency cur = new Currency();
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
+        boo.setAmount(10);
         Building buildingTest = new Building("building1");
-        b.add(new Boost());
-        buildingTest.setBoost(b);
-        assertSame(b, buildingTest.getBoost());
+        buildingTest.setGoldBoost(boo);
+        assertSame(boo, buildingTest.getGoldBoost());
     }
 
     @Test

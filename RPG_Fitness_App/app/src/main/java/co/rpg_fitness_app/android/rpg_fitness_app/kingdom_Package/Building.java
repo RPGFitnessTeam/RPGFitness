@@ -1,7 +1,6 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
@@ -13,57 +12,69 @@ public class Building implements Serializable {
     Currency cost;//Cost of the building upgrade in various resources.
     String category;//Buildings fall into specific categories and can be upgraded within that category.
     int tier;//Buildings must be upgraded in order, the tier number determines which building comes next in the series
-    ArrayList<Boost> boost;//Additional perks of owning this building.
-
+    Boost goldBoost;//gold boost perk
+    Boost woodBoost;//wood boost perk
+    Boost stoneBoost;//stone boost perk
 
     public Building() {
         this.id = UUID.randomUUID().toString();
-        this.name = null;
-        this.cost = null;
-        this.category = null;
-        this.tier = 0;
-        this.boost = null;
+        this.name = "";
+        this.cost = new Currency();
+        this.category = "";
+        this.tier = 1;
+        this.goldBoost = new Boost();
+        this.woodBoost = new Boost();
+        this.stoneBoost = new Boost();
     }
 
+    //used for unit tests
     public Building(String name) {
         this.id = UUID.randomUUID().toString();
-        if (name == "building1"){
+        if (name == "house"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category1";
+            this.category = "dwelling";
             this.tier = 1;
-            this.boost = new ArrayList<>();
+            this.goldBoost = null;
+            this.woodBoost = null;
+            this.stoneBoost = null;
         }
-        else if (name == "building2"){
+        else if (name == "wood bridge"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category2";
+            this.category = "bridge";
             this.tier = 1;
-            this.boost = new ArrayList<>();
+            this.goldBoost = null;
+            this.woodBoost = null;
+            this.stoneBoost = null;
         }
-        else if (name == "building3"){
+        else if (name == "cave"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category3";
+            this.category = "mining";
             this.tier = 1;
-            this.boost = new ArrayList<>();
+            this.goldBoost = null;
+            this.woodBoost = null;
+            this.stoneBoost = null;
         }
     }
 
-    public Building(String name, Currency cost, String category, int tier, ArrayList<Boost> boost){
+    public Building(String name, Currency cost, String category, int tier, Boost goldBoost, Boost woodBoost, Boost stoneBoost){
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;
         this.category = category;
         this.tier = tier;
-        this.boost = boost;
+        this.goldBoost = goldBoost;
+        this.woodBoost = woodBoost;
+        this.stoneBoost = stoneBoost;
     }
 
     public void upgradeBuilding(){
         this.setTier(this.getTier() + 1);
-        for (int i = 0; 1<this.boost.size(); i++){
-            boost.get(i).updateBoost(1);
-        }
+        this.goldBoost.updateBoost(1);
+        this.woodBoost.updateBoost(1);
+        this.stoneBoost.updateBoost(1);
     }
 
     public String getName() {
@@ -98,12 +109,28 @@ public class Building implements Serializable {
         this.tier = tier;
     }
 
-    public ArrayList<Boost> getBoost() {
-        return boost;
+    public Boost getGoldBoost() {
+        return this.goldBoost;
     }
 
-    public void setBoost(ArrayList<Boost> boost) {
-        this.boost = boost;
+    public Boost getWoodBoost() {
+        return this.woodBoost;
+    }
+
+    public Boost getStoneBoost() {
+        return this.stoneBoost;
+    }
+
+    public void setGoldBoost(Boost boost) {
+        this.goldBoost = boost;
+    }
+
+    public void setWoodBoost(Boost boost) {
+        this.woodBoost = boost;
+    }
+
+    public void setStoneBoost(Boost boost) {
+        this.stoneBoost = boost;
     }
 
     public String getId() {
