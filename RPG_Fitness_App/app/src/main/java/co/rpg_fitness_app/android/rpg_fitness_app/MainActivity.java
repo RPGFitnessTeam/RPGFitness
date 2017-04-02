@@ -2,22 +2,20 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 //import javax.sql.DataSource;
-
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+
+//import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+
+//import javax.sql.DataSource;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         //TODO: uncomment once DB is implemented
         /*mDataSource = new DataSource(this);
         mDataSource.open();
-        mDataSource.seedDatabase();*/
+        mDataSource.seedDatabase();
+        for(int i = 0; i< BuildingDataProvider.buildingList.size(); i++) {
+            mDataSource.insertBuilding(BuildingDataProvider.buildingList.get(i));
+        }*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -52,10 +53,14 @@ public class MainActivity extends AppCompatActivity {
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
 
+        kingdom = new Kingdom();//TESTING
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO start the kingdom activity to create the view
+                Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
+                startIntent.putExtra("kingdom", kingdom);
+                startActivity(startIntent);
             }
         });
 

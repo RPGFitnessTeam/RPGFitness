@@ -17,7 +17,7 @@ public class Kingdom implements Serializable {
         Tile tile;
         for (int i = 0; i<=19; i++){
                 tile = new Tile(i);
-                myGrid.set(i, tile);
+                myGrid.add(tile);
         }
     }
 

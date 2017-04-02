@@ -16,6 +16,21 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".kingdom_Package.BuildingPopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.MysteryPopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.TilePopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.KingdomActivity"
+            android:theme="@style/AppTheme"
+            ></activity>
 
         <activity android:name=".character_Package.ItemPopUpHelm"
             android:theme="@style/AppTheme.popUpCharacterScreen"

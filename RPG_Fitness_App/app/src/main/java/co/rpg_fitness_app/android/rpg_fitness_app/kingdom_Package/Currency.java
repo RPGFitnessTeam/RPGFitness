@@ -1,5 +1,6 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -7,7 +8,7 @@ import java.util.UUID;
  * Class for currency types. Currency can be gold, stone, wood, special resources, or gear
  */
 
-public class Currency {
+public class Currency implements Serializable {
 
     String id;
     int wood; //Integer containing the number of a resource within the currency object
@@ -16,6 +17,8 @@ public class Currency {
     int misc1;
     int misc2;
     int misc3;
+    int misc4;
+    int misc5;
 
     public Currency() {
         this.id = UUID.randomUUID().toString();
@@ -25,15 +28,32 @@ public class Currency {
         this.misc1 = 0;
         this.misc2 = 0;
         this.misc3 = 0;
+        this.misc4 = 0;
+        this.misc5 = 0;
     }
 
-    public boolean updateResource(int wood, int gold, int stone, int misc1, int misc2, int misc3){
-        this.wood = this.wood + wood;
-        this.gold = this.gold + gold;
-        this.stone = this.stone + stone;
-        this.misc1 =this.misc1 + misc1;
-        this.misc2 = this.misc2 + misc2;
-        this.misc3 = this.misc3 + misc3;
+    public boolean updateResource(boolean add, int wood, int gold, int stone, int misc1, int misc2, int misc3, int misc4, int misc5){
+        if(add) {
+            this.wood = this.wood + wood;
+            this.gold = this.gold + gold;
+            this.stone = this.stone + stone;
+            this.misc1 = this.misc1 + misc1;
+            this.misc2 = this.misc2 + misc2;
+            this.misc3 = this.misc3 + misc3;
+            this.misc4 = this.misc4 + misc4;
+            this.misc5 = this.misc5 + misc5;
+        }
+        else {
+            this.wood = this.wood - wood;
+            this.gold = this.gold - gold;
+            this.stone = this.stone - stone;
+            //we dont want to actually remove any special resources
+            /*this.misc1 = this.misc1 - misc1;
+            this.misc2 = this.misc2 - misc2;
+            this.misc3 = this.misc3 - misc3;
+            this.misc4 = this.misc4 - misc4;
+            this.misc5 = this.misc5 - misc5;*/
+        }
         return true;
     }
 
@@ -83,6 +103,22 @@ public class Currency {
 
     public void setMisc3(int misc3) {
         this.misc3 = misc3;
+    }
+
+    public int getMisc4() {
+        return misc4;
+    }
+
+    public void setMisc4(int misc4) {
+        this.misc4 = misc4;
+    }
+
+    public int getMisc5() {
+        return misc5;
+    }
+
+    public void setMisc5(int misc5) {
+        this.misc5 = misc5;
     }
 
     public String getId() {

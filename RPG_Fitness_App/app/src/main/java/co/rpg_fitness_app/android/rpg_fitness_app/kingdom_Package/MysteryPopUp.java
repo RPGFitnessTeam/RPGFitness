@@ -29,23 +29,12 @@ public class MysteryPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
         configureExitButton();
         configureUnlockButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {
@@ -63,11 +52,15 @@ public class MysteryPopUp extends Activity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                unlockTile();
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(unlockTile()) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    finish();
+                }
             }
         });
     }
@@ -75,8 +68,7 @@ public class MysteryPopUp extends Activity {
     private void populateTemplate(){
         Currency unlockCost = tile.getTileCost();
         Button unlockButton = (Button) findViewById(R.id.unlockMysteryTile);
-        //TODO find what method unlockResource is under
-        //unlockButton.setText("Unlock Cost: "+unlockCost+" "+unlockResource);
+        unlockButton.setText("Unlock Cost:\n"+unlockCost.getGold()+" Gold\n"+unlockCost.getWood()+" Wood\n"+unlockCost.getStone()+" Stone");
         TextView name = (TextView) findViewById(R.id.mysteryTileName);
         name.setText("Mystery Tile");
         TextView description = (TextView) findViewById(R.id.mysteryTileDescription);
@@ -88,8 +80,10 @@ public class MysteryPopUp extends Activity {
      *
      * STILL NEED TO GET USERS CURRENCY AND CHECK IF SUFFICIENT
      */
-    private void unlockTile(){
+    //TODO decrease user currency if they have sufficient funds
+    private boolean unlockTile(){
         Currency cost = tile.getTileCost();
         tile.setLocked(false);
+        return true;
     }
 }

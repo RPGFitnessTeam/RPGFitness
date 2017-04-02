@@ -4,7 +4,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
+
+import static org.junit.Assert.assertSame;
 
 /**
  * Created by Tanner on 3/12/2017.
@@ -12,17 +16,13 @@ import static org.junit.Assert.*;
 public class BuildingTest {
     @Test
     public void upgradeBuilding() throws Exception {
-        Currency cur = new Currency(1, "wood");
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
-        Building buildingTest = new Building("building1", c, "category1", 1, b);
+        Building buildingTest = new Building("building1");
         buildingTest.upgradeBuilding();
-        b.get(0).updateBoost(1);
+        boo.updateBoost(1);
         assertSame(2, buildingTest.getTier());
-        assertSame(b, buildingTest.getBoost());
+        assertSame(boo, buildingTest.getGoldBoost());*/
     }
 
     @Test
@@ -40,28 +40,23 @@ public class BuildingTest {
 
     @Test
     public void getCost() throws Exception {
-        Currency cur = new Currency(1, "wood");
+        Currency cur = new Currency();
         ArrayList<Currency> c = new ArrayList<>();
         c.add(cur);
         Boost boo = new Boost();
         ArrayList<Boost> b = new ArrayList<>();
         b.add(boo);
-        Building buildingTest = new Building("building1", c, "category1", 1, b);
+        Building buildingTest = new Building("building1");
         assertSame(c, buildingTest.getCost());
     }
 
     @Test
     public void setCost() throws Exception {
-        Currency cur = new Currency(1, "wood");
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
-        Building buildingTest = new Building("building1", c, "category1", 1, b);
-        c.add(new Currency(2, "gold"));
-        buildingTest.setCost(c);
-        assertSame(c, buildingTest.getCost());
+        Building buildingTest = new Building("building1");
+        buildingTest.setCost(cur);
+        assertSame(cur, buildingTest.getCost());*/
     }
 
     @Test
@@ -92,35 +87,27 @@ public class BuildingTest {
     }
 
     @Test
-    public void getBoost() throws Exception {
-        Currency cur = new Currency(1, "wood");
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+    public void getGoldBoost() throws Exception {
+        /*Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
-        Building buildingTest = new Building("building1", c, "category1", 1, b);
-        assertSame(b, buildingTest.getBoost());
+        Building buildingTest = new Building("building1");
+        assertSame(boo, buildingTest.getGoldBoost());*/
     }
 
     @Test
-    public void setBoost() throws Exception {
-        Currency cur = new Currency(1, "wood");
-        ArrayList<Currency> c = new ArrayList<>();
-        c.add(cur);
+    public void setGoldBoost() throws Exception {
+        Currency cur = new Currency();
         Boost boo = new Boost();
-        ArrayList<Boost> b = new ArrayList<>();
-        b.add(boo);
-        Building buildingTest = new Building("building1", c, "category1", 1, b);
-        b.add(new Boost());
-        buildingTest.setBoost(b);
-        assertSame(b, buildingTest.getBoost());
+        boo.setAmount(10);
+        Building buildingTest = new Building("building1");
+        buildingTest.setGoldBoost(boo);
+        assertSame(boo, buildingTest.getGoldBoost());
     }
 
     @Test
     public void getId() throws Exception {
         Building buildingTest = new Building("building1");
-        missingstepshere;
+        //missingstepshere;
         assertSame("building1", buildingTest.getId());
     }
 
