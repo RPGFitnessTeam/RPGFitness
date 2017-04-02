@@ -12,6 +12,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
 
+//import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+
 //import javax.sql.DataSource;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
         //TODO: uncomment once DB is implemented
         /*mDataSource = new DataSource(this);
         mDataSource.open();
-        mDataSource.seedDatabase();*/
+        mDataSource.seedDatabase();
+        for(int i = 0; i< BuildingDataProvider.buildingList.size(); i++) {
+            mDataSource.insertBuilding(BuildingDataProvider.buildingList.get(i));
+        }*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
