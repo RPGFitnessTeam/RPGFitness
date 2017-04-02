@@ -54,11 +54,15 @@ public class TilePopUp extends Activity{
         Button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building1");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building1")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    finish();
+                }
             }
         });
         //purchase building2
@@ -66,11 +70,15 @@ public class TilePopUp extends Activity{
         Button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building2");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building2")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else{
+                    finish();
+                }
             }
         });
         //purchase building3
@@ -78,11 +86,15 @@ public class TilePopUp extends Activity{
         Button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building3");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("building3")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    finish();
+                }
             }
         });
     }
@@ -100,34 +112,32 @@ public class TilePopUp extends Activity{
     }
 
 
-    private void purchaseBuilding(String buildingName){
+    private boolean purchaseBuilding(String buildingName){
         //////////test code////////////////
         Building newBuilding = new Building(buildingName);
         tile.setMyBuilding(newBuilding);
+        return true;
         //////////////////////////////////
 
-        /*Building newBuilding;
+        /*Building newBuilding = new Building(buildingName;
         Currency userCurrency = user.getCurrency();
-        //ArrayList<Currency> = new ArrayList<Currency>();
         if(buildingName == "buildingName1" && userCurrency > 100){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else if(buildingName == "buildingName2" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else if(buildingName == "buildingName3" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
             user.decreaseCurrency(newBuilding.getCost());
             //DECREASE USER CURRENCY
         }
         else {
-            return;
+            return false;
         }
-        tile.setMyBuilding(newBuilding);*/
+        tile.setMyBuilding(newBuilding);
+        return true;*/
     }
 
 }
