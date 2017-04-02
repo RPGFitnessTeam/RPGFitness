@@ -89,10 +89,28 @@ public class BuildingPopUp extends Activity {
         Building building = tile.getMyBuilding();
         Currency upgradeCost = building.getCost();
         Button upgradeButton = (Button) findViewById(R.id.upgradeBuildingButton);
-        upgradeButton.setText("Upgrade Cost: \n"+upgradeCost.getGold()+" Gold\n"+upgradeCost.getWood()+" Wood\n"+upgradeCost.getStone()+" Stone");
+        String specialResource = "";
+        if(upgradeCost.getMisc1() == 1){
+            specialResource = "Sorcerer's Hat";
+        }
+        else if(upgradeCost.getMisc2() == 1){
+            specialResource = "Magic Lamp";
+        }
+        else if(upgradeCost.getMisc3() == 1){
+            specialResource = "Abacus";
+        }
+        else if(upgradeCost.getMisc5() == 1){
+            specialResource = "Excalibur";
+        }
+        else if(upgradeCost.getMisc5() == 1){
+            specialResource = "Pentagram Charm";
+        }
+        upgradeButton.setText("Upgrade Cost: \n"+upgradeCost.getGold()+" Gold\n"+upgradeCost.getWood()+" Wood\n"+upgradeCost.getStone()+" Stone"
+            +"\nSpecial Resource: "+specialResource);
         TextView name = (TextView) findViewById(R.id.buildingName);
         name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
-        description.setText("Tier: "+building.getTier()+"\nBoost: "+building.getBoost()+"\nCategory: "+building.getCategory());
+        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost()+
+                "\nWood Boost: "+building.getWoodBoost()+"\nStone Boost"+building.getStoneBoost()+"\nCategory: "+building.getCategory());
     }
 }

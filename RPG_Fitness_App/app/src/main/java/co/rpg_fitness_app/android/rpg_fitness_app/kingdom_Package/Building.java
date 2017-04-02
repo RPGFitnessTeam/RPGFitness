@@ -18,39 +18,40 @@ public class Building implements Serializable {
 
     public Building() {
         this.id = UUID.randomUUID().toString();
-        this.name = null;
-        this.cost = null;
-        this.category = null;
-        this.tier = 0;
-        this.goldBoost = null;
-        this.woodBoost = null;
-        this.stoneBoost = null;
+        this.name = "";
+        this.cost = new Currency();
+        this.category = "";
+        this.tier = 1;
+        this.goldBoost = new Boost();
+        this.woodBoost = new Boost();
+        this.stoneBoost = new Boost();
     }
 
+    //used for unit tests
     public Building(String name) {
         this.id = UUID.randomUUID().toString();
-        if (name == "building1"){
+        if (name == "house"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category1";
+            this.category = "dwelling";
             this.tier = 1;
             this.goldBoost = null;
             this.woodBoost = null;
             this.stoneBoost = null;
         }
-        else if (name == "building2"){
+        else if (name == "wood bridge"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category2";
+            this.category = "bridge";
             this.tier = 1;
             this.goldBoost = null;
             this.woodBoost = null;
             this.stoneBoost = null;
         }
-        else if (name == "building3"){
+        else if (name == "cave"){
             this.name = name;
             this.cost = new Currency();
-            this.category = "category3";
+            this.category = "mining";
             this.tier = 1;
             this.goldBoost = null;
             this.woodBoost = null;
