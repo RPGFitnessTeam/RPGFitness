@@ -53,8 +53,7 @@ public class GearTest {
 
         Boost helmBoost = new Boost();
         boostTester.add(helmBoost);
-
-        gearTest.setBoost(boostTester);
+        gearTest.setBoost(boostTester.get(0));
 
         assertEquals(boostTester, gearTest.getBoost());
     }
