@@ -17,6 +17,7 @@ public class Tile implements Serializable {
     Building myBuilding;//Instance of a Building object associated with this tile.
     Currency tileCost;//Cost to unlock this tile using Currency object.
     int tileNumber;
+    String imageName;
 
     public Tile(){
         this.id = UUID.randomUUID().toString();
@@ -24,6 +25,7 @@ public class Tile implements Serializable {
         this.myBuilding = null;
         this.tileCost = new Currency();
         this.tileNumber = 0;
+        this.imageName = null;
     }
 
     public Tile(int tileNumber){
@@ -86,4 +88,8 @@ public class Tile implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getImageName() { return imageName; }
+
+    public void setImageName(String imageName) { this.imageName = imageName; }
 }
