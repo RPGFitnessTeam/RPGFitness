@@ -36,6 +36,25 @@
             android:theme="@style/AppTheme.popUpCharacterScreen"
             ></activity>
 
+        <activity android:name=".character_Package.ItemPopUpChest"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpWeapon"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpOffHand"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpLegs"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+
+
+
         <activity android:name=".character_Package.CharacterActivity"
             android:theme="@style/AppTheme"
             android:exported="true"
