@@ -27,7 +27,7 @@ public class Building implements Serializable {
         this.stoneBoost = new Boost();
     }
 
-    //used for unit tests
+    //TODO: need to get values from database
     public Building(String name) {
         this.id = UUID.randomUUID().toString();
         if (name == "house"){
@@ -35,27 +35,36 @@ public class Building implements Serializable {
             this.cost = new Currency();
             this.category = "dwelling";
             this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
+            this.goldBoost = new Boost();
+            this.woodBoost = new Boost();
+            this.stoneBoost = new Boost();
         }
         else if (name == "wood bridge"){
             this.name = name;
             this.cost = new Currency();
             this.category = "bridge";
             this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
+            this.goldBoost = new Boost();
+            this.woodBoost = new Boost();
+            this.stoneBoost = new Boost();
         }
         else if (name == "cave"){
             this.name = name;
             this.cost = new Currency();
             this.category = "mining";
             this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
+            this.goldBoost = new Boost();
+            this.woodBoost = new Boost();
+            this.stoneBoost = new Boost();
+        }
+        else if (name == "castle"){
+            this.name = name;
+            this.cost = new Currency();
+            this.category = "dwelling";
+            this.tier = 2;
+            this.goldBoost = new Boost();
+            this.woodBoost = new Boost();
+            this.stoneBoost = new Boost();
         }
     }
 
