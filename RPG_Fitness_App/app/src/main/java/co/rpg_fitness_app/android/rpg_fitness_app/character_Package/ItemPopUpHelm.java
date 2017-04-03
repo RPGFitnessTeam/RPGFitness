@@ -33,9 +33,15 @@ public class ItemPopUpHelm extends Activity {
 
         getWindow().setLayout( (int) (width*0.8), (int) (height*0.5));
 
-        // Adapter used to display list's data (in this case a list of helms the player owns)
-        ArrayAdapter<Gear> items = new ArrayAdapter<Gear>(this, R.layout.character_item_popup,
-                character.retrieveGearInCategory("Helm"));
+        //Adapter used to display list's data (in this case a list of helms the player owns)
+        //ArrayAdapter<Gear> items = new ArrayAdapter<Gear>(this, R.layout.character_item_popup,
+        //        R.id.item_textView, character.retrieveGearInCategory("Helm"));
+
+        String[] helms = {"A", "B", "C"};
+
+        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
+                R.id.item_textView, helms);
+
         ListView listview = (ListView) findViewById(R.id.ListView_gearList);
         listview.setAdapter(items);
 
