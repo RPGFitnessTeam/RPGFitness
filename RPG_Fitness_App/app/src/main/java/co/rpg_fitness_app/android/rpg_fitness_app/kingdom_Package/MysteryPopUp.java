@@ -17,6 +17,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class MysteryPopUp extends Activity {
 
     Tile tile;
+    Currency moneyChest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MysteryPopUp extends Activity {
         getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
         configureExitButton();
         configureUnlockButton();
         populateTemplate();
@@ -59,6 +61,7 @@ public class MysteryPopUp extends Activity {
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -78,12 +81,16 @@ public class MysteryPopUp extends Activity {
     /**
      * @return true if user had sufficient funds to unlock the mystery tile
      *
-     * STILL NEED TO GET USERS CURRENCY AND CHECK IF SUFFICIENT
      */
-    //TODO decrease user currency if they have sufficient funds
     private boolean unlockTile(){
         Currency cost = tile.getTileCost();
-        tile.setLocked(false);
-        return true;
+        if(moneyChest.getWood()>=cost.getWood() && moneyChest.getGold()>=cost.getGold() && moneyChest.getStone()>=cost.getStone()){
+            moneyChest.updateResource(false, cost.getWood(), cost.getGold(), cost.getStone(),0,0,0,0,0);
+            tile.setLocked(false);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

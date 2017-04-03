@@ -22,8 +22,6 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 
-import co.rpg_fitness_app.android.rpg_fitness_app.R;
-
 // TODO: Start Building Unit Tests
 // TODO: Add sample objects to the database
 
@@ -134,7 +132,8 @@ public class DataSource {
             }
         }
 
-        if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
+        //TODO tanner commented this out since it was not working
+/*        if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
                 && LogEntryDataProvider.logEntryList != null) {
             for (LogEntry logEntry :
                     LogEntryDataProvider.logEntryList) {
@@ -144,7 +143,7 @@ public class DataSource {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
         // TODO Still don't have quests
         /*
         if (DatabaseUtils.queryNumEntries(mDatabase, QuestTable.TABLE_QUEST) == 0
