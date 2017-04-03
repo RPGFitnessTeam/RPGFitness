@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 startIntent.putExtra("buildings", mDataSource.getAllBuildings());
                 //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
                 Currency c = new Currency();//TESTING
-                c.updateResource(true,1,1,1,1,1,1,1,1);//TESTING
+                c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
                 startIntent.putExtra("money chest", c);//TESTING
                 startActivity(startIntent);
             }
