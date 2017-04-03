@@ -57,6 +57,7 @@ public class MysteryPopUp extends Activity {
                 if(unlockTile()) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }

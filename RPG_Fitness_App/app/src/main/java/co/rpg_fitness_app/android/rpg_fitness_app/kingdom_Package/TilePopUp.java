@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
@@ -18,6 +20,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class TilePopUp extends Activity{
 
     Tile tile;
+    Currency moneyChest;
+    ArrayList<Building> buildings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class TilePopUp extends Activity{
         getWindow().setLayout((int)(width*0.85), (int)(height*0.85));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        this.buildings = (ArrayList<Building>) getIntent().getSerializableExtra("buildings");
         configureExitButton();
         configurePurchaseButton();
         populateTemplate();
@@ -58,10 +64,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("house")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -74,10 +82,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("wood bridge")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else{
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -90,10 +100,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("cave")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -106,10 +118,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("tavern")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -122,10 +136,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("fort")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -138,10 +154,12 @@ public class TilePopUp extends Activity{
                 if(purchaseBuilding("pond")) {
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
@@ -184,29 +202,26 @@ public class TilePopUp extends Activity{
     }
 
 
-    //TODO
     private boolean purchaseBuilding(String buildingName){
-        //////////test code////////////////
         Building newBuilding = new Building(buildingName);
-        tile.setMyBuilding(newBuilding);
-        return true;
-        //////////////////////////////////
-
-        //TODO get users currency
-        /*Building newBuilding = new Building(buildingName);
-        Currency userCurrency = user.getCurrency();
         Currency buildingCost = newBuilding.getCost();
-        if (userCurrency.getWood()>=buildingCost.getWood() && userCurrency.getGold()>=buildingCost.getGold() && userCurrency.getStone()>=buildingCost.getStone() &&
-                userCurrency.getMisc1()>=buildingCost.getMisc1() && userCurrency.getMisc2()>=buildingCost.getMisc2() && userCurrency.getMisc3()>=buildingCost.getMisc3() &&
-                userCurrency.getMisc1()>=buildingCost.getMisc5() && userCurrency.getMisc1()>=buildingCost.getMisc5()) {
-            userCurrency.updateResource(false, buildingCost.getWood(), buildingCost.getGold(), buildingCost.getStone(), buildingCost.getMisc1(),
+        if (moneyChest.getWood()>=buildingCost.getWood() && moneyChest.getGold()>=buildingCost.getGold() && moneyChest.getStone()>=buildingCost.getStone() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc1() && moneyChest.getMisc2()>=buildingCost.getMisc2() && moneyChest.getMisc3()>=buildingCost.getMisc3() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc5() && moneyChest.getMisc1()>=buildingCost.getMisc5()) {
+            moneyChest.updateResource(false, buildingCost.getWood(), buildingCost.getGold(), buildingCost.getStone(), buildingCost.getMisc1(),
                     buildingCost.getMisc2(), buildingCost.getMisc3(), buildingCost.getMisc4(), buildingCost.getMisc5());
+            for (int i = 0; i < buildings.size(); i++) {
+                if(buildingName.equals(buildings.get(i).getName())){
+                    newBuilding = buildings.get(i);
+                    tile.setMyBuilding(newBuilding);
+                    return true;
+                }
+            }
+            return false;
         }
        else{
             return false;
         }
-        tile.setMyBuilding(newBuilding);
-        return true;*/
     }
 
 }
