@@ -15,6 +15,7 @@ public class Building implements Serializable {
     Boost goldBoost;//gold boost perk
     Boost woodBoost;//wood boost perk
     Boost stoneBoost;//stone boost perk
+    String imageName;
 
     public Building() {
         this.id = UUID.randomUUID().toString();
@@ -25,6 +26,7 @@ public class Building implements Serializable {
         this.goldBoost = new Boost();
         this.woodBoost = new Boost();
         this.stoneBoost = new Boost();
+        this.imageName = "";
     }
 
     //used for unit tests
@@ -59,7 +61,8 @@ public class Building implements Serializable {
         }
     }
 
-    public Building(String name, Currency cost, String category, int tier, Boost goldBoost, Boost woodBoost, Boost stoneBoost){
+    public Building(String name, Currency cost, String category, int tier, Boost goldBoost,
+                    Boost woodBoost, Boost stoneBoost, String imageName){
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;
@@ -68,6 +71,7 @@ public class Building implements Serializable {
         this.goldBoost = goldBoost;
         this.woodBoost = woodBoost;
         this.stoneBoost = stoneBoost;
+        this.imageName = imageName;
     }
 
     public void upgradeBuilding(){
@@ -140,4 +144,9 @@ public class Building implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getImageName() { return imageName; }
+
+    public void setImageName(String imageName) { this.imageName = imageName; }
+
 }

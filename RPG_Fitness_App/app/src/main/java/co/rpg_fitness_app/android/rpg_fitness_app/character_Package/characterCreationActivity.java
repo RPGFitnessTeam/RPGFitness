@@ -33,6 +33,8 @@ public class characterCreationActivity extends Activity implements AdapterView.O
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+
         /**
          * sets up the spinner and populates the arraylist with the different species
          * the player can choose from. A listener for onItemSelected action is established as well.

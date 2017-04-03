@@ -19,7 +19,7 @@ public class TipsTable {
                     COLUMN_THUMBS_UP, COLUMN_THUMBS_DOWN, COLUMN_URL};
 
     public static final String SQL_CREATE =
-            "CREATE TABLE" + TABLE_TIPS + ")" +
+            "CREATE TABLE " + TABLE_TIPS + "(" +
                     COLUMN_ID + " TEXT PRIMARY KEY," +
                     COLUMN_ACTIVITY + " TEXT," +
                     COLUMN_VISITED + " INTEGER," +

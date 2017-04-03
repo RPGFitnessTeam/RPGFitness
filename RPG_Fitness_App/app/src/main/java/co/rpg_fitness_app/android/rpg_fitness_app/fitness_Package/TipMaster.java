@@ -51,22 +51,22 @@ public class TipMaster extends AppCompatActivity {
         public boolean addTip(int message, String ID, String type, boolean thumbsUp, boolean thumbsDown) {
             switch (type) {
                 case "exercise":
-                    Tips eType = new Tips(message, ID, type, false, thumbsUp, thumbsDown);
+                    Tips eType = new Tips(message, ID, type, false, thumbsUp, thumbsDown, null);
                     tipList.add(eType);
                     exerciseTipList.add(eType);
                     return true;
                 case "nutrition":
-                    Tips nType = new Tips(message, ID, type, false, thumbsUp, thumbsDown);
+                    Tips nType = new Tips(message, ID, type, false, thumbsUp, thumbsDown, null);
                     tipList.add(nType);
                     nutritionTipList.add(nType);
                     return true;
                 case "weight":
-                    Tips wType = new Tips(message, ID, type, false, thumbsUp, thumbsDown);
+                    Tips wType = new Tips(message, ID, type, false, thumbsUp, thumbsDown, null);
                     tipList.add(wType);
                     weightTipList.add(wType);
                     return true;
                 case "sleep":
-                    Tips sType = new Tips(message, ID, type, false, thumbsUp, thumbsDown);
+                    Tips sType = new Tips(message, ID, type, false, thumbsUp, thumbsDown, null);
                     tipList.add(sType);
                     sleepTipList.add(sType);
                     return true;

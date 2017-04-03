@@ -13,7 +13,7 @@ public class Tips {
     private boolean beenVisited;
     private boolean thumbsUp;
     private boolean thumbsDown;
-
+    private LogEntry activity;
 
     public Tips() {
         message = 0;
@@ -24,12 +24,13 @@ public class Tips {
     }
     // TODO: Implement beenVisited, thumbsUp, and thumbsDown
     public Tips(int message, String id, String type, boolean beenVisited, boolean thumbsUp,
-                boolean thumbsDown) {
+                boolean thumbsDown, LogEntry activity) {
         this.message = message;
         this.id = id;
         this.type = type;
         this.beenVisited = beenVisited;
         this.thumbsUp = thumbsUp;
+        this.activity = activity;
     }
 
     public int getMessage() {
@@ -79,5 +80,9 @@ public class Tips {
     public void setThumbsDown(boolean thumbsDown) {
         this.thumbsDown = thumbsDown;
     }
+
+    public LogEntry getActivity() { return activity; }
+
+    public void setActivity(LogEntry activity) { this.activity = activity; }
 
 }

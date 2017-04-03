@@ -150,7 +150,7 @@ public class CharacterTest {
         test.add(helmOfAnger);
         test.add(swordOfMight);
 
-        assertEquals(test, testChar.getInvetory());
+        assertEquals(test, testChar.getInventory());
 
 
 
@@ -165,12 +165,12 @@ public class CharacterTest {
         testChar.addGear(helmOfSorrow);
 
 
-        assertSame(helmOfSorrow, testChar.getInvetory().get(0));
+        assertSame(helmOfSorrow, testChar.getInventory().get(0));
 
 
         testChar.removeGear(helmOfSorrow);
 
-        assertNull(testChar.getInvetory());
+        assertNull(testChar.getInventory());
 
     }
 
