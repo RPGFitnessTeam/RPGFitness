@@ -30,7 +30,7 @@ public class TilePopUp extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
+        getWindow().setLayout((int)(width*0.85), (int)(height*0.85));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
         configureExitButton();
@@ -150,26 +150,41 @@ public class TilePopUp extends Activity{
 
     private void populateTemplate(){
         //house
-        TextView building1Text = (TextView) findViewById(R.id.purchaseBuilding1Text);
-        building1Text.setText("House:\nA house will give you extra gold!\nConstruction Cost: 1 wood, 1 gold");
+        ImageButton i;
+        TextView t;
+        i = (ImageButton) findViewById(R.id.purchaseBuilding1);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding1Text);
+        t.setText("House:\nA house will give you extra gold!\nConstruction Cost: 1 wood, 1 gold");
         //wood bridge
-        TextView building2Text = (TextView) findViewById(R.id.purchaseBuilding2Text);
-        building2Text.setText("Wood Bridge:\nA wood bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
+        i = (ImageButton) findViewById(R.id.purchaseBuilding2);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding2Text);
+        t.setText("Wood Bridge:\nA wood bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
         //cave
-        TextView building3Text = (TextView) findViewById(R.id.purchaseBuilding3Text);
-        building3Text.setText("Cave:\nA cave will give you extra stone!\nConstruction Cost: 1 wood, 1 gold");
+        i = (ImageButton) findViewById(R.id.purchaseBuilding3);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding3Text);
+        t.setText("Cave:\nA cave will give you extra stone!\nConstruction Cost: 1 wood, 1 gold");
         //tavern
-        TextView building4Text = (TextView) findViewById(R.id.purchaseBuilding4Text);
-        building4Text.setText("Tavern:\nA tavern will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
+        i = (ImageButton) findViewById(R.id.purchaseBuilding4);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding4Text);
+        t.setText("Tavern:\nA tavern will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
         //fort
-        TextView building5Text = (TextView) findViewById(R.id.purchaseBuilding5Text);
-        building5Text.setText("Fort:\nA fort will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
+        i = (ImageButton) findViewById(R.id.purchaseBuilding5);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding5Text);
+        t.setText("Fort:\nA fort will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
         //pond
-        TextView building6Text = (TextView) findViewById(R.id.purchaseBuilding6Text);
-        building6Text.setText("Pond:\nA pond will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
+        i = (ImageButton) findViewById(R.id.purchaseBuilding6);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding6Text);
+        t.setText("Pond:\nA pond will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
     }
 
 
+    //TODO
     private boolean purchaseBuilding(String buildingName){
         //////////test code////////////////
         Building newBuilding = new Building(buildingName);
