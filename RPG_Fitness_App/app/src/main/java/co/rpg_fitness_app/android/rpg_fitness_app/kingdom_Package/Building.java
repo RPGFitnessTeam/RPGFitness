@@ -31,6 +31,8 @@ public class Building implements Serializable {
 
     //TODO: need to get values from database
     public Building(String name) {
+        /*DataSource mDataSource;
+        mDataSource.getAllBuildings();*/
         this.id = UUID.randomUUID().toString();
         if (name == "house"){
             this.name = name;

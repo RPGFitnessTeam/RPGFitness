@@ -22,6 +22,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 public class KingdomActivity extends Activity {
 
     Kingdom kingdom;
+    ArrayList<Building> buildings;
+    Currency moneyChest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class KingdomActivity extends Activity {
         setContentView(R.layout.kingdom_main);
 
         this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
+        this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
+        this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
         //configureToolBarButtons();
         populateKingdomTiles();
     }
@@ -106,6 +110,7 @@ public class KingdomActivity extends Activity {
                 public void onClick(View view){
                     Intent intent = new Intent(KingdomActivity.this, MysteryPopUp.class);
                     intent.putExtra("tile", t);
+                    intent.putExtra("money chest", moneyChest);
                     startActivityForResult(intent, 1);
                 }
             });
@@ -147,29 +152,9 @@ public class KingdomActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
         final Tile tile;
-        ImageButton tileButton;
         if(resultCode == 1) {
             tile = (Tile) data.getSerializableExtra("tile");
-            int tileNumber = tile.getTileNumber();
-            Building building = tile.getMyBuilding();
-            tileButton = getTileButton(tileNumber);
-
-            ///////////////////mystery tile was unlocked////////////////
-            if (requestCode == 1) {
-                configureTileButton(tile.getTileNumber(), tile);
-            }
-            //////////////////building was bought or upgraded////////////
-            else {
-                configureTileButton(tile.getTileNumber(), tile);
-
-                ////ONLY NEED THESE IF WE ARE CHANGING BUILDING IMAGE ON UPGRADE///
-                if (requestCode == 2) {
-
-                }
-                else if (requestCode == 3) {
-
-                }
-            }
+            configureTileButton(tile.getTileNumber(), tile);
         }
     }
 
