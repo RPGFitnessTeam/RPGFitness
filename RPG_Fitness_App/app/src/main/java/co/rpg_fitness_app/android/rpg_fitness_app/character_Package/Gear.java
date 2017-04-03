@@ -93,8 +93,7 @@ public class Gear {
 
     public String getID()
     {
-        //TODO: Implement
-        return null;
+        return ID;
     }
 
 
