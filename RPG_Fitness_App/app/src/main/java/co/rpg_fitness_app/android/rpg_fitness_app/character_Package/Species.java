@@ -12,7 +12,7 @@ public class Species {
     private String name;
     private String description;
     private String ID;
-
+    private String imageName;
 
     // default constructor
     public Species()
@@ -20,6 +20,7 @@ public class Species {
         name = null;
         description = null;
         ID = UUID.randomUUID().toString();
+        imageName = null;
     }
 
 
@@ -40,7 +41,9 @@ public class Species {
         this.description = description;
     }
 
+    public String getImageName() { return imageName; }
 
+    public void setImageName(String imageName) { this.imageName = imageName; }
 
     public String getID()
     {

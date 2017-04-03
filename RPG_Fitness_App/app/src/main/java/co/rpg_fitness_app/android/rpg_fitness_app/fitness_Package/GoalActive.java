@@ -29,15 +29,15 @@ public class GoalActive extends AppCompatActivity {
         LogEntry lg2 = new LogEntry(UUID.randomUUID().toString(), 4);
         LogEntry lg3 = new LogEntry(UUID.randomUUID().toString(), 1);
         LogEntry lg4 = new LogEntry(UUID.randomUUID().toString(), 3);
-        Goal goal = new Goal(lg0, UUID.randomUUID().toString(), 0, 3, 6, false, false);
+        Goal goal = new Goal(lg0, UUID.randomUUID().toString(), 0, 3, 6, false, false, false);
         goalList.add(goal);
-        Goal goal1 = new Goal(lg1, UUID.randomUUID().toString(), 0, 1, 4, false, false);
+        Goal goal1 = new Goal(lg1, UUID.randomUUID().toString(), 0, 1, 4, false, false, false);
         goalList.add(goal1);
-        Goal goal2 = new Goal(lg2, UUID.randomUUID().toString(), 0, 0, 5, false, false);
+        Goal goal2 = new Goal(lg2, UUID.randomUUID().toString(), 0, 0, 5, false, false, false);
         goalList.add(goal2);
-        Goal goal3 = new Goal(lg3, UUID.randomUUID().toString(), 0, 3, 9, false, false);
+        Goal goal3 = new Goal(lg3, UUID.randomUUID().toString(), 0, 3, 9, false, false, false);
         goalList.add(goal3);
-        Goal goal4 = new Goal(lg4, UUID.randomUUID().toString(), 0, 7, 8, false, false);
+        Goal goal4 = new Goal(lg4, UUID.randomUUID().toString(), 0, 7, 8, false, false, false);
         goalList.add(goal4);
         // Setting up the custom adapter for the list of goals
         GoalAdapter glAdapt = new GoalAdapter(goalList, this);

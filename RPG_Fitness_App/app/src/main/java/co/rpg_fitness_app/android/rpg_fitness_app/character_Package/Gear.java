@@ -25,6 +25,7 @@ public class Gear {
     private boolean owned;
     private Boost boost;
     private String ID;
+    private String imageName;
 
 
     // default constructor
@@ -37,6 +38,7 @@ public class Gear {
         cost = null;
         owned = false;
         ID = UUID.randomUUID().toString();
+        imageName = null;
     }
 
 
@@ -74,7 +76,6 @@ public class Gear {
         this.name = name;
     }
 
-
     public Currency getCost() {
         return cost;
     }
@@ -91,11 +92,11 @@ public class Gear {
         this.boost = boost;
     }
 
-    public String getID()
-    {
-        //TODO: Implement
-        return null;
-    }
+    public String getID() { return ID; }
 
+    public void setID(String ID) { this.ID = ID; }
 
+    public String getImageName() { return imageName; }
+
+    public void setImageName(String imageName) { this.imageName = imageName; }
 }

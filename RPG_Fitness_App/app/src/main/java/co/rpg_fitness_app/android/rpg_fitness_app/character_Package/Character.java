@@ -47,7 +47,6 @@ public class Character {
     public void setinventory(ArrayList<Gear> inventory) {
         this.inventory = inventory;
     }
-    
 
     public ArrayList<Gear> getInactiveGear() {
         return inactiveGear;
@@ -350,4 +349,5 @@ public class Character {
         return true;
 
     }
+
 }
