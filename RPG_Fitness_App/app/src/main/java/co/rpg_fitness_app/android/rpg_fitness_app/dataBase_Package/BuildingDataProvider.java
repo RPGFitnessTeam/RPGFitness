@@ -32,7 +32,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(1);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(0);
-        house = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        house = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(house);
         cost.updateResource(false,5,0,0,1,1,1,1,1);
 
@@ -43,7 +43,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(2);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(0);
-        castle = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        castle = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(castle);
         cost.updateResource(false,5,0,0,1,1,1,1,1);
 
@@ -54,7 +54,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(1);
         stoneBoost.setAmount(0);
-        woodBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        woodBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(woodBridge);
         cost.updateResource(false,0,0,2,1,0,0,0,0);
 
@@ -65,7 +65,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(2);
         stoneBoost.setAmount(0);
-        stoneBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        stoneBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(stoneBridge);
         cost.updateResource(false,0,0,2,1,0,0,0,0);
 
@@ -76,7 +76,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(1);
-        cave = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        cave = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(cave);
         cost.updateResource(false,2,0,0,0,1,0,0,0);
 
@@ -87,7 +87,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(2);
-        mine = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        mine = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(mine);
         cost.updateResource(false,2,0,0,0,1,0,0,0);
 
@@ -98,7 +98,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(1);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(0);
-        tavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        tavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(tavern);
         cost.updateResource(false,0,0,2,0,0,1,0,0);
 
@@ -109,7 +109,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(2);
-        innAndTavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        innAndTavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(innAndTavern);
         cost.updateResource(false,0,0,2,0,0,1,0,0);
 
@@ -120,7 +120,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(1);
         stoneBoost.setAmount(0);
-        fort = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        fort = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fort);
         cost.updateResource(false,2,0,0,0,0,0,1,0);
 
@@ -131,7 +131,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(0);
         woodBoost.setAmount(2);
         stoneBoost.setAmount(0);
-        fortress = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        fortress = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fortress);
         cost.updateResource(false,2,0,0,0,0,0,1,0);
 
@@ -142,7 +142,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(1);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(0);
-        pond = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        pond = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(pond);
         cost.updateResource(false,0,0,2,0,0,0,0,1);
 
@@ -153,7 +153,7 @@ public class BuildingDataProvider {
         goldBoost.setAmount(2);
         woodBoost.setAmount(0);
         stoneBoost.setAmount(0);
-        fountain = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost);
+        fountain = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fountain);
         cost.updateResource(false,0,0,2,0,0,0,0,1);
     }

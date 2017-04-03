@@ -10,15 +10,15 @@ import java.util.UUID;
 public class Boost implements Serializable{
 
 
-    private int amount;
+    private double amount;
     private String ID;
     private String boostType;
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -49,7 +49,7 @@ public class Boost implements Serializable{
 
 
 
-    public boolean updateBoost(int amount)
+    public boolean updateBoost(double amount)
     {
         this.amount = this.amount + amount;
         return true;
