@@ -26,7 +26,7 @@ public class BuildingDataProvider {
         goldBoost.setBoostType("gold"); woodBoost.setBoostType("wood");stoneBoost.setBoostType("stone");
 
         name = "house";
-        cost.updateResource(true,1,1,0,0,0,0,0,0);
+        cost.updateResource(true,5,0,0,1,1,1,1,1);
         category = "dwelling";
         tier = 1;
         goldBoost.setAmount(1);
@@ -34,7 +34,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         house = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(house);
-        cost.updateResource(false,1,1,0,0,0,0,0,0);
+        cost.updateResource(false,5,0,0,1,1,1,1,1);
 
         name = "castle";
         cost.updateResource(true,5,0,0,1,1,1,1,1);
@@ -48,7 +48,7 @@ public class BuildingDataProvider {
         cost.updateResource(false,5,0,0,1,1,1,1,1);
 
         name = "wood bridge";
-        cost.updateResource(true,1,1,0,0,0,0,0,0);
+        cost.updateResource(true,0,0,2,1,0,0,0,0);
         category = "bridge";
         tier = 1;
         goldBoost.setAmount(0);
@@ -56,7 +56,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         woodBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(woodBridge);
-        cost.updateResource(false,1,1,0,0,0,0,0,0);
+        cost.updateResource(false,0,0,2,1,0,0,0,0);
 
         name = "stone bridge";
         cost.updateResource(true,0,0,2,1,0,0,0,0);
@@ -70,7 +70,7 @@ public class BuildingDataProvider {
         cost.updateResource(false,0,0,2,1,0,0,0,0);
 
         name = "cave";
-        cost.updateResource(true,1,1,0,0,0,0,0,0);
+        cost.updateResource(true,2,0,0,0,1,0,0,0);
         category = "mining";
         tier = 1;
         goldBoost.setAmount(0);
@@ -78,7 +78,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(1);
         cave = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(cave);
-        cost.updateResource(false,1,1,0,0,0,0,0,0);
+        cost.updateResource(false,2,0,0,0,1,0,0,0);
 
         name = "mine";
         cost.updateResource(true,2,0,0,0,1,0,0,0);
@@ -92,7 +92,7 @@ public class BuildingDataProvider {
         cost.updateResource(false,2,0,0,0,1,0,0,0);
 
         name = "tavern";
-        cost.updateResource(true,0,1,1,0,0,0,0,0);
+        cost.updateResource(true,0,0,2,0,0,1,0,0);
         category = "hospitality";
         tier = 1;
         goldBoost.setAmount(1);
@@ -100,7 +100,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         tavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(tavern);
-        cost.updateResource(false,0,1,1,0,0,0,0,0);
+        cost.updateResource(false,0,0,2,0,0,1,0,0);
 
         name = "inn and tavern";
         cost.updateResource(true,0,0,2,0,0,1,0,0);
@@ -114,7 +114,7 @@ public class BuildingDataProvider {
         cost.updateResource(false,0,0,2,0,0,1,0,0);
 
         name = "fort";
-        cost.updateResource(true,1,1,0,0,0,0,0,0);
+        cost.updateResource(true,2,0,0,0,0,0,1,0);
         category = "military";
         tier = 1;
         goldBoost.setAmount(0);
@@ -122,7 +122,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         fort = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fort);
-        cost.updateResource(false,1,1,0,0,0,0,0,0);
+        cost.updateResource(false,2,0,0,0,0,0,1,0);
 
         name = "fortress";
         cost.updateResource(true,2,0,0,0,0,0,1,0);
@@ -136,7 +136,7 @@ public class BuildingDataProvider {
         cost.updateResource(false,2,0,0,0,0,0,1,0);
 
         name = "pond";
-        cost.updateResource(true,0,1,1,0,0,0,0,0);
+        cost.updateResource(true,0,0,2,0,0,0,0,1);
         category = "water feature";
         tier = 1;
         goldBoost.setAmount(1);
@@ -144,7 +144,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         pond = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(pond);
-        cost.updateResource(false,0,1,1,0,0,0,0,0);
+        cost.updateResource(false,0,0,2,0,0,0,0,1);
 
         name = "fountain";
         cost.updateResource(true,0,0,2,0,0,0,0,1);

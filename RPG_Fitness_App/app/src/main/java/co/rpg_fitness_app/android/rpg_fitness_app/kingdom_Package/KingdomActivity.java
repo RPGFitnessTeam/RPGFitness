@@ -264,16 +264,52 @@ public class KingdomActivity extends Activity {
 
     private void setBuildingImage(ImageButton tileButton, String buildingName){
         switch (buildingName) {
-            case "building1":
+            case "house":
                 tileButton.setBackgroundResource(R.drawable.shield);
                 break;
 
-            case "building2":
-                tileButton.setBackgroundResource(R.drawable.shield);
+            case "wood bridge":
+                tileButton.setBackgroundResource(R.drawable.b_bridge1);
                 break;
 
-            case "building3":
-                tileButton.setBackgroundResource(R.drawable.shield);
+            case "cave":
+                tileButton.setBackgroundResource(R.drawable.b_mining1);
+                break;
+
+            case "tavern":
+                tileButton.setBackgroundResource(R.drawable.b_hospitality1);
+                break;
+
+            case "fort":
+                tileButton.setBackgroundResource(R.drawable.b_military1);
+                break;
+
+            case "pond":
+                tileButton.setBackgroundResource(R.drawable.b_water1);
+                break;
+
+            case "castle":
+                tileButton.setBackgroundResource(R.drawable.scroll);
+                break;
+
+            case "stone bridge":
+                tileButton.setBackgroundResource(R.drawable.b_bridge2);
+                break;
+
+            case "mine":
+                tileButton.setBackgroundResource(R.drawable.b_mining2);
+                break;
+
+            case "inn and tavern":
+                tileButton.setBackgroundResource(R.drawable.b_hospitality2);
+                break;
+
+            case "fortress":
+                tileButton.setBackgroundResource(R.drawable.b_military2);
+                break;
+
+            case "fountain":
+                tileButton.setBackgroundResource(R.drawable.b_water2);
                 break;
 
             default:

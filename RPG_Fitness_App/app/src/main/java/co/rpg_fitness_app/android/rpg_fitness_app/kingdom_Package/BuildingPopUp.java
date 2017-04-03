@@ -69,8 +69,24 @@ public class BuildingPopUp extends Activity {
     //TODO fix this method to match data base
     private boolean upgradeBuilding(Tile tile){
         //////TEST CODE///////////////
+        Building newBuilding;
         Building building = tile.getMyBuilding();
-        building.upgradeBuilding();
+        switch (building.getName()){
+            case "house": newBuilding =  new Building("castle");
+                break;
+            case "wood bridge": newBuilding =  new Building("stone bridge");
+                break;
+            case "cave": newBuilding =  new Building("mine");
+                break;
+            case "tavern": newBuilding =  new Building("inn and tavern");
+                break;
+            case "fort": newBuilding =  new Building("fortress");
+                break;
+            case "pond": newBuilding =  new Building("fountain");
+                break;
+            default: return false;
+        }
+        tile.setMyBuilding(newBuilding);
         return true;
         //////////////////////////////
         /*Building building = tile.getMyBuilding();
@@ -110,7 +126,8 @@ public class BuildingPopUp extends Activity {
         TextView name = (TextView) findViewById(R.id.buildingName);
         name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
-        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost()+
-                "\nWood Boost: "+building.getWoodBoost()+"\nStone Boost"+building.getStoneBoost()+"\nCategory: "+building.getCategory());
+        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost().getAmount()+
+                "\nWood Boost: "+building.getWoodBoost().getAmount()+"\nStone Boost"+building.getStoneBoost().getAmount()
+                +"\nCategory: "+building.getCategory());
     }
 }
