@@ -75,6 +75,20 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
+        <activity android:name=".quest_Package.QuestActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".quest_Package.MainQuestPopUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".quest_Package.QuestPopUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
 
 
     </application>
