@@ -81,7 +81,7 @@ public class Gear {
     }
 
     public void setCost(Currency currency) {
-        this.cost = cost;
+        this.cost = currency;
     }
 
     public Boost getBoost() {
