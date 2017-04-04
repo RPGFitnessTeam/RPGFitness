@@ -3,7 +3,6 @@ package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -54,6 +53,9 @@ public class KingdomActivity extends Activity {
         i.putExtra("money chest", this.moneyChest);
         setResult(1, i);
         finish();
+
+        //TODO is this right??? mDataSource.insertKingdom(kingdom); mDataSource.insertCurrency(moneyChest);
+
     }
 
     private void configureToolBarButtons() {
