@@ -116,17 +116,32 @@ public class Character {
     public boolean removeGear(Gear gearDeleted) {
         boolean succ = false;
         for (int i = 0; i < activeGear.size(); i++) {
-            if (activeGear.get(i).equals(gearDeleted)) {
-                activeGear.remove(i);
-                succ = true;
+            if(activeGear.get(i) != null) {
+                if (activeGear.get(i).equals(gearDeleted)) {
+                    activeGear.remove(i);
+                    succ = true;
+                }
             }
         }
 
         for (int i = 0; i < inactiveGear.size(); i++)
         {
-            if (inactiveGear.get(i).equals(gearDeleted)) {
-                inactiveGear.remove(i);
-                succ = true;
+            if(inactiveGear.get(i) != null) {
+                if (inactiveGear.get(i).equals(gearDeleted)) {
+                    inactiveGear.remove(i);
+                    succ = true;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < inventory.size(); i++)
+        {
+            if(inventory.get(i) != null) {
+                if (inventory.get(i).equals(gearDeleted)) {
+                    inventory.remove(i);
+                    succ = true;
+                }
             }
         }
 
@@ -141,12 +156,19 @@ public class Character {
     {
         boolean ret = false;
         String category = newGear.getCategory();
+
+        if(category.isEmpty()) {
+            return false;
+        }
+
         if(category == "Helm")
         {
             if(activeGear.get(0) == null)
             {
-                activeGear.add(0, newGear);
+                activeGear.set(0, newGear);
+                inventory.add(newGear);
                 activeBoosts.add(newGear.getBoost());
+                newGear.setEquipped(true);
                 ret = true;
             }
         }
@@ -154,8 +176,10 @@ public class Character {
         {
             if(activeGear.get(1) == null)
             {
-                activeGear.add(1, newGear);
+                inventory.add(newGear);
+                activeGear.set(1, newGear);
                 activeBoosts.add(newGear.getBoost());
+                newGear.setEquipped(true);
                 ret = true;
             }
         }
@@ -163,8 +187,10 @@ public class Character {
         {
             if(activeGear.get(2) == null)
             {
-                activeGear.add(2, newGear);
+                inventory.add(newGear);
+                activeGear.set(2, newGear);
                 activeBoosts.add(newGear.getBoost());
+                newGear.setEquipped(true);
                 ret = true;
             }
         }
@@ -172,8 +198,10 @@ public class Character {
         {
             if(activeGear.get(3) == null)
             {
-                activeGear.add(3, newGear);
+                inventory.add(newGear);
+                activeGear.set(3, newGear);
                 activeBoosts.add(newGear.getBoost());
+                newGear.setEquipped(true);
                 ret = true;
             }
         }
@@ -181,15 +209,19 @@ public class Character {
         {
             if(activeGear.get(4) == null)
             {
-                activeGear.add(4, newGear);
+                inventory.add(newGear);
+                activeGear.set(4, newGear);
                 activeBoosts.add(newGear.getBoost());
+                newGear.setEquipped(true);
                 ret = true;
             }
         }
 
         if(!ret)
         {
+            inventory.add(newGear);
             inactiveGear.add(newGear);
+            newGear.setEquipped(false);
             ret = true;
         }
 
@@ -208,14 +240,18 @@ public class Character {
             {
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
+                equip.setEquipped(true);
             }
             else
             {
                 Gear temp = activeGear.get(0);
+                equip.setEquipped(true);
+                temp.setEquipped(false);
                 activeGear.remove(0);
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
+
 
             }
         }
@@ -224,11 +260,14 @@ public class Character {
             if(activeGear.get(1) == null)
             {
                 activeGear.add(1, equip);
+                equip.setEquipped(true);
                 activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(1);
+                equip.setEquipped(true);
+                temp.setEquipped(false);
                 activeGear.remove(1);
                 activeGear.add(1, equip);
                 activeBoosts.add(equip.getBoost());
@@ -241,11 +280,14 @@ public class Character {
             if(activeGear.get(2) == null)
             {
                 activeGear.add(2, equip);
+                equip.setEquipped(true);
                 activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(2);
+                equip.setEquipped(true);
+                temp.setEquipped(false);
                 activeGear.remove(2);
                 activeGear.add(2, equip);
                 activeBoosts.add(equip.getBoost());
@@ -258,11 +300,14 @@ public class Character {
             if(activeGear.get(3) == null)
             {
                 activeGear.add(3, equip);
+                equip.setEquipped(true);
                 activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(3);
+                equip.setEquipped(true);
+                temp.setEquipped(false);
                 activeGear.remove(3);
                 activeGear.add(3, equip);
                 activeBoosts.add(equip.getBoost());
@@ -275,11 +320,14 @@ public class Character {
             if(activeGear.get(4) == null)
             {
                 activeGear.add(4, equip);
+                equip.setEquipped(true);
                 activeBoosts.add(equip.getBoost());
             }
             else
             {
                 Gear temp = activeGear.get(4);
+                equip.setEquipped(true);
+                temp.setEquipped(false);
                 activeGear.remove(4);
                 activeGear.add(4, equip);
                 activeBoosts.add(equip.getBoost());
@@ -313,13 +361,16 @@ public class Character {
 
         for(int i = 0; i < inactiveGear.size(); i++)
         {
-            if(inactiveGear.get(i).getCategory() == category) ret.add(inactiveGear.get(i));
+            if(inactiveGear.get(i).getCategory().equalsIgnoreCase(category))
+            {
+                ret.add(inactiveGear.get(i));
+            }
         }
 
         return ret;
     }
 
-    // populates the inactive and active gear lists
+   /* // populates the inactive and active gear lists
     public boolean populateLists()
     {
         String category = null;
@@ -348,6 +399,6 @@ public class Character {
 
         return true;
 
-    }
+    }*/
 
 }

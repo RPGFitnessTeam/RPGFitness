@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app;
 
+import android.widget.ArrayAdapter;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,7 +21,8 @@ public class CharacterTest {
     @Test
     public void getDefaultInactiveGear() throws Exception {
         Character testChar = new Character();
-        assertNull(testChar.getInactiveGear());
+        ArrayList<Gear> testObj = new ArrayList<>();
+        assertEquals(testObj, testChar.getInactiveGear());
     }
 
     @Test
@@ -39,7 +42,15 @@ public class CharacterTest {
     @Test
     public void getDefaultActiveGear() throws Exception {
         Character testChar = new Character();
-        assertNull(testChar.getActiveGear());
+        ArrayList<Gear> nullList = new ArrayList<Gear>();
+
+        nullList.add(null);
+        nullList.add(null);
+        nullList.add(null);
+        nullList.add(null);
+        nullList.add(null);
+
+        assertEquals(nullList, testChar.getActiveGear());
     }
 
     @Test
@@ -92,7 +103,8 @@ public class CharacterTest {
     @Test
     public void getDefaultActiveBoosts() throws Exception {
         Character testChar = new Character();
-        assertNull(testChar.getActiveBoosts());
+        ArrayList<Boost> testObj = new ArrayList<Boost>();
+        assertEquals(testObj, testChar.getActiveBoosts());
     }
 
     @Test
@@ -119,58 +131,127 @@ public class CharacterTest {
         assertNull(testChar.getCurrency());
     }
 
-    @Test
-    public void setMoneyChest() throws Exception {
-        //TODO MAKE THIS TEST
 
-    }
 
     @Test
-    public void getInvetory() throws Exception {
+    public void getActiveInactiveInvetory() throws Exception {
         Character testChar = new Character();
 
         Gear helmOfSorrow =  new Gear();
         helmOfSorrow.setName("helm of Sorrow");
+        helmOfSorrow.setCategory("Helm");
 
         Gear helmOfAnger =  new Gear();
-        helmOfSorrow.setName("helm of Anger");
+        helmOfAnger.setName("helm of Anger");
+        helmOfAnger.setCategory("Helm");
+
+        Gear chestOfSorrow =  new Gear();
+        chestOfSorrow.setName("chest of Sorrow");
+        chestOfSorrow.setCategory("Chest");
+
+        Gear chestOfAnger =  new Gear();
+        chestOfAnger.setName("chest of Anger");
+        chestOfAnger.setCategory("Chest");
 
         Gear swordOfMight =  new Gear();
-        helmOfSorrow.setName("Sword of Might");
+        swordOfMight.setName("Sword of Might");
+        swordOfMight.setCategory("Weapon");
 
+        Gear swordOfSmite =  new Gear();
+        swordOfSmite.setName("Sword of Smite");
+        swordOfSmite.setCategory("Weapon");
 
-        ArrayList<Gear> test = new ArrayList<Gear>();
+        Gear emblem =  new Gear();
+        emblem.setName("emblem");
+        emblem.setCategory("OffHand");
+
+        Gear talismn =  new Gear();
+        talismn.setName("orb");
+        talismn.setCategory("OffHand");
+
+        Gear sandals = new Gear();
+        sandals.setName("hermes sandals");
+        sandals.setCategory("Legs");
+
+        Gear flipFlop = new Gear();
+        flipFlop.setName("hermes flip flops");
+        flipFlop.setCategory("Legs");
+
 
         testChar.addGear(helmOfSorrow);
         testChar.addGear(helmOfAnger);
+
+        testChar.addGear(chestOfSorrow);
+        testChar.addGear(chestOfAnger);
+
         testChar.addGear(swordOfMight);
+        testChar.addGear(swordOfSmite);
+
+        testChar.addGear(emblem);
+        testChar.addGear(talismn);
+
+        testChar.addGear(sandals);
+        testChar.addGear(flipFlop);
 
 
-        test.add(helmOfSorrow);
-        test.add(helmOfAnger);
-        test.add(swordOfMight);
+        assertEquals(helmOfSorrow, testChar.getActiveGear().get(0));
+        assertEquals(chestOfSorrow, testChar.getActiveGear().get(1));
+        assertEquals(swordOfMight, testChar.getActiveGear().get(2));
+        assertEquals(emblem, testChar.getActiveGear().get(3));
+        assertEquals(sandals, testChar.getActiveGear().get(4));
 
-        assertEquals(test, testChar.getInventory());
-
+        assertEquals(helmOfAnger, testChar.getInactiveGear().get(0));
+        assertEquals(chestOfAnger, testChar.getInactiveGear().get(1));
+        assertEquals(swordOfSmite, testChar.getInactiveGear().get(2));
+        assertEquals(talismn, testChar.getInactiveGear().get(3));
+        assertEquals(flipFlop, testChar.getInactiveGear().get(4));
 
 
     }
 
     @Test
-    public void addRemoveGear() throws Exception {
+    public void addRemoveActiveGear() throws Exception {
         Character testChar = new Character();
 
         Gear helmOfSorrow =  new Gear();
         helmOfSorrow.setName("helm of Sorrow");
+        helmOfSorrow.setCategory("Helm");
         testChar.addGear(helmOfSorrow);
-
 
         assertSame(helmOfSorrow, testChar.getInventory().get(0));
 
-
         testChar.removeGear(helmOfSorrow);
 
-        assertNull(testChar.getInventory());
+        ArrayList<Gear> testObj = new ArrayList<Gear>();
+
+        assertEquals(testObj, testChar.getInventory());
+
+    }
+
+
+    @Test
+    public void addRemoveinActiveGear() throws Exception {
+        Character testChar = new Character();
+
+        Gear helmOfSorrow =  new Gear();
+        helmOfSorrow.setName("helm of Sorrow");
+        helmOfSorrow.setCategory("Helm");
+        testChar.addGear(helmOfSorrow);
+
+
+        Gear helmOfSorrow2 =  new Gear();
+        helmOfSorrow2.setName("helm of Sorrow 2");
+        helmOfSorrow2.setCategory("Helm");
+        testChar.addGear(helmOfSorrow2);
+
+        assertSame(helmOfSorrow2, testChar.getInactiveGear().get(0));
+
+        testChar.removeGear(helmOfSorrow2);
+
+        ArrayList<Gear> testObj = new ArrayList<Gear>();
+        testObj.add(helmOfSorrow);
+
+        assertEquals(testObj, testChar.getInventory());
 
     }
 
@@ -180,16 +261,18 @@ public class CharacterTest {
 
         Gear helmOfSorrow =  new Gear();
         helmOfSorrow.setName("helm of Sorrow");
+        helmOfSorrow.setCategory("Helm");
         testChar.equipItem(helmOfSorrow);
 
         assertSame(helmOfSorrow, testChar.getActiveGear().get(0));
 
         Gear helmOfAnger =  new Gear();
-        helmOfSorrow.setName("helm of Anger");
+        helmOfAnger.setName("helm of Anger");
+        helmOfAnger.setCategory("Helm");
         testChar.equipItem(helmOfAnger);
 
-        assertSame(helmOfAnger, testChar.getActiveGear().get(0));
-        assertSame(helmOfSorrow, testChar.getInactiveGear().get(0));
+        assertEquals(helmOfAnger, testChar.getActiveGear().get(0));
+        assertEquals(helmOfSorrow, testChar.getInactiveGear().get(0));
 
     }
 
@@ -199,12 +282,15 @@ public class CharacterTest {
 
         Gear helmOfSorrow =  new Gear();
         helmOfSorrow.setName("helm of Sorrow");
+        helmOfSorrow.setCategory("Helm");
 
         Gear helmOfAnger =  new Gear();
-        helmOfSorrow.setName("helm of Anger");
+        helmOfAnger.setName("helm of Anger");
+        helmOfAnger.setCategory("Helm");
 
         Gear swordOfMight =  new Gear();
-        helmOfSorrow.setName("Sword of Might");
+        swordOfMight.setName("Sword of Might");
+        swordOfMight.setCategory("Weapon");
 
 
         testChar.addGear(helmOfSorrow);
@@ -216,8 +302,6 @@ public class CharacterTest {
         listOfHelms.add(helmOfAnger);
 
         assertEquals(listOfHelms, testChar.retrieveGearInCategory("Helm"));
-
-
 
     }
 
