@@ -23,11 +23,11 @@ public class LogEntryTable {
                     COLUMN_COUNT, COLUMN_INTENSITY, COLUMN_WEIGHT};
 
     public static final String SQL_CREATE =
-            "CTREATE TABLE " + TABLE_LOG_ENTRY + "(" +
+            "CREATE TABLE " + TABLE_LOG_ENTRY + "(" +
                     COLUMN_ID + " TEXT PRIMARY KEY," +
                     COLUMN_DATE + " TEXT," +
-                    COLUMN_ACTIVITY + " TEXT," +
-                    COLUMN_SUB_TYPE + " TEXT," +
+                    COLUMN_ACTIVITY + " INTEGER," +
+                    COLUMN_SUB_TYPE + " INTEGER," +
                     COLUMN_DURATION + " INTEGER," +
                     COLUMN_DISTANCE + " INTEGER," +
                     COLUMN_COUNT + " INTEGER," +

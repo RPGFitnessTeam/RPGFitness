@@ -1,23 +1,24 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by awhit on 3/11/2017.
  */
 
-public class Boost {
+public class Boost implements Serializable{
 
 
-    private int amount;
+    private double amount;
     private String ID;
     private String boostType;
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -48,7 +49,7 @@ public class Boost {
 
 
 
-    public boolean updateBoost(int amount)
+    public boolean updateBoost(double amount)
     {
         this.amount = this.amount + amount;
         return true;

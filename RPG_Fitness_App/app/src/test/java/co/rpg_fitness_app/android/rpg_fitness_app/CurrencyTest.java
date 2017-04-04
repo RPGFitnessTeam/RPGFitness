@@ -30,4 +30,5 @@ public class CurrencyTest {
         Currency currencyTest = new Currency();
         currencyTest.setId("test");
         assertEquals("test", currencyTest.getId());
+    }
 }

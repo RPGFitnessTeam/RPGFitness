@@ -33,5 +33,5 @@ public class GoalTable {
                     COLUMN_MASTER + " INTEGER" + ");";
 
     public static final String SQL_DELETE =
-            "DROP TABLE" + TABLE_GOAL;
+            "DROP TABLE " + TABLE_GOAL;
 }

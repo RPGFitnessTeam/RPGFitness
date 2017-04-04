@@ -2,27 +2,31 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 //import javax.sql.DataSource;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private Kingdom kingdom;
-    //private DataSource mDataSource;
+    private Currency moneyChest;
+    private DataSource mDataSource;
+    private int KINGDOM_ACTIVITY_RETURN = 1;
 
     //Buttons on home_screen
     private ImageButton mfitnessLogMainButton;
@@ -35,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //TODO: uncomment once DB is implemented
-        /*mDataSource = new DataSource(this);
+        Log.d("TEST", "Starting APP!");
+        mDataSource = new DataSource(this);
         mDataSource.open();
-        mDataSource.seedDatabase();*/
+        mDataSource.seedDatabase();
+        getKingdom();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -54,12 +58,18 @@ public class MainActivity extends AppCompatActivity {
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO start the kingdom activity to create the view
+                getKingdom();
+                Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
+                startIntent.putExtra("kingdom", kingdom);
+                startIntent.putExtra("buildings", mDataSource.getAllBuildings());
+                //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
+                Currency c = new Currency();//TESTING
+                c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
+                startIntent.putExtra("money chest", c);//TESTING
+                startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
             }
         });
 
-        //TODO kingdom code
-        //getKingdom();
         mtipsMainButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, TipMaster.class);
@@ -74,14 +84,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        mcharacterMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, CharacterActivity.class);
+                startActivity(startIntent);
+            }
+        });
+        
+        mquestsMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, QuestActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
     }
 
     private void getKingdom() {
-        //this.kingdom = mDataSource.getAllKingdoms();
+        this.kingdom = mDataSource.getAllKingdoms();
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
+            //mDataSource.insertKingdom(kingdom);
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == KINGDOM_ACTIVITY_RETURN) {
+            kingdom = (Kingdom) data.getSerializableExtra("kingdom");
+            moneyChest = (Currency) data.getSerializableExtra("money chest");
+            //TODO: update database with returned kingdom and money chest
+            //mDataSource.insertKingdom(kingdom)?????
+        }
+    }
 
 }

@@ -1,74 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="26dp"
         android:id="@+id/textView_charName"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="@string/textview_Species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_charName"
-        android:layout_alignStart="@+id/textView_charName"
-        android:layout_marginTop="27dp"
-        android:id="@+id/textView_Species"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/textview"
         android:textSize="24sp"
-        android:layout_alignEnd="@+id/textView_charName"
-        android:textIsSelectable="false" />
+        tools:text="Name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/chest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/button_chest"
         android:layout_below="@+id/button_helm"
-        android:layout_alignEnd="@+id/button_helm"
-        android:layout_marginTop="24dp"
-        android:id="@+id/button_chest" />
+        android:layout_alignStart="@+id/button_helm"
+        android:layout_marginTop="14dp" />
 
     <Button
+        android:id="@+id/button_Weapon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:elevation="2dp"
         android:text="@string/weapon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/button_chest"
-        android:layout_alignEnd="@+id/button_chest"
-        android:layout_marginTop="26dp"
-        android:id="@+id/button_Weapon" />
+        android:layout_alignStart="@+id/button_chest" />
 
     <Button
-        android:text="@string/off_hand"
+        android:id="@+id/button_offhand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:text="@string/off_hand"
         android:layout_below="@+id/button_Weapon"
         android:layout_alignStart="@+id/button_Weapon"
-        android:layout_marginTop="28dp"
-        android:id="@+id/button_offhand" />
+        android:layout_marginTop="12dp" />
 
     <Button
         android:text="@string/legs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/button_Legs"
         android:layout_below="@+id/button_offhand"
         android:layout_alignEnd="@+id/button_offhand"
-        android:layout_marginTop="32dp"
-        android:id="@+id/button_Legs" />
+        android:layout_marginTop="18dp" />
 
     <Button
         android:text="@string/helm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_helm"
-        android:layout_marginEnd="25dp"
-        android:layout_below="@+id/textView_Species"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/spinnerSpecies"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="34dp" />
+
+    <Spinner
+        android:id="@+id/spinnerSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_charName"
+        android:layout_marginTop="44dp" />
+
 
 </RelativeLayout>
