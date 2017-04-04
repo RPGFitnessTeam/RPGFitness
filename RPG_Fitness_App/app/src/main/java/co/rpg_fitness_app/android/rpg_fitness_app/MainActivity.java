@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             kingdom = (Kingdom) data.getSerializableExtra("kingdom");
             moneyChest = (Currency) data.getSerializableExtra("money chest");
             //TODO: update database with returned kingdom and money chest
+            //mDataSource.insertKingdom(kingdom)?????
         }
     }
 
