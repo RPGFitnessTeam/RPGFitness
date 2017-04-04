@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="30dp"
+    android:layout_margin="30dp"
+    android:paddingBottom="40dp"
+    android:paddingEnd="40dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingStart="40dp"
+    android:paddingTop="30dp"
+    android:padding="10dp">
+
+    <TextView
+        android:text="Sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/add_nutrition"
+        android:layout_toRightOf="@+id/add_nutrition"
+        android:layout_toEndOf="@+id/add_nutrition"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:id="@+id/add_sleep"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:text="Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/add_fitness"
+        android:layout_toRightOf="@+id/add_fitness"
+        android:layout_toEndOf="@+id/add_fitness"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:id="@+id/add_weight"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:text="Fitness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_fitness"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/add_nutrition"
+        android:layout_alignLeft="@+id/add_nutrition"
+        android:layout_alignStart="@+id/add_nutrition"
+        android:layout_marginTop="54dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_add_log1"
+        android:layout_above="@+id/add_sleep"
+        android:background="@android:drawable/ic_delete"
+        android:minHeight="10dp"
+        android:minWidth="50dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Nutrition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_nutrition"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
