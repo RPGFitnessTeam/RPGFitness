@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
+import java.util.UUID;
+
 /**
  * Created by Arthur on 3/14/2017.
  */
@@ -12,19 +14,23 @@ public class Goal {
     private int endValue;
     private boolean isConsistencyGoal;
     private boolean isMasterQuest;
+    private boolean doesAllowGaps;
 
-//    public Goal() {
-//        this.goal
-//    }
+    public Goal() {
+        goalActivity = goalActivity;
+        goalId = UUID.randomUUID().toString();
+    }
 
     public Goal (LogEntry goalActivity, String goalId, int startValue, int currentValue,
-                 int endValue, boolean isConsistencyGoal, boolean isMasterQuest) {
+                 int endValue, boolean isConsistencyGoal, boolean doesAllowGaps, boolean isMasterQuest) {
         this.goalActivity = goalActivity;
-        this.goalId = goalId;
+        // TODO Need to rectify the goal id
+        this.goalId = UUID.randomUUID().toString();
         this.startValue = startValue;
         this.currentValue = currentValue;
         this.endValue = endValue;
         this.isConsistencyGoal = isConsistencyGoal;
+        this.doesAllowGaps = doesAllowGaps;
         this.isMasterQuest = isMasterQuest;
     }
 
@@ -79,4 +85,9 @@ public class Goal {
     public void setMasterQuest(boolean masterQuest) {
         isMasterQuest = masterQuest;
     }
+
+    public boolean doesAllowGaps() { return doesAllowGaps; }
+
+    public void setDoesAllowGaps(boolean bool) { doesAllowGaps = bool; }
+
 }

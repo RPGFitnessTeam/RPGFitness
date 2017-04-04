@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
@@ -17,6 +19,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class BuildingPopUp extends Activity {
 
     Tile tile;
+    Currency moneyChest;
+    ArrayList<Building> buildings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,8 @@ public class BuildingPopUp extends Activity {
 
         getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        this.buildings = (ArrayList<Building>) getIntent().getSerializableExtra("buildings");
         configureExitButton();
         configureUpgradeButton();
         populateTemplate();
@@ -55,36 +60,55 @@ public class BuildingPopUp extends Activity {
                 if(upgradeBuilding(tile)){
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
                     finish();
                 }
                 else {
+                    setResult(0,null);
                     finish();
                 }
             }
         });
     }
 
-
-    //TODO fix this method to match data base
     private boolean upgradeBuilding(Tile tile){
         //////TEST CODE///////////////
+        Building newBuilding;
+        String newBuildingName;
         Building building = tile.getMyBuilding();
-        building.upgradeBuilding();
-        return true;
-        //////////////////////////////
-        /*Building building = tile.getMyBuilding();
-        if(user.getCurrency() > building.getCost()){
-            //MAKE FUNCTION TO UPGRADE BUILDING AND KEEP TRACK OF UPGRADES AND STATS
-            //THIS FUNCTION SHOULD PROBABLY BE IN BUILDING CLASS
-            building.upgradeBuilding();
-            user.decreaseCurrency(building.getCost());
-            return true;
+        Currency buildingCost = building.getCost();
+        switch (building.getName()){
+            case "house": newBuildingName =  "castle";
+                break;
+            case "wood bridge": newBuildingName =  "stone bridge";
+                break;
+            case "cave": newBuildingName =  "mine";
+                break;
+            case "tavern": newBuildingName =  "inn and tavern";
+                break;
+            case "fort": newBuildingName =  "fortress";
+                break;
+            case "pond": newBuildingName =  "fountain";
+                break;
+            default: return false;
         }
-        return false;*/
+        if(moneyChest.getWood()>=buildingCost.getWood() && moneyChest.getGold()>=buildingCost.getGold() && moneyChest.getStone()>=buildingCost.getStone() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc1() && moneyChest.getMisc2()>=buildingCost.getMisc2() && moneyChest.getMisc3()>=buildingCost.getMisc3() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc5() && moneyChest.getMisc1()>=buildingCost.getMisc5()) {
+            moneyChest.updateResource(false, buildingCost.getWood(), buildingCost.getGold(), buildingCost.getStone(), buildingCost.getMisc1(),
+                    buildingCost.getMisc2(), buildingCost.getMisc3(), buildingCost.getMisc4(), buildingCost.getMisc5());
+            for (int i = 0; i < buildings.size(); i++) {
+                if(newBuildingName.equals(buildings.get(i).getName())){
+                    newBuilding = buildings.get(i);
+                    tile.setMyBuilding(newBuilding);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    //TODO: fix method to reflect changes in the database structure
     private void populateTemplate(){
         Building building = tile.getMyBuilding();
         Currency upgradeCost = building.getCost();
@@ -110,7 +134,8 @@ public class BuildingPopUp extends Activity {
         TextView name = (TextView) findViewById(R.id.buildingName);
         name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
-        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost()+
-                "\nWood Boost: "+building.getWoodBoost()+"\nStone Boost"+building.getStoneBoost()+"\nCategory: "+building.getCategory());
+        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost().getAmount()+
+                "\nWood Boost: "+building.getWoodBoost().getAmount()+"\nStone Boost"+building.getStoneBoost().getAmount()
+                +"\nCategory: "+building.getCategory());
     }
 }

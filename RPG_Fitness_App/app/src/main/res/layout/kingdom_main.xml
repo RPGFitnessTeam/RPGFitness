@@ -2,7 +2,8 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <include layout="@layout/footer" />
@@ -27,28 +28,36 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
                 </TableRow>
 
                 <TableRow
@@ -61,28 +70,36 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/lock_padlock" />
 
                     <ImageButton
                         android:id="@+id/imageButton5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/lock_padlock" />
 
                     <ImageButton
                         android:id="@+id/imageButton6"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/lock_padlock" />
 
                     <ImageButton
                         android:id="@+id/imageButton7"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/lock_padlock" />
                 </TableRow>
 
                 <TableRow
@@ -95,28 +112,36 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton9"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton10"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton11"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
                 </TableRow>
 
                 <TableRow
@@ -129,28 +154,36 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton13"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton14"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton15"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
                 </TableRow>
 
                 <TableRow
@@ -163,28 +196,36 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton17"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton18"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/imageButton19"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+                        app:srcCompat="@drawable/lock_padlock"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter" />
                 </TableRow>
             </TableLayout>
 

@@ -1,6 +1,8 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 
+import java.util.UUID;
+
 /**
  * Created by duya on 3/11/17.
  */
@@ -41,6 +43,28 @@ public class LogEntry {
     private int[][][] firstDropdownValues; // depending on the activity and subtype
     private int[][][]secondDropdownValues;// depending on the activity and subtype
     private int[][][] thirdDropdownValues; // depending on the activity and subtype
+
+    public LogEntry(int activity)
+    {
+        this.ID = UUID.randomUUID().toString();
+        this.activity = activity;
+        //set date;
+
+        switch (activity) {
+            case 1:
+                typeName = "Exercise";
+                break;
+            case 2:
+                typeName = "Nutrition";
+                break;
+            case 3:
+                typeName = "Sleep";
+                break;
+            case 4:
+                typeName = "Weight";
+                break;
+        }
+    }
 
     public LogEntry(String ID, int activity)
     {
