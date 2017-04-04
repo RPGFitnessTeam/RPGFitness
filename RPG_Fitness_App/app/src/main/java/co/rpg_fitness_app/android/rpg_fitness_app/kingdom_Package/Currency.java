@@ -47,12 +47,6 @@ public class Currency implements Serializable {
             this.wood = this.wood - wood;
             this.gold = this.gold - gold;
             this.stone = this.stone - stone;
-            //we dont want to actually remove any special resources
-            /*this.misc1 = this.misc1 - misc1;
-            this.misc2 = this.misc2 - misc2;
-            this.misc3 = this.misc3 - misc3;
-            this.misc4 = this.misc4 - misc4;
-            this.misc5 = this.misc5 - misc5;*/
         }
         return true;
     }
