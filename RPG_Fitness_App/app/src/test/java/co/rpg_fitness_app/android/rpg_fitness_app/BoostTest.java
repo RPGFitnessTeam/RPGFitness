@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
@@ -14,14 +16,14 @@ public class BoostTest {
     @Test
     public void getDefaultAmount() throws Exception {
         Boost boostTest = new Boost();
-        assertSame(0, boostTest.getAmount());
+        assertEquals(0.0, boostTest.getAmount(), 0.0);
     }
 
     @Test
     public void setAmount() throws Exception {
         Boost boostTest = new Boost();
         boostTest.setAmount(100);
-        assertSame(100, boostTest.getAmount());
+        assertEquals( 100.0, boostTest.getAmount(), 0.0);
     }
 
     @Test
@@ -42,7 +44,7 @@ public class BoostTest {
         Boost boostTest = new Boost();
         boostTest.setAmount(100);
         boostTest.updateBoost(-50);
-        assertEquals(50, boostTest.getAmount());
+        assertEquals(50, boostTest.getAmount(), 0);
     }
 
     @Test
@@ -50,7 +52,15 @@ public class BoostTest {
         Boost boostTest = new Boost();
         boostTest.setAmount(100);
         boostTest.updateBoost(50);
-        assertEquals(150, boostTest.getAmount());
+        assertEquals(150, boostTest.getAmount(), 0);
+    }
+
+
+    @Test
+    public void setGetID() throws Exception {
+        Boost boostTest = new Boost();
+        boostTest.setID("123");
+        Assert.assertEquals("123",boostTest.getID());
     }
 
 }
