@@ -122,7 +122,7 @@ public class KingdomActivity extends Activity {
         tileButton = getTileButton(tileNumber);
         //CASE mystery tile
         if (tile.isLocked){
-            tileButton.setBackgroundResource(R.drawable.castle);//set as mystery tile
+           tileButton.setBackgroundResource(R.drawable.lock_padlock);//set as mystery tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -135,7 +135,7 @@ public class KingdomActivity extends Activity {
         }
         //CASE empty tile
         else if(building == null){
-            tileButton.setBackgroundResource(R.drawable.knight);//set as open tile
+            tileButton.setBackgroundResource(R.drawable.unlock_padlock);//set as open tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
