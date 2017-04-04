@@ -16,6 +16,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
@@ -85,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
         mcharacterMainButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, CharacterActivity.class);
+                startActivity(startIntent);
+            }
+        });
+        
+        mquestsMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, QuestActivity.class);
                 startActivity(startIntent);
             }
         });
