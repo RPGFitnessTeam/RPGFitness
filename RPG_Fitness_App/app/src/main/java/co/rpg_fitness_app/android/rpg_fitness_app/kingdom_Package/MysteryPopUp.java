@@ -17,6 +17,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class MysteryPopUp extends Activity {
 
     Tile tile;
+    Currency moneyChest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +30,13 @@ public class MysteryPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
         configureExitButton();
         configureUnlockButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {
@@ -63,11 +54,17 @@ public class MysteryPopUp extends Activity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                unlockTile();
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(unlockTile()) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
             }
         });
     }
@@ -75,8 +72,7 @@ public class MysteryPopUp extends Activity {
     private void populateTemplate(){
         Currency unlockCost = tile.getTileCost();
         Button unlockButton = (Button) findViewById(R.id.unlockMysteryTile);
-        //TODO find what method unlockResource is under
-        //unlockButton.setText("Unlock Cost: "+unlockCost+" "+unlockResource);
+        unlockButton.setText("Unlock Cost:\n"+unlockCost.getGold()+" Gold\n"+unlockCost.getWood()+" Wood\n"+unlockCost.getStone()+" Stone");
         TextView name = (TextView) findViewById(R.id.mysteryTileName);
         name.setText("Mystery Tile");
         TextView description = (TextView) findViewById(R.id.mysteryTileDescription);
@@ -86,10 +82,16 @@ public class MysteryPopUp extends Activity {
     /**
      * @return true if user had sufficient funds to unlock the mystery tile
      *
-     * STILL NEED TO GET USERS CURRENCY AND CHECK IF SUFFICIENT
      */
-    private void unlockTile(){
+    private boolean unlockTile(){
         Currency cost = tile.getTileCost();
-        tile.setLocked(false);
+        if(moneyChest.getWood()>=cost.getWood() && moneyChest.getGold()>=cost.getGold() && moneyChest.getStone()>=cost.getStone()){
+            moneyChest.updateResource(false, cost.getWood(), cost.getGold(), cost.getStone(),0,0,0,0,0);
+            tile.setLocked(false);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

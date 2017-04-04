@@ -20,6 +20,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class TilePopUp extends Activity{
 
     Tile tile;
+    Currency moneyChest;
+    ArrayList<Building> buildings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,110 +34,194 @@ public class TilePopUp extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.85), (int)(height*0.85));
 
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-        configureBackButton();
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        this.buildings = (ArrayList<Building>) getIntent().getSerializableExtra("buildings");
         configureExitButton();
         configurePurchaseButton();
         populateTemplate();
     }
 
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void configureExitButton() {
+        Button Button = (Button) findViewById(R.id.exitTilePopUp);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-    }
-
-    private void configureExitButton() {
-        //Button Button = (Button) findViewById(R.id.exitTilePopUp);
-//        Button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
     }
 
     private void configurePurchaseButton() {
-        //purchase building1
-        ImageButton Button1 = (ImageButton) findViewById(R.id.purchaseBuilding1);
-        Button1.setOnClickListener(new View.OnClickListener() {
+        //purchase house
+        ImageButton Button;
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding1);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building1");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("house")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
             }
         });
-        //purchase building2
-        ImageButton Button2 = (ImageButton) findViewById(R.id.purchaseBuilding2);
-        Button2.setOnClickListener(new View.OnClickListener() {
+        //purchase wood bridge
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding2);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building2");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("wood bridge")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else{
+                    setResult(0,null);
+                    finish();
+                }
             }
         });
-        //purchase building3
-        ImageButton Button3 = (ImageButton) findViewById(R.id.purchaseBuilding3);
-        Button3.setOnClickListener(new View.OnClickListener() {
+        //purchase cave
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding3);
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchaseBuilding("building3");
-                Intent resultData = new Intent();
-                resultData.putExtra("tile", tile);
-                setResult(1, resultData);
-                finish();
+                if(purchaseBuilding("cave")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
+            }
+        });
+        //purchase Tavern
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding4);
+        Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(purchaseBuilding("tavern")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
+            }
+        });
+        //purchase Fort
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding5);
+        Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(purchaseBuilding("fort")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
+            }
+        });
+        //purchase pond
+        Button = (ImageButton) findViewById(R.id.purchaseBuilding6);
+        Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(purchaseBuilding("pond")) {
+                    Intent resultData = new Intent();
+                    resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
+                    setResult(1, resultData);
+                    finish();
+                }
+                else {
+                    setResult(0,null);
+                    finish();
+                }
             }
         });
     }
 
     private void populateTemplate(){
-        //building1
-        TextView building1Text = (TextView) findViewById(R.id.purchaseBuilding1Text);
-        building1Text.setText("Building 1\nThis is building1!\nConstruction Cost: 100 currency");
-        //building2
-        TextView building2Text = (TextView) findViewById(R.id.purchaseBuilding2Text);
-        building2Text.setText("Building 2\nThis is building2!\nConstruction Cost: 100 currency");
-        //building3
-        TextView building3Text = (TextView) findViewById(R.id.purchaseBuilding3Text);
-        building3Text.setText("Building 3\nThis is building3!\nConstruction Cost: 100 currency");
+        //house
+        ImageButton i;
+        TextView t;
+        i = (ImageButton) findViewById(R.id.purchaseBuilding1);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding1Text);
+        t.setText("House:\nA house will give you extra gold!\nConstruction Cost: 1 wood, 1 gold");
+        //wood bridge
+        i = (ImageButton) findViewById(R.id.purchaseBuilding2);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding2Text);
+        t.setText("Wood Bridge:\nA wood bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
+        //cave
+        i = (ImageButton) findViewById(R.id.purchaseBuilding3);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding3Text);
+        t.setText("Cave:\nA cave will give you extra stone!\nConstruction Cost: 1 wood, 1 gold");
+        //tavern
+        i = (ImageButton) findViewById(R.id.purchaseBuilding4);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding4Text);
+        t.setText("Tavern:\nA tavern will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
+        //fort
+        i = (ImageButton) findViewById(R.id.purchaseBuilding5);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding5Text);
+        t.setText("Fort:\nA fort will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
+        //pond
+        i = (ImageButton) findViewById(R.id.purchaseBuilding6);
+        i.setBackgroundResource(R.drawable.shield);
+        t = (TextView) findViewById(R.id.purchaseBuilding6Text);
+        t.setText("Pond:\nA pond will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
     }
 
 
-    private void purchaseBuilding(String buildingName){
-       /* Building newBuilding;
-        Currency userCurrency = user.getCurrency();
-        //ArrayList<Currency> = new ArrayList<Currency>();
-        if(buildingName == "buildingName1" && userCurrency > 100){
-            newBuilding = new Building(buildingName);
-            user.decreaseCurrency(newBuilding.getCost());
-            //DECREASE USER CURRENCY
+    private boolean purchaseBuilding(String buildingName){
+        Building newBuilding = new Building(buildingName);
+        Currency buildingCost = newBuilding.getCost();
+        if (moneyChest.getWood()>=buildingCost.getWood() && moneyChest.getGold()>=buildingCost.getGold() && moneyChest.getStone()>=buildingCost.getStone() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc1() && moneyChest.getMisc2()>=buildingCost.getMisc2() && moneyChest.getMisc3()>=buildingCost.getMisc3() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc5() && moneyChest.getMisc1()>=buildingCost.getMisc5()) {
+            moneyChest.updateResource(false, buildingCost.getWood(), buildingCost.getGold(), buildingCost.getStone(), buildingCost.getMisc1(),
+                    buildingCost.getMisc2(), buildingCost.getMisc3(), buildingCost.getMisc4(), buildingCost.getMisc5());
+            for (int i = 0; i < buildings.size(); i++) {
+                if(buildingName.equals(buildings.get(i).getName())){
+                    newBuilding = buildings.get(i);
+                    tile.setMyBuilding(newBuilding);
+                    return true;
+                }
+            }
+            return false;
         }
-        else if(buildingName == "buildingName2" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
-            user.decreaseCurrency(newBuilding.getCost());
-            //DECREASE USER CURRENCY
+       else{
+            return false;
         }
-        else if(buildingName == "buildingName3" && userCurrency > 1000){
-            newBuilding = new Building(buildingName);
-            user.decreaseCurrency(newBuilding.getCost());
-            //DECREASE USER CURRENCY
-        }
-        else {
-            return;
-        }
-        tile.setMyBuilding(newBuilding);*/
     }
 
 }

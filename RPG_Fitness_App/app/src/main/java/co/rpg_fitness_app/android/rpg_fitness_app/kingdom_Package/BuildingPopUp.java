@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
@@ -17,6 +19,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class BuildingPopUp extends Activity {
 
     Tile tile;
+    Currency moneyChest;
+    ArrayList<Building> buildings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +33,13 @@ public class BuildingPopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5), (int)(height*0.5));
+        getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
-
-        configureBackButton();
+        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        this.buildings = (ArrayList<Building>) getIntent().getSerializableExtra("buildings");
         configureExitButton();
         configureUpgradeButton();
         populateTemplate();
-    }
-
-    private void configureBackButton() {
-        Button backButton = (Button) findViewById(R.id.home);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureExitButton() {
@@ -66,37 +60,82 @@ public class BuildingPopUp extends Activity {
                 if(upgradeBuilding(tile)){
                     Intent resultData = new Intent();
                     resultData.putExtra("tile", tile);
+                    resultData.putExtra("money chest", moneyChest);
                     setResult(1, resultData);
+                    finish();
                 }
-                finish();
+                else {
+                    setResult(0,null);
+                    finish();
+                }
             }
         });
     }
 
-
-    //TODO fix this method to match data base
     private boolean upgradeBuilding(Tile tile){
-        /*Building building = tile.getMyBuilding();
-        if(user.getCurrency() > tile.getTileCost()){
-            //MAKE FUNCTION TO UPGRADE BUILDING AND KEEP TRACK OF UPGRADES AND STATS
-            //THIS FUNCTION SHOULD PROBABLY BE IN BUILDING CLASS
-            building.upgradeBuilding();
-            user.decreaseCurrency(building.getCost());
-            return true;
-        } */
+        //////TEST CODE///////////////
+        Building newBuilding;
+        String newBuildingName;
+        Building building = tile.getMyBuilding();
+        Currency buildingCost = building.getCost();
+        switch (building.getName()){
+            case "house": newBuildingName =  "castle";
+                break;
+            case "wood bridge": newBuildingName =  "stone bridge";
+                break;
+            case "cave": newBuildingName =  "mine";
+                break;
+            case "tavern": newBuildingName =  "inn and tavern";
+                break;
+            case "fort": newBuildingName =  "fortress";
+                break;
+            case "pond": newBuildingName =  "fountain";
+                break;
+            default: return false;
+        }
+        if(moneyChest.getWood()>=buildingCost.getWood() && moneyChest.getGold()>=buildingCost.getGold() && moneyChest.getStone()>=buildingCost.getStone() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc1() && moneyChest.getMisc2()>=buildingCost.getMisc2() && moneyChest.getMisc3()>=buildingCost.getMisc3() &&
+                moneyChest.getMisc1()>=buildingCost.getMisc5() && moneyChest.getMisc1()>=buildingCost.getMisc5()) {
+            moneyChest.updateResource(false, buildingCost.getWood(), buildingCost.getGold(), buildingCost.getStone(), buildingCost.getMisc1(),
+                    buildingCost.getMisc2(), buildingCost.getMisc3(), buildingCost.getMisc4(), buildingCost.getMisc5());
+            for (int i = 0; i < buildings.size(); i++) {
+                if(newBuildingName.equals(buildings.get(i).getName())){
+                    newBuilding = buildings.get(i);
+                    tile.setMyBuilding(newBuilding);
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
-    //TODO: fix method to reflect changes in the database structure
     private void populateTemplate(){
         Building building = tile.getMyBuilding();
-        Currency upgradeCost = tile.getTileCost();
-        //String upgradeResource = tile.getTileCost().getResource();
+        Currency upgradeCost = building.getCost();
         Button upgradeButton = (Button) findViewById(R.id.upgradeBuildingButton);
-        //upgradeButton.setText("Upgrade Cost: "+upgradeCost+" "+upgradeResource);
+        String specialResource = "";
+        if(upgradeCost.getMisc1() == 1){
+            specialResource = "Sorcerer's Hat";
+        }
+        else if(upgradeCost.getMisc2() == 1){
+            specialResource = "Magic Lamp";
+        }
+        else if(upgradeCost.getMisc3() == 1){
+            specialResource = "Abacus";
+        }
+        else if(upgradeCost.getMisc5() == 1){
+            specialResource = "Excalibur";
+        }
+        else if(upgradeCost.getMisc5() == 1){
+            specialResource = "Pentagram Charm";
+        }
+        upgradeButton.setText("Upgrade Cost: \n"+upgradeCost.getGold()+" Gold\n"+upgradeCost.getWood()+" Wood\n"+upgradeCost.getStone()+" Stone"
+            +"\nSpecial Resource: "+specialResource);
         TextView name = (TextView) findViewById(R.id.buildingName);
-        name.setText(tile.getMyBuilding().getName());
+        name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);
-        description.setText("Tier: "+building.getTier()+"\nBoost: "+building.getBoost()+"\nCategory: "+building.getCategory());
+        description.setText("Tier: "+building.getTier()+"\nGold Boost: "+building.getGoldBoost().getAmount()+
+                "\nWood Boost: "+building.getWoodBoost().getAmount()+"\nStone Boost"+building.getStoneBoost().getAmount()
+                +"\nCategory: "+building.getCategory());
     }
 }
