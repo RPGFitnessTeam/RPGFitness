@@ -29,35 +29,40 @@ public class Building implements Serializable {
         this.imageName = "";
     }
 
-    //used for unit tests
+    //used to get cost in tile popup
     public Building(String name) {
+        /*DataSource mDataSource;
+        mDataSource.getAllBuildings();*/
         this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.cost = new Currency();
+        this.tier = 1;
+        this.goldBoost = new Boost();
+        this.woodBoost = new Boost();
+        this.stoneBoost = new Boost();
         if (name == "house"){
-            this.name = name;
-            this.cost = new Currency();
+            cost.updateResource(true,1,1,0,0,0,0,0,0);
             this.category = "dwelling";
-            this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
         }
         else if (name == "wood bridge"){
-            this.name = name;
-            this.cost = new Currency();
+            cost.updateResource(true,1,1,0,0,0,0,0,0);
             this.category = "bridge";
-            this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
         }
         else if (name == "cave"){
-            this.name = name;
-            this.cost = new Currency();
+            cost.updateResource(true,1,1,0,0,0,0,0,0);
             this.category = "mining";
-            this.tier = 1;
-            this.goldBoost = null;
-            this.woodBoost = null;
-            this.stoneBoost = null;
+        }
+        else if (name == "tavern"){
+            cost.updateResource(true,0,1,1,0,0,0,0,0);
+            this.category = "hospitality";
+        }
+        else if (name == "fort"){
+            cost.updateResource(true,1,1,0,0,0,0,0,0);
+            this.category = "military";
+        }
+        else if (name == "pond"){
+            cost.updateResource(true,0,1,1,0,0,0,0,0);
+            this.category = "water feature";
         }
     }
 
@@ -74,12 +79,12 @@ public class Building implements Serializable {
         this.imageName = imageName;
     }
 
-    public void upgradeBuilding(){
+/*    public void upgradeBuilding(){
         this.setTier(this.getTier() + 1);
         this.goldBoost.updateBoost(1);
         this.woodBoost.updateBoost(1);
         this.stoneBoost.updateBoost(1);
-    }
+    }*/
 
     public String getName() {
         return name;
