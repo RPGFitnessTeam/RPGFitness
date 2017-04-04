@@ -3,6 +3,8 @@ package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
@@ -24,24 +27,29 @@ public class KingdomActivity extends Activity {
     Kingdom kingdom;
     ArrayList<Building> buildings;
     Currency moneyChest;
+    DataSource mDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kingdom_main);
 
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+
         this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
         this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
         this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
         //configureToolBarButtons();
         populateKingdomTiles();
+
     }
 
     //TODO: push moneyChest and kingdom to database when activity is destroyed
     @Override
     protected void onDestroy(){
         super.onDestroy();
-
+        mDataSource.updateKingdom(kingdom);
     }
 
     private void configureToolBarButtons() {
@@ -164,8 +172,11 @@ public class KingdomActivity extends Activity {
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
+            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
+            mDataSource.updateTile(tile);
+            mDataSource.updateKingdom(kingdom);
         }
     }
 

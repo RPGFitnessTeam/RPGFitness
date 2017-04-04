@@ -13,7 +13,7 @@ public class Kingdom implements Serializable {
     ArrayList<Tile> myGrid;//2D ArrayList of Tile objects to represent the kingdom map.
 
     public Kingdom() {
-        this.myGrid = new ArrayList<>(20);
+        this.myGrid = new ArrayList<>();
         Tile tile;
         for (int i = 0; i<=19; i++){
                 tile = new Tile(i);
