@@ -3,6 +3,8 @@ package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
@@ -22,15 +25,31 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 public class KingdomActivity extends Activity {
 
     Kingdom kingdom;
+    ArrayList<Building> buildings;
+    Currency moneyChest;
+    DataSource mDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kingdom_main);
 
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+
         this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
+        this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
+        this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
         //configureToolBarButtons();
         populateKingdomTiles();
+
+    }
+
+    //TODO: push moneyChest and kingdom to database when activity is destroyed
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        mDataSource.updateKingdom(kingdom);
     }
 
     private void configureToolBarButtons() {
@@ -95,17 +114,17 @@ public class KingdomActivity extends Activity {
     private void configureTileButton(int tileNumber, Tile tile){
         final Tile t = tile;
         ImageButton tileButton;
-        Building building = tile.getMyBuilding();
+        final Building building = tile.getMyBuilding();
         tileButton = getTileButton(tileNumber);
         //CASE mystery tile
         if (tile.isLocked){
-            //TODO: find proper pathing for R.drawable
             tileButton.setBackgroundResource(R.drawable.castle);//set as mystery tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
                     Intent intent = new Intent(KingdomActivity.this, MysteryPopUp.class);
                     intent.putExtra("tile", t);
+                    intent.putExtra("money chest", moneyChest);
                     startActivityForResult(intent, 1);
                 }
             });
@@ -118,6 +137,8 @@ public class KingdomActivity extends Activity {
                 public void onClick(View view){
                     Intent intent = new Intent(KingdomActivity.this, TilePopUp.class);
                     intent.putExtra("tile", t);
+                    intent.putExtra("money chest", moneyChest);
+                    intent.putExtra("buildings", buildings);
                     startActivityForResult(intent, 2);
                 }
             });
@@ -131,6 +152,8 @@ public class KingdomActivity extends Activity {
                 public void onClick(View view){
                     Intent intent = new Intent(KingdomActivity.this, BuildingPopUp.class);
                     intent.putExtra("tile", t);
+                    intent.putExtra("money chest", moneyChest);
+                    intent.putExtra("buildings", buildings);
                     startActivityForResult(intent, 3);
                 }
             });
@@ -147,29 +170,13 @@ public class KingdomActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
         final Tile tile;
-        ImageButton tileButton;
-        if(resultCode == 1) {
-            tile = (Tile) data.getSerializableExtra("tile");
-            int tileNumber = tile.getTileNumber();
-            Building building = tile.getMyBuilding();
-            tileButton = getTileButton(tileNumber);
-
-            ///////////////////mystery tile was unlocked////////////////
-            if (requestCode == 1) {
-                configureTileButton(tile.getTileNumber(), tile);
-            }
-            //////////////////building was bought or upgraded////////////
-            else {
-                configureTileButton(tile.getTileNumber(), tile);
-
-                ////ONLY NEED THESE IF WE ARE CHANGING BUILDING IMAGE ON UPGRADE///
-                if (requestCode == 2) {
-
-                }
-                else if (requestCode == 3) {
-
-                }
-            }
+        if(resultCode != 0) {
+            tile = (Tile) data.getSerializableExtra("tile");//updated tile
+            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
+            moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
+            configureTileButton(tile.getTileNumber(), tile);
+            mDataSource.updateTile(tile);
+            mDataSource.updateKingdom(kingdom);
         }
     }
 
@@ -267,51 +274,39 @@ public class KingdomActivity extends Activity {
             case "house":
                 tileButton.setBackgroundResource(R.drawable.shield);
                 break;
-
             case "wood bridge":
                 tileButton.setBackgroundResource(R.drawable.b_bridge1);
                 break;
-
             case "cave":
                 tileButton.setBackgroundResource(R.drawable.b_mining1);
                 break;
-
             case "tavern":
                 tileButton.setBackgroundResource(R.drawable.b_hospitality1);
                 break;
-
             case "fort":
                 tileButton.setBackgroundResource(R.drawable.b_military1);
                 break;
-
             case "pond":
                 tileButton.setBackgroundResource(R.drawable.b_water1);
                 break;
-
             case "castle":
                 tileButton.setBackgroundResource(R.drawable.scroll);
                 break;
-
             case "stone bridge":
                 tileButton.setBackgroundResource(R.drawable.b_bridge2);
                 break;
-
             case "mine":
                 tileButton.setBackgroundResource(R.drawable.b_mining2);
                 break;
-
             case "inn and tavern":
                 tileButton.setBackgroundResource(R.drawable.b_hospitality2);
                 break;
-
             case "fortress":
                 tileButton.setBackgroundResource(R.drawable.b_military2);
                 break;
-
             case "fountain":
                 tileButton.setBackgroundResource(R.drawable.b_water2);
                 break;
-
             default:
                 tileButton.setBackgroundResource(R.drawable.knight);
                 break;

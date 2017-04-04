@@ -3,6 +3,7 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -12,8 +13,10 @@ import android.widget.TextView;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
@@ -34,15 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //TODO: uncomment once DB is implemented
+        Log.d("TEST", "Starting APP!");
         mDataSource = new DataSource(this);
         mDataSource.open();
         mDataSource.seedDatabase();
-        /* Sorry I forgot to mention this Tanner, seedDatabase handles this looping
-        for(int i = 0; i< BuildingDataProvider.buildingList.size(); i++) {
-            mDataSource.insertBuilding(BuildingDataProvider.buildingList.get(i));
-        }*/
+        getKingdom();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -54,19 +53,21 @@ public class MainActivity extends AppCompatActivity {
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
 
-        kingdom = new Kingdom();//TESTING
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO start the kingdom activity to create the view
+                getKingdom();
                 Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
                 startIntent.putExtra("kingdom", kingdom);
+                startIntent.putExtra("buildings", mDataSource.getAllBuildings());
+                //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
+                Currency c = new Currency();//TESTING
+                c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
+                startIntent.putExtra("money chest", c);//TESTING
                 startActivity(startIntent);
             }
         });
 
-        //TODO kingdom code
-        getKingdom();
         mtipsMainButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(MainActivity.this, TipMaster.class);
@@ -88,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+        
+        mquestsMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, QuestActivity.class);
+                startActivity(startIntent);
+            }
+        });
 
     }
 
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         this.kingdom = mDataSource.getAllKingdoms();
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
+            //mDataSource.insertKingdom(kingdom);
         }
     }
 

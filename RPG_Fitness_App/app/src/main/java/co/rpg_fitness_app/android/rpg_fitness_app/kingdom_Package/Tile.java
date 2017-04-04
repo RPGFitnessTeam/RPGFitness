@@ -33,9 +33,9 @@ public class Tile implements Serializable {
         this.isLocked = true;
         this.myBuilding = null;
         this.tileCost = new Currency();
-        this.tileCost.setGold(1);
-        this.tileCost.setWood(1);
-        this.tileCost.setStone(1);
+        tileCost.setGold(1);
+        tileCost.setWood(1);
+        tileCost.setStone(1);
         this.tileNumber = tileNumber;
     }
 
