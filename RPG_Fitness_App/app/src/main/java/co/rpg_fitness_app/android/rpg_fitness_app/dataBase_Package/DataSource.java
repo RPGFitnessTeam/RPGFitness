@@ -7,6 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -38,16 +39,20 @@ public class DataSource {
     }
 
     public void open() {
+        Log.d("TEST", "Opening DB!");
         mDatabase = mDbHelper.getWritableDatabase();
     }
 
     public void close() {
         mDbHelper.close();
     }
-    // UUID.randomUUID().toString()
+
+    public void upgrade() {
+        mDbHelper.onUpgrade(mDatabase, mDatabase.getVersion(), mDatabase.getVersion() + 1);
+    }
 
     public void seedDatabase() {
-
+        Log.d("TEST", "Seeding DB!");
         if (DatabaseUtils.queryNumEntries(mDatabase, BoostTable.TABlE_BOOSTS) == 0
                 && BoostDataProvider.boostList != null) {
             for (Boost boost :
@@ -132,8 +137,8 @@ public class DataSource {
             }
         }
 
-        //TODO tanner commented this out since it was not working
-/*        if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
+        //TODO: tanner commented it out since it crashed program
+       /*if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
                 && LogEntryDataProvider.logEntryList != null) {
             for (LogEntry logEntry :
                     LogEntryDataProvider.logEntryList) {
@@ -217,6 +222,9 @@ public class DataSource {
     }
 
     public boolean insertBuilding(Building building) {
+        if (building == null) {
+            return false;
+        }
 
         String compare[] = {building.getId()};
         Cursor cursor = mDatabase.query(BuildingTable.TABLE_BUILDINGS, BuildingTable.ALL_COLUMNS,
@@ -353,10 +361,9 @@ public class DataSource {
     public boolean insertKingdom(Kingdom kingdom) {
 
         Cursor cursor = null;
-        int tilePos = 0;
 
         for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
-            String compare[] = {""+tilePos};
+            String compare[] = {""+i};
             cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
                     KingdomTable.COLUMN_TILE_POS + "=?", compare, null, null, null);
 
@@ -474,11 +481,17 @@ public class DataSource {
         ContentValues values = new ContentValues(5);
         values.put(TileTable.COLUMN_ID, tile.getId());
         values.put(TileTable.COLUMN_LOCKED, tile.isLocked() ? 1 : 0);
-        values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
-        values.put(TileTable.COLUMN_COST, tile.getTileCost().getId());
+        if (tile.getMyBuilding() == null)
+            values.put(TileTable.COLUMN_BUILDING, "");
+        else
+            values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
+        if (tile.getTileCost() == null)
+            values.put(TileTable.COLUMN_COST, "");
+        else
+            values.put(TileTable.COLUMN_COST, tile.getTileCost().getId());
         values.put(TileTable.COLUMN_IMAGE, tile.getImageName());
 
-        mDatabase.insert(SpeciesTable.TABLE_SPECIES, null, values);
+        mDatabase.insert(TileTable.TABLE_TILE, null, values);
         insertBuilding(tile.getMyBuilding());
         insertCurrency(tile.getTileCost());
 
@@ -719,7 +732,7 @@ public class DataSource {
             return null;
         }
 
-        ArrayList<ArrayList<Tile>> tiles = new ArrayList<>();
+        ArrayList<Tile> tempGrid = new ArrayList<Tile>();
         while (cursor.moveToNext()) {
             String compare[] = {cursor.getString(
                     cursor.getColumnIndex(KingdomTable.COLUMN_TILE))};
@@ -736,9 +749,10 @@ public class DataSource {
                         cursor.getColumnIndex(TileTable.COLUMN_BUILDING))));
                 tile.setTileCost(getCurrency(cursor.getString(
                         cursor.getColumnIndex(TileTable.COLUMN_COST))));
-                kingdom.getMyGrid().add(tile);
+                tempGrid.add(tile);
             }
         }
+        kingdom.setMyGrid(tempGrid);
         cursor.close();
         cursor2.close();
         return kingdom;
@@ -1273,16 +1287,20 @@ public class DataSource {
     }
 
     public boolean updateCharacter(Character character) {
+        if (character == null)
+            return false;
+
         String compare[] = {character.getID()};
         Cursor cursor = mDatabase.query(CharacterTable.TABLE_CHARACTER, CharacterTable.ALL_COLUMNS,
                 CharacterTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() == 0) {
-            cursor.close();
+        if (cursor.getCount() <= 0) {
             insertCharacter(character);
+            cursor.close();
             return false;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+character.getID());
+            cursor.close();
             return false;
         }
 
@@ -1292,7 +1310,7 @@ public class DataSource {
         values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
         values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
 
-        mDatabase.update(CharacterTable.TABLE_CHARACTER, values, "_id="+character.getID(), null);
+        mDatabase.update(CharacterTable.TABLE_CHARACTER, values, "CharacterID=?", new String[]{character.getID()});
         updateCurrency(character.getCurrency());
 
         cursor.close();
@@ -1300,15 +1318,20 @@ public class DataSource {
     }
 
     public boolean updateGoal(Goal goal) {
+        if (goal == null)
+            return false;
+
         String compare[] = {goal.getGoalId()};
         Cursor cursor = mDatabase.query(GoalTable.TABLE_GOAL, GoalTable.ALL_COLUMNS,
                 GoalTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() <= 0) {
             insertGoal(goal);
+            cursor.close();
             return false;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+goal.getGoalId());
+            cursor.close();
             return false;
         }
 
@@ -1322,18 +1345,22 @@ public class DataSource {
         values.put(GoalTable.COLUMN_GAPS, goal.doesAllowGaps() ? 1 : 0);
         values.put(GoalTable.COLUMN_MASTER, goal.isMasterQuest() ? 1 : 0);
 
-        mDatabase.update(GoalTable.TABLE_GOAL, values, "_id="+goal.getGoalId(), null);
+        mDatabase.update(GoalTable.TABLE_GOAL, values, "GoalID=?", new String[]{goal.getGoalId()});
 
         cursor.close();
         return true;
     }
 
     public boolean updateCurrency(Currency currency) {
+        if (currency == null)
+            return false;
+
         String compare[] = {currency.getId()};
         Cursor cursor = mDatabase.query(CurrencyTable.TABLE_CURRENCY, CurrencyTable.ALL_COLUMNS,
                 CurrencyTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() <= 0) {
+            insertCurrency(currency);
             cursor.close();
             return false;
         } else if (cursor.getCount() > 1) {
@@ -1350,22 +1377,26 @@ public class DataSource {
         values.put(CurrencyTable.COLUMN_MISC2, currency.getMisc2());
         values.put(CurrencyTable.COLUMN_MISC3, currency.getMisc3());
 
-        mDatabase.update(CurrencyTable.TABLE_CURRENCY, values, "_id="+currency.getId(), null);
+        mDatabase.update(CurrencyTable.TABLE_CURRENCY, values, "CurrencyID=?", new String[]{currency.getId()});
         cursor.close();
         return true;
     }
 
     public boolean updateGear(Gear gear) {
+        if (gear == null)
+            return false;
+
         String compare[] = {gear.getID()};
         Cursor cursor = mDatabase.query(GearTable.TABLE_GEAR, GearTable.ALL_COLUMNS,
                 GearTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() <= 0) {
             cursor.close();
             insertGear(gear);
             return false;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+gear.getID());
+            cursor.close();
             return false;
         }
 
@@ -1379,7 +1410,7 @@ public class DataSource {
         values.put(GearTable.COLUMN_EQUIPPED, gear.isEquipped() ? 1 : 0);
         values.put(GearTable.COLUMN_IMAGE, gear.getImageName());
 
-        mDatabase.update(GearTable.TABLE_GEAR, values, "_id="+gear.getID(), null);
+        mDatabase.update(GearTable.TABLE_GEAR, values, "GearID=?", new String[]{gear.getID()});
         updateCurrency(gear.getCost());
 
         cursor.close();
@@ -1387,28 +1418,90 @@ public class DataSource {
     }
 
     public boolean updateTile(Tile tile) {
+        Log.d("TEST", "Updating Tile!");
+
+        if (tile == null) {
+            Log.d("TEST", "Tile reference null!!");
+            return false;
+        }
+
         String compare[] = {tile.getId()};
         Cursor cursor = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
-            cursor.close();
+        if (cursor.getCount() <= 0) {
+            Log.d("TEST", "Tile doesn't exist, insert");
             insertTile(tile);
+            cursor.close();
             return false;
         } else if (cursor.getCount() > 1) {
-            System.out.println("Duplicated ID found! "+tile.getId());
+            Log.d("TEST", "Duplicate Tile Pos");
+            cursor.close();
             return false;
         }
 
         ContentValues values = new ContentValues(5);
         values.put(TileTable.COLUMN_ID, tile.getId());
         values.put(TileTable.COLUMN_LOCKED, tile.isLocked() ? 1 : 0);
-        values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
+        if (tile.getMyBuilding() != null) {
+            values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
+            Log.d("TEST", "Tile has building");
+        } else {
+            values.put(TileTable.COLUMN_BUILDING, "");
+            Log.d("TEST", "Tile doesn't have building");
+        }
         values.put(TileTable.COLUMN_COST, tile.getTileCost().getId());
         values.put(TileTable.COLUMN_IMAGE, tile.getImageName());
 
-        mDatabase.update(TileTable.TABLE_TILE, values, "_id="+tile.getId(), null);
+        mDatabase.update(TileTable.TABLE_TILE, values, "TileID=?", new String[]{tile.getId()});
         updateCurrency(tile.getTileCost());
+
+        Tile tempTile = getTile(tile.getId());
+        if (tempTile == null) {
+            Log.d("TEST", "Couldn't find tile!");
+        } else {
+            Log.d("TEST", tempTile.getTileNumber()+"");
+            Log.d("TEST", tempTile.getId());
+            if (tempTile.getMyBuilding() != null) {
+                Log.d("TEST", tempTile.getMyBuilding().getName());
+            }
+            else {
+                Log.d("TEST", "null");
+            }
+        }
+
+        cursor.close();
+        return true;
+    }
+
+    public boolean updateKingdom(Kingdom kingdom) {
+        Log.d("TEST", "Updating Kingdom!");
+        if (kingdom == null) {
+            Log.d("TEST", "Kingdom Reference Null!!");
+            return false;
+        }
+
+        Cursor cursor = null;
+        cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
+            null, null, null, null, KingdomTable.COLUMN_TILE_POS);
+
+
+        while(cursor.moveToNext()) {
+            Tile tempTile = getTile(cursor.getString(
+                    cursor.getColumnIndex(KingdomTable.COLUMN_TILE)));
+            if (tempTile != null) {
+                Log.d("TEST", "Temp Tile Found!");
+                ContentValues values = new ContentValues(2);
+                values.put(KingdomTable.COLUMN_TILE_POS, tempTile.getTileNumber());
+                values.put(KingdomTable.COLUMN_TILE, tempTile.getId());
+
+                mDatabase.update(KingdomTable.TABLE_KINGDOM, values, "KingdomTilePos=?",
+                        new String[]{tempTile.getTileNumber() + ""});
+            }
+            else {
+                insertTile(tempTile);
+            }
+        }
 
         cursor.close();
         return true;

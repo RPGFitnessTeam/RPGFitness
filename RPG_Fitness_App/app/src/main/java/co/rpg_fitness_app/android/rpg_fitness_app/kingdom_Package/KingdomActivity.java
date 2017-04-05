@@ -3,6 +3,7 @@ package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
@@ -24,23 +26,35 @@ public class KingdomActivity extends Activity {
     Kingdom kingdom;
     ArrayList<Building> buildings;
     Currency moneyChest;
+    DataSource mDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kingdom_main);
 
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+
         this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
         this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
         this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
         //configureToolBarButtons();
         populateKingdomTiles();
+
     }
 
     //TODO: push moneyChest and kingdom to database when activity is destroyed
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        Intent i = new Intent();
+        i.putExtra("kingdom", this.kingdom);
+        i.putExtra("money chest", this.moneyChest);
+        setResult(1, i);
+        finish();
+
+        //TODO is this right??? mDataSource.insertKingdom(kingdom); mDataSource.insertCurrency(moneyChest);
 
     }
 
@@ -110,7 +124,7 @@ public class KingdomActivity extends Activity {
         tileButton = getTileButton(tileNumber);
         //CASE mystery tile
         if (tile.isLocked){
-            tileButton.setBackgroundResource(R.drawable.castle);//set as mystery tile
+           tileButton.setBackgroundResource(R.drawable.lock_padlock);//set as mystery tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -123,7 +137,7 @@ public class KingdomActivity extends Activity {
         }
         //CASE empty tile
         else if(building == null){
-            tileButton.setBackgroundResource(R.drawable.knight);//set as open tile
+            tileButton.setBackgroundResource(R.drawable.unlock_padlock);//set as open tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -155,17 +169,17 @@ public class KingdomActivity extends Activity {
     /**
      * function changes image of tiles to corresponding tile, mystery, building based on users changes
      * after a tile has been clicked on (ie upgrades, unlocks, new buildings)
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
+            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
+            mDataSource.updateTile(tile);
+            mDataSource.updateKingdom(kingdom);
         }
     }
 
