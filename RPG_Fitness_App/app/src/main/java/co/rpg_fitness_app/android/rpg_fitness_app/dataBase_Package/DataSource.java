@@ -470,6 +470,7 @@ public class DataSource {
 
     public boolean insertTile(Tile tile) {
         if (tile == null) {
+            Log.d("TEST", "FAILED TO INSERT TILE");
             return false;
         }
         Log.d("TEST", "Inserting Tile");
@@ -749,17 +750,22 @@ public class DataSource {
 
             cursor2 = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                     TileTable.COLUMN_ID + "=?", compare, null, null, null);
-            if (cursor.getCount() == 1) {
+            if (cursor2.getCount() == 1) {
                 Log.d("TEST", "Found tile!");
                 Tile tile = new Tile();
-                tile.setId(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_ID)));
-                tile.setLocked(cursor.getInt(
-                        cursor.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
-                tile.setMyBuilding(getBuilding(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_BUILDING))));
-                tile.setTileCost(getCurrency(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_COST))));
+
+                cursor2.moveToFirst();
+
+                tile.setId(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_ID)));
+                tile.setLocked(cursor2.getInt(
+                        cursor2.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
+                tile.setMyBuilding(getBuilding(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_BUILDING))));
+                tile.setTileCost(getCurrency(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_COST))));
+                tile.setImageName(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_IMAGE)));
                 tempGrid.add(tile);
             } else {
                 Tile newTile = new Tile(pos);
@@ -1247,13 +1253,14 @@ public class DataSource {
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
         if (cursor.getCount() <= 0) {
+            Log.d("TEST", "TILE NOT FOUND IN GET TILE");
             cursor.close();
             return null;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+ID);
             return null;
         }
-
+        cursor.moveToFirst();
         Tile tile = new Tile();
         tile.setId(cursor.getString(
                 cursor.getColumnIndex(TileTable.COLUMN_ID)));
