@@ -36,7 +36,24 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-        this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
+        // this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
+        this.kingdom = mDataSource.getAllKingdoms();
+        if (kingdom == null) {
+            Log.d("TEST", "Null kingdom");
+            kingdom = new Kingdom();
+            kingdom.getMyGrid().get(0);
+        } else {
+            Log.d("TEST", "Kingdom size "+kingdom.getMyGrid().size());
+            for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+                Log.d("TEST", "Grid position "+i);
+                Log.d("TEST", "Tile number: "+kingdom.getMyGrid().get(i).getTileNumber());
+                if (kingdom.getMyGrid().get(i).getMyBuilding() == null) {
+                    Log.d("TEST", "Tile building: null");
+                } else {
+                    Log.d("TEST", "Tile building: "+kingdom.getMyGrid().get(i).getMyBuilding().getName());
+                }
+            }
+        }
         this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
         this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
         //configureToolBarButtons();
@@ -51,11 +68,12 @@ public class KingdomActivity extends Activity {
         Intent i = new Intent();
         i.putExtra("kingdom", this.kingdom);
         i.putExtra("money chest", this.moneyChest);
+        mDataSource.updateKingdom(kingdom);
+        mDataSource.updateCurrency(moneyChest);
         setResult(1, i);
         finish();
 
-        //TODO is this right??? mDataSource.insertKingdom(kingdom); mDataSource.insertCurrency(moneyChest);
-
+        //TODO is this right???
     }
 
     private void configureToolBarButtons() {
@@ -178,8 +196,6 @@ public class KingdomActivity extends Activity {
             Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
-            mDataSource.updateTile(tile);
-            mDataSource.updateKingdom(kingdom);
         }
     }
 

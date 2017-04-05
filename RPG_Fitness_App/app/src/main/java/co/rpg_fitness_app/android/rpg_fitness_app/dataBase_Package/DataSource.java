@@ -137,8 +137,7 @@ public class DataSource {
             }
         }
 
-        //TODO: tanner commented it out since it crashed program
-       /*if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
+       if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
                 && LogEntryDataProvider.logEntryList != null) {
             for (LogEntry logEntry :
                     LogEntryDataProvider.logEntryList) {
@@ -148,7 +147,7 @@ public class DataSource {
                     e.printStackTrace();
                 }
             }
-        }*/
+        }
         // TODO Still don't have quests
         /*
         if (DatabaseUtils.queryNumEntries(mDatabase, QuestTable.TABLE_QUEST) == 0
@@ -363,13 +362,15 @@ public class DataSource {
         Cursor cursor = null;
 
         for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+            Log.d("TEST", "Insert Kingdom iteration "+i);
             String compare[] = {""+i};
             cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
                     KingdomTable.COLUMN_TILE_POS + "=?", compare, null, null, null);
 
             if (cursor.getCount() == 0) {
                 ContentValues values = new ContentValues(2);
-                values.put(KingdomTable.COLUMN_TILE_POS, i);
+                values.put(KingdomTable.COLUMN_TILE_POS,
+                        kingdom.getMyGrid().get(i).getTileNumber());
                 values.put(KingdomTable.COLUMN_TILE,
                         kingdom.getMyGrid().get(i).getId());
 
@@ -468,13 +469,17 @@ public class DataSource {
     }
 
     public boolean insertTile(Tile tile) {
-
+        if (tile == null) {
+            return false;
+        }
+        Log.d("TEST", "Inserting Tile");
         String compare[] = {tile.getId()};
         Cursor cursor = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
         if (cursor.getCount() > 0) {
             cursor.close();
+            Log.d("TEST", "Duplicate Tile ID found when inserting tile");
             return false;
         }
 
@@ -720,26 +725,32 @@ public class DataSource {
     }
 
     public Kingdom getAllKingdoms() {
+        Log.d("TEST", "Getting Kingdom");
         Kingdom kingdom = new Kingdom();
 
         Cursor cursor = null;
         Cursor cursor2 = null;
         cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
                 null, null, null, null, KingdomTable.COLUMN_TILE_POS);
+        Log.d("TEST", "Cursor count in kingdom get "+cursor.getCount());
 
         if (cursor.getCount() == 0) {
+            Log.d("TEST", "Could not find kingdom");
             cursor.close();
             return null;
         }
 
         ArrayList<Tile> tempGrid = new ArrayList<Tile>();
+        int pos = 0;
         while (cursor.moveToNext()) {
+            Log.d("TEST", "Get kingdom iteration count: " + pos);
             String compare[] = {cursor.getString(
                     cursor.getColumnIndex(KingdomTable.COLUMN_TILE))};
 
             cursor2 = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                     TileTable.COLUMN_ID + "=?", compare, null, null, null);
             if (cursor.getCount() == 1) {
+                Log.d("TEST", "Found tile!");
                 Tile tile = new Tile();
                 tile.setId(cursor.getString(
                         cursor.getColumnIndex(TileTable.COLUMN_ID)));
@@ -750,7 +761,11 @@ public class DataSource {
                 tile.setTileCost(getCurrency(cursor.getString(
                         cursor.getColumnIndex(TileTable.COLUMN_COST))));
                 tempGrid.add(tile);
+            } else {
+                Tile newTile = new Tile(pos);
+                tempGrid.add(newTile);
             }
+            pos++;
         }
         kingdom.setMyGrid(tempGrid);
         cursor.close();
@@ -869,6 +884,7 @@ public class DataSource {
         }
 
         while (cursor.moveToNext()) {
+            Log.d("TEST", "Tile found");
             Tile tile = new Tile();
             tile.setId(cursor.getString(
                     cursor.getColumnIndex(TileTable.COLUMN_ID)));
@@ -1230,15 +1246,13 @@ public class DataSource {
         Cursor cursor = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() == 0) {
+        if (cursor.getCount() <= 0) {
             cursor.close();
             return null;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+ID);
             return null;
         }
-
-        cursor.moveToFirst();
 
         Tile tile = new Tile();
         tile.setId(cursor.getString(
@@ -1485,10 +1499,13 @@ public class DataSource {
         cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
             null, null, null, null, KingdomTable.COLUMN_TILE_POS);
 
+        if (cursor.getCount() <= 0) {
+            insertKingdom(kingdom);
+            return false;
+        }
 
-        while(cursor.moveToNext()) {
-            Tile tempTile = getTile(cursor.getString(
-                    cursor.getColumnIndex(KingdomTable.COLUMN_TILE)));
+        for(int i = 0; i < kingdom.getMyGrid().size(); i++) {
+            Tile tempTile = kingdom.getMyGrid().get(i);
             if (tempTile != null) {
                 Log.d("TEST", "Temp Tile Found!");
                 ContentValues values = new ContentValues(2);
@@ -1497,9 +1514,16 @@ public class DataSource {
 
                 mDatabase.update(KingdomTable.TABLE_KINGDOM, values, "KingdomTilePos=?",
                         new String[]{tempTile.getTileNumber() + ""});
-            }
-            else {
-                insertTile(tempTile);
+                updateTile(tempTile);
+            } else {
+                Tile newTile = new Tile(i);
+                ContentValues values = new ContentValues(2);
+                values.put(KingdomTable.COLUMN_TILE_POS, newTile.getTileNumber());
+                values.put(KingdomTable.COLUMN_TILE, newTile.getId());
+
+                mDatabase.update(KingdomTable.TABLE_KINGDOM, values, "KingdomTilePos=?",
+                        new String[]{newTile.getTileNumber() + ""});
+                insertTile(newTile);
             }
         }
 
