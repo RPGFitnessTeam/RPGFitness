@@ -16,6 +16,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
@@ -23,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private Kingdom kingdom;
+    private Currency moneyChest;
     private DataSource mDataSource;
+    private int KINGDOM_ACTIVITY_RETURN = 1;
 
     //Buttons on home_screen
     private ImageButton mfitnessLogMainButton;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 Currency c = new Currency();//TESTING
                 c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
                 startIntent.putExtra("money chest", c);//TESTING
-                startActivity(startIntent);
+                startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
             }
         });
 
@@ -88,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+        
+        mquestsMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, QuestActivity.class);
+                startActivity(startIntent);
+            }
+        });
 
     }
 
@@ -99,5 +109,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == KINGDOM_ACTIVITY_RETURN) {
+            kingdom = (Kingdom) data.getSerializableExtra("kingdom");
+            moneyChest = (Currency) data.getSerializableExtra("money chest");
+            //TODO: update database with returned kingdom and money chest
+            //mDataSource.insertKingdom(kingdom)?????
+        }
+    }
 
 }

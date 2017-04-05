@@ -3,7 +3,6 @@ package co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -49,7 +48,14 @@ public class KingdomActivity extends Activity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        mDataSource.updateKingdom(kingdom);
+        Intent i = new Intent();
+        i.putExtra("kingdom", this.kingdom);
+        i.putExtra("money chest", this.moneyChest);
+        setResult(1, i);
+        finish();
+
+        //TODO is this right??? mDataSource.insertKingdom(kingdom); mDataSource.insertCurrency(moneyChest);
+
     }
 
     private void configureToolBarButtons() {
@@ -118,7 +124,7 @@ public class KingdomActivity extends Activity {
         tileButton = getTileButton(tileNumber);
         //CASE mystery tile
         if (tile.isLocked){
-            tileButton.setBackgroundResource(R.drawable.castle);//set as mystery tile
+           tileButton.setBackgroundResource(R.drawable.lock_padlock);//set as mystery tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -131,7 +137,7 @@ public class KingdomActivity extends Activity {
         }
         //CASE empty tile
         else if(building == null){
-            tileButton.setBackgroundResource(R.drawable.knight);//set as open tile
+            tileButton.setBackgroundResource(R.drawable.unlock_padlock);//set as open tile
             tileButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view){
@@ -163,9 +169,6 @@ public class KingdomActivity extends Activity {
     /**
      * function changes image of tiles to corresponding tile, mystery, building based on users changes
      * after a tile has been clicked on (ie upgrades, unlocks, new buildings)
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
