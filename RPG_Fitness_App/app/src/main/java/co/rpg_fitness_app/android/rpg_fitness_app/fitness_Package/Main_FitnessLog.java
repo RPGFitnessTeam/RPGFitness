@@ -22,16 +22,14 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class Main_FitnessLog extends AppCompatActivity {
 
-    FitnessLog duya = new FitnessLog();
-    //Todo: create List view from fitnessLog
-
+    FitnessLog fitnessLog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__fitness_log);
 
-        FitnessLog fitnessLog = new FitnessLog();
+        fitnessLog = new FitnessLog(this);
 
         //Add new LogEntry
         ((Button) findViewById(R.id.button_add_activity)).setOnClickListener(
