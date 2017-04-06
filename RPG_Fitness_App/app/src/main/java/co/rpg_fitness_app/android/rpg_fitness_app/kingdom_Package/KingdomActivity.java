@@ -39,18 +39,18 @@ public class KingdomActivity extends Activity {
         // this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
         this.kingdom = mDataSource.getAllKingdoms();
         if (kingdom == null) {
-            Log.d("TEST", "Null kingdom");
+            Log.d("onCreate", "Null kingdom");
             kingdom = new Kingdom();
             kingdom.getMyGrid().get(0);
         } else {
-            Log.d("TEST", "Kingdom size "+kingdom.getMyGrid().size());
+            Log.d("onCreate", "Kingdom size "+kingdom.getMyGrid().size());
             for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
-                Log.d("TEST", "Grid position "+i);
-                Log.d("TEST", "Tile number: "+kingdom.getMyGrid().get(i).getTileNumber());
+                Log.d("onCreate", "Grid position "+i);
+                Log.d("onCreate", "Tile number: "+kingdom.getMyGrid().get(i).getTileNumber());
                 if (kingdom.getMyGrid().get(i).getMyBuilding() == null) {
-                    Log.d("TEST", "Tile building: null");
+                    Log.d("onCreate", "Tile building: null");
                 } else {
-                    Log.d("TEST", "Tile building: "+kingdom.getMyGrid().get(i).getMyBuilding().getName());
+                    Log.d("onCreate", "Tile building: "+kingdom.getMyGrid().get(i).getMyBuilding().getName());
                 }
             }
         }
@@ -193,7 +193,7 @@ public class KingdomActivity extends Activity {
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
-            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
+            Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
         }

@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("TEST", "Starting APP!");
         mDataSource = new DataSource(this);
         //mDataSource.upgrade();
         mDataSource.open();
@@ -121,9 +120,9 @@ public class MainActivity extends AppCompatActivity {
             //mDataSource.insertKingdom(kingdom)?????
             ArrayList<Tile> tiles = mDataSource.getAllTiles();
             for (int i = 0; i < tiles.size(); i++) {
-                Log.d("TEST","Tile number: "+tiles.get(i).getTileNumber());
-                Log.d("TEST","Tile Building: "+tiles.get(i).getMyBuilding());
-                Log.d("TEST","Tile ID: "+tiles.get(i).getId());
+                Log.d("onActivityResult","Tile number: "+tiles.get(i).getTileNumber());
+                Log.d("onActivityResult","Tile Building: "+tiles.get(i).getMyBuilding());
+                Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
             }
         }
     }
