@@ -1,4 +1,4 @@
-package fitnessrpg.fitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 import android.app.DialogFragment;
 import android.graphics.Typeface;
@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by duya on 4/4/17.
