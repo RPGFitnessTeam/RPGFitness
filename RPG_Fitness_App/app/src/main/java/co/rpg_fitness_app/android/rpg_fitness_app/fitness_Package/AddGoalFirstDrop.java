@@ -37,7 +37,7 @@ public class AddGoalFirstDrop extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
-
+/*
         String[] firstDrop = LogEntry.getFirstDropdownValues(this.activity, this.subType);
         for(int i = 0; i < firstDrop.length; i++)
         {
@@ -48,7 +48,7 @@ public class AddGoalFirstDrop extends DialogFragment {
             ( (LinearLayout) rV).addView(box);
 
         }
-
+*/
         return rV;
     }
 
