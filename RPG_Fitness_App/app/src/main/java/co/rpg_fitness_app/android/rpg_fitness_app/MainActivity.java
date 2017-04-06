@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 //import javax.sql.DataSource;
 
+import java.util.ArrayList;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
@@ -18,6 +20,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
@@ -41,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("TEST", "Starting APP!");
         mDataSource = new DataSource(this);
+        //mDataSource.upgrade();
         mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
@@ -124,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
             moneyChest = (Currency) data.getSerializableExtra("money chest");
             //TODO: update database with returned kingdom and money chest
             //mDataSource.insertKingdom(kingdom)?????
+            ArrayList<Tile> tiles = mDataSource.getAllTiles();
+            for (int i = 0; i < tiles.size(); i++) {
+                Log.d("onActivityResult","Tile number: "+tiles.get(i).getTileNumber());
+                Log.d("onActivityResult","Tile Building: "+tiles.get(i).getMyBuilding());
+                Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
+            }
         }
     }
 
