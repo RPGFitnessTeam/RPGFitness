@@ -53,7 +53,7 @@ public class AddFirstDropDialogFragment extends DialogFragment {
 
         ((LinearLayout) rV).addView(type);
 
-        
+
         String[] firstDrop = LogEntry.getFirstDropdownValues(this.activity, this.subType);
         for(int i = 0; i < firstDrop.length; i++)
         {
