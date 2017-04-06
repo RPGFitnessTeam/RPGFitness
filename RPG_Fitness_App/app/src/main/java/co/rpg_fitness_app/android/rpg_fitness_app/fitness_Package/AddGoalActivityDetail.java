@@ -34,12 +34,14 @@ import java.util.Calendar;
  * Created by duya on 4/6/17.
  */
 
-public class AddActivityDetail extends DialogFragment {
+public class AddGoalActivityDetail extends DialogFragment {
     private int activity;
     private int subType = 0;
     private int thirdType = 0;
     private int secondType = 0;
     private String firstType = null;
+    private int finalValue = 0;
+    private int initialValue = 0;
     private EditText editView;
 
     @Override
@@ -80,12 +82,12 @@ public class AddActivityDetail extends DialogFragment {
         {
             createSecondDropView(rV);
             createThirdDropView(rV);
-            save_exit(rV);
+            createNext(rV);
         }
         else
         {
             createSecondDropView(rV);
-            save_exit(rV);
+            createNext(rV);
         }
 
 
@@ -93,68 +95,39 @@ public class AddActivityDetail extends DialogFragment {
         return rV;
 
     }
-
-    private void save_exit(View rV)
+    private void createNext(View rV)
     {
-        final Button save = (Button) new Button(getActivity());
-        save.setText("Save");
-        save.setTypeface(null, Typeface.BOLD);
-        ((LinearLayout) rV).addView(save);
-        Button exit = (Button) new Button(getActivity());
-        exit.setText("Exit");
-        exit.setTypeface(null, Typeface.BOLD);
-        ((LinearLayout) rV).addView(exit);
 
-        save.setOnClickListener(new View.OnClickListener() {
+        Button next = new Button(getActivity());
+        next.setText("Next");
+        next.setTypeface(null, Typeface.BOLD);
+        ((LinearLayout) rV).addView(next);
+
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                LogEntry new_log = new LogEntry("ID", activity);
-
-                if(activity == 0 || activity == 1) new_log.setSubtype(subType);
-
-
-                if(activity == 0) {
-                    new_log.setFirstDropdownValues(firstType);
-                }
-
-                new_log.setSecondDropdownValues(secondType);
-
-                if((activity == 0 && (subType == 0 || subType == 2)) || activity == 2 )
-                {
-                    new_log.setThirdDropdownValues(thirdType);
-                }
-
-                new_log.setDate(Calendar.getInstance().getTimeInMillis());
-
-                FitnessLog.addNewLogEntry(new_log); //add new entry
                 dismiss();
+                android.app.FragmentManager fm = getFragmentManager();
 
-                //Update the ListView
-                ExpandableListView ref = FragmentListDaysExpandable.getListView();
-                Activity act = FragmentListDaysExpandable.getActivityUpdate();
-                FragmentListDaysExpandable.organize();
-                ref.setAdapter(new ExpandableListAdapterFitness
-                        (act, FragmentListDaysExpandable.getList_days(),
-                                FragmentListDaysExpandable.getActivities() ));
-
-
+                DialogFragment dF = new AddGoalSaveExit();
+                Bundle argument = new Bundle();
+                argument.putInt("thirdType", thirdType);
+                argument.putInt("secondType",secondType );
+                argument.putString("firstType", firstType);
+                argument.putInt("subType", subType);
+                argument.putInt("activity", activity );
+                dF.setArguments(argument);
+                dF.show(fm, "saveexit");
             }
         });
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // do nothing
-                dismiss();
-            }
-        });
-
     }
+
     private void createSubTypeView(View rV)
     {
 
         TextView type = new TextView(getActivity());
-        type.setText("Select Type");
+        type.setText("Select Goal Type");
         type.setTypeface(null, Typeface.BOLD);
         ((LinearLayout) rV).addView(type);
 
@@ -175,7 +148,8 @@ public class AddActivityDetail extends DialogFragment {
             @Override
             public void onClick(View v) {
                 subType = button.getId();
-                switch (activity)
+
+                switch(activity)
                 {
                     case 0:
                         createFirstDropView(rV);
@@ -183,18 +157,22 @@ public class AddActivityDetail extends DialogFragment {
                         if(subType == 0 || subType == 2)
                         {
                             createThirdDropView(rV);
+
                         }
-                        save_exit(rV);
+                        createNext(rV);
                         break;
 
                     case 1:
                         createSecondDropView(rV);
-                        save_exit(rV);
+                        createNext(rV);
                         break;
 
-                    default:break;
+                    default: break;
                 }
+
+
             }
+
         };
     }
     private void createFirstDropView(View rV)
@@ -237,6 +215,7 @@ public class AddActivityDetail extends DialogFragment {
 
             }
         });
+
 
     }
     private void createSecondDropView(View rV)
@@ -293,6 +272,7 @@ public class AddActivityDetail extends DialogFragment {
         }
         type.setTypeface(null, Typeface.BOLD);
         ((LinearLayout) rV).addView(type);
+
         String[] secondDrop = LogEntry.getSecondDropdownValues(this.activity, this.subType);
         Spinner secondSpin = new Spinner(getActivity());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, secondDrop);

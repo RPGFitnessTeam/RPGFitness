@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by duya on 4/4/17.
  */
 
-public class AddLogTypeDialogFragment  extends DialogFragment{
+public class AddGoalLogType  extends DialogFragment{
 
 
     @Nullable
@@ -40,14 +40,14 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
         );
 
         ((TextView) rV.findViewById(R.id.add_fitness)).setOnClickListener(
-                  new TextView.OnClickListener() {
-                      public void onClick(View v) {
-                          onClickHandler(0);
+                new TextView.OnClickListener() {
+                    public void onClick(View v) {
+                        onClickHandler(0);
 
 
-                      }
-                  }
-                );
+                    }
+                }
+        );
         ((TextView) rV.findViewById(R.id.add_nutrition)).setOnClickListener(
                 new TextView.OnClickListener() {
                     public void onClick(View v) {
@@ -68,11 +68,12 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
         ((TextView) rV.findViewById(R.id.add_weight)).setOnClickListener(
                 new TextView.OnClickListener() {
                     public void onClick(View v) {
-                       onClickHandler(3);
+                        onClickHandler(3);
 
                     }
                 }
         );
+
 
         return rV;
     }
@@ -80,11 +81,11 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
     {
         dismiss();
         android.app.FragmentManager fm = getFragmentManager();
-        DialogFragment dF = new AddActivityDetail();
+        DialogFragment dF = new AddGoalActivityDetail();
         Bundle arguments = new Bundle();
         arguments.putInt("activity", activity);
         dF.setArguments(arguments);
-        dF.show(fm, "id2");
+        dF.show(fm, "id2goal");
     }
 
 }
