@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-        //mDataSource.upgrade();
         mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
