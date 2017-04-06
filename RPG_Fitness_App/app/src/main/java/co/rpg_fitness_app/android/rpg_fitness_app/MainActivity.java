@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
+        //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -63,15 +64,16 @@ public class MainActivity extends AppCompatActivity {
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getKingdom();
+                //getKingdom();
                 Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
-                startIntent.putExtra("kingdom", kingdom);
-                startIntent.putExtra("buildings", mDataSource.getAllBuildings());
+                //startIntent.putExtra("kingdom", kingdom);
+                //startIntent.putExtra("buildings", mDataSource.getAllBuildings());
                 //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
                 Currency c = new Currency();//TESTING
                 c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
                 startIntent.putExtra("money chest", c);//TESTING
-                startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
+                startActivity(startIntent);
+                //startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
             }
         });
 
@@ -117,15 +119,14 @@ public class MainActivity extends AppCompatActivity {
         this.kingdom = mDataSource.getAllKingdoms();
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
-            //mDataSource.insertKingdom(kingdom);
+            mDataSource.insertKingdom(kingdom);
         }
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == KINGDOM_ACTIVITY_RETURN) {
-            kingdom = (Kingdom) data.getSerializableExtra("kingdom");
-            moneyChest = (Currency) data.getSerializableExtra("money chest");
-            //TODO: update database with returned kingdom and money chest
+            //kingdom = (Kingdom) data.getSerializableExtra("kingdom");
+            //moneyChest = (Currency) data.getSerializableExtra("money chest");
             //mDataSource.insertKingdom(kingdom)?????
             ArrayList<Tile> tiles = mDataSource.getAllTiles();
             for (int i = 0; i < tiles.size(); i++) {
@@ -134,6 +135,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
             }
         }
-    }
+    }*/
 
 }
