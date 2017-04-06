@@ -37,11 +37,6 @@ public class ItemPopUpChest extends Activity {
 
         String[] Chests = {"A", "B", "C"};
 
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
-                R.id.item_textView, Chests);
-
-        ListView listview = (ListView) findViewById(R.id.ListView_gearList);
-        listview.setAdapter(items);
 
     }
 

@@ -39,15 +39,11 @@ public class ItemPopUpWeapon extends Activity {
 
         String[] Weapons = {"Frostmourne", "Oath Keeper"};
 
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
-                R.id.item_textView, Weapons);
 
-        ListView listview = (ListView) findViewById(R.id.ListView_gearList);
-        listview.setAdapter(items);
 
 
         //TODO implement changing the DB according to what item was selected in menu
-        listview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*listview.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
                 //TODO update DB according to the new species chosen
                 //TODO update the img file according to the new species chosen
@@ -56,7 +52,7 @@ public class ItemPopUpWeapon extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
                 //do nothing
             }
-        });
+        });*/
 
     }
 

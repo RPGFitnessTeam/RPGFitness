@@ -37,11 +37,6 @@ public class ItemPopUpOffHand extends Activity {
 
         String[] offHand = {"A", "B", "C"};
 
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
-                R.id.item_textView, offHand);
-
-        ListView listview = (ListView) findViewById(R.id.ListView_gearList);
-        listview.setAdapter(items);
 
     }
 
