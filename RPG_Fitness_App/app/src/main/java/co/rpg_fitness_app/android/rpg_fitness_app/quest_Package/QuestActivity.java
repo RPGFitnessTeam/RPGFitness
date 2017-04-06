@@ -16,6 +16,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 public class QuestActivity extends AppCompatActivity {
 
     private ArrayList<Quest> quests = new ArrayList<>();
+    private ArrayList<Integer> finishedQuests;
     private Button MasterButton;
     private Button questButton1;
     private Button questButton2;
@@ -26,22 +27,22 @@ public class QuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_main);
 
-
-        quests.add(new Quest(false, null, "quest1", "asda"));
-        quests.add(new Quest(false, null, "quest2", "asdfff"));
-        quests.add(new Quest(false, null, "quest3", "asdff"));
+        //Todo: set Quests From Database
+        quests.add(new Quest(false, null, "quest1", "Description1", "parameters1"));
+        quests.add(new Quest(false, null, "quest2", "Description2", "parameters2"));
+        quests.add(new Quest(false, null, "quest3", "Description3", "parameters3"));
+        finishedQuests = checkFinishedQuests(quests);
+        if (!finishedQuests.isEmpty()) {
+            for (int i = 0; i < finishedQuests.size(); i++) {
+                quests.set(finishedQuests.get(i), replaceQuest());
+            }
+        }
 
         MasterButton = (Button)findViewById(R.id.masterButton);
         questButton1 = (Button)findViewById(R.id.questButton1);
         questButton2 = (Button)findViewById(R.id.questButton2);
         questButton3 = (Button)findViewById(R.id.questButton3);
 
-        ArrayList<Integer> expiredQuests = checkExpiredQuests(quests);
-        if (!expiredQuests.isEmpty()) {
-            for(int i = 0; i < expiredQuests.size(); i++) {
-
-            }
-        }
         applyButtonText();
         configureMasterButton();
         configureQuestButtons();
@@ -62,6 +63,7 @@ public class QuestActivity extends AppCompatActivity {
         questButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(QuestActivity.this, QuestPopUp.class);
+                startIntent.putExtra("quest", quests.get(0));
                 startActivity(startIntent);
             }
         });
@@ -69,6 +71,7 @@ public class QuestActivity extends AppCompatActivity {
         questButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(QuestActivity.this, QuestPopUp.class);
+                startIntent.putExtra("quest", quests.get(1));
                 startActivity(startIntent);
             }
         });
@@ -76,6 +79,7 @@ public class QuestActivity extends AppCompatActivity {
         questButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(QuestActivity.this, QuestPopUp.class);
+                startIntent.putExtra("quest", quests.get(2));
                 startActivity(startIntent);
             }
         });
@@ -101,27 +105,21 @@ public class QuestActivity extends AppCompatActivity {
 
     }
 
-    private ArrayList<Integer> checkExpiredQuests (ArrayList<Quest> quests) {
-        ArrayList<Integer> expiredQuests = new ArrayList<Integer>();
+    private ArrayList<Integer> checkFinishedQuests (ArrayList<Quest> quests) {
+        ArrayList<Integer> finishedQuests = new ArrayList<Integer>();
         for (int i = 0; i < quests.size(); i++) {
-            if(quests.get(i).getIsQuestExpired()) {
-                expiredQuests.add(i);
+            Quest curr = quests.get(i);
+            if(curr.getIsQuestExpired() || curr.getQuestComplete() || curr.getQuestSkipped()) {
+                finishedQuests.add(i);
             }
         }
-        return expiredQuests;
+        return finishedQuests;
     }
 
-    private Quest getNewQuest() {
-        //TODO: UPDATE QUEST
-        Quest newQuest = new Quest(false, null, "quest4", "asdfsdasdff");
+    private Quest replaceQuest() {
+        //TODO pull new quest from database
+        Quest newQuest = new Quest(false, null, "quest4", "Description4", "parameters");
         return newQuest;
     }
 
 }
-
-
-
-
-
-
-
