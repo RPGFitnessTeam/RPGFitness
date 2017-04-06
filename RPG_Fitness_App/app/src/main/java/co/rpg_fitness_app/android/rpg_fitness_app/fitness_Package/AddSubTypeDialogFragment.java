@@ -1,4 +1,4 @@
-package fitnessrpg.fitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by duya on 4/4/17.
