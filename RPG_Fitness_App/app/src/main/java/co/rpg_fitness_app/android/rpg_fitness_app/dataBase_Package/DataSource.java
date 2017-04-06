@@ -853,8 +853,9 @@ public class DataSource {
                 null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            LogEntry logEntry = new LogEntry(cursor.getInt(
-                    cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
+            LogEntry logEntry = new LogEntry(
+                    cursor.getString(cursor.getColumnIndex(LogEntryTable.COLUMN_ID)),
+                    cursor.getInt(cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
 
             logEntry.setID(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
@@ -1219,8 +1220,9 @@ public class DataSource {
         }
 
         cursor.moveToFirst();
-        LogEntry logEntry = new LogEntry(cursor.getInt(
-                cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
+        LogEntry logEntry = new LogEntry(
+                cursor.getString(cursor.getColumnIndex(LogEntryTable.COLUMN_ID)),
+                cursor.getInt(cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
 
         logEntry.setID(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
