@@ -1,13 +1,14 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by duya on 3/11/17.
  */
 
-public class LogEntry {
+public class LogEntry implements Serializable{
 
     final int EXERCISE = 1;
     final int RECREATION = 1;
