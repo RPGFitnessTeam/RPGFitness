@@ -9,7 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +29,7 @@ public class FragmentListDaysExpandable extends Fragment
     View parentView;
     ExpandableListView listView;
     private ArrayList<String> list_days;
-    private ArrayList<ArrayList<String>> activities;
+    private ArrayList<ArrayList<LogEntry>> activities;
 
     public FragmentListDaysExpandable()
     {
@@ -36,14 +40,14 @@ public class FragmentListDaysExpandable extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        list_days = new ArrayList<String>();
-        activities = new ArrayList<ArrayList<String>>();
-
 
     }
 
     private int organize()
     {
+        list_days = new ArrayList<String>();
+        activities = new ArrayList<ArrayList<LogEntry>>();
+
         ArrayList<LogEntry> activity_list = FitnessLog.retrieveLogEntries();
         if(activity_list == null)
             return -1;
@@ -85,14 +89,14 @@ public class FragmentListDaysExpandable extends Fragment
             ArrayList<LogEntry> tempVal = (ArrayList<LogEntry>) temp2.getValue();
 
             Iterator<LogEntry> itemVal = tempVal.iterator();
-            ArrayList<String> itemPost = new ArrayList<String>();
+            ArrayList<LogEntry> itemPost = new ArrayList<LogEntry>();
 
             //Todo: deside what is the child view
             while(itemVal.hasNext())
             {
                 LogEntry item = itemVal.next();
-                String childItem = "Duya";
-                itemPost.add(childItem);
+                //String childItem = "Duya";
+                itemPost.add(item);
             }
             activities.add(itemPost);
         }
@@ -124,9 +128,9 @@ public class FragmentListDaysExpandable extends Fragment
     {
         private final LayoutInflater inflater;
         private ArrayList<String> groups;
-        private ArrayList<ArrayList<String>> children;
+        private ArrayList<ArrayList<LogEntry>> children;
 
-        public ExpandableListAdapter(ArrayList<String> groups, ArrayList<ArrayList<String>>children)
+        public ExpandableListAdapter(ArrayList<String> groups, ArrayList<ArrayList<LogEntry>>children)
         {
             this.groups = groups;
             this.children = children;
@@ -186,9 +190,37 @@ public class FragmentListDaysExpandable extends Fragment
             if(convertView == null)
             {
                 convertView = inflater.inflate(R.layout.activity_date, parent, false);
-                TextView activity_date = (TextView) convertView.findViewById(R.id.activity_date);
-                activity_date.setText(getChild(groupPosition, childPosition).toString());
+
+                LogEntry child = (LogEntry) getChild(groupPosition, childPosition);
+
+                TextView activityView = (TextView) convertView.findViewById(R.id.activity_date);
+                activityView.setText(child.getActivity());
+
+                if(!child.getSubType().equals("")) {
+                    TextView subTypeView = new TextView(getActivity());
+                    subTypeView.setText(child.getSubType());
+                    ((RelativeLayout) convertView).addView(subTypeView);
+                }
+
+                if(!child.getFirstDropdown().equals("")) {
+                    TextView firstView = new TextView(getActivity());
+                    firstView.setText(child.getFirstDropdown());
+                    ((RelativeLayout) convertView).addView(firstView);
+                }
+
+                if(!child.getSecondDrop().equals("")) {
+                    TextView secondView = new TextView(getActivity());
+                    secondView.setText(child.getSecondDrop());
+                    ((RelativeLayout) convertView).addView(secondView);
+                }
+
+                if(!child.getThirdDrop().equals("")) {
+                    TextView thirdView = new TextView(getActivity());
+                    thirdView.setText(child.getThirdDrop());
+                    ((RelativeLayout) convertView).addView(thirdView);
+                }
             }
+
             return convertView;
         }
 

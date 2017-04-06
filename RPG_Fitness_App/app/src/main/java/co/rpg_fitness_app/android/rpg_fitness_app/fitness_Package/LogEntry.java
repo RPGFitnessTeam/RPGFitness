@@ -213,23 +213,41 @@ public class LogEntry {
         SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE");
         String dayOfWeek = weekdayFormat.format(this.date);
 
-        return dayOfWeek + ", " + month + " " + day + "7th";
+        return dayOfWeek + ", " + month + " " + day + "th";
     }
 
     public void setDate(long date) {
         this.date = date;
     }
 
-    public int getActivity() {
-        return activity;
+    public String getActivity() {
+
+        switch(this.activity)
+        {
+            case EXERCISE: return "Exercise";
+            case NUTRITION: return "Nutrition";
+            case SLEEP: return "Sleep";
+            case WEIGHT: return "Weight";
+
+            default:return "Unknown";
+        }
+
     }
 
     public void setActivity(int activity) {
         this.activity = activity;
     }
 
-    public int getSubType() {
-        return subType;
+    public String getSubType() {
+
+        if(this.subType == -1)
+        {
+            return "";
+        }
+        else{
+
+            return getSubtypes(this.activity)[this.subType] + "";
+        }
     }
 
     public void setSubType(int subType) {
@@ -240,6 +258,74 @@ public class LogEntry {
         return duration;
     }
 
+    public String getFirstDropdown()
+    {
+        if(this.activity == EXERCISE) {
+            return "Type = " + this.typeName;
+        }
+        else return "";
+    }
+
+    public String getSecondDrop()
+    {
+        switch(this.activity)
+        {
+            case EXERCISE :
+            {
+                switch(this.subType) {
+                    case RECREATION:
+                        return "Duration = " + this.duration;
+                    case CALISTHENICS:
+                        return "Duration/Count = " + this.duration;// maybe count
+                    case AEROBICS:
+                        return "Distance = " + this.distance;
+                    case WEIGHTLIFTING:
+                        return "Intensity = " + this.intensity;
+                    default: return "";
+                }
+            }
+            case NUTRITION :
+            {
+                switch(this.subType)
+                {
+                    case FR_VEG: return "Servings = " + this.count;
+                    case WATER: return "Glasss = " + this.count;
+                    case SWEETS: return "Servings = " + this.count;
+                    default: return "";
+                }
+            }
+            case SLEEP :
+            {
+                return "Quality of Sleep = " + this.intensity;
+            }
+            case WEIGHT :
+            {
+                return "Current Weight = " + this.weight;
+            }
+            default : return "";
+        }
+    }
+    public String getThirdDrop()
+    {
+        switch(this.activity)
+        {
+            case EXERCISE :
+            {
+                switch(this.subType) {
+                    case RECREATION:
+                        return "Intensity = " + this.intensity;
+                    case AEROBICS:
+                        return "Duration = " + this.duration;
+                    default: return "";
+                }
+            }
+            case SLEEP :
+            {
+                return "Durarion = " + this.duration;
+            }
+            default: return "";
+        }
+    }
     public void setDuration(int duration) {
         this.duration = duration;
     }

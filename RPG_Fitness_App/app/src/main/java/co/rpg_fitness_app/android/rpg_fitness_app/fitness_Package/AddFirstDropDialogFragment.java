@@ -1,6 +1,7 @@
 package fitnessrpg.fitnessrpg;
 
 import android.app.DialogFragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by duya on 4/4/17.
@@ -31,6 +34,24 @@ public class AddFirstDropDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
 
+        TextView type = new TextView(getActivity());
+        switch(this.subType)
+        {
+            case 0:  type.setText("Type of Recreation");
+                break;
+            case 1:  type.setText("Type of Calisthenics");
+                break;
+            case 2:  type.setText("Type of Aerobics");
+                break;
+            case 3:  type.setText("Body Part targeted during lifting");
+                break;
+            default:break;
+        }
+        type.setTypeface(null, Typeface.BOLD);
+
+        ((LinearLayout) rV).addView(type);
+
+        
         String[] firstDrop = LogEntry.getFirstDropdownValues(this.activity, this.subType);
         for(int i = 0; i < firstDrop.length; i++)
         {
@@ -41,6 +62,7 @@ public class AddFirstDropDialogFragment extends DialogFragment {
             ( (LinearLayout) rV).addView(box);
 
         }
+
 
         return rV;
     }

@@ -1,6 +1,7 @@
 package fitnessrpg.fitnessrpg;
 
 import android.app.DialogFragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -35,6 +37,33 @@ public class AddThirdDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
+
+        TextView type = new TextView(getActivity());
+        switch(this.activity)
+        {
+            case 0 :
+            {
+                switch(this.subType) {
+                    case 0:
+                        type.setText("Enter Intensity");
+                        break;
+                    case 2:
+                        type.setText("Enter Duration");
+                        break;
+                    default: break;
+                }
+                break;
+            }
+            case 2 :
+            {
+                type.setText("Enter Duration");
+                break;
+            }
+            default: break;
+        }
+        type.setTypeface(null, Typeface.BOLD);
+
+        ((LinearLayout) rV).addView(type);
 
         int[] thirdDrop = LogEntry.getThirdDropdownValues(this.activity, this.subType);
         for(int i = 0; i < thirdDrop.length; i++)
@@ -67,6 +96,7 @@ public class AddThirdDialogFragment extends DialogFragment {
                 new_log.setThirdDropdownValues(button.getId());
                 new_log.setDate(Calendar.getInstance().getTimeInMillis());
                 FitnessLog.addNewLogEntry(new_log); //add new entry
+
 
             }
         };

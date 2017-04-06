@@ -1,6 +1,7 @@
 package fitnessrpg.fitnessrpg;
 
 import android.app.DialogFragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +38,58 @@ public class AddSecondDropDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
 
+        TextView type = new TextView(getActivity());
+        switch(this.activity)
+        {
+            case 0 :
+            {
+                switch(this.subType) {
+                    case 0:
+                        type.setText("Enter Duration");
+                        break;
+                    case 1:
+                        type.setText("Enter Duration/Count");
+                        break;
+                    case 2:
+                        type.setText("Enter Distance");
+                        break;
+                    case 3:
+                        type.setText("Enter Intensity");
+                        break;
+                    default: break;
+                }
+                break;
+            }
+            case 1 :
+            {
+                switch(this.subType)
+                {
+                    case 0:
+                        type.setText("Enter Servings");
+                        break;
+                    case 1:
+                        type.setText("Enter Glasses");
+                        break;
+                    case 2:
+                        type.setText("Enter Servings");
+                        break;
+                    default: break;
+                }
+                break;
+            }
+            case 2 :
+            {
+                type.setText("Enter Quality of Sleep");
+                break;
+            }
+            case 3 : {
+                type.setText("Enter Current Weight");
+                break;
+            }
+            default : break;
+        }
+        type.setTypeface(null, Typeface.BOLD);
+        ((LinearLayout) rV).addView(type);
         int[] secondDrop = LogEntry.getSecondDropdownValues(this.activity, this.subType);
         for(int i = 0; i < secondDrop.length; i++)
         {

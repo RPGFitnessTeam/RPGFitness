@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by duya on 4/4/17.
@@ -28,6 +29,10 @@ public class AddSubTypeDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
+
+        TextView type = new TextView(getActivity());
+        type.setText("Select Type");
+        ((LinearLayout) rV).addView(type);
 
         String[] subTypes = LogEntry.getSubtypes(this.activity);
         for(int i = 0; i < subTypes.length; i++)

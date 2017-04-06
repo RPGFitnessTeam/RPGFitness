@@ -22,8 +22,6 @@ public class FitnessLog {
         initial = new LogEntry("1", 1);
         initial.setDate(Calendar.getInstance().getTimeInMillis());
         activities.add(initial);
-
-
     }
 
     public static ArrayList<LogEntry> retrieveLogEntries()

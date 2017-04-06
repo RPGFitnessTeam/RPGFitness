@@ -7,7 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by duya on 4/4/17.
@@ -68,6 +72,10 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
                 }
         );
 
+        ArrayList<LogEntry> testArray = FitnessLog.retrieveLogEntries();
+        TextView test = new TextView(getActivity());
+        test.setText("Current Size of Fitness Log Entries  =  " + testArray.size());
+        ((RelativeLayout) rV).addView(test);
 
         return rV;
     }
