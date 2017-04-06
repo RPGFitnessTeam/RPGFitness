@@ -137,7 +137,8 @@ public class DataSource {
             }
         }
 
-       if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
+        //TODO: tanner commented it out since it crashed program
+       /*if (DatabaseUtils.queryNumEntries(mDatabase, LogEntryTable.TABLE_LOG_ENTRY) == 0
                 && LogEntryDataProvider.logEntryList != null) {
             for (LogEntry logEntry :
                     LogEntryDataProvider.logEntryList) {
@@ -147,7 +148,7 @@ public class DataSource {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
         // TODO Still don't have quests
         /*
         if (DatabaseUtils.queryNumEntries(mDatabase, QuestTable.TABLE_QUEST) == 0

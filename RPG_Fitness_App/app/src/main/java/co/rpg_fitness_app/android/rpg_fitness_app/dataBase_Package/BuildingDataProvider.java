@@ -34,10 +34,10 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         house = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(house);
-        cost.updateResource(false,5,0,0,1,1,1,1,1);
+        cost.updateResource(false,5,0,0,0,0,0,0,0);
 
         name = "castle";
-        cost.updateResource(true,5,0,0,1,1,1,1,1);
+        cost.updateResource(true,5,0,0,0,0,0,0,0);
         category = "dwelling";
         tier = 2;
         goldBoost.setAmount(2);
@@ -45,7 +45,7 @@ public class BuildingDataProvider {
         stoneBoost.setAmount(0);
         castle = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(castle);
-        cost.updateResource(false,5,0,0,1,1,1,1,1);
+        cost.updateResource(false,5,0,0,0,0,0,0,0);
 
         name = "wood bridge";
         cost.updateResource(true,0,0,2,1,0,0,0,0);
