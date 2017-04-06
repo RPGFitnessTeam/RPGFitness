@@ -171,32 +171,32 @@ public class TilePopUp extends Activity{
         ImageButton i;
         TextView t;
         i = (ImageButton) findViewById(R.id.purchaseBuilding1);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_dwelling1);
         t = (TextView) findViewById(R.id.purchaseBuilding1Text);
         t.setText("House:\nA house will give you extra gold!\nConstruction Cost: 1 wood, 1 gold");
         //wood bridge
         i = (ImageButton) findViewById(R.id.purchaseBuilding2);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_bridge1);
         t = (TextView) findViewById(R.id.purchaseBuilding2Text);
         t.setText("Wood Bridge:\nA wood bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
         //cave
         i = (ImageButton) findViewById(R.id.purchaseBuilding3);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_mining1);
         t = (TextView) findViewById(R.id.purchaseBuilding3Text);
         t.setText("Cave:\nA cave will give you extra stone!\nConstruction Cost: 1 wood, 1 gold");
         //tavern
         i = (ImageButton) findViewById(R.id.purchaseBuilding4);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_hospitality1);
         t = (TextView) findViewById(R.id.purchaseBuilding4Text);
         t.setText("Tavern:\nA tavern will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
         //fort
         i = (ImageButton) findViewById(R.id.purchaseBuilding5);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_military1);
         t = (TextView) findViewById(R.id.purchaseBuilding5Text);
         t.setText("Fort:\nA fort will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
         //pond
         i = (ImageButton) findViewById(R.id.purchaseBuilding6);
-        i.setBackgroundResource(R.drawable.shield);
+        i.setBackgroundResource(R.drawable.b_water1);
         t = (TextView) findViewById(R.id.purchaseBuilding6Text);
         t.setText("Pond:\nA pond will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
     }

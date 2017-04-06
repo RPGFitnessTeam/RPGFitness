@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 /**
  * Created by Tanner on 3/9/2017.
@@ -21,7 +23,7 @@ public class BuildingPopUp extends Activity {
     Tile tile;
     Currency moneyChest;
     ArrayList<Building> buildings;
-
+    DataSource mDataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,9 @@ public class BuildingPopUp extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
+
+        mDataSource = new DataSource(this);
+        mDataSource.open();
 
         getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
         this.tile = (Tile) getIntent().getSerializableExtra("tile");
@@ -73,13 +78,27 @@ public class BuildingPopUp extends Activity {
     }
 
     private boolean upgradeBuilding(Tile tile){
-        //////TEST CODE///////////////
+        /////////HARDCODING///////////////
+        String name; Currency cost = new Currency(); String category; int tier; Boost goldBoost = new Boost(); Boost woodBoost = new Boost(); Boost stoneBoost = new Boost();
+        Building house, castle, woodBridge, stoneBridge, cave, mine, tavern, innAndTavern, fort, fortress, pond, fountain;
+        goldBoost.setBoostType("gold"); woodBoost.setBoostType("wood");stoneBoost.setBoostType("stone");
+        //////////////////////////////////
         Building newBuilding;
         String newBuildingName;
         Building building = tile.getMyBuilding();
         Currency buildingCost = building.getCost();
         switch (building.getName()){
             case "house": newBuildingName =  "castle";
+                /////////HARDCODING///////////////
+                name = "castle";
+                cost = new Currency();
+                cost.updateResource(true,5,0,0,0,0,0,0,0);
+                category = "dwelling";
+                tier = 2;
+                goldBoost.setAmount(2);
+                woodBoost.setAmount(0);
+                stoneBoost.setAmount(0);
+                /////////////////////////////////
                 break;
             case "wood bridge": newBuildingName =  "stone bridge";
                 break;
@@ -93,6 +112,10 @@ public class BuildingPopUp extends Activity {
                 break;
             default: return false;
         }
+        //////////////TEMP FIX FOR DB PROBLEMS/////////////
+        newBuilding = new Building(newBuildingName);
+        buildingCost = newBuilding.getCost();
+        ///////////////////////////////////////////////////
         if(moneyChest.getWood()>=buildingCost.getWood() && moneyChest.getGold()>=buildingCost.getGold() && moneyChest.getStone()>=buildingCost.getStone() &&
                 moneyChest.getMisc1()>=buildingCost.getMisc1() && moneyChest.getMisc2()>=buildingCost.getMisc2() && moneyChest.getMisc3()>=buildingCost.getMisc3() &&
                 moneyChest.getMisc1()>=buildingCost.getMisc5() && moneyChest.getMisc1()>=buildingCost.getMisc5()) {
