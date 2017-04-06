@@ -37,13 +37,30 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-
         //this.kingdom = mDataSource.getAllKingdoms();
         kingdom = new Kingdom();
         this.buildings = mDataSource.getAllBuildings();
         //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
         //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
-        this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+      this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+      //////////////////////////////////////////TESTING//////////////////////////////////////////////////////////////
+        this.kingdom = mDataSource.getAllKingdoms();
+        if (kingdom == null) {
+            Log.d("onCreate", "Null kingdom");
+            kingdom = new Kingdom();
+            kingdom.getMyGrid().get(0);
+        } else {
+            Log.d("onCreate", "Kingdom size "+kingdom.getMyGrid().size());
+            for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+                Log.d("onCreate", "Grid position "+i);
+                Log.d("onCreate", "Tile number: "+kingdom.getMyGrid().get(i).getTileNumber());
+                if (kingdom.getMyGrid().get(i).getMyBuilding() == null) {
+                    Log.d("onCreate", "Tile building: null");
+                } else {
+                    Log.d("onCreate", "Tile building: "+kingdom.getMyGrid().get(i).getMyBuilding().getName());
+                }
+            }
+        }////////////////////////////////////////////////////////////////////////////////////////////////////
         configureToolBarButtons();
         populateKingdomTiles();
 
@@ -176,11 +193,9 @@ public class KingdomActivity extends Activity {
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
-            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
+            Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
-            mDataSource.updateTile(tile);
-            mDataSource.updateKingdom(kingdom);
         }
     }
 

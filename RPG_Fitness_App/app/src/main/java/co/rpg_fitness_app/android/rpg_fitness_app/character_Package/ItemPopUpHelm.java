@@ -1,9 +1,11 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
@@ -31,19 +33,18 @@ public class ItemPopUpHelm extends Activity {
         int height = dm.heightPixels;
 
 
+        ImageButton helm = (ImageButton) findViewById(R.id.imageButtonItem);
+        helm.setBackgroundResource(R.drawable.lock_padlock);
+
         getWindow().setLayout( (int) (width*0.8), (int) (height*0.5));
+
+
 
         //Adapter used to display list's data (in this case a list of helms the player owns)
         //ArrayAdapter<Gear> items = new ArrayAdapter<Gear>(this, R.layout.character_item_popup,
         //        R.id.item_textView, character.retrieveGearInCategory("Helm"));
 
-        String[] helms = {"A", "B", "C"};
 
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
-                R.id.item_textView, helms);
-
-        ListView listview = (ListView) findViewById(R.id.ListView_gearList);
-        listview.setAdapter(items);
 
     }
 

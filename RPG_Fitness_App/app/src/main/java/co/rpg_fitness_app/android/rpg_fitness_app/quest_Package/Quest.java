@@ -14,7 +14,7 @@ public class Quest {
 
     private String name;
     private String description;
-    private ArrayList<Currency> reward;
+    private Currency reward;
     private Calendar questEndDate;
     private boolean isQuestComplete;
     private boolean isQuestSkipped;
@@ -24,7 +24,7 @@ public class Quest {
 
 
 
-    public Quest(boolean isMasterQuest, ArrayList<Currency> reward, String name, String description) {
+    public Quest(boolean isMasterQuest, Currency reward, String name, String description) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
@@ -81,8 +81,20 @@ public class Quest {
         return isQuestExpired;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public Currency getReward() {
+        return reward;
+    }
 
+    public void setReward(Currency reward) {
+        this.reward = reward;
+    }
 
 }

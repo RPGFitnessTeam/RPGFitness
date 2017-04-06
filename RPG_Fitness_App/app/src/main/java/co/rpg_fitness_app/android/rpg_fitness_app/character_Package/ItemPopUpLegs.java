@@ -35,13 +35,7 @@ public class ItemPopUpLegs extends Activity {
         //ArrayAdapter<Gear> items = new ArrayAdapter<Gear>(this, R.layout.character_item_popup,
         //        R.id.item_textView, character.retrieveGearInCategory("Helm"));
 
-        String[] Legs = {"A", "B", "C"};
 
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this, R.layout.character_item_popup,
-                R.id.item_textView, Legs);
-
-        ListView listview = (ListView) findViewById(R.id.ListView_gearList);
-        listview.setAdapter(items);
 
     }
 

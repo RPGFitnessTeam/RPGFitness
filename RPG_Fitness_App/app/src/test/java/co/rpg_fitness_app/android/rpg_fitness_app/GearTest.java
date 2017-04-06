@@ -2,7 +2,9 @@ package co.rpg_fitness_app.android.rpg_fitness_app;
 
 import org.junit.Test;
 
+import java.security.spec.ECField;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
@@ -128,6 +130,15 @@ public class GearTest {
         gearTest.setBoost(boost);
 
         assertEquals(boost, gearTest.getBoost());
+    }
+
+
+    @Test
+    public void setGetID() throws Exception {
+        Gear gearTest = new Gear();
+        gearTest.setID("Test ID");
+        String test = "Test ID";
+        assertEquals("Test ID", gearTest.getID());
     }
 
 
