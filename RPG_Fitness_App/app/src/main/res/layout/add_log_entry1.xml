@@ -27,8 +27,7 @@
         android:layout_marginLeft="33dp"
         android:layout_marginStart="33dp"
         android:id="@+id/add_sleep"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:text="Weight"
@@ -40,43 +39,45 @@
         android:layout_marginLeft="42dp"
         android:layout_marginStart="42dp"
         android:id="@+id/add_weight"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:text="Fitness"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/add_fitness"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_below="@+id/add_nutrition"
         android:layout_alignLeft="@+id/add_nutrition"
         android:layout_alignStart="@+id/add_nutrition"
-        android:textStyle="bold"
         android:layout_marginTop="54dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/delete_add_log1"
-        android:layout_above="@+id/add_sleep"
-        android:background="@android:drawable/ic_delete"
-        android:minHeight="10dp"
-        android:minWidth="50dip"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Nutrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/add_nutrition"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="22dp"
-        android:layout_alignParentTop="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_below="@+id/delete_add_log1"
         android:layout_alignParentLeft="true"
-        android:textStyle="bold"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_add_log1"
+        android:background="@android:drawable/ic_delete"
+        android:minHeight="10dp"
+        android:minWidth="50dip"
+        android:elevation="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp" />
+
+
 </RelativeLayout>

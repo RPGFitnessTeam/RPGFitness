@@ -5,8 +5,34 @@
     android:id="@+id/activity_main__fitness_log"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog">
 
+    <include layout="@layout/footer" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FragmentListDaysExpandable"
+            android:layout_alignParentTop="true"
+            android:id="@+id/fragment_main"
+            tools:layout="@layout/fragment_list_days" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/button_add_activity"
+            android:background="@android:drawable/ic_input_add"
+            android:backgroundTint="@android:color/holo_blue_dark" />
 
 
+    </RelativeLayout>
 
+</RelativeLayout>
