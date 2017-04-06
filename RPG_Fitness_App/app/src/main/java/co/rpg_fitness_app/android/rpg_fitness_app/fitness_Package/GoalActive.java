@@ -3,12 +3,15 @@ package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class GoalActive extends AppCompatActivity {
@@ -43,6 +46,22 @@ public class GoalActive extends AppCompatActivity {
         GoalAdapter glAdapt = new GoalAdapter(goalList, this);
         ListView listView = (ListView)findViewById(R.id.goal_listview);
         listView.setAdapter(glAdapt);
+
+
+        //Add new LogEntry
+        ((Button) findViewById(R.id.button_create_goal)).setOnClickListener(
+                new Button.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+
+                        android.app.FragmentManager fm = getFragmentManager();
+                        AddGoalLogType dF = new AddGoalLogType();
+                        dF.show(fm, "idgoal");
+                    }
+                }
+
+        );
 
     }
 }
