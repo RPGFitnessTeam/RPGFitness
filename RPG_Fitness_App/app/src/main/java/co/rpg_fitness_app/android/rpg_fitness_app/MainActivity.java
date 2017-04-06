@@ -123,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+ 
     /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if(resultCode == KINGDOM_ACTIVITY_RETURN) {
             //kingdom = (Kingdom) data.getSerializableExtra("kingdom");
             //moneyChest = (Currency) data.getSerializableExtra("money chest");
