@@ -1,5 +1,6 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.ViewGroup;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
@@ -9,11 +10,11 @@ import java.util.Calendar;
 
 public class FitnessLog {
 
-    DataSource mDataSource;
+    static DataSource mDataSource;
 
-    public FitnessLog()
+    public FitnessLog(Context context)
     {
-        mDataSource = new DataSource(this);
+        mDataSource = new DataSource(context);
         mDataSource.open();
     }
 
