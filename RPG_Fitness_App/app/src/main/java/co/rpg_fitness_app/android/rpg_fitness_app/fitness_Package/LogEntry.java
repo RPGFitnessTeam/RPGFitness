@@ -4,6 +4,7 @@ package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class LogEntry {
 
@@ -35,6 +36,13 @@ public class LogEntry {
     private int intensity = -1; // also, quality of sleep
     private int weight = -1;
     private String typeName = "";
+
+    public LogEntry(int activity)
+    {
+        this.ID = UUID.randomUUID().toString();;
+        this.activity = activity;
+        //Todo: set date;
+    }
 
 
     public LogEntry(String ID, int activity)

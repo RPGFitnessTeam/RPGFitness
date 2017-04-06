@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
 public class GoalActive extends AppCompatActivity {
 
     List<Goal> goalList = new ArrayList<Goal>();
