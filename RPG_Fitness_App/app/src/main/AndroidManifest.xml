@@ -76,7 +76,7 @@
             android:exported="true"
             ></activity>
 
-        <activity android:name=".fitness_Package.MainActivityFitness"
+        <activity android:name=".fitness_Package.Main_FitnessLog"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
