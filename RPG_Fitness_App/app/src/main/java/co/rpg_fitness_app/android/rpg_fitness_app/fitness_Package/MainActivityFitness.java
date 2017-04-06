@@ -20,7 +20,7 @@ public class MainActivityFitness extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main__fitness_log);
 
         list_days = (TextView) findViewById(R.id.days);
 

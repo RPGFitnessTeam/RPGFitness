@@ -8,6 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="fitnessrpg.fitnessrpg.FitnessLogActivity">
+    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.MainActivityFitness">
 
 </RelativeLayout>
