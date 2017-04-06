@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
@@ -111,7 +112,7 @@ public class AddActivityDetail extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                LogEntry new_log = new LogEntry("ID", activity);
+                LogEntry new_log = new LogEntry(UUID.randomUUID().toString(), activity);
 
                 if(activity == 0 || activity == 1) new_log.setSubtype(subType);
 
