@@ -194,6 +194,7 @@ public class KingdomActivity extends Activity {
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
+            kingdom.getMyGrid().set(tile.getTileNumber(), tile);
             Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
