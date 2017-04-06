@@ -1,6 +1,5 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
-
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -77,7 +76,7 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
 
         ArrayList<LogEntry> testArray = FitnessLog.retrieveLogEntries();
         TextView test = new TextView(getActivity());
-       
+        test.setText("Current Size of Fitness Log Entries  =  " + testArray.size());
         ((RelativeLayout) rV).addView(test);
 
         return rV;

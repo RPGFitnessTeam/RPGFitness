@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
+import fitnessrpg.fitnessrpg.R;
+
 public class Main_FitnessLog extends AppCompatActivity {
 
     FitnessLog duya = new FitnessLog();
@@ -38,11 +40,12 @@ public class Main_FitnessLog extends AppCompatActivity {
 
                         android.app.FragmentManager fm = getFragmentManager();
                         AddLogTypeDialogFragment dF = new AddLogTypeDialogFragment();
-                        dF.show(fm, "Duya");
+                        dF.show(fm, "id");
                     }
                 }
 
         );
+
     }
 
 }
