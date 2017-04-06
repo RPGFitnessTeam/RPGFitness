@@ -1,4 +1,4 @@
-package fitness.goal;
+package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 /**
  * Created by duya on 4/4/17.
@@ -17,8 +17,8 @@ import android.widget.LinearLayout;
 
 import java.util.Calendar;
 
-import fitnessrpg.fitnessrpg.LogEntry;
-import fitnessrpg.fitnessrpg.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.LogEntry;
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by duya on 4/4/17.

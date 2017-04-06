@@ -1,4 +1,4 @@
-package fitnessrpg.fitnessrpg;
+package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 import android.content.Intent;
 import android.view.ViewGroup;
