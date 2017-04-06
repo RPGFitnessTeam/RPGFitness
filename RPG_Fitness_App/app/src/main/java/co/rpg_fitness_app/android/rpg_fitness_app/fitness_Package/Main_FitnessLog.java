@@ -16,6 +16,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
+
+
 public class Main_FitnessLog extends AppCompatActivity {
 
     FitnessLog duya = new FitnessLog();
