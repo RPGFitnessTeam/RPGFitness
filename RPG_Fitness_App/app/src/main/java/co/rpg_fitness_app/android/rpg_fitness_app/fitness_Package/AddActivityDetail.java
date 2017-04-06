@@ -30,6 +30,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
 /**
  * Created by duya on 4/6/17.
  */

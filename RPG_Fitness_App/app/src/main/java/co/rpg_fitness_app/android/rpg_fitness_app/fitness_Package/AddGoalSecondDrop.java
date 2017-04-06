@@ -43,7 +43,7 @@ public class AddGoalSecondDrop extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
-
+/*
         int[] secondDrop = LogEntry.getSecondDropdownValues(this.activity, this.subType);
         for(int i = 0; i < secondDrop.length; i++)
         {
@@ -54,7 +54,7 @@ public class AddGoalSecondDrop extends DialogFragment {
             ( (LinearLayout) rV).addView(box);
 
         }
-
+*/
         return rV;
     }
 

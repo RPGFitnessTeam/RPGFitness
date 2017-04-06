@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
-import fitnessrpg.fitnessrpg.R;
+//import fitnessrpg.fitnessrpg.R;
 
 public class Main_FitnessLog extends AppCompatActivity {
 
