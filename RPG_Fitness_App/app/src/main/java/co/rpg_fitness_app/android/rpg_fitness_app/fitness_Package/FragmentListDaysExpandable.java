@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import co.rpg_fitness_app.android.rpg_fitness_app.R;
+
 /**
  * Created by duya on 4/4/17.
  */

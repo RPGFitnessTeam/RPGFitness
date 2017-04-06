@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 /**
  * Created by duya on 4/4/17.
@@ -74,11 +73,6 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
                     }
                 }
         );
-
-        ArrayList<LogEntry> testArray = FitnessLog.retrieveLogEntries();
-        TextView test = new TextView(getActivity());
-       
-        ((RelativeLayout) rV).addView(test);
 
         return rV;
     }

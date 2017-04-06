@@ -15,9 +15,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
-import fitnessrpg.fitnessrpg.R;
+
 
 public class Main_FitnessLog extends AppCompatActivity {
 
@@ -27,7 +28,9 @@ public class Main_FitnessLog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_create_goal_main);
         setContentView(R.layout.activity_main__fitness_log);
+
 
         //FitnessLog fitnessLog = new FitnessLog();
 
@@ -40,7 +43,8 @@ public class Main_FitnessLog extends AppCompatActivity {
 
                         android.app.FragmentManager fm = getFragmentManager();
                         AddLogTypeDialogFragment dF = new AddLogTypeDialogFragment();
-                        dF.show(fm, "id");
+                       // AddGoalLogType dF = new AddGoalLogType();
+                        dF.show(fm, "idgoal");
                     }
                 }
 
