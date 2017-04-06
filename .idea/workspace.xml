@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="21ec6577-d4af-4392-adaa-ca7b34447f4d" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/vcs.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" afterPath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java" />
     </list>
@@ -29,10 +30,10 @@
       <file leaf-file-name="Main_FitnessLog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="41" column="85" selection-start-line="41" selection-start-column="85" selection-end-line="41" selection-end-column="85" />
+            <state relative-caret-position="345">
+              <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <marker date="1491520939072" expanded="false" signature="76:585" ph="..." />
               </folding>
             </state>
           </provider>
@@ -42,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
-              <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+              <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -145,8 +146,8 @@
       <file leaf-file-name="FitnessLog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -720,7 +721,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -770,7 +771,7 @@
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1491520939072" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
       </provider>
@@ -886,7 +887,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1491520939072" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
       </provider>
@@ -896,7 +897,7 @@
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1491520939072" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1009,10 +1010,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="41" column="85" selection-start-line="41" selection-start-column="85" selection-end-line="41" selection-end-column="85" />
+        <state relative-caret-position="345">
+          <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1491520939072" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1020,7 +1021,7 @@
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1117,8 +1118,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>

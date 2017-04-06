@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.hardware.input.InputManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +33,7 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 /**
  * Created by duya on 4/6/17.
@@ -130,7 +132,11 @@ public class AddActivityDetail extends DialogFragment {
 
                 new_log.setDate(Calendar.getInstance().getTimeInMillis());
 
-                FitnessLog.addNewLogEntry(new_log); //add new entry
+                DataSource mDatasource = new DataSource(getActivity());
+                mDatasource.open();
+                System.out.println(new_log.getSubType() + new_log.getFirstDropdown() + new_log.getDate() + "");
+                mDatasource.insertLogEntry(new_log);
+                FitnessLog.update(mDatasource.getAllLogEntries());
                 dismiss();
 
                 //Update the ListView

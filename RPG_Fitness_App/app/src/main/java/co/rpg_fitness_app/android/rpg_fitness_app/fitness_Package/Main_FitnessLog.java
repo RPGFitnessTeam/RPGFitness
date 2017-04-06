@@ -17,19 +17,23 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
-
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 
 public class Main_FitnessLog extends AppCompatActivity {
 
-    FitnessLog fitnessLog;
+     DataSource mDataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__fitness_log);
 
-        fitnessLog = new FitnessLog(this);
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+
+        FitnessLog fitnessLog = new FitnessLog(mDataSource.getAllLogEntries());
+
 
         //Add new LogEntry
         ((Button) findViewById(R.id.button_add_activity)).setOnClickListener(
