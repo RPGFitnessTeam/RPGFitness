@@ -34,7 +34,7 @@ public class LogEntry {
     private int count = -1; // also, duration
     private int intensity = -1; // also, quality of sleep
     private int weight = -1;
-    private String typeName = null;
+    private String typeName = "";
 
     public LogEntry(int activity) {
         this.ID = UUID.randomUUID().toString();
@@ -64,39 +64,6 @@ public class LogEntry {
     {
         this.subType = subType;
     }
-    public static String[] getFirstDropdownValues(int activity, int subType)
-    {
-        String[][][] firstDropdownValues =
-                {
-                        {
-                                {
-                                        "Soccer", "Kayaking"
-                                },
-                                {
-                                        "pushups", "yoga"
-                                },
-                                {
-                                        "jogging", "biking"
-                                },
-                                {
-                                        "group1", "group2", "group3"
-                                }
-
-                        },
-                        {
-
-                        },
-                        {
-
-                        },
-                        {
-
-                        }
-
-                }
-                ;
-        return firstDropdownValues[activity][subType];
-    }
     //Set typeName : String applies to only EXERCISE activity
     public void setFirstDropdownValues(String value)
     {
@@ -116,10 +83,19 @@ public class LogEntry {
                 break;
         }
     }
-    public static int[] getSecondDropdownValues(int activity, int subType)
+    public static String[] getSecondDropdownValues(int activity, int subType)
     {
-        int[][][] secondDropdownValues =
-        {{{1, 2, 3},{4,5,6},{7,8},{9,10,11,12}},{{1,2},{3,6,7,8,},{9}},{{5,6,7}},{{8,9,10}}};
+        String[][][] secondDropdownValues =
+        {{      {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                {"1 mile","2 mile","3 mile","4 mile","5 mile","6 mile","7 mile","8 mile","9 mile", "10 mile","15mile", "20 mile"},
+                {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"}
+        }, {    {"1","2","3","4","5","6","7","8","9","10"},
+                {"1","2","3","4","5","6","7","8","9","10"},
+                {"1","2","3","4","5","6","7","8","9","10"}
+        }, {    {"1 = very poor", "2 = poor", "3 = fine", "4 = good", "5 = very good"}
+        }, {    {"40 kg","45 kg","50 kg","55 kg", "60 kg", "65 kg", "70 kg","75 kg", "80 kg", "85 kg", "90 kg", "95 kg", "100 kg"}
+        }};
 
         return secondDropdownValues[activity][subType];
     }
@@ -166,10 +142,18 @@ public class LogEntry {
             default : break;
         }
     }
-    public static int[] getThirdDropdownValues(int activity, int subType)
+    public static String[] getThirdDropdownValues(int activity, int subType)
     {
-        int[][][] thirdDropdownValues =
-            {{{1, 2, 3},{},{7,8},{}},{{}},{{9, 10, 11, 12, 13}},{{}}};
+        String[][][] thirdDropdownValues =
+            {{
+                    {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
+                    {},
+                    {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
+                    {}
+            },      {{}
+            },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
+                    "9 hour", "10 hour", "11 hour", "12 hour", "13 hour", "14 hour", "15 hour"}},
+                    {{}}};
         ;
         return thirdDropdownValues[activity][subType];
     }
@@ -280,13 +264,32 @@ public class LogEntry {
             {
                 switch(this.subType) {
                     case RECREATION:
-                        return "Duration = " + this.duration;
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else
+                        {
+                            return "Duration = " + this.duration + " min";
+                        }
                     case CALISTHENICS:
-                        return "Duration/Count = " + this.duration;// maybe count
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else {
+                            return "Duration = " + this.duration + " min";
+                        }
                     case AEROBICS:
-                        return "Distance = " + this.distance;
+                        return "Distance = " + this.distance + " mile";
                     case WEIGHTLIFTING:
-                        return "Intensity = " + this.intensity;
+                        switch (this.intensity)
+                        {
+                            case 1: return "Intensity = very light";
+                            case 2: return "Intensity = light";
+                            case 3: return "Intensity = moderate";
+                            case 4: return "Intensity = heavy";
+                            case 5: return "Intensity = very heavy";
+                            default:return "";
+                        }
                     default: return "";
                 }
             }
@@ -302,11 +305,19 @@ public class LogEntry {
             }
             case SLEEP :
             {
-                return "Quality of Sleep = " + this.intensity;
+                switch (this.intensity)
+                {
+                    case 1: return "Quality of Sleep = very poor";
+                    case 2: return "Quality of Sleep = poor";
+                    case 3: return "Quality of Sleep = fine";
+                    case 4: return "Quality of Sleep = good";
+                    case 5: return "Quality of Sleep = very good";
+                    default:return "";
+                }
             }
             case WEIGHT :
             {
-                return "Current Weight = " + this.weight;
+                return "Current Weight = " + this.weight + " kg";
             }
             default : return "";
         }
@@ -319,15 +330,29 @@ public class LogEntry {
             {
                 switch(this.subType) {
                     case RECREATION:
-                        return "Intensity = " + this.intensity;
+                        switch (this.intensity)
+                        {
+                            case 1: return "Intensity = very light";
+                            case 2: return "Intensity = light";
+                            case 3: return "Intensity = moderate";
+                            case 4: return "Intensity = heavy";
+                            case 5: return "Intensity = very heavy";
+                            default:return "";
+                        }
                     case AEROBICS:
-                        return "Duration = " + this.duration;
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else
+                        {
+                            return "Duration = " + this.duration + " min";
+                        }
                     default: return "";
                 }
             }
             case SLEEP :
             {
-                return "Durarion = " + this.duration;
+                return "Duration = " + this.duration + " hour";
             }
             default: return "";
         }

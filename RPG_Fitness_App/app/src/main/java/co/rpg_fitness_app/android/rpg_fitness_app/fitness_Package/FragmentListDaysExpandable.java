@@ -1,8 +1,11 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
+
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +29,24 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class FragmentListDaysExpandable extends Fragment
 {
-    View parentView;
-    ExpandableListView listView;
-    private ArrayList<String> list_days;
-    private ArrayList<ArrayList<LogEntry>> activities;
-
+    private View parentView;
+    private static ExpandableListView listView;
+    private static ArrayList<String> list_days;
+    private static ArrayList<ArrayList<LogEntry>> activities;
+    private static Activity activityThis;
     public FragmentListDaysExpandable()
     {
 
+    }
+
+
+    public static ExpandableListView getListView()
+    {
+        return listView;
+    }
+    public static Activity getActivityUpdate()
+    {
+        return activityThis;
     }
 
     @Override
@@ -42,8 +55,17 @@ public class FragmentListDaysExpandable extends Fragment
 
 
     }
+    public static ArrayList<String> getList_days()
+    {
+        return list_days;
+    }
 
-    private int organize()
+    public static ArrayList<ArrayList<LogEntry>> getActivities()
+    {
+        return activities;
+    }
+
+    public static int organize()
     {
         list_days = new ArrayList<String>();
         activities = new ArrayList<ArrayList<LogEntry>>();
@@ -116,118 +138,11 @@ public class FragmentListDaysExpandable extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        activityThis = getActivity();
         if(organize() == 0) ;//success;
-
         listView = (ExpandableListView) view.findViewById(R.id.list_days);
-        listView.setAdapter(new ExpandableListAdapter(list_days, activities));
+        listView.setAdapter(new ExpandableListAdapterFitness(getActivity(), list_days, activities));
 
-    }
-    //Todo: Reload the view
-
-    public class ExpandableListAdapter extends BaseExpandableListAdapter
-    {
-        private final LayoutInflater inflater;
-        private ArrayList<String> groups;
-        private ArrayList<ArrayList<LogEntry>> children;
-
-        public ExpandableListAdapter(ArrayList<String> groups, ArrayList<ArrayList<LogEntry>>children)
-        {
-            this.groups = groups;
-            this.children = children;
-            inflater = LayoutInflater.from(getActivity());
-        }
-
-        @Override
-        public int getGroupCount() {
-            return groups.size();
-        }
-
-        @Override
-        public int getChildrenCount(int groupPosition) {
-            return children.get(groupPosition).size();
-        }
-
-        @Override
-        public Object getGroup(int groupPosition) {
-            return groups.get(groupPosition);
-        }
-
-        @Override
-        public Object getChild(int groupPosition, int childPosition) {
-            return children.get(groupPosition).get(childPosition);
-        }
-
-        @Override
-        public long getGroupId(int groupPosition) {
-            return groupPosition;
-        }
-
-        @Override
-        public long getChildId(int groupPosition, int childPosition) {
-            return childPosition;
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-        @Override
-        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
-            if(convertView == null)
-            {
-                convertView = inflater.inflate(R.layout.fragment_date, parent, false);
-                TextView activity_date = (TextView) convertView.findViewById(R.id.logEntryDate);
-                activity_date.setText(getGroup(groupPosition).toString());
-            }
-            return convertView;
-        }
-
-        @Override
-        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
-            if(convertView == null)
-            {
-                convertView = inflater.inflate(R.layout.activity_date, parent, false);
-
-                LogEntry child = (LogEntry) getChild(groupPosition, childPosition);
-
-                TextView activityView = (TextView) convertView.findViewById(R.id.activity_date);
-                activityView.setText(child.getActivity());
-
-                if(!child.getSubType().equals("")) {
-                    TextView subTypeView = new TextView(getActivity());
-                    subTypeView.setText(child.getSubType());
-                    ((RelativeLayout) convertView).addView(subTypeView);
-                }
-
-                if(!child.getFirstDropdown().equals("")) {
-                    TextView firstView = new TextView(getActivity());
-                    firstView.setText(child.getFirstDropdown());
-                    ((RelativeLayout) convertView).addView(firstView);
-                }
-
-                if(!child.getSecondDrop().equals("")) {
-                    TextView secondView = new TextView(getActivity());
-                    secondView.setText(child.getSecondDrop());
-                    ((RelativeLayout) convertView).addView(secondView);
-                }
-
-                if(!child.getThirdDrop().equals("")) {
-                    TextView thirdView = new TextView(getActivity());
-                    thirdView.setText(child.getThirdDrop());
-                    ((RelativeLayout) convertView).addView(thirdView);
-                }
-            }
-
-            return convertView;
-        }
-
-        @Override
-        public boolean isChildSelectable(int groupPosition, int childPosition) {
-            return true;
-        }
     }
 
 }
