@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/add_activity"
     android:layout_marginBottom="30dp"
     android:layout_marginEnd="30dp"
     android:layout_marginLeft="30dp"
@@ -26,6 +27,7 @@
         android:layout_marginLeft="33dp"
         android:layout_marginStart="33dp"
         android:id="@+id/add_sleep"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <TextView
@@ -38,6 +40,7 @@
         android:layout_marginLeft="42dp"
         android:layout_marginStart="42dp"
         android:id="@+id/add_weight"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <TextView
@@ -49,6 +52,7 @@
         android:layout_below="@+id/add_nutrition"
         android:layout_alignLeft="@+id/add_nutrition"
         android:layout_alignStart="@+id/add_nutrition"
+        android:textStyle="bold"
         android:layout_marginTop="54dp" />
 
     <Button
@@ -73,5 +77,6 @@
         android:layout_marginTop="22dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:textStyle="bold"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

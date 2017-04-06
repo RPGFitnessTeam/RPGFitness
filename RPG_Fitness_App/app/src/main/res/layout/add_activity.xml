@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/add_fitness_activity"
+    android:background="@color/add_activity"
     android:paddingBottom="40dp"
     android:paddingEnd="40dp"
     android:paddingLeft="40dp"
