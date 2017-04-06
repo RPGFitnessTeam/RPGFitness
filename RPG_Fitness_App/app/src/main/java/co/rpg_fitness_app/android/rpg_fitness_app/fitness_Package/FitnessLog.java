@@ -10,22 +10,22 @@ import java.util.Calendar;
 
 public class FitnessLog {
 
-    static DataSource mDataSource;
 
-    public FitnessLog(Context context)
+    private static ArrayList<LogEntry> logEntries;
+
+    public FitnessLog(ArrayList<LogEntry> data)
     {
-        mDataSource = new DataSource(context);
-        mDataSource.open();
+        logEntries = data;
     }
 
     public static ArrayList<LogEntry> retrieveLogEntries()
     {
-        return mDataSource.getAllLogEntries();
+        return logEntries;
     }
-    public static void addNewLogEntry(LogEntry newLog)
-    {
-        mDataSource.insertLogEntry(newLog);
 
+    public static void update(ArrayList<LogEntry> newdata)
+    {
+        logEntries = newdata;
     }
 
 }
