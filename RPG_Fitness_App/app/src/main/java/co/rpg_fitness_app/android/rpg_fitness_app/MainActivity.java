@@ -13,9 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.MainActivityFitness;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         mfitnessLogMainButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent startIntent = new Intent(MainActivity.this, MainActivityFitness.class);
+                Intent startIntent = new Intent(MainActivity.this, Main_FitnessLog.class);
                 startActivity(startIntent);
             }
         });
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
 
  
-    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if(resultCode == KINGDOM_ACTIVITY_RETURN) {
             //kingdom = (Kingdom) data.getSerializableExtra("kingdom");
@@ -138,6 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
             }
         }
-    }*/
+    }
 
 }

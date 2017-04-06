@@ -43,7 +43,7 @@ public class AddGoalThirdDrop extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rV = inflater.inflate(R.layout.add_activity, container, false);
-
+/*
         int[] thirdDrop = LogEntry.getThirdDropdownValues(this.activity, this.subType);
         for(int i = 0; i < thirdDrop.length; i++)
         {
@@ -54,7 +54,7 @@ public class AddGoalThirdDrop extends DialogFragment {
             ( (LinearLayout) rV).addView(box);
 
         }
-
+*/
         return rV;
     }
 
@@ -68,9 +68,11 @@ public class AddGoalThirdDrop extends DialogFragment {
 
                 LogEntry new_log = new LogEntry("ID", activity);
                 new_log.setSubtype(subType);
+                /*
                 if(activity == 0) {
                     new_log.setFirstDropdownValues(LogEntry.getFirstDropdownValues(activity, subType)[firstDrop]);
                 }
+                */
                 new_log.setSecondDropdownValues(button.getId());
                 new_log.setThirdDropdownValues(button.getId());
                 new_log.setDate(Calendar.getInstance().getTimeInMillis());
