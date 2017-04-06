@@ -15,13 +15,14 @@ public class FitnessLog {
     {
         /* Todo: retrieve activities from Data Base */
         activities = new ArrayList<LogEntry>();
-        //Todo: initialization
+       /* Testing Only
         LogEntry initial = new LogEntry("ID", 0);
         initial.setDate((Calendar.getInstance().getTimeInMillis()));
         activities.add(initial);
         initial = new LogEntry("1", 1);
         initial.setDate(Calendar.getInstance().getTimeInMillis());
         activities.add(initial);
+        */
     }
 
     public static ArrayList<LogEntry> retrieveLogEntries()
