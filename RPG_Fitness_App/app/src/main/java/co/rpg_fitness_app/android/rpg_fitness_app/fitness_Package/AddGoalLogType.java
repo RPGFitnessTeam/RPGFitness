@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
-
 /**
  * Created by duya on 4/4/17.
  */
