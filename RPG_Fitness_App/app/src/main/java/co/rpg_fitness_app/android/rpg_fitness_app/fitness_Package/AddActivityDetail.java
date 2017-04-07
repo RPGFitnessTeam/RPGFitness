@@ -134,7 +134,7 @@ public class AddActivityDetail extends DialogFragment {
 
                 DataSource mDatasource = new DataSource(getActivity());
                 mDatasource.open();
-                System.out.println(new_log.getSubType() + new_log.getFirstDropdown() + new_log.getDate() + "");
+              //  System.out.println(new_log.getSubTypeInt() + new_log.getFirstDropdown() + new_log.getDate() + new_log.getDate() +"");
                 mDatasource.insertLogEntry(new_log);
                 FitnessLog.update(mDatasource.getAllLogEntries());
                 dismiss();
@@ -142,7 +142,7 @@ public class AddActivityDetail extends DialogFragment {
                 //Update the ListView
                 ExpandableListView ref = FragmentListDaysExpandable.getListView();
                 Activity act = FragmentListDaysExpandable.getActivityUpdate();
-                FragmentListDaysExpandable.organize();
+                FragmentListDaysExpandable.organize(mDatasource.getAllLogEntries());
                 ref.setAdapter(new ExpandableListAdapterFitness
                         (act, FragmentListDaysExpandable.getList_days(),
                                 FragmentListDaysExpandable.getActivities() ));
