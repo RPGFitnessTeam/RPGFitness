@@ -64,7 +64,7 @@ public class GoalActive extends AppCompatActivity {
 }
 
         //Add new LogEntry
-        ((Button) findViewById(R.id.button_create_goal)).setOnClickListener(
+       /* ((Button) findViewById(R.id.button_create_goal)).setOnClickListener(
                 new Button.OnClickListener()
                 {
                     @Override
@@ -76,8 +76,8 @@ public class GoalActive extends AppCompatActivity {
                     }
                 }
 
-        );
+        );*/
 
-    }
-}
+ /*   }
+}*/
 

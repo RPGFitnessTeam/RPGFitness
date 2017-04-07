@@ -45,7 +45,7 @@ public class Edit_Goal_Pop_Up extends AppCompatActivity{
         int height = dm.heightPixels;
 
         Goal goal = (Goal)this.getIntent().getSerializableExtra("goal");
-        Integer activity = goal.getGoalActivity().getActivity();
+        String activity = goal.getGoalActivity().getActivity();
         final Integer currValue = goal.getCurrentValue();
         Integer goalValue = goal.getEndValue();
 
@@ -73,7 +73,20 @@ public class Edit_Goal_Pop_Up extends AppCompatActivity{
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fitDropDown.setAdapter(myAdapter);
-        fitDropDown.setSelection(activity - 1);
+        switch(activity) {
+            case "Exercise":
+                fitDropDown.setSelection(0);
+                break;
+            case "Nutrition":
+                fitDropDown.setSelection(1);
+                break;
+            case "Sleep":
+                fitDropDown.setSelection(2);
+                break;
+            case "Weight":
+                fitDropDown.setSelection(3);
+                break;
+        }
 
 
         currVal = (EditText)findViewById(R.id.currentValueEdit);
@@ -84,16 +97,16 @@ public class Edit_Goal_Pop_Up extends AppCompatActivity{
 
 
         switch(activity) {
-            case 1:
+            case "Exercise":
                 subTypes.setAdapter(exAdapter);
                 break;
-            case 2:
+            case "Nutrition":
                 subTypes.setAdapter(nutrAdapter);
                 break;
-            case 3:
+            case "Sleep":
                 subTypes.setAdapter(sleepAdapter);
                 break;
-            case 4:
+            case "Weight":
                 subTypes.setAdapter(weightAdapter);
                 break;
         }
