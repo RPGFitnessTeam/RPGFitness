@@ -10,7 +10,7 @@ public class LogEntryTable {
     public static final String COLUMN_ID = "LogEntryID";
     public static final String COLUMN_DATE = "LogEntryDate";
     public static final String COLUMN_ACTIVITY = "LogEntryActivity";
-    public static final String COLUMN_SUB_TYPE = "LogEntrySubTybe";
+    public static final String COLUMN_SUB_TYPE = "LogEntrySubType";
     public static final String COLUMN_DURATION = "Duration";
     public static final String COLUMN_DISTANCE = "Distance";
     public static final String COLUMN_COUNT = "Count";
