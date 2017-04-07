@@ -2,10 +2,14 @@ package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 
 
+import java.io.Serializable;
+
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LogEntry {
+public class LogEntry implements Serializable{
 
     final int EXERCISE = 0;
     final int RECREATION = 0;

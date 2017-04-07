@@ -40,9 +40,9 @@ public class TipMaster extends AppCompatActivity {
             for (String category : parentTips) {
                 fitCategories.add(category);
             }
-            childList.put(fitCategories.get(0), nutritionTipList);
-            childList.put(fitCategories.get(1), sleepTipList);
-            childList.put(fitCategories.get(2), exerciseTipList);
+            childList.put(fitCategories.get(0), exerciseTipList);
+            childList.put(fitCategories.get(1), nutritionTipList);
+            childList.put(fitCategories.get(2), sleepTipList);
             childList.put(fitCategories.get(3), weightTipList);
             tipAdapter adapt = new tipAdapter(this, fitCategories, childList);
             expandableListView.setAdapter(adapt);
@@ -72,21 +72,6 @@ public class TipMaster extends AppCompatActivity {
                     return true;
                 }
                 return false;
-            }
-            public boolean getNextExcerciseTip() {
-                return true;
-            }
-            public boolean getNextNutritionTip() {
-                return true;
-            }
-            public boolean getNextWeightTip() {
-                return true;
-            }
-            public boolean getNextSleepTip() {
-                return true;
-            }
-            public boolean getNextRandomTip() {
-                return true;
             }
 
             // Methods for populating ListView, will be done in the database when it is ready
