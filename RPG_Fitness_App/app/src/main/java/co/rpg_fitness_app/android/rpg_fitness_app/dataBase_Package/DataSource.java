@@ -22,6 +22,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.Quest;
 
 // TODO: Start Building Unit Tests
 // TODO: Add sample objects to the database
@@ -39,7 +40,7 @@ public class DataSource {
     }
 
     public void open() {
-        Log.d("TEST", "Opening DB!");
+        Log.d("open", "Opening DB!");
         mDatabase = mDbHelper.getWritableDatabase();
     }
 
@@ -52,7 +53,7 @@ public class DataSource {
     }
 
     public void seedDatabase() {
-        Log.d("TEST", "Seeding DB!");
+        Log.d("seedDatabase", "Seeding DB!");
         if (DatabaseUtils.queryNumEntries(mDatabase, BoostTable.TABlE_BOOSTS) == 0
                 && BoostDataProvider.boostList != null) {
             for (Boost boost :
@@ -200,6 +201,7 @@ public class DataSource {
     }
 
     public boolean insertBoost(Boost boost) {
+        if (boost == null) return false;
 
         String compare[] = {boost.getID()};
         Cursor cursor = mDatabase.query(BoostTable.TABlE_BOOSTS, BoostTable.ALL_COLUMNS,
@@ -221,42 +223,63 @@ public class DataSource {
     }
 
     public boolean insertBuilding(Building building) {
-        if (building == null) {
-            return false;
-        }
+        if (building == null) return false;
 
         String compare[] = {building.getId()};
         Cursor cursor = mDatabase.query(BuildingTable.TABLE_BUILDINGS, BuildingTable.ALL_COLUMNS,
                 BuildingTable.COLUMN_ID + "=?", compare, null, null, null);
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() != 0) {
+            Log.d("insertBuilding", "Duplicate ID Found");
             cursor.close();
             return false;
         }
 
-        ContentValues values = new ContentValues(7);
+        ContentValues values = new ContentValues(9);
         values.put(BuildingTable.COLUMN_ID, building.getId());
         values.put(BuildingTable.COLUMN_NAME, building.getName());
-        values.put(BuildingTable.COLUMN_COST, building.getCost().getId());
+
+        if (building.getCost() == null)
+            values.put(BuildingTable.COLUMN_COST, "");
+        else
+            values.put(BuildingTable.COLUMN_COST, building.getCost().getId());
+
         values.put(BuildingTable.COLUMN_CATEGORY, building.getCategory());
         values.put(BuildingTable.COLUMN_TIER, building.getTier());
-        // TODO Need to determine a max number of boosts
-        // values.put(BuildingTable.COLUMN_BOOST, building.getBoost().getID());
+
+        if (building.getGoldBoost() == null)
+            values.put(BuildingTable.COLUMN_GOLD_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_GOLD_BOOST, building.getGoldBoost().getID());
+
+        if (building.getWoodBoost() == null)
+            values.put(BuildingTable.COLUMN_WOOD_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_WOOD_BOOST, building.getWoodBoost().getID());
+
+        if (building.getStoneBoost() == null)
+            values.put(BuildingTable.COLUMN_STONE_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_STONE_BOOST, building.getStoneBoost().getID());
+
         values.put(BuildingTable.COLUMN_IMAGE, building.getImageName());
 
         mDatabase.insert(BuildingTable.TABLE_BUILDINGS, null, values);
         insertCurrency(building.getCost());
-        // TODO Need to determine a max number of boosts
-        // insertBoost(building.getBoost());
+        insertBoost(building.getGoldBoost());
+        insertBoost(building.getWoodBoost());
+        insertBoost(building.getStoneBoost());
 
         cursor.close();
         return true;
     }
 
     public boolean insertCharacter(Character character) {
+        if (character == null) return false;
 
         String compare[] = {character.getID()};
         Cursor cursor = mDatabase.query(CharacterTable.TABLE_CHARACTER, CharacterTable.ALL_COLUMNS,
                 CharacterTable.COLUMN_ID + "=?", compare, null, null, null);
+
         if (cursor.getCount() > 0) {
             cursor.close();
             return false;
@@ -265,8 +288,16 @@ public class DataSource {
         ContentValues values = new ContentValues(4);
         values.put(CharacterTable.COLUMN_ID, character.getID());
         values.put(CharacterTable.COLUMN_NAME, character.getName());
-        values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
-        values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
+
+        if (character.getSpecies() == null)
+            values.put(CharacterTable.COLUMN_SPECIES, "");
+        else
+            values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
+
+        if (character.getCurrency() == null)
+            values.put(CharacterTable.COLUMN_CURRENCY, "");
+        else
+            values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
 
         mDatabase.insert(CharacterTable.TABLE_CHARACTER, null, values);
         insertCurrency(character.getCurrency());
@@ -277,6 +308,7 @@ public class DataSource {
     }
 
     public boolean insertCurrency(Currency currency) {
+        if (currency == null) return false;
 
         String compare[] = {currency.getId()};
         Cursor cursor = mDatabase.query(CurrencyTable.TABLE_CURRENCY, CurrencyTable.ALL_COLUMNS,
@@ -302,12 +334,13 @@ public class DataSource {
     }
 
     public boolean insertGear(Gear gear) {
+        if (gear == null) return false;
 
         String compare[] = {gear.getID()};
         Cursor cursor = mDatabase.query(GearTable.TABLE_GEAR, GearTable.ALL_COLUMNS,
                 GearTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() != 0) {
             cursor.close();
             return false;
         }
@@ -316,8 +349,17 @@ public class DataSource {
         values.put(GearTable.COLUMN_ID, gear.getID());
         values.put(GearTable.COLUMN_NAME, gear.getName());
         values.put(GearTable.COLUMN_CATEGORY, gear.getCategory());
-        values.put(GearTable.COLUMN_COST, gear.getCost().getId());
-        values.put(GearTable.COLUMN_BOOST, gear.getBoost().getID());
+
+        if (gear.getCost() == null)
+            values.put(GearTable.COLUMN_COST, "");
+        else
+            values.put(GearTable.COLUMN_COST, gear.getCost().getId());
+
+        if (gear.getBoost() == null)
+            values.put(GearTable.COLUMN_BOOST, "");
+        else
+            values.put(GearTable.COLUMN_BOOST, gear.getBoost().getID());
+
         values.put(GearTable.COLUMN_OWNED, gear.isOwned() ? 1 : 0);
         values.put(GearTable.COLUMN_EQUIPPED, gear.isEquipped() ? 1 : 0);
         values.put(GearTable.COLUMN_IMAGE, gear.getImageName());
@@ -331,6 +373,7 @@ public class DataSource {
     }
 
     public boolean insertGoal(Goal goal) {
+        if (goal == null) return false;
 
         String compare[] = {goal.getGoalId()};
         Cursor cursor = mDatabase.query(GoalTable.TABLE_GOAL, GoalTable.ALL_COLUMNS,
@@ -343,7 +386,12 @@ public class DataSource {
 
         ContentValues values = new ContentValues(8);
         values.put(GoalTable.COLUMN_ID, goal.getGoalId());
-        values.put(GoalTable.COLUMN_ACTIVITY, goal.getGoalActivity().getID());
+
+        if (goal.getGoalActivity() == null)
+            values.put(GoalTable.COLUMN_ACTIVITY, "");
+        else
+            values.put(GoalTable.COLUMN_ACTIVITY, goal.getGoalActivity().getID());
+
         values.put(GoalTable.COLUMN_START_VALUE, goal.getStartValue());
         values.put(GoalTable.COLUMN_CURRENT_VALUE, goal.getCurrentValue());
         values.put(GoalTable.COLUMN_END_VALUE, goal.getEndValue());
@@ -352,28 +400,37 @@ public class DataSource {
         values.put(GoalTable.COLUMN_MASTER, goal.isMasterQuest() ? 1 : 0);
 
         mDatabase.insert(GoalTable.TABLE_GOAL, null, values);
+        insertLogEntry(goal.getGoalActivity());
 
         cursor.close();
         return true;
     }
 
     public boolean insertKingdom(Kingdom kingdom) {
+        if (kingdom == null) return false;
 
         Cursor cursor = null;
+        ArrayList<Tile> grid = kingdom.getMyGrid();
 
-        for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+        if (grid == null) {
+            for (int i = 0; i < 20; i++) {
+                grid.add(i, new Tile(i));
+            }
+        }
+
+        for (int i = 0; i < grid.size(); i++) {
+            Log.d("TEST", "Insert Kingdom iteration "+i);
             String compare[] = {""+i};
             cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
                     KingdomTable.COLUMN_TILE_POS + "=?", compare, null, null, null);
 
             if (cursor.getCount() == 0) {
                 ContentValues values = new ContentValues(2);
-                values.put(KingdomTable.COLUMN_TILE_POS, i);
-                values.put(KingdomTable.COLUMN_TILE,
-                        kingdom.getMyGrid().get(i).getId());
+                values.put(KingdomTable.COLUMN_TILE_POS, grid.get(i).getTileNumber());
+                values.put(KingdomTable.COLUMN_TILE, grid.get(i).getId());
 
                 mDatabase.insert(KingdomTable.TABLE_KINGDOM, null, values);
-                insertTile(kingdom.getMyGrid().get(i));
+                insertTile(grid.get(i));
             }
         }
 
@@ -382,12 +439,13 @@ public class DataSource {
     }
 
     public boolean insertLogEntry(LogEntry logEntry) {
+        if (logEntry == null) return false;
 
         String compare[] = {logEntry.getID()};
         Cursor cursor = mDatabase.query(LogEntryTable.TABLE_LOG_ENTRY, LogEntryTable.ALL_COLUMNS,
                 LogEntryTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() != 0) {
             cursor.close();
             return false;
         }
@@ -408,11 +466,10 @@ public class DataSource {
         cursor.close();
         return true;
     }
-    // TODO Still don't have quests
     /*
     public boolean insertQuest(Quest quest) {
 
-        String compare[] = {quest.getID()};
+        String compare[] = {quest.getQ()};
         Cursor cursor = mDatabase.query(QuestTable.TABLE_QUEST, QuestTable.ALL_COLUMNS,
                 QuestTable.COLUMN_ID + "=?", compare, null, null, null);
 
@@ -422,10 +479,10 @@ public class DataSource {
         }
 
         ContentValues values = new ContentValues(10);
-        values.put(QuestTable.COLUMN_ID, quest.getID());
+        values.put(QuestTable.COLUMN_ID, quest.getId());
         values.put(QuestTable.COLUMN_NAME, quest.getName());
         values.put(QuestTable.COLUMN_DESCRIPTION, quest.getDescription());
-        values.put(QuestTable.COLUMN_REWARD, quest.getReward().getID());
+        values.put(QuestTable.COLUMN_REWARD, quest.getReward().getId());
         values.put(QuestTable.COLUMN_TIME_REMAINING, quest.getTimeRemains());
         values.put(QuestTable.COLUMN_START, quest.getQuestStart());
         values.put(QuestTable.COLUMN_COMPLETE, quest.isQuestComplete() ? 1 : 0);
@@ -444,12 +501,13 @@ public class DataSource {
     }
     */
     public boolean insertSpecies(Species species) {
+        if (species == null) return false;
 
         String compare[] = {species.getID()};
         Cursor cursor = mDatabase.query(SpeciesTable.TABLE_SPECIES, SpeciesTable.ALL_COLUMNS,
                 SpeciesTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() != 0) {
             cursor.close();
             return false;
         }
@@ -467,27 +525,36 @@ public class DataSource {
     }
 
     public boolean insertTile(Tile tile) {
-
+        if (tile == null) {
+            Log.d("TEST", "FAILED TO INSERT TILE");
+            return false;
+        }
+        Log.d("TEST", "Inserting Tile");
         String compare[] = {tile.getId()};
         Cursor cursor = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
         if (cursor.getCount() > 0) {
             cursor.close();
+            Log.d("TEST", "Duplicate Tile ID found when inserting tile");
             return false;
         }
 
-        ContentValues values = new ContentValues(5);
+        ContentValues values = new ContentValues(6);
         values.put(TileTable.COLUMN_ID, tile.getId());
+        values.put(TileTable.COLUMN_POSITION, tile.getTileNumber());
         values.put(TileTable.COLUMN_LOCKED, tile.isLocked() ? 1 : 0);
+
         if (tile.getMyBuilding() == null)
             values.put(TileTable.COLUMN_BUILDING, "");
         else
             values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
+
         if (tile.getTileCost() == null)
             values.put(TileTable.COLUMN_COST, "");
         else
             values.put(TileTable.COLUMN_COST, tile.getTileCost().getId());
+
         values.put(TileTable.COLUMN_IMAGE, tile.getImageName());
 
         mDatabase.insert(TileTable.TABLE_TILE, null, values);
@@ -499,12 +566,13 @@ public class DataSource {
     }
 
     public boolean insertTip(Tips tip) {
+        if (tip == null) return false;
 
         String compare[] = {tip.getId()};
         Cursor cursor = mDatabase.query(TipsTable.TABLE_TIPS, TipsTable.ALL_COLUMNS,
                 TipsTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() != 0) {
             cursor.close();
             return false;
         }
@@ -515,7 +583,6 @@ public class DataSource {
         values.put(TipsTable.COLUMN_VISITED, tip.isBeenVisited() ? 1 : 0);
         values.put(TipsTable.COLUMN_THUMBS_UP, tip.isThumbsUp() ? 1 : 0);
         values.put(TipsTable.COLUMN_THUMBS_DOWN, tip.isThumbsDown() ? 1 : 0);
-        // values.put(TipsTable.COLUMN_URL, tip.getURL());
 
         mDatabase.insert(TipsTable.TABLE_TIPS, null, values);
 
@@ -573,9 +640,12 @@ public class DataSource {
                     cursor.getColumnIndex(BuildingTable.COLUMN_CATEGORY)));
             building.setTier(cursor.getInt(
                     cursor.getColumnIndex(BuildingTable.COLUMN_TIER)));
-            // TODO Need to set number of boosts per building
-            // building.setBoost(getBoost(cursor.getString(
-            //         cursor.getColumnIndex(BuildingTable.COLUMN_BOOST))));
+            building.setGoldBoost(getBoost(cursor.getString(
+                    cursor.getColumnIndex(BuildingTable.COLUMN_GOLD_BOOST))));
+            building.setWoodBoost(getBoost(cursor.getString(
+                    cursor.getColumnIndex(BuildingTable.COLUMN_WOOD_BOOST))));
+            building.setStoneBoost(getBoost(cursor.getString(
+                    cursor.getColumnIndex(BuildingTable.COLUMN_STONE_BOOST))));
             building.setImageName(cursor.getString(
                     cursor.getColumnIndex(BuildingTable.COLUMN_IMAGE)));
             buildings.add(building);
@@ -719,37 +789,55 @@ public class DataSource {
     }
 
     public Kingdom getAllKingdoms() {
+        Log.d("getAllKingdoms", "Getting Kingdom");
         Kingdom kingdom = new Kingdom();
 
         Cursor cursor = null;
         Cursor cursor2 = null;
         cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
                 null, null, null, null, KingdomTable.COLUMN_TILE_POS);
+        Log.d("getAllKingdoms", "Cursor count in kingdom get "+cursor.getCount());
 
         if (cursor.getCount() == 0) {
+            Log.d("getAllKingdoms", "Could not find kingdom");
             cursor.close();
             return null;
         }
 
         ArrayList<Tile> tempGrid = new ArrayList<Tile>();
+        int pos = 0;
         while (cursor.moveToNext()) {
+            Log.d("getAllKingdoms", "Get kingdom iteration count: " + pos);
             String compare[] = {cursor.getString(
                     cursor.getColumnIndex(KingdomTable.COLUMN_TILE))};
 
             cursor2 = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                     TileTable.COLUMN_ID + "=?", compare, null, null, null);
-            if (cursor.getCount() == 1) {
+
+            if (cursor2.getCount() == 1) {
+                Log.d("getAllKingdoms", "Found tile!");
                 Tile tile = new Tile();
-                tile.setId(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_ID)));
-                tile.setLocked(cursor.getInt(
-                        cursor.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
-                tile.setMyBuilding(getBuilding(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_BUILDING))));
-                tile.setTileCost(getCurrency(cursor.getString(
-                        cursor.getColumnIndex(TileTable.COLUMN_COST))));
+
+                cursor2.moveToFirst();
+
+                tile.setId(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_ID)));
+                tile.setTileNumber(cursor2.getInt(
+                        cursor2.getColumnIndex(TileTable.COLUMN_POSITION)));
+                tile.setLocked(cursor2.getInt(
+                        cursor2.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
+                tile.setMyBuilding(getBuilding(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_BUILDING))));
+                tile.setTileCost(getCurrency(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_COST))));
+                tile.setImageName(cursor2.getString(
+                        cursor2.getColumnIndex(TileTable.COLUMN_IMAGE)));
                 tempGrid.add(tile);
+            } else {
+                Tile newTile = new Tile(pos);
+                tempGrid.add(newTile);
             }
+            pos++;
         }
         kingdom.setMyGrid(tempGrid);
         cursor.close();
@@ -765,8 +853,9 @@ public class DataSource {
                 null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            LogEntry logEntry = new LogEntry(cursor.getInt(
-                    cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
+            LogEntry logEntry = new LogEntry(
+                    cursor.getString(cursor.getColumnIndex(LogEntryTable.COLUMN_ID)),
+                    cursor.getInt(cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
 
             logEntry.setID(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
@@ -868,9 +957,12 @@ public class DataSource {
         }
 
         while (cursor.moveToNext()) {
+            Log.d("getAllTiles", "Tile found");
             Tile tile = new Tile();
             tile.setId(cursor.getString(
                     cursor.getColumnIndex(TileTable.COLUMN_ID)));
+            tile.setTileNumber(cursor.getInt(
+                    cursor.getColumnIndex(TileTable.COLUMN_POSITION)));
             tile.setLocked(cursor.getInt(
                     cursor.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
             tile.setMyBuilding(getBuilding(cursor.getString(
@@ -967,9 +1059,12 @@ public class DataSource {
                 cursor.getColumnIndex(BuildingTable.COLUMN_CATEGORY)));
         building.setTier(cursor.getInt(
                 cursor.getColumnIndex(BuildingTable.COLUMN_TIER)));
-        // TODO Need to set Boost numbers to 3
-        // building.setBoost(getBoost(cursor.getString(
-        //         cursor.getColumnIndex(BuildingTable.COLUMN_BOOST))));
+        building.setGoldBoost(getBoost(cursor.getString(
+                cursor.getColumnIndex(BuildingTable.COLUMN_GOLD_BOOST))));
+        building.setWoodBoost(getBoost(cursor.getString(
+                cursor.getColumnIndex(BuildingTable.COLUMN_WOOD_BOOST))));
+        building.setStoneBoost(getBoost(cursor.getString(
+                cursor.getColumnIndex(BuildingTable.COLUMN_STONE_BOOST))));
         building.setImageName(cursor.getString(
                 cursor.getColumnIndex(BuildingTable.COLUMN_IMAGE)));
 
@@ -1019,7 +1114,6 @@ public class DataSource {
         }
 
         cursor.moveToFirst();
-
         Currency currency = new Currency();
         currency.setId(cursor.getString(
                 cursor.getColumnIndex(CurrencyTable.COLUMN_ID)));
@@ -1054,7 +1148,6 @@ public class DataSource {
         }
 
         cursor.moveToFirst();
-
         Gear gear = new Gear();
         gear.setID(cursor.getString(
                 cursor.getColumnIndex(GearTable.COLUMN_ID)));
@@ -1091,7 +1184,6 @@ public class DataSource {
         }
 
         cursor.moveToFirst();
-
         Goal goal = new Goal();
         goal.setGoalId(cursor.getString(
                 cursor.getColumnIndex(GoalTable.COLUMN_ID)));
@@ -1128,9 +1220,9 @@ public class DataSource {
         }
 
         cursor.moveToFirst();
-
-        LogEntry logEntry = new LogEntry(cursor.getInt(
-                cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
+        LogEntry logEntry = new LogEntry(
+                cursor.getString(cursor.getColumnIndex(LogEntryTable.COLUMN_ID)),
+                cursor.getInt(cursor.getColumnIndex(LogEntryTable.COLUMN_ACTIVITY)));
 
         logEntry.setID(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
@@ -1229,19 +1321,20 @@ public class DataSource {
         Cursor cursor = mDatabase.query(TileTable.TABLE_TILE, TileTable.ALL_COLUMNS,
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
-        if (cursor.getCount() == 0) {
+        if (cursor.getCount() <= 0) {
+            Log.d("getTile", "TILE NOT FOUND IN GET TILE");
             cursor.close();
             return null;
         } else if (cursor.getCount() > 1) {
             System.out.println("Duplicated ID found! "+ID);
             return null;
         }
-
         cursor.moveToFirst();
-
         Tile tile = new Tile();
         tile.setId(cursor.getString(
                 cursor.getColumnIndex(TileTable.COLUMN_ID)));
+        tile.setTileNumber(cursor.getInt(
+                cursor.getColumnIndex(TileTable.COLUMN_POSITION)));
         tile.setLocked(cursor.getInt(
                 cursor.getColumnIndex(TileTable.COLUMN_LOCKED)) == 1);
         tile.setMyBuilding(getBuilding(cursor.getString(
@@ -1309,7 +1402,8 @@ public class DataSource {
         values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
         values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
 
-        mDatabase.update(CharacterTable.TABLE_CHARACTER, values, "CharacterID=?", new String[]{character.getID()});
+        mDatabase.update(CharacterTable.TABLE_CHARACTER, values, CharacterTable.COLUMN_ID+"=?",
+                new String[]{character.getID()});
         updateCurrency(character.getCurrency());
 
         cursor.close();
@@ -1344,7 +1438,7 @@ public class DataSource {
         values.put(GoalTable.COLUMN_GAPS, goal.doesAllowGaps() ? 1 : 0);
         values.put(GoalTable.COLUMN_MASTER, goal.isMasterQuest() ? 1 : 0);
 
-        mDatabase.update(GoalTable.TABLE_GOAL, values, "GoalID=?", new String[]{goal.getGoalId()});
+        mDatabase.update(GoalTable.TABLE_GOAL, values, GoalTable.COLUMN_ID+"=?", new String[]{goal.getGoalId()});
 
         cursor.close();
         return true;
@@ -1376,7 +1470,8 @@ public class DataSource {
         values.put(CurrencyTable.COLUMN_MISC2, currency.getMisc2());
         values.put(CurrencyTable.COLUMN_MISC3, currency.getMisc3());
 
-        mDatabase.update(CurrencyTable.TABLE_CURRENCY, values, "CurrencyID=?", new String[]{currency.getId()});
+        mDatabase.update(CurrencyTable.TABLE_CURRENCY, values, CurrencyTable.COLUMN_ID+"=?",
+                new String[]{currency.getId()});
         cursor.close();
         return true;
     }
@@ -1409,7 +1504,7 @@ public class DataSource {
         values.put(GearTable.COLUMN_EQUIPPED, gear.isEquipped() ? 1 : 0);
         values.put(GearTable.COLUMN_IMAGE, gear.getImageName());
 
-        mDatabase.update(GearTable.TABLE_GEAR, values, "GearID=?", new String[]{gear.getID()});
+        mDatabase.update(GearTable.TABLE_GEAR, values, GearTable.COLUMN_ID+"=?", new String[]{gear.getID()});
         updateCurrency(gear.getCost());
 
         cursor.close();
@@ -1417,10 +1512,10 @@ public class DataSource {
     }
 
     public boolean updateTile(Tile tile) {
-        Log.d("TEST", "Updating Tile!");
+        Log.d("updateTile", "Updating Tile!");
 
         if (tile == null) {
-            Log.d("TEST", "Tile reference null!!");
+            Log.d("updateTile", "Tile reference null!!");
             return false;
         }
 
@@ -1429,43 +1524,44 @@ public class DataSource {
                 TileTable.COLUMN_ID + "=?", compare, null, null, null);
 
         if (cursor.getCount() <= 0) {
-            Log.d("TEST", "Tile doesn't exist, insert");
+            Log.d("updateTile", "Tile doesn't exist, insert");
             insertTile(tile);
             cursor.close();
             return false;
         } else if (cursor.getCount() > 1) {
-            Log.d("TEST", "Duplicate Tile Pos");
+            Log.d("updateTile", "Duplicate Tile Pos");
             cursor.close();
             return false;
         }
 
-        ContentValues values = new ContentValues(5);
+        ContentValues values = new ContentValues(6);
         values.put(TileTable.COLUMN_ID, tile.getId());
+        values.put(TileTable.COLUMN_POSITION, tile.getTileNumber());
         values.put(TileTable.COLUMN_LOCKED, tile.isLocked() ? 1 : 0);
         if (tile.getMyBuilding() != null) {
             values.put(TileTable.COLUMN_BUILDING, tile.getMyBuilding().getId());
-            Log.d("TEST", "Tile has building");
+            Log.d("updateTile", "Tile has building");
         } else {
             values.put(TileTable.COLUMN_BUILDING, "");
-            Log.d("TEST", "Tile doesn't have building");
+            Log.d("updateTile", "Tile doesn't have building");
         }
         values.put(TileTable.COLUMN_COST, tile.getTileCost().getId());
         values.put(TileTable.COLUMN_IMAGE, tile.getImageName());
 
-        mDatabase.update(TileTable.TABLE_TILE, values, "TileID=?", new String[]{tile.getId()});
+        mDatabase.update(TileTable.TABLE_TILE, values, TileTable.COLUMN_ID+"=?", new String[]{tile.getId()});
         updateCurrency(tile.getTileCost());
 
         Tile tempTile = getTile(tile.getId());
         if (tempTile == null) {
-            Log.d("TEST", "Couldn't find tile!");
+            Log.d("updateTile", "Couldn't find tile!");
         } else {
-            Log.d("TEST", tempTile.getTileNumber()+"");
-            Log.d("TEST", tempTile.getId());
+            Log.d("updateTile", tempTile.getTileNumber()+"");
+            Log.d("updateTile", tempTile.getId());
             if (tempTile.getMyBuilding() != null) {
-                Log.d("TEST", tempTile.getMyBuilding().getName());
+                Log.d("updateTile", tempTile.getMyBuilding().getName());
             }
             else {
-                Log.d("TEST", "null");
+                Log.d("updateTile", "null");
             }
         }
 
@@ -1474,9 +1570,9 @@ public class DataSource {
     }
 
     public boolean updateKingdom(Kingdom kingdom) {
-        Log.d("TEST", "Updating Kingdom!");
+        Log.d("updateKingdom", "Updating Kingdom!");
         if (kingdom == null) {
-            Log.d("TEST", "Kingdom Reference Null!!");
+            Log.d("updateKingdom", "Kingdom Reference Null!!");
             return false;
         }
 
@@ -1484,21 +1580,31 @@ public class DataSource {
         cursor = mDatabase.query(KingdomTable.TABLE_KINGDOM, KingdomTable.ALL_COLUMNS,
             null, null, null, null, KingdomTable.COLUMN_TILE_POS);
 
+        if (cursor.getCount() <= 0) {
+            insertKingdom(kingdom);
+            return false;
+        }
 
-        while(cursor.moveToNext()) {
-            Tile tempTile = getTile(cursor.getString(
-                    cursor.getColumnIndex(KingdomTable.COLUMN_TILE)));
+        for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+            Tile tempTile = kingdom.getMyGrid().get(i);
             if (tempTile != null) {
-                Log.d("TEST", "Temp Tile Found!");
+                Log.d("updateKingdom", "Temp Tile Found!");
                 ContentValues values = new ContentValues(2);
                 values.put(KingdomTable.COLUMN_TILE_POS, tempTile.getTileNumber());
                 values.put(KingdomTable.COLUMN_TILE, tempTile.getId());
 
-                mDatabase.update(KingdomTable.TABLE_KINGDOM, values, "KingdomTilePos=?",
+                mDatabase.update(KingdomTable.TABLE_KINGDOM, values, KingdomTable.COLUMN_TILE_POS+"=?",
                         new String[]{tempTile.getTileNumber() + ""});
-            }
-            else {
-                insertTile(tempTile);
+                updateTile(tempTile);
+            } else {
+                Tile newTile = new Tile(i);
+                ContentValues values = new ContentValues(2);
+                values.put(KingdomTable.COLUMN_TILE_POS, newTile.getTileNumber());
+                values.put(KingdomTable.COLUMN_TILE, newTile.getId());
+
+                mDatabase.update(KingdomTable.TABLE_KINGDOM, values, KingdomTable.COLUMN_TILE_POS+"=?",
+                        new String[]{newTile.getTileNumber() + ""});
+                insertTile(newTile);
             }
         }
 

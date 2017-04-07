@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 public class GoalActive extends AppCompatActivity {
@@ -61,3 +62,22 @@ public class GoalActive extends AppCompatActivity {
     }
 
 }
+
+        //Add new LogEntry
+        ((Button) findViewById(R.id.button_create_goal)).setOnClickListener(
+                new Button.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+
+                        android.app.FragmentManager fm = getFragmentManager();
+                        AddGoalLogType dF = new AddGoalLogType();
+                        dF.show(fm, "idgoal");
+                    }
+                }
+
+        );
+
+    }
+}
+

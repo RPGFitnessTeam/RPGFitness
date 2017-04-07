@@ -10,12 +10,17 @@ import android.widget.TextView;
 
 //import javax.sql.DataSource;
 
+import java.util.ArrayList;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
@@ -39,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("TEST", "Starting APP!");
         mDataSource = new DataSource(this);
+        //mDataSource.upgrade();
         mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
+        //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
@@ -58,15 +64,16 @@ public class MainActivity extends AppCompatActivity {
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getKingdom();
+                //getKingdom();
                 Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
-                startIntent.putExtra("kingdom", kingdom);
-                startIntent.putExtra("buildings", mDataSource.getAllBuildings());
+                //startIntent.putExtra("kingdom", kingdom);
+                //startIntent.putExtra("buildings", mDataSource.getAllBuildings());
                 //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
                 Currency c = new Currency();//TESTING
                 c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
                 startIntent.putExtra("money chest", c);//TESTING
-                startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
+                startActivity(startIntent);
+                //startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
             }
         });
 
@@ -99,21 +106,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mfitnessLogMainButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent startIntent = new Intent(MainActivity.this, Main_FitnessLog.class);
+                startActivity(startIntent);
+            }
+        });
+
     }
 
     private void getKingdom() {
         this.kingdom = mDataSource.getAllKingdoms();
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
-            //mDataSource.insertKingdom(kingdom);
+            mDataSource.insertKingdom(kingdom);
         }
     }
 
+
+ 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if(resultCode == KINGDOM_ACTIVITY_RETURN) {
-            kingdom = (Kingdom) data.getSerializableExtra("kingdom");
-            moneyChest = (Currency) data.getSerializableExtra("money chest");
-            //TODO: update database with returned kingdom and money chest
+            //kingdom = (Kingdom) data.getSerializableExtra("kingdom");
+            //moneyChest = (Currency) data.getSerializableExtra("money chest");
+            //mDataSource.insertKingdom(kingdom)?????
+            ArrayList<Tile> tiles = mDataSource.getAllTiles();
+            for (int i = 0; i < tiles.size(); i++) {
+                Log.d("onActivityResult","Tile number: "+tiles.get(i).getTileNumber());
+                Log.d("onActivityResult","Tile Building: "+tiles.get(i).getMyBuilding());
+                Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
+            }
         }
     }
 
