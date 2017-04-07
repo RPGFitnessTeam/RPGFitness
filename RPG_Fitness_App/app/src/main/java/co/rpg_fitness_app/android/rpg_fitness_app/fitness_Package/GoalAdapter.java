@@ -76,14 +76,14 @@ public class GoalAdapter extends BaseAdapter{
             if (!isEditGoal) {
                 ProgressBar prg = (ProgressBar) v.findViewById(R.id.goalProgress);
                 TextView textView = (TextView) v.findViewById(R.id.goalText);
-                textView.setText(currGoal.getGoalActivity().getTypeName()
+                textView.setText(currGoal.getGoalActivity().getActivity()
                         + ": " + (double) currGoal.getCurrentValue() + "/" + (double) currGoal.getEndValue());
                 prg.setProgress(progress);
             }
             else {
                 ProgressBar prg = (ProgressBar) v.findViewById(R.id.editGoalProgress);
                 Button button = (Button) v.findViewById(R.id.edit_goal_buttons);
-                button.setText(currGoal.getGoalActivity().getTypeName()
+                button.setText(currGoal.getGoalActivity().getActivity()
                         + ": " + (double) currGoal.getCurrentValue() + "/" + (double) currGoal.getEndValue());
                 prg.setProgress(progress);
                 final Goal goal = currGoal;

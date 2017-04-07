@@ -24,11 +24,11 @@ public class Edit_Goal_Main extends AppCompatActivity {
         mToolbar.setTitle("Please Pick a Goal to Edit");
         setSupportActionBar(mToolbar);
         // Example Data. Will be data from database eventually
-        LogEntry lg0 = new LogEntry(UUID.randomUUID().toString(), 2);
-        LogEntry lg1 = new LogEntry(UUID.randomUUID().toString(), 4);
-        LogEntry lg2 = new LogEntry(UUID.randomUUID().toString(), 4);
-        LogEntry lg3 = new LogEntry(UUID.randomUUID().toString(), 1);
-        LogEntry lg4 = new LogEntry(UUID.randomUUID().toString(), 3);
+        LogEntry lg0 = new LogEntry(UUID.randomUUID().toString(), 1);
+        LogEntry lg1 = new LogEntry(UUID.randomUUID().toString(), 3);
+        LogEntry lg2 = new LogEntry(UUID.randomUUID().toString(), 3);
+        LogEntry lg3 = new LogEntry(UUID.randomUUID().toString(), 2);
+        LogEntry lg4 = new LogEntry(UUID.randomUUID().toString(), 2);
         Goal goal = new Goal(lg0, UUID.randomUUID().toString(), 0, 3, 6, false, false, false);
         goalList.add(goal);
         Goal goal1 = new Goal(lg1, UUID.randomUUID().toString(), 0, 1, 4, false, false, false);
