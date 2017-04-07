@@ -453,8 +453,8 @@ public class DataSource {
         ContentValues values = new ContentValues(9);
         values.put(LogEntryTable.COLUMN_ID, logEntry.getID());
         values.put(LogEntryTable.COLUMN_DATE, logEntry.getDate());
-        values.put(LogEntryTable.COLUMN_ACTIVITY, logEntry.getActivity());
-        values.put(LogEntryTable.COLUMN_SUB_TYPE, logEntry.getSubType());
+        values.put(LogEntryTable.COLUMN_ACTIVITY, logEntry.getActivityInt());
+        values.put(LogEntryTable.COLUMN_SUB_TYPE, logEntry.getSubTypeInt());
         values.put(LogEntryTable.COLUMN_DURATION, logEntry.getDuration());
         values.put(LogEntryTable.COLUMN_DISTANCE, logEntry.getDistance());
         values.put(LogEntryTable.COLUMN_COUNT, logEntry.getCount());

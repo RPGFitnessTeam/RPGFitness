@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 public class LogEntry implements Serializable{
 
@@ -31,7 +30,7 @@ public class LogEntry implements Serializable{
     final int CURRENT = 0;
 
     private String ID = null;
-    private long date = -1;
+    private String date = null;
     private int activity = -1;
     private int subType = -1;
     private int duration = -1;
@@ -40,13 +39,6 @@ public class LogEntry implements Serializable{
     private int intensity = -1; // also, quality of sleep
     private int weight = -1;
     private String typeName = "";
-
-    public LogEntry(int activity)
-    {
-        this.ID = UUID.randomUUID().toString();;
-        this.activity = activity;
-        //Todo: set date;
-    }
 
 
     public LogEntry(String ID, int activity)
@@ -93,16 +85,16 @@ public class LogEntry implements Serializable{
     public static String[] getSecondDropdownValues(int activity, int subType)
     {
         String[][][] secondDropdownValues =
-        {{      {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
-                {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
-                {"1 mile","2 mile","3 mile","4 mile","5 mile","6 mile","7 mile","8 mile","9 mile", "10 mile","15mile", "20 mile"},
-                {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"}
-        }, {    {"1","2","3","4","5","6","7","8","9","10"},
-                {"1","2","3","4","5","6","7","8","9","10"},
-                {"1","2","3","4","5","6","7","8","9","10"}
-        }, {    {"1 = very poor", "2 = poor", "3 = fine", "4 = good", "5 = very good"}
-        }, {    {"40 kg","45 kg","50 kg","55 kg", "60 kg", "65 kg", "70 kg","75 kg", "80 kg", "85 kg", "90 kg", "95 kg", "100 kg"}
-        }};
+                {{      {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                        {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                        {"1 mile","2 mile","3 mile","4 mile","5 mile","6 mile","7 mile","8 mile","9 mile", "10 mile","15mile", "20 mile"},
+                        {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"}
+                }, {    {"1","2","3","4","5","6","7","8","9","10"},
+                        {"1","2","3","4","5","6","7","8","9","10"},
+                        {"1","2","3","4","5","6","7","8","9","10"}
+                }, {    {"1 = very poor", "2 = poor", "3 = fine", "4 = good", "5 = very good"}
+                }, {    {"40 kg","45 kg","50 kg","55 kg", "60 kg", "65 kg", "70 kg","75 kg", "80 kg", "85 kg", "90 kg", "95 kg", "100 kg"}
+                }};
 
         return secondDropdownValues[activity][subType];
     }
@@ -152,15 +144,15 @@ public class LogEntry implements Serializable{
     public static String[] getThirdDropdownValues(int activity, int subType)
     {
         String[][][] thirdDropdownValues =
-            {{
-                    {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
-                    {},
-                    {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
-                    {}
-            },      {{}
-            },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
-                    "9 hour", "10 hour", "11 hour", "12 hour", "13 hour", "14 hour", "15 hour"}},
-                    {{}}};
+                {{
+                        {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
+                        {},
+                        {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
+                        {}
+                },      {{}
+                },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
+                        "9 hour", "10 hour", "11 hour", "12 hour", "13 hour", "14 hour", "15 hour"}},
+                        {{}}};
         ;
         return thirdDropdownValues[activity][subType];
     }
@@ -201,20 +193,25 @@ public class LogEntry implements Serializable{
 
     public String getDate()
     {
+        return this.date;
+    }
+
+    private String convertDate(long date)
+    {
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
-        String day = dayFormat.format(this.date);
+        String day = dayFormat.format(date);
 
         SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
-        String month = monthFormat.format(this.date);
+        String month = monthFormat.format(date);
 
         SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE");
-        String dayOfWeek = weekdayFormat.format(this.date);
+        String dayOfWeek = weekdayFormat.format(date);
 
         return dayOfWeek + ", " + month + " " + day + "th";
     }
-
     public void setDate(long date) {
-        this.date = date;
+
+        this.date = convertDate(date);
     }
 
     public String getActivity() {
@@ -230,6 +227,13 @@ public class LogEntry implements Serializable{
         }
 
     }
+
+    public int getActivityInt()
+    {
+        return this.activity;
+    }
+
+
 
     public void setActivity(int activity) {
         this.activity = activity;
@@ -247,6 +251,11 @@ public class LogEntry implements Serializable{
         }
     }
 
+    public int getSubTypeInt()
+    {
+        return this.subType;
+    }
+
     public void setSubType(int subType) {
         this.subType = subType;
     }
@@ -261,6 +270,10 @@ public class LogEntry implements Serializable{
             return "Type = " + this.typeName;
         }
         else return "";
+    }
+    public String getType()
+    {
+        return this.typeName;
     }
 
     public String getSecondDrop()
