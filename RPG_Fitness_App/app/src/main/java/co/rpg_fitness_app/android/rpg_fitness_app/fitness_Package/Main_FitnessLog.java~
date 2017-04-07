@@ -15,19 +15,26 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
+<<<<<<< HEAD
+=======
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
-import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
+//import fitnessrpg.fitnessrpg.R;
+>>>>>>> master
 
 public class Main_FitnessLog extends AppCompatActivity {
 
+    FitnessLog duya = new FitnessLog();
+    //Todo: create List view from fitnessLog
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_create_goal_main);
         setContentView(R.layout.activity_main__fitness_log);
+
+
+        //FitnessLog fitnessLog = new FitnessLog();
 
         //Add new LogEntry
         ((Button) findViewById(R.id.button_add_activity)).setOnClickListener(
@@ -38,6 +45,7 @@ public class Main_FitnessLog extends AppCompatActivity {
 
                         android.app.FragmentManager fm = getFragmentManager();
                         AddLogTypeDialogFragment dF = new AddLogTypeDialogFragment();
+                       // AddGoalLogType dF = new AddGoalLogType();
                         dF.show(fm, "idgoal");
                     }
                 }

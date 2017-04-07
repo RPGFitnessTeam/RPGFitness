@@ -4,11 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/b_dwelling2"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,10 +52,14 @@
             android:theme="@style/AppTheme.popUpCharacterScreen"
             ></activity>
 
+
+
+
         <activity android:name=".character_Package.CharacterActivity"
             android:theme="@style/AppTheme"
             android:exported="true"
             ></activity>
+
 
         <activity android:name=".character_Package.characterCreationActivity"
             android:theme="@style/AppTheme"
@@ -71,19 +75,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
-        <activity android:name=".fitness_Package.Edit_Goal_Main"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true"
-            ></activity>
-        <activity android:name=".fitness_Package.Edit_Goal_Pop_Up"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true"
-            ></activity>
 
         <activity android:name=".fitness_Package.Main_FitnessLog"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
+
         <activity android:name=".quest_Package.QuestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
@@ -98,6 +95,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
+
 
     </application>
 

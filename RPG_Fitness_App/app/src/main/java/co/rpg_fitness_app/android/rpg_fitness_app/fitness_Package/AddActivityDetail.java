@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.hardware.input.InputManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,8 +30,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 /**
  * Created by duya on 4/6/17.
@@ -111,7 +114,7 @@ public class AddActivityDetail extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                LogEntry new_log = new LogEntry("ID", activity);
+                LogEntry new_log = new LogEntry(UUID.randomUUID().toString(), activity);
 
                 if(activity == 0 || activity == 1) new_log.setSubtype(subType);
 
@@ -129,13 +132,17 @@ public class AddActivityDetail extends DialogFragment {
 
                 new_log.setDate(Calendar.getInstance().getTimeInMillis());
 
-                FitnessLog.addNewLogEntry(new_log); //add new entry
+                DataSource mDatasource = new DataSource(getActivity());
+                mDatasource.open();
+              //  System.out.println(new_log.getSubTypeInt() + new_log.getFirstDropdown() + new_log.getDate() + new_log.getDate() +"");
+                mDatasource.insertLogEntry(new_log);
+                FitnessLog.update(mDatasource.getAllLogEntries());
                 dismiss();
 
                 //Update the ListView
                 ExpandableListView ref = FragmentListDaysExpandable.getListView();
                 Activity act = FragmentListDaysExpandable.getActivityUpdate();
-                FragmentListDaysExpandable.organize();
+                FragmentListDaysExpandable.organize(mDatasource.getAllLogEntries());
                 ref.setAdapter(new ExpandableListAdapterFitness
                         (act, FragmentListDaysExpandable.getList_days(),
                                 FragmentListDaysExpandable.getActivities() ));
