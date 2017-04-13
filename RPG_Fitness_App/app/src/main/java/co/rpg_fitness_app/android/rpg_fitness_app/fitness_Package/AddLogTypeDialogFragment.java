@@ -75,11 +75,6 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
                 }
         );
 
-        ArrayList<LogEntry> testArray = FitnessLog.retrieveLogEntries();
-        TextView test = new TextView(getActivity());
-       
-        ((RelativeLayout) rV).addView(test);
-
         return rV;
     }
     private void onClickHandler(int activity)

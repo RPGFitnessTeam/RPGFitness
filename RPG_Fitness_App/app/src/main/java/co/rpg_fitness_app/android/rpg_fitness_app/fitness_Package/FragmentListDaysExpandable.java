@@ -22,7 +22,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+
 /**
  * Created by duya on 4/4/17.
  */
@@ -65,12 +68,13 @@ public class FragmentListDaysExpandable extends Fragment
         return activities;
     }
 
-    public static int organize()
+    public static int organize(ArrayList<LogEntry> list)
     {
         list_days = new ArrayList<String>();
         activities = new ArrayList<ArrayList<LogEntry>>();
 
-        ArrayList<LogEntry> activity_list = FitnessLog.retrieveLogEntries();
+        ArrayList<LogEntry> activity_list = list;
+
         if(activity_list == null)
             return -1;
 
@@ -117,7 +121,6 @@ public class FragmentListDaysExpandable extends Fragment
             while(itemVal.hasNext())
             {
                 LogEntry item = itemVal.next();
-                //String childItem = "Duya";
                 itemPost.add(item);
             }
             activities.add(itemPost);
@@ -139,7 +142,9 @@ public class FragmentListDaysExpandable extends Fragment
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activityThis = getActivity();
-        if(organize() == 0) ;//success;
+        DataSource mDatasource = new DataSource(getActivity());
+        mDatasource.open();
+        if(organize(mDatasource.getAllLogEntries()) == 0) ;//success;
         listView = (ExpandableListView) view.findViewById(R.id.list_days);
         listView.setAdapter(new ExpandableListAdapterFitness(getActivity(), list_days, activities));
 

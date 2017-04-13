@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
@@ -38,7 +39,7 @@ public class KingdomActivity extends Activity {
         mDataSource.open();
 
         //this.kingdom = mDataSource.getAllKingdoms();
-        kingdom = new Kingdom();
+        //kingdom = new Kingdom();
         this.buildings = mDataSource.getAllBuildings();
         //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
         //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
@@ -94,7 +95,7 @@ public class KingdomActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, FitnessLogActivity.class);
+                Intent i = new Intent(KingdomActivity.this, Main_FitnessLog.class);
                 startActivity(i);
                 finish();
             }
@@ -193,6 +194,7 @@ public class KingdomActivity extends Activity {
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
+            kingdom.getMyGrid().set(tile.getTileNumber(), tile);
             Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);

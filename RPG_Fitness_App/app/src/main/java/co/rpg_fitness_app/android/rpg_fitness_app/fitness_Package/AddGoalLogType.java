@@ -1,8 +1,5 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
-/**
- * Created by duya on 4/4/17.
- */
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -11,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
@@ -19,7 +20,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
  * Created by duya on 4/4/17.
  */
 
-public class AddGoalLogType  extends DialogFragment {
+public class AddGoalLogType  extends DialogFragment{
 
 
     @Nullable
@@ -81,24 +82,11 @@ public class AddGoalLogType  extends DialogFragment {
     {
         dismiss();
         android.app.FragmentManager fm = getFragmentManager();
-        DialogFragment dF;
+        DialogFragment dF = new AddGoalActivityDetail();
         Bundle arguments = new Bundle();
-
-        //Only Excercise and Nutrition have subType
-        if(activity == 0 || activity == 1)
-        {
-            dF = new AddGoalSubType();
-        }
-        else
-        {
-            dF = new AddGoalSecondDrop();
-            arguments.putInt("subType", 0);
-            arguments.putInt("firstDrop", 1);
-        }
-
         arguments.putInt("activity", activity);
         dF.setArguments(arguments);
-        dF.show(fm, "Duya");
+        dF.show(fm, "id2goal");
     }
 
 }
