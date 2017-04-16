@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.content.Intent;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
@@ -13,6 +15,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 public class QuestPopUp extends Activity {
 
     Currency moneyChest;
+    Quest quest;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +30,12 @@ public class QuestPopUp extends Activity {
 
         getWindow().setLayout((int)(width*0.75), (int)(height*0.75));
 
-        this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        //this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
+        this.quest = (Quest) getIntent().getSerializableExtra("quest");
 
-
+        configureText();
+        configureCompleteButton();
+        configureSkipButton();
         configureExitButton();
     }
 
@@ -45,14 +51,37 @@ public class QuestPopUp extends Activity {
         });
     }
 
+
+    //TODO
     private void configureCompleteButton() {
         Button Button = (Button) findViewById(R.id.completeQuest);
-        Button.setOnClickListener (new View.OnClickListener() {
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if()
+                finish();
             }
         });
-
     }
+
+    private void configureSkipButton() {
+        Button Button = (Button)  findViewById(R.id.skipQuest);
+        Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void configureText() {
+        TextView name = (TextView) findViewById(R.id.QuestName);
+        name.setText(quest.getName());
+
+        TextView description = (TextView) findViewById(R.id.QuestDescription);
+        description.setText(quest.getDescription());
+
+        TextView parameters = (TextView) findViewById(R.id.QuestParameters);
+        parameters.setText(quest.getParameters());
+    }
+
 }

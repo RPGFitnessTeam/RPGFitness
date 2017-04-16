@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 /**
  * Created by Tanner on 3/9/2017.
@@ -36,10 +38,31 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-        this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
-        this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
-        this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
-        //configureToolBarButtons();
+        //this.kingdom = mDataSource.getAllKingdoms();
+        //kingdom = new Kingdom();
+        this.buildings = mDataSource.getAllBuildings();
+        //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
+        //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
+      this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+      //////////////////////////////////////////TESTING//////////////////////////////////////////////////////////////
+        this.kingdom = mDataSource.getAllKingdoms();
+        if (kingdom == null) {
+            Log.d("onCreate", "Null kingdom");
+            kingdom = new Kingdom();
+            kingdom.getMyGrid().get(0);
+        } else {
+            Log.d("onCreate", "Kingdom size "+kingdom.getMyGrid().size());
+            for (int i = 0; i < kingdom.getMyGrid().size(); i++) {
+                Log.d("onCreate", "Grid position "+i);
+                Log.d("onCreate", "Tile number: "+kingdom.getMyGrid().get(i).getTileNumber());
+                if (kingdom.getMyGrid().get(i).getMyBuilding() == null) {
+                    Log.d("onCreate", "Tile building: null");
+                } else {
+                    Log.d("onCreate", "Tile building: "+kingdom.getMyGrid().get(i).getMyBuilding().getName());
+                }
+            }
+        }////////////////////////////////////////////////////////////////////////////////////////////////////
+        configureToolBarButtons();
         populateKingdomTiles();
 
     }
@@ -48,32 +71,31 @@ public class KingdomActivity extends Activity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Intent i = new Intent();
+        mDataSource.updateKingdom(kingdom);
+        mDataSource.updateCurrency(moneyChest);
+        /*Intent i = new Intent();
         i.putExtra("kingdom", this.kingdom);
         i.putExtra("money chest", this.moneyChest);
-        setResult(1, i);
+        setResult(1, i);*/
         finish();
-
-        //TODO is this right??? mDataSource.insertKingdom(kingdom); mDataSource.insertCurrency(moneyChest);
-
     }
 
     private void configureToolBarButtons() {
         ImageButton b;
-        /*b = (ImageButton) findViewById(R.id.questFooterButton);
+        b = (ImageButton) findViewById(R.id.questFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, Quest.class);
+                Intent i = new Intent(KingdomActivity.this, QuestActivity.class);
                 startActivity(i);
                 finish();
             }
-        });*/
+        });
         b = (ImageButton) findViewById(R.id.fitnessLogFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, FitnessLogActivity.class);
+                Intent i = new Intent(KingdomActivity.this, Main_FitnessLog.class);
                 startActivity(i);
                 finish();
             }
@@ -148,6 +170,7 @@ public class KingdomActivity extends Activity {
                     startActivityForResult(intent, 2);
                 }
             });
+
         }
         //CASE building tile
         else {
@@ -166,20 +189,15 @@ public class KingdomActivity extends Activity {
         }
     }
 
-    /**
-     * function changes image of tiles to corresponding tile, mystery, building based on users changes
-     * after a tile has been clicked on (ie upgrades, unlocks, new buildings)
-     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //result code of 1 indicates successful transaction else do nothing
         final Tile tile;
         if(resultCode != 0) {
             tile = (Tile) data.getSerializableExtra("tile");//updated tile
-            Log.d("TEST", "CLicked on tile: " +tile.getTileNumber()+"");
+            kingdom.getMyGrid().set(tile.getTileNumber(), tile);
+            Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
-            mDataSource.updateTile(tile);
-            mDataSource.updateKingdom(kingdom);
         }
     }
 
@@ -275,7 +293,7 @@ public class KingdomActivity extends Activity {
     private void setBuildingImage(ImageButton tileButton, String buildingName){
         switch (buildingName) {
             case "house":
-                tileButton.setBackgroundResource(R.drawable.shield);
+                tileButton.setBackgroundResource(R.drawable.b_dwelling1);
                 break;
             case "wood bridge":
                 tileButton.setBackgroundResource(R.drawable.b_bridge1);
@@ -293,7 +311,7 @@ public class KingdomActivity extends Activity {
                 tileButton.setBackgroundResource(R.drawable.b_water1);
                 break;
             case "castle":
-                tileButton.setBackgroundResource(R.drawable.scroll);
+                tileButton.setBackgroundResource(R.drawable.b_dwelling2);
                 break;
             case "stone bridge":
                 tileButton.setBackgroundResource(R.drawable.b_bridge2);
@@ -315,71 +333,5 @@ public class KingdomActivity extends Activity {
                 break;
         }
     }
-
-    /*private void configureMysteryButton(int tileNumber, Tile tile){
-        final Tile t = tile;
-        ImageButton mysteryButton;
-        switch (tileNumber) {
-            case 1:
-                mysteryButton = (ImageButton) findViewById(R.id.mysteryButton1);
-                break;
-
-            case 2:
-                mysteryButton = (ImageButton) findViewById(R.id.mysteryButton2);
-                break;
-
-            case 3:
-                mysteryButton = (ImageButton) findViewById(R.id.mysteryButton3);
-                break;
-            case 4:
-                mysteryButton = (ImageButton) findViewById(R.id.mysteryButton4);
-                break;
-
-            default:
-                mysteryButton = null;
-                break;
-        }
-        mysteryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(KingdomActivity.this, MysteryPopUp.class);
-                intent.putExtra("tile", t);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void configureBuildingButton(int tileNumber, Tile tile){
-        final Tile t = tile;
-        ImageButton buildingButton;
-        switch (tileNumber) {
-            case 1:
-                buildingButton = (ImageButton) findViewById(R.id.buildingButton1);
-                break;
-
-            case 2:
-                buildingButton = (ImageButton) findViewById(R.id.buildingButton2);
-                break;
-
-            case 3:
-                buildingButton = (ImageButton) findViewById(R.id.buildingButton3);
-                break;
-            case 4:
-                buildingButton = (ImageButton) findViewById(R.id.buildingButton4);
-                break;
-
-            default:
-                buildingButton = null;
-                break;
-        }
-        buildingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(KingdomActivity.this, BuildingPopUp.class);
-                intent.putExtra("tile", t);
-                startActivity(intent);
-            }
-        });
-    }*/
 
 }

@@ -1,31 +1,31 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
-
-/**
- * Created by duya on 3/14/17.
- */
-
+import android.content.Context;
+import android.content.Intent;
+import android.view.ViewGroup;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 
 public class FitnessLog {
 
-    private static List<LogEntry> activities;
 
-    public FitnessLog()
+    private static ArrayList<LogEntry> logEntries;
+
+    public FitnessLog(ArrayList<LogEntry> data)
     {
-        this.activities = new ArrayList<LogEntry>();
+        logEntries = data;
     }
 
-    public List<LogEntry> retrieveLogEntries()
+    public static ArrayList<LogEntry> retrieveLogEntries()
     {
-        return this.activities;
+        return logEntries;
     }
-    public void addNewLogEntry(LogEntry newLog)
+
+    public static void update(ArrayList<LogEntry> newdata)
     {
-        this.activities.add(newLog);
+        logEntries = newdata;
     }
 
 }
-

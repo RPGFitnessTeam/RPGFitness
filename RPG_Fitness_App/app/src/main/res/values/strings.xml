@@ -12,10 +12,28 @@
     <string name="weapon">Weapon</string>
     <string name="textview_Species">TextView</string>
     <string-array name="Fitness_Categories">
+        <item>Exercise</item>
         <item>Nutrition</item>
         <item>Sleep</item>
-        <item>Fitness</item>
         <item>Weight</item>
+    </string-array>
+    <string-array name="Fitness_Subtypes">
+        <item>Recreation</item>
+        <item>Calisthenics</item>
+        <item>Aerobics</item>
+        <item>Weightlifting</item>
+    </string-array>
+    <string-array name="Nutrition_Subtypes">
+        <item>Fruits/Vegetables</item>
+        <item>Water</item>
+        <item>Sweets</item>
+    </string-array>
+    <string-array name="Sleep_Subtypes">
+        <item>Quality</item>
+        <item>Time</item>
+    </string-array>
+    <string-array name = "Weight_Subtypes">
+        <item>Current Weight</item>
     </string-array>
     <string name="n0">
          <a href="https://goo.gl/qUjMwl">Beginners Guide to Eating Better</a>

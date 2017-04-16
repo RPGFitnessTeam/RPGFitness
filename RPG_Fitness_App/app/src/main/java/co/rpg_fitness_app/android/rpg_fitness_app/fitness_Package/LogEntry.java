@@ -1,104 +1,67 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 
-import java.util.UUID;
 
-/**
- * Created by duya on 3/11/17.
- */
+import java.io.Serializable;
 
-public class LogEntry {
 
-    final int EXERCISE = 1;
-    final int RECREATION = 1;
-    final int CALISTHENICS = 2;
-    final int AEROBICS = 3;
-    final int WEIGHTLIFTING = 4;
 
-    final int NUTRITION = 2;
-    final int FR_VEG = 1;
-    final int WATER = 2;
-    final int SWEETS = 3;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    final int SLEEP = 3;
-    final int QUALITY = 1;
-    final int TIME = 2;
+public class LogEntry implements Serializable{
 
-    final int WEIGHT = 4;
-    final int CURRENT = 1;
+    final int EXERCISE = 0;
+    final int RECREATION = 0;
+    final int CALISTHENICS = 1;
+    final int AEROBICS = 2;
+    final int WEIGHTLIFTING = 3;
 
-    private String ID;
-    private long date;
-    private int activity;
-    private int subType;
+    final int NUTRITION = 1;
+    final int FR_VEG = 0;
+    final int WATER = 1;
+    final int SWEETS = 2;
+
+    final int SLEEP = 2;
+    final int QUALITY = 0;
+    final int TIME = 1;
+
+    final int WEIGHT = 3;
+    final int CURRENT = 0;
+
+    private String ID = null;
+    private String date = null;
+    private int activity = -1;
+    private int subType = -1;
     private int duration = -1;
     private int distance = -1;
     private int count = -1; // also, duration
     private int intensity = -1; // also, quality of sleep
     private int weight = -1;
-    private String typeName = null;
+    private String typeName = "";
 
-    // following should be come from database
-    private String[][] subTypes; //depending on the activity
-    private int[][][] firstDropdownValues; // depending on the activity and subtype
-    private int[][][]secondDropdownValues;// depending on the activity and subtype
-    private int[][][] thirdDropdownValues; // depending on the activity and subtype
-
-    public LogEntry(int activity)
-    {
-        this.ID = UUID.randomUUID().toString();
-        this.activity = activity;
-        //set date;
-
-        switch (activity) {
-            case 1:
-                typeName = "Exercise";
-                break;
-            case 2:
-                typeName = "Nutrition";
-                break;
-            case 3:
-                typeName = "Sleep";
-                break;
-            case 4:
-                typeName = "Weight";
-                break;
-        }
-    }
 
     public LogEntry(String ID, int activity)
     {
         this.ID = ID;
         this.activity = activity;
-        //set date;
-
-        switch (activity) {
-            case 1:
-                typeName = "Exercise";
-                break;
-            case 2:
-                typeName = "Nutrition";
-                break;
-            case 3:
-                typeName = "Sleep";
-                break;
-            case 4:
-                typeName = "Weight";
-                break;
-        }
+        //Todo: set date;
     }
 
-    public String[] getSubtypes()
+    //Todo: DATA BASE
+    public static String[] getSubtypes(int option)
     {
-        return subTypes[this.activity];
+        String[][] subTypes = {
+                {"Recreation", "Calisthenics", "Aerobics", "Weightlifting"},
+                {"Fruits and Vegetables", "Water", "Sweets"},
+                {},
+                {}
+        }; //depending on the activity
+        return subTypes[option];
     }
     public void setSubtype(int subType)
     {
         this.subType = subType;
-    }
-    public int[] getFirstDropdownValues()
-    {
-        return this.firstDropdownValues[this.activity][this.subType];
     }
     //Set typeName : String applies to only EXERCISE activity
     public void setFirstDropdownValues(String value)
@@ -119,9 +82,21 @@ public class LogEntry {
                 break;
         }
     }
-    public int[] getSecondDropdownValues()
+    public static String[] getSecondDropdownValues(int activity, int subType)
     {
-        return this.secondDropdownValues[this.activity][this.subType];
+        String[][][] secondDropdownValues =
+                {{      {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                        {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
+                        {"1 mile","2 mile","3 mile","4 mile","5 mile","6 mile","7 mile","8 mile","9 mile", "10 mile","15mile", "20 mile"},
+                        {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"}
+                }, {    {"1","2","3","4","5","6","7","8","9","10"},
+                        {"1","2","3","4","5","6","7","8","9","10"},
+                        {"1","2","3","4","5","6","7","8","9","10"}
+                }, {    {"1 = very poor", "2 = poor", "3 = fine", "4 = good", "5 = very good"}
+                }, {    {"40 kg","45 kg","50 kg","55 kg", "60 kg", "65 kg", "70 kg","75 kg", "80 kg", "85 kg", "90 kg", "95 kg", "100 kg"}
+                }};
+
+        return secondDropdownValues[activity][subType];
     }
     //Set integer value 1
     public void setSecondDropdownValues(int value)
@@ -166,9 +141,20 @@ public class LogEntry {
             default : break;
         }
     }
-    public int[] getThirdDropdownValues()
+    public static String[] getThirdDropdownValues(int activity, int subType)
     {
-        return this.thirdDropdownValues[this.activity][this.subType];
+        String[][][] thirdDropdownValues =
+                {{
+                        {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
+                        {},
+                        {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
+                        {}
+                },      {{}
+                },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
+                        "9 hour", "10 hour", "11 hour", "12 hour", "13 hour", "14 hour", "15 hour"}},
+                        {{}}};
+        ;
+        return thirdDropdownValues[activity][subType];
     }
     //Set integer value 2
     public void setThirdDropdownValues(int value)
@@ -205,24 +191,69 @@ public class LogEntry {
         this.ID = ID;
     }
 
-    public long getDate() {
-        return date;
+    public String getDate()
+    {
+        return this.date;
     }
 
+    private String convertDate(long date)
+    {
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
+        String day = dayFormat.format(date);
+
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
+        String month = monthFormat.format(date);
+
+        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE");
+        String dayOfWeek = weekdayFormat.format(date);
+
+        return dayOfWeek + ", " + month + " " + day + "th";
+    }
     public void setDate(long date) {
-        this.date = date;
+
+        this.date = convertDate(date);
     }
 
-    public int getActivity() {
-        return activity;
+    public String getActivity() {
+
+        switch(this.activity)
+        {
+            case EXERCISE: return "Exercise";
+            case NUTRITION: return "Nutrition";
+            case SLEEP: return "Sleep";
+            case WEIGHT: return "Weight";
+
+            default:return "Unknown";
+        }
+
     }
+
+    public int getActivityInt()
+    {
+        return this.activity;
+    }
+
+
 
     public void setActivity(int activity) {
         this.activity = activity;
     }
 
-    public int getSubType() {
-        return subType;
+    public String getSubType() {
+
+        if(this.subType == -1)
+        {
+            return "";
+        }
+        else{
+
+            return getSubtypes(this.activity)[this.subType] + "";
+        }
+    }
+
+    public int getSubTypeInt()
+    {
+        return this.subType;
     }
 
     public void setSubType(int subType) {
@@ -233,6 +264,119 @@ public class LogEntry {
         return duration;
     }
 
+    public String getFirstDropdown()
+    {
+        if(this.activity == EXERCISE) {
+            return "Type = " + this.typeName;
+        }
+        else return "";
+    }
+    public String getType()
+    {
+        return this.typeName;
+    }
+
+    public String getSecondDrop()
+    {
+        switch(this.activity)
+        {
+            case EXERCISE :
+            {
+                switch(this.subType) {
+                    case RECREATION:
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else
+                        {
+                            return "Duration = " + this.duration + " min";
+                        }
+                    case CALISTHENICS:
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else {
+                            return "Duration = " + this.duration + " min";
+                        }
+                    case AEROBICS:
+                        return "Distance = " + this.distance + " mile";
+                    case WEIGHTLIFTING:
+                        switch (this.intensity)
+                        {
+                            case 1: return "Intensity = very light";
+                            case 2: return "Intensity = light";
+                            case 3: return "Intensity = moderate";
+                            case 4: return "Intensity = heavy";
+                            case 5: return "Intensity = very heavy";
+                            default:return "";
+                        }
+                    default: return "";
+                }
+            }
+            case NUTRITION :
+            {
+                switch(this.subType)
+                {
+                    case FR_VEG: return "Servings = " + this.count;
+                    case WATER: return "Glasss = " + this.count;
+                    case SWEETS: return "Servings = " + this.count;
+                    default: return "";
+                }
+            }
+            case SLEEP :
+            {
+                switch (this.intensity)
+                {
+                    case 1: return "Quality of Sleep = very poor";
+                    case 2: return "Quality of Sleep = poor";
+                    case 3: return "Quality of Sleep = fine";
+                    case 4: return "Quality of Sleep = good";
+                    case 5: return "Quality of Sleep = very good";
+                    default:return "";
+                }
+            }
+            case WEIGHT :
+            {
+                return "Current Weight = " + this.weight + " kg";
+            }
+            default : return "";
+        }
+    }
+    public String getThirdDrop()
+    {
+        switch(this.activity)
+        {
+            case EXERCISE :
+            {
+                switch(this.subType) {
+                    case RECREATION:
+                        switch (this.intensity)
+                        {
+                            case 1: return "Intensity = very light";
+                            case 2: return "Intensity = light";
+                            case 3: return "Intensity = moderate";
+                            case 4: return "Intensity = heavy";
+                            case 5: return "Intensity = very heavy";
+                            default:return "";
+                        }
+                    case AEROBICS:
+                        if (this.duration == 1 || this.duration == 2 || this.duration == 3) {
+                            return "Duration = " + this.duration + " hour";
+                        }
+                        else
+                        {
+                            return "Duration = " + this.duration + " min";
+                        }
+                    default: return "";
+                }
+            }
+            case SLEEP :
+            {
+                return "Duration = " + this.duration + " hour";
+            }
+            default: return "";
+        }
+    }
     public void setDuration(int duration) {
         this.duration = duration;
     }
@@ -270,7 +414,7 @@ public class LogEntry {
     }
 
     public String getTypeName() {
-       return typeName;
+        return typeName;
     }
 
     public void setTypeName(String typeName) {

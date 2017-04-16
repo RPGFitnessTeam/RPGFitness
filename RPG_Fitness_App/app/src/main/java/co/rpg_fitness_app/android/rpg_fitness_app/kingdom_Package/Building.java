@@ -64,6 +64,30 @@ public class Building implements Serializable {
             cost.updateResource(true,0,1,1,0,0,0,0,0);
             this.category = "water feature";
         }
+        else if (name == "castle"){
+            cost.updateResource(true,5,0,0,1,1,1,1,1);
+            this.category = "dwelling";
+        }
+        else if (name == "stone bridge"){
+            cost.updateResource(true,0,0,2,1,0,0,0,0);
+            this.category = "bridge";
+        }
+        else if (name == "mine"){
+            cost.updateResource(true,2,0,0,0,1,0,0,0);
+            this.category = "mining";
+        }
+        else if (name == "inn and tavern"){
+            cost.updateResource(true,0,0,2,0,0,1,0,0);
+            this.category = "hospitality";
+        }
+        else if (name == "fortress"){
+            cost.updateResource(true,2,0,0,0,0,0,1,0);
+            this.category = "military";
+        }
+        else if (name == "fountain"){
+            cost.updateResource(true,0,0,2,0,0,0,0,1);
+            this.category = "water feature";
+        }
     }
 
     public Building(String name, Currency cost, String category, int tier, Boost goldBoost,
