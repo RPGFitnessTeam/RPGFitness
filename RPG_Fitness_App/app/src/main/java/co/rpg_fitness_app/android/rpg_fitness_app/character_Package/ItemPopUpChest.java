@@ -20,6 +20,8 @@ public class ItemPopUpChest extends Activity {
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+
+
         setContentView(R.layout.character_item_popup);
 
         DisplayMetrics dm = new DisplayMetrics();

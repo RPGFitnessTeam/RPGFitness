@@ -22,7 +22,8 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
-
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Currency moneyChest;
     private DataSource mDataSource;
     private int KINGDOM_ACTIVITY_RETURN = 1;
+
 
     //Buttons on home_screen
     private ImageButton mfitnessLogMainButton;
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-        //mDataSource.upgrade();
-        mDataSource.open();
+         mDataSource.upgrade();
+        //mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
         //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
@@ -123,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
  
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -138,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("onActivityResult","Tile ID: "+tiles.get(i).getId());
             }
         }
+
     }
+
+
 
 }

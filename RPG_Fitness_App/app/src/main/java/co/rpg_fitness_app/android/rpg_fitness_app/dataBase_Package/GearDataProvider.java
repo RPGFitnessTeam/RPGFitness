@@ -18,7 +18,10 @@ public class GearDataProvider {
         gearList = new ArrayList<Gear>();
         gearMap = new HashMap<String, Gear>();
 
-        // Below here is where we will add all items to the database
+        // TODO add gear objects
+
+
+
     }
 
     private static void addGear(Gear gear) {
