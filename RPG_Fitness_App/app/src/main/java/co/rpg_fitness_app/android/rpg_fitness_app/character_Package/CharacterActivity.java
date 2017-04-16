@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -15,8 +16,10 @@ import android.widget.TextView;
 import android.widget.EditText;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 /**
  * Created by awhit on 3/13/2017.
@@ -27,6 +30,7 @@ public class CharacterActivity extends Activity{
     TextView nameText;
     AlertDialog enterName;
     EditText editName;
+    DataSource mDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +38,17 @@ public class CharacterActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_screen);
 
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+
+        // retrieve character from data source
+        final Character character = mDataSource.getAllCharacters().get(0);
+
+        // set character name view to proper name
         nameText = (TextView) findViewById(R.id.textView_charName);
+        nameText.setText(character.getName());
+
+        // sets up enter name pop up
         enterName = new AlertDialog.Builder(this).create();
         editName = new EditText(this);
 
@@ -42,15 +56,17 @@ public class CharacterActivity extends Activity{
         enterName.setTitle("Enter your Character's name");
         enterName.setView(editName);
 
-        //TODO retrieve name from DB and set the name field in the XML accordingly
-        // default name = jon snuw
-        nameText.setText("Jon Snuw");
-
 
         // sets up the proper components of the species drop down menu
-        Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
-        //TODO get species from DB
-        String[] speciesList = {"Orc", "Human", "Elf"};
+        final Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
+
+        // get species from DB
+        final ArrayList<Species> speciesAL = mDataSource.getAllSpecies();
+        String[] speciesList = new String[speciesAL.size()];
+        for(int i = 0; i < speciesAL.size(); i++) {
+            speciesList[i] = speciesAL.get(i).getName();
+        }
+
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, speciesList);
 
@@ -118,7 +134,10 @@ public class CharacterActivity extends Activity{
                         }
                         nameText.setText(name);
 
-                        //TODO set the character object from the Database name to the proper field
+                        // sets the character name in the DB
+                        character.setName(name);
+
+                        mDataSource.updateCharacter(character);
                     }
 
         });
@@ -136,8 +155,10 @@ public class CharacterActivity extends Activity{
         //listener for the species drop down menu
         speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
-                //TODO update DB according to the new species chosen
-                //TODO update the img file according to the new species chosen
+                character.setSpecies(speciesAL.get(pos));
+                // TODO update char breaks app
+                // mDataSource.updateCharacter(character);
+
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
