@@ -143,7 +143,7 @@ public class LogEntry {
                 {{
                         {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
                         {},
-                        {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
+                        {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
                         {}
                 },      {{}
                 },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
@@ -208,6 +208,11 @@ public class LogEntry {
     public void setDate(long date) {
 
         this.date = convertDate(date);
+    }
+
+    public void setDateString(String date)
+    {
+        this.date = date;
     }
 
     public String getActivity() {

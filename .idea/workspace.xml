@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ec6577-d4af-4392-adaa-ca7b34447f4d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/runConfigurations.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/vcs.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/dataBase_Package/DataSource.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/dataBase_Package/DataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FragmentListDaysExpandable.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FragmentListDaysExpandable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/LogEntry.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/LogEntry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java" afterPath="$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" afterPath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" />
     </list>
     <ignored path="RPGFitness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +33,6 @@
             <state relative-caret-position="330">
               <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
               </folding>
             </state>
@@ -45,7 +42,7 @@
       <file leaf-file-name="AddActivityDetail.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="237">
               <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
               <folding />
             </state>
@@ -58,34 +55,6 @@
             <state relative-caret-position="15">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <element signature="e#6862#6863#0" expanded="false" />
-                <element signature="e#6902#6903#0" expanded="false" />
-                <element signature="e#7224#7225#0" expanded="false" />
-                <element signature="e#7262#7263#0" expanded="false" />
-                <element signature="e#7294#7295#0" expanded="false" />
-                <element signature="e#7325#7326#0" expanded="false" />
-                <element signature="e#11555#11556#0" expanded="false" />
-                <element signature="e#11595#11596#0" expanded="false" />
-                <element signature="e#11627#11628#0" expanded="false" />
-                <element signature="e#11658#11659#0" expanded="false" />
-                <element signature="e#11703#11704#0" expanded="false" />
-                <element signature="e#11743#11744#0" expanded="false" />
-                <element signature="e#11772#11773#0" expanded="false" />
-                <element signature="e#11800#11801#0" expanded="false" />
-                <element signature="e#11839#11840#0" expanded="false" />
-                <element signature="e#11873#11874#0" expanded="false" />
-                <element signature="e#11906#11907#0" expanded="false" />
-                <element signature="e#11938#11939#0" expanded="false" />
-                <element signature="e#11985#11986#0" expanded="false" />
-                <element signature="e#12027#12028#0" expanded="false" />
-                <element signature="e#12057#12058#0" expanded="false" />
-                <element signature="e#12086#12087#0" expanded="false" />
-                <element signature="e#12127#12128#0" expanded="false" />
-                <element signature="e#12163#12164#0" expanded="false" />
-                <element signature="e#12198#12199#0" expanded="false" />
-                <element signature="e#12229#12230#0" expanded="false" />
-                <element signature="e#12277#12278#0" expanded="false" />
-                <element signature="e#12317#12318#0" expanded="false" />
                 <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
               </folding>
             </state>
@@ -98,20 +67,6 @@
             <state relative-caret-position="9915">
               <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1839#1840#0" expanded="false" />
-                <element signature="e#1872#1873#0" expanded="false" />
-                <element signature="e#22103#22110#0" expanded="false" />
-                <element signature="e#22997#23007#0" expanded="false" />
-                <element signature="e#24737#24748#0" expanded="false" />
-                <element signature="e#25845#25855#0" expanded="false" />
-                <element signature="e#27228#27234#0" expanded="false" />
-                <element signature="e#28688#28694#0" expanded="false" />
-                <element signature="e#30756#30762#0" expanded="false" />
-                <element signature="e#32552#32562#0" expanded="false" />
-                <element signature="e#35879#35888#0" expanded="false" />
-                <element signature="e#36922#36928#0" expanded="false" />
-                <element signature="e#38212#38218#0" expanded="false" />
                 <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
                 <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
               </folding>
@@ -124,15 +79,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#431#432#0" expanded="false" />
-                <element signature="e#464#465#0" expanded="false" />
-                <element signature="e#530#531#0" expanded="false" />
-                <element signature="e#563#564#0" expanded="false" />
-                <element signature="e#629#630#0" expanded="false" />
-                <element signature="e#665#666#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -187,12 +134,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -439,13 +381,18 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../RPG_Fitness_App" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/RPG_Fitness_App" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -705,7 +652,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -713,8 +660,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -722,8 +669,8 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -752,10 +699,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
+        <state relative-caret-position="330">
+          <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
@@ -774,34 +720,6 @@
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#6862#6863#0" expanded="false" />
-            <element signature="e#6902#6903#0" expanded="false" />
-            <element signature="e#7224#7225#0" expanded="false" />
-            <element signature="e#7262#7263#0" expanded="false" />
-            <element signature="e#7294#7295#0" expanded="false" />
-            <element signature="e#7325#7326#0" expanded="false" />
-            <element signature="e#11555#11556#0" expanded="false" />
-            <element signature="e#11595#11596#0" expanded="false" />
-            <element signature="e#11627#11628#0" expanded="false" />
-            <element signature="e#11658#11659#0" expanded="false" />
-            <element signature="e#11703#11704#0" expanded="false" />
-            <element signature="e#11743#11744#0" expanded="false" />
-            <element signature="e#11772#11773#0" expanded="false" />
-            <element signature="e#11800#11801#0" expanded="false" />
-            <element signature="e#11839#11840#0" expanded="false" />
-            <element signature="e#11873#11874#0" expanded="false" />
-            <element signature="e#11906#11907#0" expanded="false" />
-            <element signature="e#11938#11939#0" expanded="false" />
-            <element signature="e#11985#11986#0" expanded="false" />
-            <element signature="e#12027#12028#0" expanded="false" />
-            <element signature="e#12057#12058#0" expanded="false" />
-            <element signature="e#12086#12087#0" expanded="false" />
-            <element signature="e#12127#12128#0" expanded="false" />
-            <element signature="e#12163#12164#0" expanded="false" />
-            <element signature="e#12198#12199#0" expanded="false" />
-            <element signature="e#12229#12230#0" expanded="false" />
-            <element signature="e#12277#12278#0" expanded="false" />
-            <element signature="e#12317#12318#0" expanded="false" />
             <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
           </folding>
         </state>
@@ -812,20 +730,6 @@
         <state relative-caret-position="9915">
           <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1872#1873#0" expanded="false" />
-            <element signature="e#22103#22110#0" expanded="false" />
-            <element signature="e#22997#23007#0" expanded="false" />
-            <element signature="e#24737#24748#0" expanded="false" />
-            <element signature="e#25845#25855#0" expanded="false" />
-            <element signature="e#27228#27234#0" expanded="false" />
-            <element signature="e#28688#28694#0" expanded="false" />
-            <element signature="e#30756#30762#0" expanded="false" />
-            <element signature="e#32552#32562#0" expanded="false" />
-            <element signature="e#35879#35888#0" expanded="false" />
-            <element signature="e#36922#36928#0" expanded="false" />
-            <element signature="e#38212#38218#0" expanded="false" />
             <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
             <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
           </folding>
@@ -836,15 +740,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#431#432#0" expanded="false" />
-            <element signature="e#464#465#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#563#564#0" expanded="false" />
-            <element signature="e#629#630#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/LogEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/dataBase_Package/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9915">
+          <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -853,7 +796,6 @@
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
@@ -872,34 +814,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6862#6863#0" expanded="false" />
-            <element signature="e#6902#6903#0" expanded="false" />
-            <element signature="e#7224#7225#0" expanded="false" />
-            <element signature="e#7262#7263#0" expanded="false" />
-            <element signature="e#7294#7295#0" expanded="false" />
-            <element signature="e#7325#7326#0" expanded="false" />
-            <element signature="e#11555#11556#0" expanded="false" />
-            <element signature="e#11595#11596#0" expanded="false" />
-            <element signature="e#11627#11628#0" expanded="false" />
-            <element signature="e#11658#11659#0" expanded="false" />
-            <element signature="e#11703#11704#0" expanded="false" />
-            <element signature="e#11743#11744#0" expanded="false" />
-            <element signature="e#11772#11773#0" expanded="false" />
-            <element signature="e#11800#11801#0" expanded="false" />
-            <element signature="e#11839#11840#0" expanded="false" />
-            <element signature="e#11873#11874#0" expanded="false" />
-            <element signature="e#11906#11907#0" expanded="false" />
-            <element signature="e#11938#11939#0" expanded="false" />
-            <element signature="e#11985#11986#0" expanded="false" />
-            <element signature="e#12027#12028#0" expanded="false" />
-            <element signature="e#12057#12058#0" expanded="false" />
-            <element signature="e#12086#12087#0" expanded="false" />
-            <element signature="e#12127#12128#0" expanded="false" />
-            <element signature="e#12163#12164#0" expanded="false" />
-            <element signature="e#12198#12199#0" expanded="false" />
-            <element signature="e#12229#12230#0" expanded="false" />
-            <element signature="e#12277#12278#0" expanded="false" />
-            <element signature="e#12317#12318#0" expanded="false" />
             <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
           </folding>
         </state>
@@ -910,20 +824,6 @@
         <state relative-caret-position="9885">
           <caret line="683" column="0" selection-start-line="683" selection-start-column="0" selection-end-line="683" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1872#1873#0" expanded="false" />
-            <element signature="e#22103#22110#0" expanded="false" />
-            <element signature="e#22997#23007#0" expanded="false" />
-            <element signature="e#24737#24748#0" expanded="false" />
-            <element signature="e#25845#25855#0" expanded="false" />
-            <element signature="e#27228#27234#0" expanded="false" />
-            <element signature="e#28688#28694#0" expanded="false" />
-            <element signature="e#30756#30762#0" expanded="false" />
-            <element signature="e#32552#32562#0" expanded="false" />
-            <element signature="e#35879#35888#0" expanded="false" />
-            <element signature="e#36922#36928#0" expanded="false" />
-            <element signature="e#38212#38218#0" expanded="false" />
             <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
             <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
           </folding>
@@ -934,15 +834,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#431#432#0" expanded="false" />
-            <element signature="e#464#465#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#563#564#0" expanded="false" />
-            <element signature="e#629#630#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +843,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
@@ -962,7 +853,6 @@
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
@@ -981,34 +871,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6862#6863#0" expanded="false" />
-            <element signature="e#6902#6903#0" expanded="false" />
-            <element signature="e#7224#7225#0" expanded="false" />
-            <element signature="e#7262#7263#0" expanded="false" />
-            <element signature="e#7294#7295#0" expanded="false" />
-            <element signature="e#7325#7326#0" expanded="false" />
-            <element signature="e#11555#11556#0" expanded="false" />
-            <element signature="e#11595#11596#0" expanded="false" />
-            <element signature="e#11627#11628#0" expanded="false" />
-            <element signature="e#11658#11659#0" expanded="false" />
-            <element signature="e#11703#11704#0" expanded="false" />
-            <element signature="e#11743#11744#0" expanded="false" />
-            <element signature="e#11772#11773#0" expanded="false" />
-            <element signature="e#11800#11801#0" expanded="false" />
-            <element signature="e#11839#11840#0" expanded="false" />
-            <element signature="e#11873#11874#0" expanded="false" />
-            <element signature="e#11906#11907#0" expanded="false" />
-            <element signature="e#11938#11939#0" expanded="false" />
-            <element signature="e#11985#11986#0" expanded="false" />
-            <element signature="e#12027#12028#0" expanded="false" />
-            <element signature="e#12057#12058#0" expanded="false" />
-            <element signature="e#12086#12087#0" expanded="false" />
-            <element signature="e#12127#12128#0" expanded="false" />
-            <element signature="e#12163#12164#0" expanded="false" />
-            <element signature="e#12198#12199#0" expanded="false" />
-            <element signature="e#12229#12230#0" expanded="false" />
-            <element signature="e#12277#12278#0" expanded="false" />
-            <element signature="e#12317#12318#0" expanded="false" />
             <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
           </folding>
         </state>
@@ -1019,20 +881,6 @@
         <state relative-caret-position="9885">
           <caret line="683" column="0" selection-start-line="683" selection-start-column="0" selection-end-line="683" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1872#1873#0" expanded="false" />
-            <element signature="e#22103#22110#0" expanded="false" />
-            <element signature="e#22997#23007#0" expanded="false" />
-            <element signature="e#24737#24748#0" expanded="false" />
-            <element signature="e#25845#25855#0" expanded="false" />
-            <element signature="e#27228#27234#0" expanded="false" />
-            <element signature="e#28688#28694#0" expanded="false" />
-            <element signature="e#30756#30762#0" expanded="false" />
-            <element signature="e#32552#32562#0" expanded="false" />
-            <element signature="e#35879#35888#0" expanded="false" />
-            <element signature="e#36922#36928#0" expanded="false" />
-            <element signature="e#38212#38218#0" expanded="false" />
             <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
             <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
           </folding>
@@ -1043,15 +891,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#431#432#0" expanded="false" />
-            <element signature="e#464#465#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#563#564#0" expanded="false" />
-            <element signature="e#629#630#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1060,7 +900,6 @@
         <state relative-caret-position="330">
           <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
           </folding>
         </state>
@@ -1068,7 +907,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="237">
           <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
           <folding />
         </state>
@@ -1079,34 +918,6 @@
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#6862#6863#0" expanded="false" />
-            <element signature="e#6902#6903#0" expanded="false" />
-            <element signature="e#7224#7225#0" expanded="false" />
-            <element signature="e#7262#7263#0" expanded="false" />
-            <element signature="e#7294#7295#0" expanded="false" />
-            <element signature="e#7325#7326#0" expanded="false" />
-            <element signature="e#11555#11556#0" expanded="false" />
-            <element signature="e#11595#11596#0" expanded="false" />
-            <element signature="e#11627#11628#0" expanded="false" />
-            <element signature="e#11658#11659#0" expanded="false" />
-            <element signature="e#11703#11704#0" expanded="false" />
-            <element signature="e#11743#11744#0" expanded="false" />
-            <element signature="e#11772#11773#0" expanded="false" />
-            <element signature="e#11800#11801#0" expanded="false" />
-            <element signature="e#11839#11840#0" expanded="false" />
-            <element signature="e#11873#11874#0" expanded="false" />
-            <element signature="e#11906#11907#0" expanded="false" />
-            <element signature="e#11938#11939#0" expanded="false" />
-            <element signature="e#11985#11986#0" expanded="false" />
-            <element signature="e#12027#12028#0" expanded="false" />
-            <element signature="e#12057#12058#0" expanded="false" />
-            <element signature="e#12086#12087#0" expanded="false" />
-            <element signature="e#12127#12128#0" expanded="false" />
-            <element signature="e#12163#12164#0" expanded="false" />
-            <element signature="e#12198#12199#0" expanded="false" />
-            <element signature="e#12229#12230#0" expanded="false" />
-            <element signature="e#12277#12278#0" expanded="false" />
-            <element signature="e#12317#12318#0" expanded="false" />
             <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
           </folding>
         </state>
@@ -1117,20 +928,6 @@
         <state relative-caret-position="9915">
           <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1872#1873#0" expanded="false" />
-            <element signature="e#22103#22110#0" expanded="false" />
-            <element signature="e#22997#23007#0" expanded="false" />
-            <element signature="e#24737#24748#0" expanded="false" />
-            <element signature="e#25845#25855#0" expanded="false" />
-            <element signature="e#27228#27234#0" expanded="false" />
-            <element signature="e#28688#28694#0" expanded="false" />
-            <element signature="e#30756#30762#0" expanded="false" />
-            <element signature="e#32552#32562#0" expanded="false" />
-            <element signature="e#35879#35888#0" expanded="false" />
-            <element signature="e#36922#36928#0" expanded="false" />
-            <element signature="e#38212#38218#0" expanded="false" />
             <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
             <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
           </folding>
@@ -1141,15 +938,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#431#432#0" expanded="false" />
-            <element signature="e#464#465#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#563#564#0" expanded="false" />
-            <element signature="e#629#630#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
