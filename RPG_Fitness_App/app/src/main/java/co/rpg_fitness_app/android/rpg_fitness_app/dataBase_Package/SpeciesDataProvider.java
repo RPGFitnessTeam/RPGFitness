@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package;
 
+import android.widget.GridLayout;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +20,23 @@ public class SpeciesDataProvider {
         speciesList = new ArrayList<Species>();
         speciesMap = new HashMap<String, Species>();
 
-        // Below here is where we will add all items to the database
+        Species Orc = new Species();
+        Orc.setName("Orc");
+
+        Species Elf = new Species();
+        Elf.setName("Elf");
+
+        Species Human = new Species();
+        Human.setName("Human");
+
+        Species Dwarf = new Species();
+        Dwarf.setName("Dwarf");
+
+        speciesList.add(Orc);
+        speciesList.add(Elf);
+        speciesList.add(Human);
+        speciesList.add(Dwarf);
+
     }
 
     private static void addSpecies(Species species) {

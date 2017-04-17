@@ -17,12 +17,19 @@ public class Species {
     // default constructor
     public Species()
     {
-        name = null;
-        description = null;
+        name = "Stark";
+        description = "A man of the North";
         ID = UUID.randomUUID().toString();
         imageName = null;
     }
 
+    public Species(String name, String description, String ID, String imageName)
+    {
+        this.name = name;
+        this.description = description;
+        this.ID = ID;
+        this.imageName = imageName;
+    }
 
     // getters and setters
     public String getName() {

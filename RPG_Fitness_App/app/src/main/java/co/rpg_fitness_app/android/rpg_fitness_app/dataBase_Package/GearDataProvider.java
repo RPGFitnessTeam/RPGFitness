@@ -18,7 +18,17 @@ public class GearDataProvider {
         gearList = new ArrayList<Gear>();
         gearMap = new HashMap<String, Gear>();
 
-        // Below here is where we will add all items to the database
+        Gear helmOfCourage = new Gear();
+        helmOfCourage.setName("Helm of Courage");
+        helmOfCourage.setCategory("Helm");
+        gearList.add(helmOfCourage);
+
+        Gear LichHelm = new Gear();
+        LichHelm.setName("Helm of the King Lich");
+        LichHelm.setCategory("Helm");
+        gearList.add(LichHelm);
+
+
     }
 
     private static void addGear(Gear gear) {
