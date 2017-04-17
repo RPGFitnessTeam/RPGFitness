@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 //import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Species;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-         mDataSource.upgrade();
-        //mDataSource.open();
+        mDataSource.upgrade();
+        // mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
         //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines

@@ -35,9 +35,9 @@ public class ItemPopUpChest extends Activity {
 
         //Adapter used to display list's data (in this case a list of helms the player owns)
         //ArrayAdapter<Gear> items = new ArrayAdapter<Gear>(this, R.layout.character_item_popup,
-        //        R.id.item_textView, character.retrieveGearInCategory("Helm"));
+        //      R.id.item_textView, character.retrieveGearInCategory("Helm"));
 
-        String[] Chests = {"A", "B", "C"};
+
 
 
     }
