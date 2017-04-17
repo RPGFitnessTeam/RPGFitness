@@ -1227,7 +1227,7 @@ public class DataSource {
 
         logEntry.setID(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
-        logEntry.setDate(cursor.getInt(
+        logEntry.setDateString(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
         logEntry.setSubType(cursor.getInt(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
