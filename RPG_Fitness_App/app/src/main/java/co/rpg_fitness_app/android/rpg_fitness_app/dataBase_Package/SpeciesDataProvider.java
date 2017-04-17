@@ -19,6 +19,24 @@ public class SpeciesDataProvider {
     static {
         speciesList = new ArrayList<Species>();
         speciesMap = new HashMap<String, Species>();
+
+        Species Orc = new Species();
+        Orc.setName("Orc");
+
+        Species Elf = new Species();
+        Elf.setName("Elf");
+
+        Species Human = new Species();
+        Human.setName("Human");
+
+        Species Dwarf = new Species();
+        Dwarf.setName("Dwarf");
+
+        speciesList.add(Orc);
+        speciesList.add(Elf);
+        speciesList.add(Human);
+        speciesList.add(Dwarf);
+
     }
 
     private static void addSpecies(Species species) {

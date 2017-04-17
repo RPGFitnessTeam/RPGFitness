@@ -156,7 +156,7 @@ public class Character {
             return false;
         }
 
-        if(category == "Helm")
+        if(category.equals("Helm"))
         {
             if(activeGear.get(0) == null)
             {
@@ -167,7 +167,7 @@ public class Character {
                 ret = true;
             }
         }
-        else if(category == "Chest")
+        else if(category.equals("Chest"))
         {
             if(activeGear.get(1) == null)
             {
@@ -178,7 +178,7 @@ public class Character {
                 ret = true;
             }
         }
-        else if(category == "Weapon")
+        else if(category.equals("Weapon"))
         {
             if(activeGear.get(2) == null)
             {
@@ -189,7 +189,7 @@ public class Character {
                 ret = true;
             }
         }
-        else if(category == "OffHand")
+        else if(category.equals("OffHand"))
         {
             if(activeGear.get(3) == null)
             {
@@ -200,7 +200,7 @@ public class Character {
                 ret = true;
             }
         }
-        else if(category == "Legs")
+        else if(category.equals("Legs"))
         {
             if(activeGear.get(4) == null)
             {
@@ -229,7 +229,7 @@ public class Character {
     {
         boolean ret = false;
         String category = equip.getCategory();
-        if(category == "Helm")
+        if(category.equals("Helm"))
         {
             if(activeGear.get(0) == null)
             {
@@ -246,11 +246,9 @@ public class Character {
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
-
-
             }
         }
-        else if(category == "Chest")
+        else if(category.equals("Chest"))
         {
             if(activeGear.get(1) == null)
             {
@@ -270,7 +268,7 @@ public class Character {
 
             }
         }
-        else if(category == "Weapon")
+        else if(category.equals("Weapon"))
         {
             if(activeGear.get(2) == null)
             {
@@ -290,7 +288,7 @@ public class Character {
 
             }
         }
-        else if(category == "OffHand")
+        else if(category.equals("OffHand"))
         {
             if(activeGear.get(3) == null)
             {
@@ -310,7 +308,7 @@ public class Character {
 
             }
         }
-        else if(category == "Legs")
+        else if(category.equals("Legs"))
         {
             if(activeGear.get(4) == null)
             {
@@ -339,11 +337,11 @@ public class Character {
     public ArrayList<Gear> retrieveGearInCategory(String category)
     {
         int index = -1;
-        if( category == "Helm") index = 0;
-        else if( category == "Chest") index = 1;
-        else if( category == "Weapon") index = 2;
-        else if( category == "OffHand") index = 3;
-        else if( category == "Legs") index = 4;
+        if( category.equals("Helm")) index = 0;
+        else if( category.equals("Chest")) index = 1;
+        else if( category.equals("Weapon")) index = 2;
+        else if( category.equals("OffHand")) index = 3;
+        else if( category.equals("Legs")) index = 4;
 
         if(index == -1)
         {

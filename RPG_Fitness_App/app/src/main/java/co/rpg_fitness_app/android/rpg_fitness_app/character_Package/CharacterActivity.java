@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.textservice.SpellCheckerInfo;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 
 /**
  * Created by awhit on 3/13/2017.
@@ -31,6 +33,10 @@ public class CharacterActivity extends Activity{
     AlertDialog enterName;
     EditText editName;
     DataSource mDataSource;
+    ArrayList<String> speciesList;
+    ArrayList<Species> speciesAL;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,11 +66,11 @@ public class CharacterActivity extends Activity{
         // sets up the proper components of the species drop down menu
         final Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
 
-        // get species from DB
-        final ArrayList<Species> speciesAL = mDataSource.getAllSpecies();
-        String[] speciesList = new String[speciesAL.size()];
+        // sets name of species for spinner
+        speciesAL = mDataSource.getAllSpecies();
+        speciesList = new ArrayList<String>();
         for(int i = 0; i < speciesAL.size(); i++) {
-            speciesList[i] = speciesAL.get(i).getName();
+            speciesList.add(speciesAL.get(i).getName());
         }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
@@ -155,9 +161,9 @@ public class CharacterActivity extends Activity{
         //listener for the species drop down menu
         speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
+
                 character.setSpecies(speciesAL.get(pos));
-                // TODO update char breaks app
-                // mDataSource.updateCharacter(character);
+                mDataSource.updateCharacter(character);
 
             }
 
