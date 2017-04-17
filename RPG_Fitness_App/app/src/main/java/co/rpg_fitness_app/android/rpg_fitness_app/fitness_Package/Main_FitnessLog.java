@@ -22,6 +22,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class Main_FitnessLog extends AppCompatActivity {
 
+    DataSource mDatasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
