@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="21ec6577-d4af-4392-adaa-ca7b34447f4d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/runConfigurations.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/vcs.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" afterPath="$PROJECT_DIR$/RPG_Fitness_App/.idea/misc.xml" />
+    </list>
+=======
     <list default="true" id="21ec6577-d4af-4392-adaa-ca7b34447f4d" name="Default" comment="" />
+>>>>>>> master
     <ignored path="RPGFitness.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +35,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
               <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+              </folding>
+=======
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -33,7 +49,11 @@
       <file leaf-file-name="AddActivityDetail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="237">
+=======
             <state relative-caret-position="207">
+>>>>>>> master
               <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
               <folding />
             </state>
@@ -55,7 +75,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+              </folding>
+=======
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -65,7 +91,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="11237">
               <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+                <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+              </folding>
+=======
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -130,7 +163,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+      <pane id="PackagesPane" />
+=======
       <pane id="Scope" />
+>>>>>>> master
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -377,8 +414,13 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+      <pane id="Scope" />
+      <pane id="Scratches" />
+=======
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+>>>>>>> master
       <pane id="AndroidView">
         <subPane />
       </pane>
@@ -630,7 +672,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="65" y="24" width="1535" height="876" extended-state="6" />
+=======
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+>>>>>>> master
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -638,15 +684,19 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> master
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -679,6 +729,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="330">
+          <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+=======
         <state relative-caret-position="663">
           <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
           <folding />
@@ -722,6 +779,7 @@
         <state relative-caret-position="420">
           <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -737,7 +795,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -745,7 +809,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9915">
           <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/FitnessLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/Main_FitnessLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/LogEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/dataBase_Package/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9915">
+          <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -761,7 +882,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -777,7 +904,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -785,7 +918,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9885">
           <caret line="683" column="0" selection-start-line="683" selection-start-column="0" selection-end-line="683" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -801,7 +941,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -809,7 +955,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -825,7 +977,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -833,7 +991,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9885">
           <caret line="683" column="0" selection-start-line="683" selection-start-column="0" selection-end-line="683" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -849,13 +1014,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491523927060" expanded="false" signature="76:585" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RPG_Fitness_App/app/src/main/java/co/rpg_fitness_app/android/rpg_fitness_app/fitness_Package/AddActivityDetail.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="237">
+=======
         <state relative-caret-position="207">
+>>>>>>> master
           <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
           <folding />
         </state>
@@ -865,7 +1040,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522612856" expanded="false" signature="78:129" ph="..." />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -873,7 +1054,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11237">
           <caret line="685" column="0" selection-start-line="685" selection-start-column="0" selection-end-line="685" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491522942772" expanded="true" signature="32496:32819" ph="{...}" />
+            <marker date="1491522942772" expanded="true" signature="47809:48799" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -882,6 +1070,8 @@
         <state relative-caret-position="221">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
+<<<<<<< HEAD
+=======
         </state>
       </provider>
     </entry>
@@ -890,6 +1080,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
