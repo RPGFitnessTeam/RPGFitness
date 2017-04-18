@@ -33,7 +33,7 @@ public class Character {
         moneyChest = new Currency();
 
         // set species
-        mySpecies = new Species();
+        mySpecies = null;
 
         // set boosts
         activeBoosts = new ArrayList<Boost>();

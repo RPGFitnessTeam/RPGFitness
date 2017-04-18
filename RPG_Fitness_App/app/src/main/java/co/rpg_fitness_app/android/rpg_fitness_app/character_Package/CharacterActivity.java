@@ -35,6 +35,7 @@ public class CharacterActivity extends Activity{
     DataSource mDataSource;
     ArrayList<String> speciesList;
     ArrayList<Species> speciesAL;
+    Character character;
 
 
 
@@ -48,7 +49,7 @@ public class CharacterActivity extends Activity{
         mDataSource.open();
 
         // retrieve character from data source
-        final Character character = mDataSource.getAllCharacters().get(0);
+        character = mDataSource.getAllCharacters().get(0);
 
         // set character name view to proper name
         nameText = (TextView) findViewById(R.id.textView_charName);
@@ -63,6 +64,8 @@ public class CharacterActivity extends Activity{
         enterName.setView(editName);
 
 
+
+
         // sets up the proper components of the species drop down menu
         final Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
 
@@ -71,6 +74,21 @@ public class CharacterActivity extends Activity{
         speciesList = new ArrayList<String>();
         for(int i = 0; i < speciesAL.size(); i++) {
             speciesList.add(speciesAL.get(i).getName());
+        }
+
+        if(character.getSpecies() == null) {
+            character.setSpecies(speciesAL.get(0));
+        }
+
+
+        for(int i = 0; i < speciesList.size(); i++){
+            String currSpecies;
+            if(speciesList.get(i).equals(character.getSpecies().getName()) )
+            {
+                currSpecies = speciesList.get(i);
+                speciesList.remove(i);
+                speciesList.add(0, currSpecies);
+            }
         }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
@@ -163,6 +181,7 @@ public class CharacterActivity extends Activity{
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
 
                 character.setSpecies(speciesAL.get(pos));
+                Log.d("string", speciesAL.get(pos).getName());
                 mDataSource.updateCharacter(character);
 
             }
