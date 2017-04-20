@@ -20,7 +20,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 
 
-public class Main_FitnessLog extends AppCompatActivity {
+public class FitnessLogActivity extends AppCompatActivity {
 
     FitnessLog duya = new FitnessLog();
     //Todo: create List view from fitnessLog

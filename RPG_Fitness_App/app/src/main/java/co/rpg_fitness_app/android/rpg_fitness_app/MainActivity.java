@@ -13,9 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         mfitnessLogMainButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent startIntent = new Intent(MainActivity.this, Main_FitnessLog.class);
+                Intent startIntent = new Intent(MainActivity.this, FitnessLogActivity.class);
                 startActivity(startIntent);
             }
         });

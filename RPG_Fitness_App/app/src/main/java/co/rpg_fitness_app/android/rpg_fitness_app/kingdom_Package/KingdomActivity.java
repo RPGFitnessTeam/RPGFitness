@@ -14,7 +14,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterAct
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 //import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
@@ -95,7 +95,7 @@ public class KingdomActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, Main_FitnessLog.class);
+                Intent i = new Intent(KingdomActivity.this, FitnessLogActivity.class);
                 startActivity(i);
                 finish();
             }
