@@ -77,6 +77,13 @@ public class MysteryPopUp extends Activity {
         name.setText("Mystery Tile");
         TextView description = (TextView) findViewById(R.id.mysteryTileDescription);
         description.setText("It's a Mystery Tile!");
+        TextView t;
+        t = (TextView) findViewById(R.id.userGold);
+        t.setText("Gold: "+moneyChest.getGold());
+        t = (TextView) findViewById(R.id.userWood);
+        t.setText("Wood: "+moneyChest.getWood());
+        t = (TextView) findViewById(R.id.userStone);
+        t.setText("Stone: "+moneyChest.getStone());
     }
 
     /**
