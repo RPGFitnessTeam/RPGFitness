@@ -1,12 +1,13 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by awhit on 3/11/2017.
  */
 
-public class Species {
+public class Species implements Serializable{
 
 
     private String name;
@@ -17,12 +18,19 @@ public class Species {
     // default constructor
     public Species()
     {
-        name = null;
-        description = null;
+        name = "Stark";
+        description = "A man of the North";
         ID = UUID.randomUUID().toString();
         imageName = null;
     }
 
+    public Species(String name, String description, String ID, String imageName)
+    {
+        this.name = name;
+        this.description = description;
+        this.ID = ID;
+        this.imageName = imageName;
+    }
 
     // getters and setters
     public String getName() {

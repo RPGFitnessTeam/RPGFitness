@@ -453,6 +453,7 @@ public class DataSource {
         ContentValues values = new ContentValues(9);
         values.put(LogEntryTable.COLUMN_ID, logEntry.getID());
         values.put(LogEntryTable.COLUMN_DATE, logEntry.getDate());
+       // System.out.println("DUYA::" + logEntry.getDate());
         values.put(LogEntryTable.COLUMN_ACTIVITY, logEntry.getActivityInt());
         values.put(LogEntryTable.COLUMN_SUB_TYPE, logEntry.getSubTypeInt());
         values.put(LogEntryTable.COLUMN_DURATION, logEntry.getDuration());
@@ -859,7 +860,7 @@ public class DataSource {
 
             logEntry.setID(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
-            logEntry.setDate(cursor.getInt(
+            logEntry.setDateString(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
             logEntry.setSubType(cursor.getInt(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
@@ -1226,7 +1227,7 @@ public class DataSource {
 
         logEntry.setID(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
-        logEntry.setDate(cursor.getInt(
+        logEntry.setDateString(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
         logEntry.setSubType(cursor.getInt(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));

@@ -19,6 +19,8 @@ public class CharacterDataProvider {
         characterMap = new HashMap<String, Character>();
 
         // Below here is where we will add all items to the database
+        Character character = new Character();
+        characterList.add(0, character);
     }
 
     private static void addCharacter(Character character) {
