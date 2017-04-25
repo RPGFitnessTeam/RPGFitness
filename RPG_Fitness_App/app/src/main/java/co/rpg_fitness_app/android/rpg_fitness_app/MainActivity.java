@@ -8,13 +8,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-//import javax.sql.DataSource;
-
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
-import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Species;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
@@ -23,15 +20,14 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Tile;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
-import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
-import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+
+//import javax.sql.DataSource;
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private Kingdom kingdom;
-    private Currency moneyChest;
     private DataSource mDataSource;
     private int KINGDOM_ACTIVITY_RETURN = 1;
 
@@ -69,14 +65,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //getKingdom();
                 Intent startIntent = new Intent(MainActivity.this, KingdomActivity.class);
-                //startIntent.putExtra("kingdom", kingdom);
-                //startIntent.putExtra("buildings", mDataSource.getAllBuildings());
-                //TODO: startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
-                Currency c = new Currency();//TESTING
-                c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
-                startIntent.putExtra("money chest", c);//TESTING
+                //startIntent.putExtra("money chest", mDataSource.getCharacter().getCurrency());
+                //Currency c = new Currency();//TESTING
+                //c.updateResource(true,10,10,10,1,1,1,1,1);//TESTING
+                //startIntent.putExtra("money chest", c);//TESTING
                 startActivity(startIntent);
-                //startActivityForResult(startIntent, KINGDOM_ACTIVITY_RETURN);
             }
         });
 
@@ -123,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
         if (this.kingdom == null) {
             this.kingdom = new Kingdom();
             mDataSource.insertKingdom(kingdom);
+            Currency moneyChest = new Currency();
+            moneyChest.updateResource(true,1,1,1,0,0,0,0,0);
+            moneyChest.setId("moneyChest");
+            mDataSource.updateCurrency(moneyChest);
         }
     }
 

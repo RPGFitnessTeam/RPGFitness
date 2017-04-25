@@ -38,12 +38,9 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-        //this.kingdom = mDataSource.getAllKingdoms();
-        //kingdom = new Kingdom();
         this.buildings = mDataSource.getAllBuildings();
-        //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
-        //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
-      this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+        this.moneyChest = mDataSource.getCurrency("moneyChest");
+        //this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
       //////////////////////////////////////////TESTING//////////////////////////////////////////////////////////////
         this.kingdom = mDataSource.getAllKingdoms();
         if (kingdom == null) {
@@ -73,10 +70,6 @@ public class KingdomActivity extends Activity {
         super.onDestroy();
         mDataSource.updateKingdom(kingdom);
         mDataSource.updateCurrency(moneyChest);
-        /*Intent i = new Intent();
-        i.putExtra("kingdom", this.kingdom);
-        i.putExtra("money chest", this.moneyChest);
-        setResult(1, i);*/
         finish();
     }
 
