@@ -199,6 +199,12 @@ public class TilePopUp extends Activity{
         i.setBackgroundResource(R.drawable.b_water1);
         t = (TextView) findViewById(R.id.purchaseBuilding6Text);
         t.setText("Pond:\nA pond will give you extra gold!\nConstruction Cost: 1 stone, 1 gold");
+        t = (TextView) findViewById(R.id.userGold);
+        t.setText("Gold: "+moneyChest.getGold());
+        t = (TextView) findViewById(R.id.userWood);
+        t.setText("Wood: "+moneyChest.getWood());
+        t = (TextView) findViewById(R.id.userStone);
+        t.setText("Stone: "+moneyChest.getStone());
     }
 
 
