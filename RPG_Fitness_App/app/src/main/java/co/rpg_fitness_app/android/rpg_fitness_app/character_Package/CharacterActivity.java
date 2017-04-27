@@ -36,6 +36,9 @@ import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 public class CharacterActivity extends Activity{
 
     TextView nameText;
+    TextView goldText;
+    TextView stoneText;
+    TextView woodText;
     AlertDialog enterName;
     EditText editName;
     DataSource mDataSource;
@@ -69,6 +72,16 @@ public class CharacterActivity extends Activity{
         enterName.setTitle("Enter your Character's name");
         enterName.setView(editName);
 
+
+
+        goldText = (TextView) findViewById(R.id.textGold);
+        goldText.setText(""+character.getCurrency().getGold());
+
+        woodText = (TextView) findViewById(R.id.textWood);
+        woodText.setText(""+character.getCurrency().getWood());
+
+        stoneText = (TextView) findViewById(R.id.textRock);
+        stoneText.setText(""+character.getCurrency().getStone());
 
 
 
@@ -198,10 +211,10 @@ public class CharacterActivity extends Activity{
 
         });
 
-        //configureToolBarButtons();
+        configureToolBarButtons();
     }
 
-    /*private void configureToolBarButtons() {
+    private void configureToolBarButtons() {
         ImageButton b;
         b = (ImageButton) findViewById(R.id.questFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
@@ -257,6 +270,6 @@ public class CharacterActivity extends Activity{
                 finish();
             }
         });
-    }*/
+    }
 
 }

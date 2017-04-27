@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.style.ParagraphStyle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -109,12 +110,6 @@ public class ItemPopUpChest extends Activity {
                 }
             });
 
-            /*Button imgButton = new Button(this);
-            imgButton.setId(i+10000);
-            imgButton.setOnClickListener(null);*/
-            // imgButton.setBackgroundResource(R.drawable.b_dwelling1);
-
-
 
             // sets the name of the button
             if(i == 0)
@@ -128,7 +123,6 @@ public class ItemPopUpChest extends Activity {
             }
 
             newRow.addView(button);
-            // newRow.addView(imgButton);
             table.addView(newRow);
 
 
