@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -33,6 +34,8 @@ public class ItemPopUpHelm extends Activity {
     DataSource mDataSource;
     ArrayList<Gear> helmList;
     ArrayList<Button> buttons;
+    Gear equipped;
+    int indexOfEquipped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +58,25 @@ public class ItemPopUpHelm extends Activity {
         helmList = new ArrayList<Gear>();
         for (int i = 0; i < gearList.size(); i++) {
             if (gearList.get(i).getCategory().equals("Helm") && gearList.get(i).isOwned() ==  true) {
-                Log.d("gear owned", gearList.get(i).getName());
-                helmList.add(gearList.get(i));
+                if(gearList.get(i).isEquipped() == true) {
+                    Log.d("index 0", "equipped helm : " + gearList.get(i).getName());
+                    indexOfEquipped = i;
+                    helmList.add(0,gearList.get(i));
+                }
+                else {
+                    Log.d("index not 0", "not equipped helm : " + gearList.get(i).getName());
+                    helmList.add(gearList.get(i));
+                }
             }
         }
 
 
         // checks if no item is eqquipped, set top item to equipped if so
         if(character.getActiveGear().get(0) == null) {
+            indexOfEquipped = 0;
             character.equipItem(helmList.get(0));
+            mDataSource.updateGear(gearList.get(0));
+            equipped = gearList.get(0);
         }
 
 
@@ -73,25 +86,40 @@ public class ItemPopUpHelm extends Activity {
             // get item name
             TableRow newRow = new TableRow(this);
             TableRow.LayoutParams MPparam =
-                    new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+                    new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
             newRow.setLayoutParams(MPparam);
+
+            // set up item button
             Button button = new Button(this);
             button.setId(i);
+
             final int index = i;
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Gear eqquiped", helmList.get(index).getName());
+
                     character.equipItem(helmList.get(index));
+                    mDataSource.updateGear(helmList.get(indexOfEquipped));
+                    mDataSource.updateGear(helmList.get(index));
                     mDataSource.updateCharacter(character);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+
                 }
             });
 
-            Log.d("Active gear", character.getActiveGear().get(0).getName());
-            Log.d("Current GEar", helmList.get(i).getName());
+            Button imgButton = new Button(this);
+            imgButton.setId(i+10000);
+            imgButton.setOnClickListener(null);
+            // imgButton.setBackgroundResource(R.drawable.b_dwelling1);
+
+
+
             // sets the name of the button
-            if(helmList.get(index).equals(character.getActiveGear().get(0)))
+            if(i == 0)
             {
+                Log.d("change button text", "set text " + helmList.get(index).getName());
                 button.setText(helmList.get(index).getName() + " (Eq.)");
             }
             else
@@ -100,6 +128,7 @@ public class ItemPopUpHelm extends Activity {
             }
 
             newRow.addView(button);
+            newRow.addView(imgButton);
             table.addView(newRow);
 
 
