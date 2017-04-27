@@ -20,7 +20,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 
-public class Main_FitnessLog extends AppCompatActivity {
+public class FitnessLogActivity extends AppCompatActivity {
 
     DataSource mDatasource;
 
