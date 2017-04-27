@@ -35,7 +35,7 @@ public class FitnessLogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main__fitness_log);
 
         //Add new LogEntry
-        ((Button) findViewById(R.id.button_add_activity)).setOnClickListener(
+        ((ImageButton) findViewById(R.id.button_add_activity)).setOnClickListener(
                 new Button.OnClickListener()
                 {
                     @Override
