@@ -109,11 +109,6 @@ public class ItemPopUpHelm extends Activity {
                 }
             });
 
-            Button imgButton = new Button(this);
-            imgButton.setId(i+10000);
-            imgButton.setOnClickListener(null);
-            // imgButton.setBackgroundResource(R.drawable.b_dwelling1);
-
 
 
             // sets the name of the button
@@ -128,7 +123,6 @@ public class ItemPopUpHelm extends Activity {
             }
 
             newRow.addView(button);
-            newRow.addView(imgButton);
             table.addView(newRow);
 
 

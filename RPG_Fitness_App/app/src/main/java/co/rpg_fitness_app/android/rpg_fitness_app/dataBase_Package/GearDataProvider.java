@@ -44,6 +44,86 @@ public class GearDataProvider {
         gearList.add(LichHelm);
 
 
+        Gear OrcMail = new Gear();
+        OrcMail.setName("Orc Mail");
+        OrcMail.setCategory("Chest");
+        OrcMail.setOwned(true);
+        Currency costOfOrcMail = new Currency();
+        OrcMail.setCost(costOfOrcMail);
+        Boost OrcMailBoost = new Boost();
+        OrcMail.setBoost(OrcMailBoost);
+        gearList.add(OrcMail);
+
+        Gear ParachutePants = new Gear();
+        ParachutePants.setName("Parachute Pants");
+        ParachutePants.setCategory("Legs");
+        ParachutePants.setOwned(true);
+        Currency costOfParachutePants = new Currency();
+        ParachutePants.setCost(costOfParachutePants);
+        Boost ParachutePantsBoost = new Boost();
+        ParachutePants.setBoost(ParachutePantsBoost);
+        gearList.add(ParachutePants);
+
+
+        Gear Frostblade = new Gear();
+        Frostblade.setName("Frost Blade");
+        Frostblade.setCategory("Weapon");
+        Frostblade.setOwned(true);
+        Currency costOfFrostblade = new Currency();
+        Frostblade.setCost(costOfFrostblade);
+        Boost FrostbladeBoost = new Boost();
+        Frostblade.setBoost(FrostbladeBoost);
+        gearList.add(Frostblade);
+
+        Gear RubberChicken = new Gear();
+        RubberChicken.setName("A Rubber Chicken");
+        RubberChicken.setCategory("Weapon");
+        RubberChicken.setOwned(true);
+        Currency costOfRubberChicken = new Currency();
+        RubberChicken.setCost(costOfRubberChicken);
+        Boost RubberChickenBoost = new Boost();
+        RubberChicken.setBoost(RubberChickenBoost);
+        gearList.add(RubberChicken);
+
+        Gear BeosBlade = new Gear();
+        BeosBlade.setName("Beos Blade");
+        BeosBlade.setCategory("Weapon");
+        BeosBlade.setOwned(true);
+        Currency costOfBeosBlade = new Currency();
+        BeosBlade.setCost(costOfBeosBlade);
+        Boost BeosBladeBoost = new Boost();
+        BeosBlade.setBoost(BeosBladeBoost);
+        gearList.add(BeosBlade);
+
+        Gear DwarvenMail = new Gear();
+        DwarvenMail.setName("Dwarven Mail");
+        DwarvenMail.setCategory("Chest");
+        DwarvenMail.setOwned(true);
+        Currency costOfDwarvenMail = new Currency();
+        DwarvenMail.setCost(costOfDwarvenMail);
+        Boost DwarvenMailBoost = new Boost();
+        DwarvenMail.setBoost(DwarvenMailBoost);
+        gearList.add(DwarvenMail);
+
+
+
+        Gear FoundersGrail = new Gear();
+        FoundersGrail.setName("Founders Grail");
+        FoundersGrail.setCategory("OffHand");
+        FoundersGrail.setOwned(true);
+        Currency costOfFoundersGrail = new Currency();
+        FoundersGrail.setCost(costOfFoundersGrail);
+        Boost FoundersGrailBoost = new Boost();
+        FoundersGrail.setBoost(FoundersGrailBoost);
+        gearList.add(FoundersGrail);
+
+
+
+
+
+
+
+
     }
 
     private static void addGear(Gear gear) {
