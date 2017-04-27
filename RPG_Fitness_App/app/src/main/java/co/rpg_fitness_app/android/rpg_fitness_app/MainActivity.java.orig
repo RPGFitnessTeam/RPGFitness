@@ -11,10 +11,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-
+<<<<<<< HEAD
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-
-
+=======
+>>>>>>> 15d8fa381341f2778d5f8ed0f248f085a12aa591
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;

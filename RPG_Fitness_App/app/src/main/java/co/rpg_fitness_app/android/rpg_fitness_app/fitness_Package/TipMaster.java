@@ -1,14 +1,21 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 
 // Activity Class for displaying tips
@@ -46,6 +53,7 @@ public class TipMaster extends AppCompatActivity {
             childList.put(fitCategories.get(3), weightTipList);
             tipAdapter adapt = new tipAdapter(this, fitCategories, childList);
             expandableListView.setAdapter(adapt);
+            configureToolBarButtons();
 
         }
         public boolean addTip(int message, String ID, String type, boolean thumbsUp, boolean thumbsDown) {
@@ -100,6 +108,65 @@ public class TipMaster extends AppCompatActivity {
                 this.addTip(R.string.w2, UUID.randomUUID().toString(), "weight", false, false);
                 this.addTip(R.string.w3, UUID.randomUUID().toString(), "weight", false, false);
              }
+
+        private void configureToolBarButtons() {
+            ImageButton b;
+            b = (ImageButton) findViewById(R.id.questFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, QuestActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            b = (ImageButton) findViewById(R.id.fitnessLogFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, FitnessLogActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            b = (ImageButton) findViewById(R.id.tipsFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, TipMaster.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, KingdomActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            b = (ImageButton) findViewById(R.id.goalsFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, GoalActive.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            b = (ImageButton) findViewById(R.id.characterFooterButton);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TipMaster.this, CharacterActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+
+        }
     }
 
 

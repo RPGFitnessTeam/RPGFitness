@@ -5,12 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
-
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
 
 
 public class QuestActivity extends AppCompatActivity {
@@ -46,7 +51,7 @@ public class QuestActivity extends AppCompatActivity {
         applyButtonText();
         configureMasterButton();
         configureQuestButtons();
-
+        configureToolBarButtons();
 
     }
 
@@ -120,6 +125,64 @@ public class QuestActivity extends AppCompatActivity {
         //TODO pull new quest from database
         Quest newQuest = new Quest(false, null, "quest4", "Description4", "parameters");
         return newQuest;
+    }
+
+    private void configureToolBarButtons() {
+        ImageButton b;
+        b = (ImageButton) findViewById(R.id.questFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, QuestActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.fitnessLogFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, FitnessLogActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.tipsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, TipMaster.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.goalsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, GoalActive.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.characterFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuestActivity.this, CharacterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
 }

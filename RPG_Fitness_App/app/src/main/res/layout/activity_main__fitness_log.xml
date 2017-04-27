@@ -5,7 +5,7 @@
     android:id="@+id/activity_main__fitness_log"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog">
+    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity">
 
     <include layout="@layout/footer" />
 
