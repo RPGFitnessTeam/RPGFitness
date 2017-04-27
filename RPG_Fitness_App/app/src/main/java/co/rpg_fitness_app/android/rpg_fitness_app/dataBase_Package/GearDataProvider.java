@@ -21,11 +21,13 @@ public class GearDataProvider {
         Gear helmOfCourage = new Gear();
         helmOfCourage.setName("Helm of Courage");
         helmOfCourage.setCategory("Helm");
+        helmOfCourage.setOwned(true);
         gearList.add(helmOfCourage);
 
         Gear LichHelm = new Gear();
         LichHelm.setName("Helm of the King Lich");
         LichHelm.setCategory("Helm");
+        LichHelm.setOwned(true);
         gearList.add(LichHelm);
 
 

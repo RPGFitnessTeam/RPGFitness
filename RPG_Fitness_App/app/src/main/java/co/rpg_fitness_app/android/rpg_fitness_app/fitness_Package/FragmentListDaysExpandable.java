@@ -56,8 +56,8 @@ public class FragmentListDaysExpandable extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
+
     public static ArrayList<String> getList_days()
     {
         return list_days;
