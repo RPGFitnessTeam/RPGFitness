@@ -102,7 +102,15 @@ public class KingdomActivity extends Activity {
                 finish();
             }
         });
-        //b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(KingdomActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
         b = (ImageButton) findViewById(R.id.goalsFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

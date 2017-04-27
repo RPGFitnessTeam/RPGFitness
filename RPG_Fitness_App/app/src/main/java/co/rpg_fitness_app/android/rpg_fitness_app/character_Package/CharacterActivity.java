@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -21,7 +22,12 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 /**
  * Created by awhit on 3/13/2017.
@@ -191,6 +197,66 @@ public class CharacterActivity extends Activity{
             }
 
         });
+
+        //configureToolBarButtons();
     }
+
+    /*private void configureToolBarButtons() {
+        ImageButton b;
+        b = (ImageButton) findViewById(R.id.questFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, QuestActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.fitnessLogFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, FitnessLogActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.tipsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, TipMaster.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.goalsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, GoalActive.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.characterFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, CharacterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+    }*/
 
 }
