@@ -249,6 +249,7 @@ public class Character {
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
+                Log.d("gear activity", "now equipped " + activeGear.get(0).getName());
             }
         }
         else if(category.equals("Chest"))
