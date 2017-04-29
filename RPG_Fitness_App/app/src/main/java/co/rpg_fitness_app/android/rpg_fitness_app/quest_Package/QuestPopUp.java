@@ -11,11 +11,14 @@ import android.content.Intent;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class QuestPopUp extends Activity {
 
-    Currency moneyChest;
-    Quest quest;
+    private Currency reward;
+    private Currency moneyChest;
+    private Quest quest;
+    private DataSource mdataSource;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,13 @@ public class QuestPopUp extends Activity {
 
         //this.moneyChest = (Currency) getIntent().getSerializableExtra("money chest");
         this.quest = (Quest) getIntent().getSerializableExtra("quest");
+        mdataSource = new DataSource(this);
+        mdataSource.open();
+        reward = mdataSource.getCurrency(quest.getRewardId());
+        moneyChest = mdataSource.getCurrency("moneyChest");
+        if (moneyChest == null) {
+            moneyChest = new Currency();
+        }
 
         configureText();
         configureCompleteButton();
@@ -58,6 +68,15 @@ public class QuestPopUp extends Activity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+               Intent intent = new Intent();
+                intent.putExtra("quest", quest);
+                moneyChest.updateResource(true, reward.getWood(), reward.getGold(), reward.getStone(),
+                        0, 0, 0, 0, 0);
+                mdataSource.updateCurrency(moneyChest);
+                quest.setIsQuestComplete(true);
+                mdataSource.updateQuest(quest);
+               setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         });
@@ -68,6 +87,11 @@ public class QuestPopUp extends Activity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               Intent intent = new Intent();
+                intent.putExtra("quest", quest);
+                quest.setIsQuestSkipped(true);
+                mdataSource.updateQuest(quest);
+               setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         });
@@ -81,7 +105,11 @@ public class QuestPopUp extends Activity {
         description.setText(quest.getDescription());
 
         TextView parameters = (TextView) findViewById(R.id.QuestParameters);
-        parameters.setText(quest.getParameters());
+        String rewards = "Reward: Stone - " + reward.getStone() +
+                        " Wood - " + reward.getWood() +
+                        " Gold - " + reward.getGold();
+        parameters.setTextSize(15);
+        parameters.setText(rewards);
     }
 
 }
