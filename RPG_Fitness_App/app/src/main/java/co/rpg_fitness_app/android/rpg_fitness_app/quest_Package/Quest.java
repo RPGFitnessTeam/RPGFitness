@@ -95,8 +95,9 @@ public class Quest implements Serializable {
 
 
 
-    public boolean getIsQuestExpired() {
+    public boolean setQuestExpired() {
         if (getHoursRemaining().equals("100")) {
+            setIsQuestExpired(false);
             return false;
         }
 
@@ -105,8 +106,10 @@ public class Quest implements Serializable {
         Calendar currDate = Calendar.getInstance();
         currDate.setTime(new Date());
         if (currDate.after(questEndDate)) {
+            setIsQuestExpired(true);
             return true;
         }
+        setIsQuestExpired(false);
         return false;
     }
 

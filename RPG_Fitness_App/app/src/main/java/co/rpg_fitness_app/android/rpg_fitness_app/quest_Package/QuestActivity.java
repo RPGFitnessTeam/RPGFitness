@@ -147,6 +147,11 @@ public class QuestActivity extends AppCompatActivity {
                         allQuests.get(i).setIsQuestExpired(false);
                         mdataSource.updateQuest(allQuests.get(i));
                     }
+                    else {
+                        Quest stillActive = allQuests.get(i);
+                        allQuests.remove(i);
+                        allQuests.add(0, stillActive);
+                    }
                 }
                 curr = 0;
             }
@@ -166,7 +171,9 @@ public class QuestActivity extends AppCompatActivity {
                 }
                 else {
                     Quest quest = allQuests.get(curr);
-                    if (!quest.getIsQuestExpired()) {
+                    quest.setQuestExpired();
+                    mdataSource.updateQuest(quest);
+                    if (!quest.getQuestExpired()) {
                         quests.add(quest);
                         questFilled += 1;
                     }
