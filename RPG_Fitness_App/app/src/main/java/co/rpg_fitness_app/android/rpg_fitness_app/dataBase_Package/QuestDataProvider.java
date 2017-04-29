@@ -31,39 +31,46 @@ public class QuestDataProvider {
         String description;
         Quest quest;
 
-        name = "Quest 1";
-        description = "description 1";
+        name = "Bandit Barrage";
+        description = "A group of Bandits has stolen your goods!\n\n" +
+                "Chase them down.\n\n-Run/Walk 2 miles without stopping";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 2";
-        description = "description 2";
+        name = "Orc Invasion";
+        description = "A tribe of rogue orcs has invaded your kingdom!\n\n" +
+                "Protect it with your might.\n\n-perform 50 push-ups(total)";
         //parameters = "parameters 2";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 3";
-        description = "description 3";
+        name = "Peasant Peril";
+        description = "A group of peasants is trapped under a collapsed building!\n\n" +
+                "Rescue them from the rubble.\n\n-perform lower body lifting routine";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 4";
-        description = "description 4";
+        name = "Magic Focus";
+        description = "An evil mage has challenged you to a duel of sorcery!\n\n" +
+                    "unleash your inner magica.\n\n-perform 45 minutes of yoga";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 5";
-        description = "description 5";
+        name = "Sea Orcs???";
+        description = "Some Sea Orcs need a shipment from your kingdom!\n\n" +
+                "Deliver it to them.\n\n-perform 30 minutes of activity in water.";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 6";
-        description = "description 6";
+        name = "Magic Recovery";
+        description = "You have drained your magica!\n\n" +
+                  "Meditate to draw it back.\n\n-sleep for 8hrs one night";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
-        name = "Quest 7";
-        description = "description 7";
+        name = "Boulder Blockade";
+        description = "a boulder is preventing you from expanding your kingdom!\n\n" +
+                        "Clear them out.\n\n-Perform upper body lifting routine";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
