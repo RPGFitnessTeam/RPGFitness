@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -15,7 +17,7 @@ public class Character {
     /** arraylist of the character's equiped gear. Gear occurs in the following
      *  order. Helm = 0, Chest = 1, Weapon = 2, Offhand = 3, Legs = 4.
      */
-    private ArrayList<Gear> inventory;
+
     private ArrayList<Gear> activeGear;
     private ArrayList<Gear> inactiveGear;
     private Currency moneyChest;
@@ -23,30 +25,38 @@ public class Character {
     private String ID;
 
 
+
     public Character()
     {
-        name = null;
+        // sets default name
+        name = "Jun Snew";
+
+        // sets currency
+        moneyChest = new Currency();
+
+        // set species
         mySpecies = null;
-        activeGear = new ArrayList<Gear>();
-        inventory = new ArrayList<Gear>();
-        // sets the helm, chest, weapon, offhand and legs slots to null
+
+        // set boosts
         activeBoosts = new ArrayList<Boost>();
+
+        // sets the helm, chest, weapon, offhand and legs slots to null
+        activeGear = new ArrayList<Gear>();
         activeGear.add(null);
         activeGear.add(null);
         activeGear.add(null);
         activeGear.add(null);
         activeGear.add(null);
+
+        // sets inactive gear
         inactiveGear = new ArrayList<Gear>();
+
+        // sets ID
         ID = UUID.randomUUID().toString();
     }
 
 
     // getters and setters for the attributes
-
-  
-    public void setinventory(ArrayList<Gear> inventory) {
-        this.inventory = inventory;
-    }
 
     public ArrayList<Gear> getInactiveGear() {
         return inactiveGear;
@@ -106,11 +116,6 @@ public class Character {
     }
 
 
-    // returns the entire inventory of a character (both active and inactive gear)
-    public ArrayList<Gear> getInventory()
-    {
-        return inventory;
-    }
 
     // removes a piece of gear from both the active and inactive gear list
     public boolean removeGear(Gear gearDeleted) {
@@ -135,15 +140,7 @@ public class Character {
         }
 
 
-        for (int i = 0; i < inventory.size(); i++)
-        {
-            if(inventory.get(i) != null) {
-                if (inventory.get(i).equals(gearDeleted)) {
-                    inventory.remove(i);
-                    succ = true;
-                }
-            }
-        }
+
 
         return succ;
     }
@@ -161,55 +158,55 @@ public class Character {
             return false;
         }
 
-        if(category == "Helm")
+        if(category.equals("Helm"))
         {
             if(activeGear.get(0) == null)
             {
                 activeGear.set(0, newGear);
-                inventory.add(newGear);
+
                 activeBoosts.add(newGear.getBoost());
                 newGear.setEquipped(true);
                 ret = true;
             }
         }
-        else if(category == "Chest")
+        else if(category.equals("Chest"))
         {
             if(activeGear.get(1) == null)
             {
-                inventory.add(newGear);
+
                 activeGear.set(1, newGear);
                 activeBoosts.add(newGear.getBoost());
                 newGear.setEquipped(true);
                 ret = true;
             }
         }
-        else if(category == "Weapon")
+        else if(category.equals("Weapon"))
         {
             if(activeGear.get(2) == null)
             {
-                inventory.add(newGear);
+
                 activeGear.set(2, newGear);
                 activeBoosts.add(newGear.getBoost());
                 newGear.setEquipped(true);
                 ret = true;
             }
         }
-        else if(category == "OffHand")
+        else if(category.equals("OffHand"))
         {
             if(activeGear.get(3) == null)
             {
-                inventory.add(newGear);
+
                 activeGear.set(3, newGear);
                 activeBoosts.add(newGear.getBoost());
                 newGear.setEquipped(true);
                 ret = true;
             }
         }
-        else if(category == "Legs")
+        else if(category.equals("Legs"))
         {
             if(activeGear.get(4) == null)
             {
-                inventory.add(newGear);
+
                 activeGear.set(4, newGear);
                 activeBoosts.add(newGear.getBoost());
                 newGear.setEquipped(true);
@@ -219,7 +216,7 @@ public class Character {
 
         if(!ret)
         {
-            inventory.add(newGear);
+
             inactiveGear.add(newGear);
             newGear.setEquipped(false);
             ret = true;
@@ -234,7 +231,7 @@ public class Character {
     {
         boolean ret = false;
         String category = equip.getCategory();
-        if(category == "Helm")
+        if(category.equals("Helm"))
         {
             if(activeGear.get(0) == null)
             {
@@ -244,6 +241,7 @@ public class Character {
             }
             else
             {
+                Log.d("gear activity", "gear added to activity: " + equip.getName());
                 Gear temp = activeGear.get(0);
                 equip.setEquipped(true);
                 temp.setEquipped(false);
@@ -251,11 +249,10 @@ public class Character {
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
-
-
+                Log.d("gear activity", "now equipped " + activeGear.get(0).getName());
             }
         }
-        else if(category == "Chest")
+        else if(category.equals("Chest"))
         {
             if(activeGear.get(1) == null)
             {
@@ -275,7 +272,7 @@ public class Character {
 
             }
         }
-        else if(category == "Weapon")
+        else if(category.equals("Weapon"))
         {
             if(activeGear.get(2) == null)
             {
@@ -295,7 +292,7 @@ public class Character {
 
             }
         }
-        else if(category == "OffHand")
+        else if(category.equals("OffHand"))
         {
             if(activeGear.get(3) == null)
             {
@@ -315,7 +312,7 @@ public class Character {
 
             }
         }
-        else if(category == "Legs")
+        else if(category.equals("Legs"))
         {
             if(activeGear.get(4) == null)
             {
@@ -344,11 +341,11 @@ public class Character {
     public ArrayList<Gear> retrieveGearInCategory(String category)
     {
         int index = -1;
-        if( category == "Helm") index = 0;
-        else if( category == "Chest") index = 1;
-        else if( category == "Weapon") index = 2;
-        else if( category == "OffHand") index = 3;
-        else if( category == "Legs") index = 4;
+        if( category.equals("Helm")) index = 0;
+        else if( category.equals("Chest")) index = 1;
+        else if( category.equals("Weapon")) index = 2;
+        else if( category.equals("OffHand")) index = 3;
+        else if( category.equals("Legs")) index = 4;
 
         if(index == -1)
         {
@@ -370,35 +367,5 @@ public class Character {
         return ret;
     }
 
-   /* // populates the inactive and active gear lists
-    public boolean populateLists()
-    {
-        String category = null;
-        int index = -1;
-
-        for(int i = 0; i < inventory.size(); i++)
-        {
-            if(inventory.get(i).isEquipped() && inventory.get(i).isOwned()) {
-                category = inventory.get(i).getCategory();
-                if( category == "Helm") index = 0;
-                else if( category == "Chest") index = 1;
-                else if( category == "Weapon") index = 2;
-                else if( category == "OffHand") index = 3;
-                else if( category == "Legs") index = 4;
-
-                if(index != -1) activeGear.add(index, inventory.get(i));
-            }
-            else
-            {
-                if(inventory.get(i).isOwned() && !inventory.get(i).isEquipped())
-                {
-                    inactiveGear.add(inventory.get(i));
-                }
-            }
-        }
-
-        return true;
-
-    }*/
 
 }

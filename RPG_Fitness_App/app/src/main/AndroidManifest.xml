@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -72,7 +72,17 @@
             android:exported="true"
             ></activity>
 
-        <activity android:name=".fitness_Package.Main_FitnessLog"
+        <activity android:name=".fitness_Package.Edit_Goal_Main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".fitness_Package.Edit_Goal_Pop_Up"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".fitness_Package.FitnessLogActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>

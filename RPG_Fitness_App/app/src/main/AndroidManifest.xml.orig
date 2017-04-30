@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.rpg_fitness_app.android.rpg_fitness_app">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/b_dwelling2"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".kingdom_Package.BuildingPopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.MysteryPopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.TilePopUp"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".kingdom_Package.KingdomActivity"
+            android:theme="@style/AppTheme"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpHelm"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpChest"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpWeapon"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpOffHand"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.ItemPopUpLegs"
+            android:theme="@style/AppTheme.popUpCharacterScreen"
+            ></activity>
+
+        <activity android:name=".character_Package.CharacterActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".character_Package.characterCreationActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".fitness_Package.TipMaster"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".fitness_Package.GoalActive"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+        <activity android:name=".fitness_Package.Edit_Goal_Main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+        <activity android:name=".fitness_Package.Edit_Goal_Pop_Up"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+<<<<<<< HEAD
+        <activity android:name=".fitness_Package.Main_FitnessLog"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+=======
+        <activity android:name=".fitness_Package.FitnessLogActivity"
+            android:theme="@style/AppTheme"
+>>>>>>> 15d8fa381341f2778d5f8ed0f248f085a12aa591
+            android:exported="true"
+            ></activity>
+        <activity android:name=".quest_Package.QuestActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".quest_Package.MainQuestPopUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+        <activity android:name=".quest_Package.QuestPopUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"
+            ></activity>
+
+    </application>
+
+</manifest>

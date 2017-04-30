@@ -2,10 +2,14 @@ package co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package;
 
 
 
+import java.io.Serializable;
+
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LogEntry {
+public class LogEntry implements Serializable{
 
     final int EXERCISE = 0;
     final int RECREATION = 0;
@@ -78,6 +82,7 @@ public class LogEntry {
                 break;
         }
     }
+    /*
     public static String[] getSecondDropdownValues(int activity, int subType)
     {
         String[][][] secondDropdownValues =
@@ -93,6 +98,42 @@ public class LogEntry {
                 }};
 
         return secondDropdownValues[activity][subType];
+    }
+    */
+
+    public static int getSecondDropdownMax(int activity, int subType)
+    {
+        int[][] secondDropdownMax =
+                {{
+                        300, 300, 20, 5
+                }, {
+                        20, 20, 20
+                }, {
+                        5
+                }, {
+                        300
+                }
+
+                };
+
+        return secondDropdownMax[activity][subType];
+    }
+    public static String getSecondDropdownUnit(int activity, int subType)
+    {
+        String[][] secondDropdownUnit =
+                {{
+                        "min", "min", "mile", ""
+                }, {
+                        "servings", "glasses", "servings"
+                }, {
+                        ""
+                }, {
+                        "lB"
+                }
+
+                };
+
+        return secondDropdownUnit[activity][subType];
     }
     //Set integer value 1
     public void setSecondDropdownValues(int value)
@@ -137,13 +178,14 @@ public class LogEntry {
             default : break;
         }
     }
+    /*
     public static String[] getThirdDropdownValues(int activity, int subType)
     {
         String[][][] thirdDropdownValues =
                 {{
                         {"1 = very light","2 = light","3 = moderate", "4 = heavy","5 = very heavy"},
                         {},
-                        {"15 min", "30 min", "45 min", "1 hour", "1 hour", "2 hour", "2 hour", "3 hour"},
+                        {"15 min", "30 min", "45 min", "1 hour", "2 hour", "3 hour"},
                         {}
                 },      {{}
                 },      {{"1 hour", "2 hour", "3 hour", "4 hour", "5 hour", "6 hour", "7 hour", "8 hour",
@@ -151,6 +193,36 @@ public class LogEntry {
                         {{}}};
         ;
         return thirdDropdownValues[activity][subType];
+    }
+*/
+    public static int getThirdDropdownMax(int activity, int subType)
+    {
+        int[][] thirdDropdownMax =
+                {{
+                        5, 0, 300, 0
+                }, {
+                        0
+                },{
+                        24
+                }
+
+                };
+        return thirdDropdownMax[activity][subType];
+
+    }
+
+    public static String getThirdDropdownUnit(int activity, int subType)
+    {
+        String[][] thirdDropdownUnit =
+                {{
+                        "", "", "min", ""
+                },{
+                        ""
+                },{
+                        "hours"
+                }
+                };
+        return thirdDropdownUnit[activity][subType];
     }
     //Set integer value 2
     public void setThirdDropdownValues(int value)
@@ -208,6 +280,11 @@ public class LogEntry {
     public void setDate(long date) {
 
         this.date = convertDate(date);
+    }
+
+    public void setDateString(String date)
+    {
+        this.date = date;
     }
 
     public String getActivity() {
@@ -272,6 +349,31 @@ public class LogEntry {
         return this.typeName;
     }
 
+    public static String convertQuality(int quality) {
+
+        switch (quality)
+        {
+            case 1: return "very poor";
+            case 2: return "poor";
+            case 3: return "fine";
+            case 4: return "good";
+            case 5: return "very good";
+            default:return "";
+        }
+    }
+
+    public static String convertIntensity(int intensity)
+    {
+        switch (intensity){
+            case 1: return "very light";
+            case 2: return "light";
+            case 3: return "moderate";
+            case 4: return "heavy";
+            case 5: return "very heavy";
+            default:return "";
+        }
+    }
+
     public String getSecondDrop()
     {
         switch(this.activity)
@@ -314,7 +416,7 @@ public class LogEntry {
                 switch(this.subType)
                 {
                     case FR_VEG: return "Servings = " + this.count;
-                    case WATER: return "Glasss = " + this.count;
+                    case WATER: return "Glasses = " + this.count;
                     case SWEETS: return "Servings = " + this.count;
                     default: return "";
                 }
@@ -333,7 +435,7 @@ public class LogEntry {
             }
             case WEIGHT :
             {
-                return "Current Weight = " + this.weight + " kg";
+                return "Current Weight = " + this.weight + " lB";
             }
             default : return "";
         }
@@ -373,6 +475,7 @@ public class LogEntry {
             default: return "";
         }
     }
+
     public void setDuration(int duration) {
         this.duration = duration;
     }

@@ -133,6 +133,13 @@ public class BuildingPopUp extends Activity {
     }
 
     private void populateTemplate(){
+        TextView t;
+        t = (TextView) findViewById(R.id.userGold);
+        t.setText("Gold: "+moneyChest.getGold());
+        t = (TextView) findViewById(R.id.userWood);
+        t.setText("Wood: "+moneyChest.getWood());
+        t = (TextView) findViewById(R.id.userStone);
+        t.setText("Stone: "+moneyChest.getStone());
         Building building = tile.getMyBuilding();
         Currency upgradeCost = building.getCost();
         Button upgradeButton = (Button) findViewById(R.id.upgradeBuildingButton);
@@ -152,8 +159,13 @@ public class BuildingPopUp extends Activity {
         else if(upgradeCost.getMisc5() == 1){
             specialResource = "Pentagram Charm";
         }
-        upgradeButton.setText("Upgrade Cost: \n"+upgradeCost.getGold()+" Gold\n"+upgradeCost.getWood()+" Wood\n"+upgradeCost.getStone()+" Stone"
-            +"\nSpecial Resource: "+specialResource);
+        if(building.getTier() == 2){
+            upgradeButton.setText("No Upgrade Available");
+        }
+        else {
+            upgradeButton.setText("Upgrade Cost: \n" + upgradeCost.getGold() + " Gold\n" + upgradeCost.getWood() + " Wood\n" + upgradeCost.getStone() + " Stone"
+                    + "\nSpecial Resource: " + specialResource);
+        }
         TextView name = (TextView) findViewById(R.id.buildingName);
         name.setText(building.getName());
         TextView description = (TextView) findViewById(R.id.buildingDescription);

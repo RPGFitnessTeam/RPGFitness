@@ -56,8 +56,8 @@ public class FragmentListDaysExpandable extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
+
     public static ArrayList<String> getList_days()
     {
         return list_days;
@@ -78,7 +78,6 @@ public class FragmentListDaysExpandable extends Fragment
         if(activity_list == null)
             return -1;
 
-        //Todo: discuss initial capacity
         HashMap<String, ArrayList<LogEntry>> hashMap = new HashMap<String, ArrayList<LogEntry>>(60);
 
 
@@ -117,7 +116,6 @@ public class FragmentListDaysExpandable extends Fragment
             Iterator<LogEntry> itemVal = tempVal.iterator();
             ArrayList<LogEntry> itemPost = new ArrayList<LogEntry>();
 
-            //Todo: deside what is the child view
             while(itemVal.hasNext())
             {
                 LogEntry item = itemVal.next();

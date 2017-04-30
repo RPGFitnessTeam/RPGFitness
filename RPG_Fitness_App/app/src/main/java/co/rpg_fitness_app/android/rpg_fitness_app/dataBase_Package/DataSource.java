@@ -150,7 +150,6 @@ public class DataSource {
             }
         }
         // TODO Still don't have quests
-        /*
         if (DatabaseUtils.queryNumEntries(mDatabase, QuestTable.TABLE_QUEST) == 0
                 && QuestDataProvider.questList != null) {
             for (Quest quest :
@@ -162,7 +161,6 @@ public class DataSource {
                 }
             }
         }
-        */
         if (DatabaseUtils.queryNumEntries(mDatabase, SpeciesTable.TABLE_SPECIES) == 0
                 && SpeciesDataProvider.speciesList != null) {
             for (Species species :
@@ -453,6 +451,7 @@ public class DataSource {
         ContentValues values = new ContentValues(9);
         values.put(LogEntryTable.COLUMN_ID, logEntry.getID());
         values.put(LogEntryTable.COLUMN_DATE, logEntry.getDate());
+       // System.out.println("DUYA::" + logEntry.getDate());
         values.put(LogEntryTable.COLUMN_ACTIVITY, logEntry.getActivityInt());
         values.put(LogEntryTable.COLUMN_SUB_TYPE, logEntry.getSubTypeInt());
         values.put(LogEntryTable.COLUMN_DURATION, logEntry.getDuration());
@@ -466,10 +465,9 @@ public class DataSource {
         cursor.close();
         return true;
     }
-    /*
     public boolean insertQuest(Quest quest) {
 
-        String compare[] = {quest.getQ()};
+        String compare[] = {quest.getId()};
         Cursor cursor = mDatabase.query(QuestTable.TABLE_QUEST, QuestTable.ALL_COLUMNS,
                 QuestTable.COLUMN_ID + "=?", compare, null, null, null);
 
@@ -485,21 +483,25 @@ public class DataSource {
         values.put(QuestTable.COLUMN_REWARD, quest.getReward().getId());
         values.put(QuestTable.COLUMN_TIME_REMAINING, quest.getTimeRemains());
         values.put(QuestTable.COLUMN_START, quest.getQuestStart());
-        values.put(QuestTable.COLUMN_COMPLETE, quest.isQuestComplete() ? 1 : 0);
-        values.put(QuestTable.COLUMN_SKIPPED, quest.isQuestSkipped() ? 1 : 0);
-        values.put(QuestTable.COLUMN_EXPIRED, quest.isQuestExpired() ? 1 : 0);
-        values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getID());
+        values.put(QuestTable.COLUMN_COMPLETE, quest.getQuestComplete() ? 1 : 0);
+        values.put(QuestTable.COLUMN_SKIPPED, quest.getQuestSkipped() ? 1 : 0);
+        values.put(QuestTable.COLUMN_EXPIRED, quest.getQuestExpired() ? 1 : 0);
+        try {
+            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getGoalId());
+        } catch (NullPointerException exception) {
+            values.put(QuestTable.COLUMN_GOAL, "");
+        }
+
 
         mDatabase.insert(QuestTable.TABLE_QUEST, null, values);
         insertCurrency(quest.getReward());
-        if (quest.getGoal() != null) {
+        if (quest.getTimeRemains().equals("Master Quest")) {
             insertGoal(quest.getGoal());
         }
 
         cursor.close();
         return true;
     }
-    */
     public boolean insertSpecies(Species species) {
         if (species == null) return false;
 
@@ -859,7 +861,7 @@ public class DataSource {
 
             logEntry.setID(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
-            logEntry.setDate(cursor.getInt(
+            logEntry.setDateString(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
             logEntry.setSubType(cursor.getInt(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
@@ -879,7 +881,6 @@ public class DataSource {
         return logEntries;
     }
     // TODO We don't have quests yet
-    /*
     public ArrayList<Quest> getAllQuests() {
         ArrayList<Quest> quests = new ArrayList<Quest>();
 
@@ -907,14 +908,17 @@ public class DataSource {
                     cursor.getColumnIndex(QuestTable.COLUMN_SKIPPED)) == 1);
             quest.setIsQuestExpired(cursor.getInt(
                     cursor.getColumnIndex(QuestTable.COLUMN_EXPIRED)) == 1);
-            quest.setGoal(getGoal(cursor.getString(
-                    cursor.getColumnIndex(QuestTable.COLUMN_GOAL))));
+            try {
+                quest.setGoal(getGoal(cursor.getString(
+                        cursor.getColumnIndex(QuestTable.COLUMN_GOAL))));
+            } catch(IllegalArgumentException exception) {
+                quest.setGoal(null);
+            }
             quests.add(quest);
         }
         cursor.close();
         return quests;
     }
-    */
 
     public ArrayList<Species> getAllSpecies() {
         ArrayList<Species> speciesList = new ArrayList<Species>();
@@ -1226,7 +1230,7 @@ public class DataSource {
 
         logEntry.setID(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
-        logEntry.setDate(cursor.getInt(
+        logEntry.setDateString(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
         logEntry.setSubType(cursor.getInt(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
@@ -1244,7 +1248,6 @@ public class DataSource {
         return logEntry;
     }
     // TODO Still don't have quests
-    /*
     public Quest getQuest(String ID){
 
         String compare[] = {ID};
@@ -1285,7 +1288,6 @@ public class DataSource {
 
         return quest;
     }
-    */
     public Species getSpecies(String ID){
 
         String compare[] = {ID};
@@ -1472,6 +1474,45 @@ public class DataSource {
 
         mDatabase.update(CurrencyTable.TABLE_CURRENCY, values, CurrencyTable.COLUMN_ID+"=?",
                 new String[]{currency.getId()});
+        cursor.close();
+        return true;
+    }
+
+    public boolean updateQuest(Quest quest) {
+        if (quest == null)
+            return false;
+
+        String compare[] = {quest.getId()};
+        Cursor cursor = mDatabase.query(QuestTable.TABLE_QUEST, QuestTable.ALL_COLUMNS,
+                QuestTable.COLUMN_ID + "=?", compare, null, null, null);
+
+        if (cursor.getCount() <= 0) {
+            insertQuest(quest);
+            cursor.close();
+            return false;
+        } else if (cursor.getCount() > 1) {
+          //  System.out.println("Duplicated ID found! "+quest.getId());
+            return false;
+        }
+
+        ContentValues values = new ContentValues(10);
+        values.put(QuestTable.COLUMN_ID, quest.getId());
+        values.put(QuestTable.COLUMN_NAME, quest.getName());
+        values.put(QuestTable.COLUMN_DESCRIPTION, quest.getDescription());
+        values.put(QuestTable.COLUMN_REWARD, quest.getRewardId());
+        values.put(QuestTable.COLUMN_TIME_REMAINING, quest.getTimeRemains());
+        values.put(QuestTable.COLUMN_START, quest.getQuestStart());
+        values.put(QuestTable.COLUMN_COMPLETE, quest.getQuestComplete());
+        values.put(QuestTable.COLUMN_SKIPPED, quest.getQuestSkipped());
+        values.put(QuestTable.COLUMN_EXPIRED, quest.getQuestExpired());
+        try {
+            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getGoalId());
+        } catch (NullPointerException exception) {
+            values.put(QuestTable.COLUMN_GOAL, "");
+        }
+
+        mDatabase.update(QuestTable.TABLE_QUEST, values, QuestTable.COLUMN_ID+"=?",
+                new String[]{quest.getId()});
         cursor.close();
         return true;
     }

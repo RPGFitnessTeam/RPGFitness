@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
+
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 
 /**
  * Created by Tanner on 3/9/2017.
@@ -38,12 +42,9 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-        //this.kingdom = mDataSource.getAllKingdoms();
-        //kingdom = new Kingdom();
         this.buildings = mDataSource.getAllBuildings();
-        //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
-        //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
-      this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+        this.moneyChest = mDataSource.getCurrency("moneyChest");
+        //this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
       //////////////////////////////////////////TESTING//////////////////////////////////////////////////////////////
         this.kingdom = mDataSource.getAllKingdoms();
         if (kingdom == null) {
@@ -73,10 +74,6 @@ public class KingdomActivity extends Activity {
         super.onDestroy();
         mDataSource.updateKingdom(kingdom);
         mDataSource.updateCurrency(moneyChest);
-        /*Intent i = new Intent();
-        i.putExtra("kingdom", this.kingdom);
-        i.putExtra("money chest", this.moneyChest);
-        setResult(1, i);*/
         finish();
     }
 
@@ -95,7 +92,7 @@ public class KingdomActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, Main_FitnessLog.class);
+                Intent i = new Intent(KingdomActivity.this, FitnessLogActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -109,7 +106,15 @@ public class KingdomActivity extends Activity {
                 finish();
             }
         });
-        //b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(KingdomActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
         b = (ImageButton) findViewById(R.id.goalsFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +203,40 @@ public class KingdomActivity extends Activity {
             Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
+
+            //check if user gets new gear
+            Character c = mDataSource.getAllCharacters().get(0);
+            int tileNum = tile.getTileNumber();
+            ArrayList<Gear> gearList = mDataSource.getAllGear();
+            Gear g = null;
+            switch (tileNum){
+                case 0: g = gearList.get(0);
+                    break;
+                case 2: g = gearList.get(2);
+                    break;
+                case 4: g = gearList.get(4);
+                    break;
+                case 6: g = gearList.get(6);
+                    break;
+                case 8: g = gearList.get(8);
+                    break;
+                case 10: g = gearList.get(10);
+                    break;
+                case 12: g = gearList.get(12);
+                    break;
+                case 14: g = gearList.get(14);
+                    break;
+                case 16: g = gearList.get(16);
+                    break;
+            }
+            if(g!=null && tile.getMyBuilding() == null) {
+                g.setOwned(true);
+                c.addGear(g);
+                mDataSource.updateCharacter(c);
+                mDataSource.updateGear(g);
+                String s = "You found gear: "+g.getName().toString();
+                Toast.makeText(this,s,Toast.LENGTH_LONG).show();
+            }
         }
     }
 
