@@ -11,6 +11,7 @@ import android.app.DialogFragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
+
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
@@ -81,7 +85,7 @@ public class AddGoalSaveExit extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                LogEntry new_log = new LogEntry("ID", activity);
+                LogEntry new_log = new LogEntry(UUID.randomUUID().toString(), activity);
 
                 if(activity == 0 || activity == 1) new_log.setSubtype(subType);
 
@@ -99,10 +103,8 @@ public class AddGoalSaveExit extends DialogFragment {
 
                 new_log.setDate(Calendar.getInstance().getTimeInMillis());
 
-                //Todo: goalID uunknown, currentVal = 0?
-                String goalId = "to be decided";
                 int currentValue = 0;
-                Goal newGoal = new Goal(new_log, goalId, initialValue, currentValue, finalValue, false, false, false );
+                Goal newGoal = new Goal(new_log, UUID.randomUUID().toString(), initialValue, currentValue, finalValue, false, false, false );
 
                 //Todo: save to goal data base
 
@@ -130,26 +132,38 @@ public class AddGoalSaveExit extends DialogFragment {
 
         ((LinearLayout) rV).addView(typeInitial);
 
-        String[] initialVal = {"0","10", "20", "30", "40", "50"};
-        Spinner initialSpin = new Spinner(getActivity());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, initialVal);
-        initialSpin.setAdapter(adapter);
-        ((LinearLayout) rV).addView(initialSpin);
+        final int initialMax = 60;
 
-        initialSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id)
-            {
-                Object item = parent.getItemAtPosition(pos);
-                initialValue = Integer.parseInt(item.toString().replaceAll("[^0-9]", ""));
+        SeekBar seekBar = new SeekBar(getActivity());
+        seekBar.setMax(initialMax);
+
+        ((LinearLayout) rV).addView(seekBar);
+
+        final TextView initialText = new TextView(getActivity());
+        initialText.setGravity(Gravity.CENTER);
+        ((LinearLayout) rV).addView(initialText);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                initialValue = progress;
+                initialText.setText(progress + "");
+
             }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
+
     }
-    private void createFinal(View rV)
-    {
+    private void createFinal(View rV) {
         TextView typeInitial = new TextView(getActivity());
         typeInitial.setText("Enter Final Value");
 
@@ -157,20 +171,32 @@ public class AddGoalSaveExit extends DialogFragment {
 
         ((LinearLayout) rV).addView(typeInitial);
 
-        String[] finalVal = {"0","10", "20", "30", "40", "50"};
-        Spinner finalSpin = new Spinner(getActivity());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, finalVal);
-        finalSpin.setAdapter(adapter);
-        ((LinearLayout) rV).addView(finalSpin);
+        final int finalMax = 100;
 
-        finalSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id)
-            {
-                Object item = parent.getItemAtPosition(pos);
-                finalValue = Integer.parseInt(item.toString().replaceAll("[^0-9]", ""));
+        SeekBar seekBar = new SeekBar(getActivity());
+        seekBar.setMax(finalMax);
+
+        ((LinearLayout) rV).addView(seekBar);
+
+        final TextView finalText = new TextView(getActivity());
+        finalText.setGravity(Gravity.CENTER);
+        ((LinearLayout) rV).addView(finalText);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                finalValue = progress;
+                finalText.setText(progress + "");
+
             }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });

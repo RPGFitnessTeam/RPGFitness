@@ -20,8 +20,8 @@
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_blue_light"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
                 android:src="@drawable/scroll" />
 
             <ImageButton
@@ -30,8 +30,8 @@
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_green_dark"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
                 android:src="@drawable/castle" />
 
         </TableRow>
@@ -72,14 +72,14 @@
             android:weightSum="2">
 
             <ImageButton
-                android:id="@+id/tipsMainButton"
+                android:id="@+id/goalsMainButton"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_orange_light"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/question_mark_symbol" />
+                android:src="@drawable/shield" />
 
             <ImageButton
                 android:id="@+id/questsMainButton"
@@ -87,8 +87,8 @@
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_red_dark"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
                 android:src="@drawable/quest_map" />
         </TableRow>
         <TableRow
@@ -100,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tips"
+                android:text="Goals"
                 android:fontFamily="casual"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat"
@@ -127,14 +127,14 @@
             android:weightSum="2">
 
             <ImageButton
-                android:id="@+id/goalsMainButton"
+                android:id="@+id/tipsMainButton"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_purple"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/shield" />
+                android:src="@drawable/question_mark_symbol" />
 
             <ImageButton
                 android:id="@+id/characterMainButton"
@@ -142,8 +142,8 @@
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/holo_orange_dark"
                 android:scaleType="fitCenter"
-                android:backgroundTint="#FFFFFF"
                 android:src="@drawable/knight" />
 
         </TableRow>
@@ -156,7 +156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Goals"
+                android:text="Tips"
                 android:fontFamily="casual"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat"

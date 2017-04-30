@@ -17,29 +17,26 @@
         android:layout_alignParentStart="true">
 
 
-
-
         <TextView
             android:id="@+id/textView_charName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:fontFamily="casual"
             android:text="@string/textview"
             android:textSize="24sp"
-            tools:text="Name"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            tools:text="Name" />
 
         <ImageView
             android:id="@+id/charGold"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:background="@drawable/gold"
             android:layout_below="@+id/textView_charName"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="11dp" />
+            android:layout_toStartOf="@+id/textGold" />
 
         <ImageView
             android:id="@+id/charWood"
@@ -47,9 +44,8 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/wood"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_toEndOf="@+id/textGold"
-            android:layout_marginStart="28dp" />
+            android:layout_above="@+id/spinnerSpecies"
+            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/charStone"
@@ -61,54 +57,35 @@
             android:layout_alignStart="@+id/button_helm" />
 
 
-
-        <Button
-            android:text="@string/chest"
+        <TextView
+            android:id="@+id/textWood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_chest"
-            android:layout_below="@+id/button_helm"
-            android:layout_alignStart="@+id/button_helm"
-            android:layout_marginTop="14dp" />
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:layout_alignBaseline="@+id/textGold"
+            android:layout_alignBottom="@+id/textGold"
+            android:layout_toEndOf="@+id/charWood" />
 
-        <Button
-            android:id="@+id/button_Weapon"
+        <TextView
+            android:id="@+id/textRock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:elevation="2dp"
-            android:text="@string/weapon"
-            android:layout_below="@+id/button_chest"
-            android:layout_alignStart="@+id/button_chest" />
+            android:layout_alignBaseline="@+id/textWood"
+            android:layout_alignBottom="@+id/textWood"
+            android:layout_toEndOf="@+id/charStone"
+            android:fontFamily="casual"
+            android:text="TextView" />
 
-        <Button
-            android:id="@+id/button_offhand"
+        <TextView
+            android:id="@+id/textGold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="1dp"
-            android:text="@string/off_hand"
-            android:layout_below="@+id/button_Weapon"
-            android:layout_alignStart="@+id/button_Weapon"
-            android:layout_marginTop="12dp" />
-
-        <Button
-            android:text="@string/legs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_Legs"
-            android:layout_below="@+id/button_offhand"
-            android:layout_alignEnd="@+id/button_offhand"
-            android:layout_marginTop="18dp" />
-
-        <Button
-            android:text="@string/helm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_helm"
-            android:layout_marginEnd="19dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/spinnerSpecies"
-            android:layout_alignParentEnd="true" />
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:layout_above="@+id/spinnerSpecies"
+            android:layout_toStartOf="@+id/textView_charName"
+            android:layout_marginEnd="33dp" />
 
         <Spinner
             android:id="@+id/spinnerSpecies"
@@ -118,36 +95,69 @@
             android:layout_below="@+id/charGold"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:id="@+id/textGold"
+        <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:text="TextView"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_toEndOf="@+id/charGold" />
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/c_anime"
+            android:layout_alignBottom="@+id/button_Legs"
+            android:layout_alignStart="@+id/textGold"
+            android:layout_marginStart="13dp" />
 
-        <TextView
-            android:id="@+id/textWood"
+        <Button
+            android:id="@+id/button_chest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_alignBaseline="@+id/textGold"
-            android:layout_alignBottom="@+id/textGold"
-            android:layout_alignStart="@+id/textView_charName"
-            android:layout_marginStart="19dp" />
+            android:layout_alignStart="@+id/button_helm"
+            android:layout_below="@+id/button_helm"
+            android:layout_marginTop="14dp"
+            android:fontFamily="casual"
+            android:text="@string/chest" />
 
-        <TextView
-            android:id="@+id/textRock"
+        <Button
+            android:id="@+id/button_Weapon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_alignBaseline="@+id/textWood"
-            android:layout_alignBottom="@+id/textWood"
-            android:layout_toEndOf="@+id/charStone" />
+            android:layout_alignStart="@+id/button_chest"
+            android:layout_below="@+id/button_chest"
+            android:layout_marginTop="13dp"
+            android:elevation="2dp"
+            android:fontFamily="casual"
+            android:text="@string/weapon" />
 
+        <Button
+            android:id="@+id/button_offhand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/button_Weapon"
+            android:layout_below="@+id/button_Weapon"
+            android:layout_marginTop="12dp"
+            android:elevation="1dp"
+            android:fontFamily="casual"
+            android:text="@string/off_hand" />
 
+        <Button
+            android:id="@+id/button_Legs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/button_offhand"
+            android:layout_below="@+id/button_offhand"
+            android:layout_marginTop="18dp"
+            android:fontFamily="casual"
+            android:text="@string/legs" />
 
+        <Button
+            android:id="@+id/button_helm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/spinnerSpecies"
+            android:layout_marginEnd="19dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="casual"
+            android:text="@string/helm" />
 
 
     </RelativeLayout>
