@@ -487,7 +487,7 @@ public class DataSource {
         values.put(QuestTable.COLUMN_SKIPPED, quest.getQuestSkipped() ? 1 : 0);
         values.put(QuestTable.COLUMN_EXPIRED, quest.getQuestExpired() ? 1 : 0);
         try {
-            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getID());
+            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getGoalId());
         } catch (NullPointerException exception) {
             values.put(QuestTable.COLUMN_GOAL, "");
         }
@@ -1506,7 +1506,7 @@ public class DataSource {
         values.put(QuestTable.COLUMN_SKIPPED, quest.getQuestSkipped());
         values.put(QuestTable.COLUMN_EXPIRED, quest.getQuestExpired());
         try {
-            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getID());
+            values.put(QuestTable.COLUMN_GOAL, quest.getGoal().getGoalId());
         } catch (NullPointerException exception) {
             values.put(QuestTable.COLUMN_GOAL, "");
         }
