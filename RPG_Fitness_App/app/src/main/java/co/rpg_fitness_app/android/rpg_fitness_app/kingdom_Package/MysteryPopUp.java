@@ -77,6 +77,13 @@ public class MysteryPopUp extends Activity {
         name.setText("Mystery Tile");
         TextView description = (TextView) findViewById(R.id.mysteryTileDescription);
         description.setText("It's a Mystery Tile!");
+        TextView t;
+        t = (TextView) findViewById(R.id.userGold);
+        t.setText("Gold: "+moneyChest.getGold());
+        t = (TextView) findViewById(R.id.userWood);
+        t.setText("Wood: "+moneyChest.getWood());
+        t = (TextView) findViewById(R.id.userStone);
+        t.setText("Stone: "+moneyChest.getStone());
     }
 
     /**
@@ -88,6 +95,51 @@ public class MysteryPopUp extends Activity {
         if(moneyChest.getWood()>=cost.getWood() && moneyChest.getGold()>=cost.getGold() && moneyChest.getStone()>=cost.getStone()){
             moneyChest.updateResource(false, cost.getWood(), cost.getGold(), cost.getStone(),0,0,0,0,0);
             tile.setLocked(false);
+            //Adding in special resources
+            int tileNum = tile.getTileNumber();
+            switch (tileNum){
+                case 1: moneyChest.updateResource(true, 0,0,0,1,0,0,0,0);
+                    break;
+                case 2: moneyChest.updateResource(true, 0,0,0,0,1,0,0,0);
+                    break;
+                case 3: moneyChest.updateResource(true, 0,0,0,0,0,1,0,0);
+                    break;
+                case 4: moneyChest.updateResource(true, 0,0,0,0,0,0,1,0);
+                    break;
+                case 5: moneyChest.updateResource(true, 0,0,0,0,0,0,0,1);
+                    break;
+                case 6: moneyChest.updateResource(true, 0,0,0,1,0,0,0,0);
+                    break;
+                case 7: moneyChest.updateResource(true, 0,0,0,0,1,0,0,0);
+                    break;
+                case 8: moneyChest.updateResource(true, 0,0,0,0,0,1,0,0);
+                    break;
+                case 9: moneyChest.updateResource(true, 0,0,0,0,0,0,1,0);
+                    break;
+                case 10: moneyChest.updateResource(true, 0,0,0,0,0,0,0,1);
+                    break;
+                case 11: moneyChest.updateResource(true, 0,0,0,1,0,0,0,0);
+                    break;
+                case 12: moneyChest.updateResource(true, 0,0,0,0,1,0,0,0);
+                    break;
+                case 13: moneyChest.updateResource(true, 0,0,0,0,0,1,0,0);
+                    break;
+                case 14: moneyChest.updateResource(true, 0,0,0,0,0,0,1,0);
+                    break;
+                case 15: moneyChest.updateResource(true, 0,0,0,0,0,0,0,1);
+                    break;
+                case 16: moneyChest.updateResource(true, 0,0,0,1,0,0,0,0);
+                    break;
+                case 17: moneyChest.updateResource(true, 0,0,0,0,1,0,0,0);
+                    break;
+                case 18: moneyChest.updateResource(true, 0,0,0,0,0,1,0,0);
+                    break;
+                case 19: moneyChest.updateResource(true, 0,0,0,0,0,0,1,0);
+                    break;
+                case 0: moneyChest.updateResource(true, 0,0,0,0,0,0,0,1);
+                    break;
+                default: break;
+            }
             return true;
         }
         else{

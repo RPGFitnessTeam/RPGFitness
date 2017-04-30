@@ -14,7 +14,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterAct
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 //import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
@@ -38,12 +38,9 @@ public class KingdomActivity extends Activity {
         mDataSource = new DataSource(this);
         mDataSource.open();
 
-        //this.kingdom = mDataSource.getAllKingdoms();
-        //kingdom = new Kingdom();
         this.buildings = mDataSource.getAllBuildings();
-        //this.kingdom = (Kingdom) this.getIntent().getSerializableExtra("kingdom");
-        //this.buildings = (ArrayList<Building>) this.getIntent().getSerializableExtra("buildings");
-      this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
+        this.moneyChest = mDataSource.getCurrency("moneyChest");
+        //this.moneyChest = (Currency) this.getIntent().getSerializableExtra("money chest");
       //////////////////////////////////////////TESTING//////////////////////////////////////////////////////////////
         this.kingdom = mDataSource.getAllKingdoms();
         if (kingdom == null) {
@@ -73,10 +70,6 @@ public class KingdomActivity extends Activity {
         super.onDestroy();
         mDataSource.updateKingdom(kingdom);
         mDataSource.updateCurrency(moneyChest);
-        /*Intent i = new Intent();
-        i.putExtra("kingdom", this.kingdom);
-        i.putExtra("money chest", this.moneyChest);
-        setResult(1, i);*/
         finish();
     }
 
@@ -95,7 +88,7 @@ public class KingdomActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(KingdomActivity.this, Main_FitnessLog.class);
+                Intent i = new Intent(KingdomActivity.this, FitnessLogActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -109,7 +102,15 @@ public class KingdomActivity extends Activity {
                 finish();
             }
         });
-        //b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(KingdomActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
         b = (ImageButton) findViewById(R.id.goalsFooterButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

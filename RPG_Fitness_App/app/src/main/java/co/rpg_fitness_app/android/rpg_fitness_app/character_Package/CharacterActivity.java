@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -21,7 +22,12 @@ import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
 
 /**
  * Created by awhit on 3/13/2017.
@@ -30,11 +36,15 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 public class CharacterActivity extends Activity{
 
     TextView nameText;
+    TextView goldText;
+    TextView stoneText;
+    TextView woodText;
     AlertDialog enterName;
     EditText editName;
     DataSource mDataSource;
     ArrayList<String> speciesList;
     ArrayList<Species> speciesAL;
+    Character character;
 
 
 
@@ -48,7 +58,7 @@ public class CharacterActivity extends Activity{
         mDataSource.open();
 
         // retrieve character from data source
-        final Character character = mDataSource.getAllCharacters().get(0);
+        character = mDataSource.getAllCharacters().get(0);
 
         // set character name view to proper name
         nameText = (TextView) findViewById(R.id.textView_charName);
@@ -63,6 +73,18 @@ public class CharacterActivity extends Activity{
         enterName.setView(editName);
 
 
+
+        goldText = (TextView) findViewById(R.id.textGold);
+        goldText.setText(""+character.getCurrency().getGold());
+
+        woodText = (TextView) findViewById(R.id.textWood);
+        woodText.setText(""+character.getCurrency().getWood());
+
+        stoneText = (TextView) findViewById(R.id.textRock);
+        stoneText.setText(""+character.getCurrency().getStone());
+
+
+
         // sets up the proper components of the species drop down menu
         final Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
 
@@ -71,6 +93,21 @@ public class CharacterActivity extends Activity{
         speciesList = new ArrayList<String>();
         for(int i = 0; i < speciesAL.size(); i++) {
             speciesList.add(speciesAL.get(i).getName());
+        }
+
+        if(character.getSpecies() == null) {
+            character.setSpecies(speciesAL.get(0));
+        }
+
+
+        for(int i = 0; i < speciesList.size(); i++){
+            String currSpecies;
+            if(speciesList.get(i).equals(character.getSpecies().getName()) )
+            {
+                currSpecies = speciesList.get(i);
+                speciesList.remove(i);
+                speciesList.add(0, currSpecies);
+            }
         }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
@@ -163,6 +200,7 @@ public class CharacterActivity extends Activity{
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
 
                 character.setSpecies(speciesAL.get(pos));
+                Log.d("string", speciesAL.get(pos).getName());
                 mDataSource.updateCharacter(character);
 
             }
@@ -171,6 +209,66 @@ public class CharacterActivity extends Activity{
                 //do nothing
             }
 
+        });
+
+        configureToolBarButtons();
+    }
+
+    private void configureToolBarButtons() {
+        ImageButton b;
+        b = (ImageButton) findViewById(R.id.questFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, QuestActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.fitnessLogFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, FitnessLogActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.tipsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, TipMaster.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.kingdomFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, KingdomActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.goalsFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, GoalActive.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        b = (ImageButton) findViewById(R.id.characterFooterButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CharacterActivity.this, CharacterActivity.class);
+                startActivity(i);
+                finish();
+            }
         });
     }
 

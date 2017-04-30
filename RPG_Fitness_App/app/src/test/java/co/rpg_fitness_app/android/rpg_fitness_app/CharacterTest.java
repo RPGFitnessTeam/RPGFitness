@@ -209,7 +209,7 @@ public class CharacterTest {
 
     }
 
-    @Test
+/*    @Test
     public void addRemoveActiveGear() throws Exception {
         Character testChar = new Character();
 
@@ -226,10 +226,10 @@ public class CharacterTest {
 
         assertEquals(testObj, testChar.getInventory());
 
-    }
+    }*/
 
 
-    @Test
+  /*  @Test
     public void addRemoveinActiveGear() throws Exception {
         Character testChar = new Character();
 
@@ -253,7 +253,7 @@ public class CharacterTest {
 
         assertEquals(testObj, testChar.getInventory());
 
-    }
+    }*/
 
     @Test
     public void equipItem() throws Exception {

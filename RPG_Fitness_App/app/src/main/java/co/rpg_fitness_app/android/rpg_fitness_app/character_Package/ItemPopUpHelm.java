@@ -9,19 +9,20 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
-import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
-import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 /**
@@ -32,6 +33,9 @@ public class ItemPopUpHelm extends Activity {
     Character character;
     DataSource mDataSource;
     ArrayList<Gear> helmList;
+    ArrayList<Button> buttons;
+    Gear equipped;
+    int indexOfEquipped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,34 +57,74 @@ public class ItemPopUpHelm extends Activity {
         // retrieve all helms from the DB
         helmList = new ArrayList<Gear>();
         for (int i = 0; i < gearList.size(); i++) {
-            if (gearList.get(i).getCategory().equals("Helm")) {
-                helmList.add(gearList.get(i));
+            if (gearList.get(i).getCategory().equals("Helm") && gearList.get(i).isOwned() ==  true) {
+                if(gearList.get(i).isEquipped() == true) {
+                    Log.d("index 0", "equipped helm : " + gearList.get(i).getName());
+                    indexOfEquipped = i;
+                    helmList.add(0,gearList.get(i));
+                }
+                else {
+                    Log.d("index not 0", "not equipped helm : " + gearList.get(i).getName());
+                    helmList.add(gearList.get(i));
+                }
             }
         }
 
 
-        // checks if no item is eqquipped, set top item to eqquipped if so
+        // checks if no item is eqquipped, set top item to equipped if so
         if(character.getActiveGear().get(0) == null) {
+            indexOfEquipped = 0;
             character.equipItem(helmList.get(0));
+            mDataSource.updateGear(gearList.get(0));
+            equipped = gearList.get(0);
         }
 
 
+        TableLayout table = (TableLayout) findViewById(R.id.TableLayout);
+        for (int i = 0; i < helmList.size(); i++) {
 
-        // TODO find a way to make this list dynamic so that the size of the helm list
-        // TODO does not have to match the iterator #
-        for (int i = 0; i < 2; i++) {
             // get item name
-            TableRow row = (TableRow) tableL.getChildAt(i * 2);
-            TextView itemName = (TextView) row.getChildAt(0);
+            TableRow newRow = new TableRow(this);
+            TableRow.LayoutParams MPparam =
+                    new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
+            newRow.setLayoutParams(MPparam);
+
+            // set up item button
+            Button button = new Button(this);
+            button.setId(i);
+
+            final int index = i;
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    character.equipItem(helmList.get(index));
+                    mDataSource.updateGear(helmList.get(indexOfEquipped));
+                    mDataSource.updateGear(helmList.get(index));
+                    mDataSource.updateCharacter(character);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+
+                }
+            });
 
 
 
-            if(helmList.get(i).equals(character.getActiveGear().get(0))) {
-                itemName.setText(helmList.get(i).getName() + " (Eq.)");
+            // sets the name of the button
+            if(i == 0)
+            {
+                Log.d("change button text", "set text " + helmList.get(index).getName());
+                button.setText(helmList.get(index).getName() + " (Eq.)");
             }
-            else {
-                itemName.setText(helmList.get(i).getName());
+            else
+            {
+                button.setText(helmList.get(i).getName());
             }
+
+            newRow.addView(button);
+            table.addView(newRow);
+
 
         }
 
@@ -91,31 +135,7 @@ public class ItemPopUpHelm extends Activity {
         int height = dm.heightPixels;
 
 
-        ImageButton helm1 = (ImageButton) findViewById(R.id.imageButtonItem);
-        ImageButton helm2 = (ImageButton) findViewById(R.id.imageButtonItem2);
-
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.5));
-
-
-        // equips the 1st helmet
-        helm1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                character.equipItem(helmList.get(0));
-                mDataSource.updateCharacter(character);
-            }
-
-        });
-
-
-        // equips the 2nd helmet
-        helm2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                character.equipItem(helmList.get(1));
-                mDataSource.updateCharacter(character);
-            }
-
-        });
-
 
     }
 

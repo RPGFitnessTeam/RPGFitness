@@ -71,22 +71,24 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
-
         <activity android:name=".fitness_Package.Edit_Goal_Main"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
-
         <activity android:name=".fitness_Package.Edit_Goal_Pop_Up"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"
             ></activity>
 
-        <activity android:name=".fitness_Package.FitnessLogActivity"
+<<<<<<< HEAD
+        <activity android:name=".fitness_Package.Main_FitnessLog"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+=======
+        <activity android:name=".fitness_Package.FitnessLogActivity"
+            android:theme="@style/AppTheme"
+>>>>>>> 15d8fa381341f2778d5f8ed0f248f085a12aa591
             android:exported="true"
             ></activity>
-
         <activity android:name=".quest_Package.QuestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true"

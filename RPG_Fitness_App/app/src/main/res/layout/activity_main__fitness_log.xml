@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main__fitness_log"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Main_FitnessLog">
+    tools:context="co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity">
 
     <include layout="@layout/footer" />
 
@@ -22,16 +22,17 @@
             android:id="@+id/fragment_main"
             tools:layout="@layout/fragment_list_days" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/button_add_activity"
-            android:background="@android:drawable/ic_input_add"
-            android:backgroundTint="@android:color/holo_blue_dark" />
-
+            app:srcCompat="@drawable/add"
+            android:backgroundTint="#7EC0EE"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
     </RelativeLayout>
 

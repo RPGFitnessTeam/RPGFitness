@@ -1,5 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -33,7 +35,7 @@ public class Character {
         moneyChest = new Currency();
 
         // set species
-        mySpecies = new Species();
+        mySpecies = null;
 
         // set boosts
         activeBoosts = new ArrayList<Boost>();
@@ -239,6 +241,7 @@ public class Character {
             }
             else
             {
+                Log.d("gear activity", "gear added to activity: " + equip.getName());
                 Gear temp = activeGear.get(0);
                 equip.setEquipped(true);
                 temp.setEquipped(false);
@@ -246,6 +249,7 @@ public class Character {
                 activeGear.add(0, equip);
                 activeBoosts.add(equip.getBoost());
                 inactiveGear.add(temp);
+                Log.d("gear activity", "now equipped " + activeGear.get(0).getName());
             }
         }
         else if(category.equals("Chest"))
