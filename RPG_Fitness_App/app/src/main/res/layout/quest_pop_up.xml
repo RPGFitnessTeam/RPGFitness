@@ -21,20 +21,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="93dp"
+        android:fontFamily="casual"
         android:text="Quest Completed!"
-        android:layout_alignParentEnd="true" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/skipQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="38dp"
-        android:text="Skip Quest"
-        android:layout_alignParentEnd="true" />
+        android:fontFamily="casual"
+        android:text="Skip Quest" />
 
     <TextView
         android:id="@+id/QuestName"
@@ -43,28 +46,31 @@
         android:layout_alignBottom="@+id/exitQuestPopUp"
         android:layout_alignParentStart="true"
         android:ems="10"
+        android:fontFamily="casual"
         android:text="Name" />
 
     <TextView
         android:id="@+id/QuestDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/QuestName"
         android:layout_marginTop="49dp"
-        android:text="Name"
+        android:fontFamily="casual"
         android:maxLines="10"
-        android:layout_alignParentEnd="true" />
+        android:text="Name" />
 
     <TextView
         android:id="@+id/QuestParameters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Name"
-        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:text="Name" />
 
 
 </RelativeLayout>
