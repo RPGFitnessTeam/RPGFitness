@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
@@ -209,26 +210,15 @@ public class KingdomActivity extends Activity {
             int tileNum = tile.getTileNumber();
             ArrayList<Gear> gearList = mDataSource.getAllGear();
             Gear g = null;
-            switch (tileNum){
-                case 0: g = gearList.get(0);
-                    break;
-                case 2: g = gearList.get(2);
-                    break;
-                case 4: g = gearList.get(4);
-                    break;
-                case 6: g = gearList.get(6);
-                    break;
-                case 8: g = gearList.get(8);
-                    break;
-                case 10: g = gearList.get(10);
-                    break;
-                case 12: g = gearList.get(12);
-                    break;
-                case 14: g = gearList.get(14);
-                    break;
-                case 16: g = gearList.get(16);
-                    break;
+
+            if (gearList.size() > 0) {
+                Random random = new Random();
+                int min = 0;
+                int max = gearList.size() - 1;
+                int randomItemNum = random.nextInt(max - min + 1) + min;
+                g = gearList.get(randomItemNum);
             }
+
             if(g!=null && tile.getMyBuilding() == null) {
                 g.setOwned(true);
                 c.addGear(g);

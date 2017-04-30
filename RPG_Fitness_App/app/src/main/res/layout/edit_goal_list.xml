@@ -26,10 +26,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:text="TextView"
         android:backgroundTint="#FFB347"
-        />
+        android:fontFamily="casual"
+        android:text="TextView"
+        android:textSize="30dp" />
 
 
 </RelativeLayout>
