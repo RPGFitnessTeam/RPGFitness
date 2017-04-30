@@ -1,6 +1,7 @@
 package co.rpg_fitness_app.android.rpg_fitness_app.quest_Package;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.Goal;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.LogEntry;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,7 +30,6 @@ public class Quest implements Serializable {
     public Quest() {
         this.id = "";
         this.description = "";
-        //this.parameters = "";
         this.reward = null;
         this.questStartDate = Calendar.getInstance();
         this.isQuestComplete = false;
@@ -49,19 +49,22 @@ public class Quest implements Serializable {
         this.isQuestComplete = false;
         this.isQuestSkipped = false;
         this.isQuestExpired = false;
+        this.questStartDate = Calendar.getInstance();
+        questStartDate.setTime(new Date());
+        this.questStart = questStartDate.get(Calendar.MONTH) + "/" + questStartDate.get(Calendar.DAY_OF_YEAR) + "/"
+                + questStartDate.get(Calendar.YEAR) + "/" + questStartDate.get(Calendar.HOUR_OF_DAY) +
+                "/" + questStartDate.get(Calendar.MINUTE);
         //this.parameters = Parameters;
 
         if (!isMasterQuest) {
             this.questGoal = null;
-            this.questStartDate = Calendar.getInstance();
-            questStartDate.setTime(new Date());
             this.hoursRemaining = 100;
-            this.questStart = questStartDate.get(Calendar.MONTH) + "/" + questStartDate.get(Calendar.DAY_OF_YEAR) + "/"
-                                + questStartDate.get(Calendar.YEAR) + "/" + questStartDate.get(Calendar.HOUR_OF_DAY) +
-                                    "/" + questStartDate.get(Calendar.MINUTE);
         }
         else {
-
+            this.hoursRemaining = 200;
+            LogEntry lg = new LogEntry(UUID.randomUUID().toString(), 0);
+            Goal goal = new Goal(lg, UUID.randomUUID().toString(), 0 , 0 , 25, false, true, true);
+            this.questGoal = goal;
         }
     }
 
