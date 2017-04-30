@@ -71,11 +71,12 @@ public class QuestPopUp extends Activity {
             public void onClick(View view) {
 
                Intent intent = new Intent();
-                intent.putExtra("quest", quest);
+                //intent.putExtra("quest", quest);
                 moneyChest.updateResource(true, reward.getWood(), reward.getGold(), reward.getStone(),
                         0, 0, 0, 0, 0);
                 mdataSource.updateCurrency(moneyChest);
                 quest.setIsQuestComplete(true);
+                quest.setHoursRemaining(100);
                 mdataSource.updateQuest(quest);
                setResult(Activity.RESULT_OK, intent);
                 finish();
@@ -89,8 +90,9 @@ public class QuestPopUp extends Activity {
             @Override
             public void onClick(View view) {
                Intent intent = new Intent();
-                intent.putExtra("quest", quest);
+               // intent.putExtra("quest", quest);
                 quest.setIsQuestSkipped(true);
+                quest.setHoursRemaining(100);
                 mdataSource.updateQuest(quest);
                setResult(Activity.RESULT_OK, intent);
                 finish();
