@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -276,20 +278,43 @@ public class AddGoalActivityDetail extends DialogFragment {
         type.setTypeface(null, Typeface.BOLD);
         ((LinearLayout) rV).addView(type);
 
-        String[] secondDrop = LogEntry.getSecondDropdownValues(this.activity, this.subType);
-        Spinner secondSpin = new Spinner(getActivity());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, secondDrop);
-        secondSpin.setAdapter(adapter);
-        ((LinearLayout) rV).addView(secondSpin);
+        int secondDropMax = LogEntry.getSecondDropdownMax(this.activity, this.subType);
+        SeekBar seekBar = new SeekBar(getActivity());
+        seekBar.setMax(secondDropMax);
 
-        secondSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id)
-            {
-                Object item = parent.getItemAtPosition(pos);
-                secondType = Integer.parseInt(item.toString().replaceAll("[^0-9]", ""));
+        ((LinearLayout) rV).addView(seekBar);
+
+        final TextView secondText = new TextView(getActivity());
+        final String secondDropUnit = LogEntry.getSecondDropdownUnit(this.activity, this.subType);
+        secondText.setText(secondDropUnit);
+        secondText.setGravity(Gravity.CENTER);
+        ((LinearLayout) rV).addView(secondText);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                secondType = progress;
+
+                if(activity == 0 && subType == 3)
+                {
+                    secondText.setText(LogEntry.convertIntensity(progress));
+                }
+                else if(activity == 2)
+                {
+                    secondText.setText(LogEntry.convertQuality(progress));
+                }
+                else {
+                    secondText.setText(progress + " " + secondDropUnit);
+                }
             }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
@@ -325,21 +350,41 @@ public class AddGoalActivityDetail extends DialogFragment {
 
         ((LinearLayout) rV).addView(type);
 
-        String[] thirdDrop = LogEntry.getThirdDropdownValues(this.activity, this.subType);
-        Spinner thirdSpin = new Spinner(getActivity());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, thirdDrop);
-        thirdSpin.setAdapter(adapter);
-        ((LinearLayout) rV).addView(thirdSpin);
-        thirdSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View v, int pos, long id)
-            {
-                Object item = parent.getItemAtPosition(pos);
-                thirdType = Integer.parseInt(item.toString().replaceAll("[^0-9]", ""));
+        int thirdDropMax = LogEntry.getThirdDropdownMax(this.activity, this.subType);
+        SeekBar seekBar = new SeekBar(getActivity());
+        seekBar.setMax(thirdDropMax);
+
+        ((LinearLayout) rV).addView(seekBar);
+
+        final TextView thirdText = new TextView(getActivity());
+        final String thirdDropUnit = LogEntry.getThirdDropdownUnit(this.activity, this.subType);
+        thirdText.setText(thirdDropUnit);
+        thirdText.setGravity(Gravity.CENTER);
+        ((LinearLayout) rV).addView(thirdText);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                thirdType = progress;
+
+                if(activity == 0 && subType == 0){
+                    thirdText.setText(LogEntry.convertIntensity(progress));
+                }
+                else {
+                    thirdText.setText(progress + " " + thirdDropUnit);
+                }
             }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
+
     }
 }
