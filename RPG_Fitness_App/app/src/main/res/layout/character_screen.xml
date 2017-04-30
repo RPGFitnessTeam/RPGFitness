@@ -2,163 +2,213 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <include layout="@layout/footer"
-        android:id="@+id/include"></include>
-
-
-
+    <include layout="@layout/footer"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/footer">
 
-
-        <TextView
-            android:id="@+id/textView_charName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="casual"
-            android:text="@string/textview"
-            android:textSize="24sp"
-            tools:text="Name" />
-
-        <ImageView
-            android:id="@+id/charGold"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/gold"
-            android:layout_below="@+id/textView_charName"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="11dp" />
-
-        <ImageView
-            android:id="@+id/charWood"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_marginStart="28dp"
-            android:layout_toEndOf="@+id/textGold"
-            android:layout_weight="1"
-            android:background="@drawable/wood" />
-
-        <ImageView
-            android:id="@+id/charStone"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/stone"
-            android:layout_alignTop="@+id/charWood"
-            android:layout_alignStart="@+id/button_helm" />
-
-
-        <TextView
-            android:id="@+id/textWood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textGold"
-            android:layout_alignBottom="@+id/textGold"
-            android:layout_alignStart="@+id/textView_charName"
-            android:layout_marginStart="19dp"
-            android:fontFamily="casual"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textRock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textWood"
-            android:layout_alignBottom="@+id/textWood"
-            android:layout_toEndOf="@+id/charStone"
-            android:fontFamily="casual"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textGold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/charGold"
-            android:fontFamily="casual"
-            android:text="TextView" />
-
-        <Spinner
-            android:id="@+id/spinnerSpecies"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/charGold"
-            android:layout_marginTop="11dp" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/c_anime"
-            android:layout_below="@+id/spinnerSpecies"
-            android:layout_alignEnd="@+id/charWood" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-        <Button
-            android:id="@+id/button_chest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button_helm"
-            android:layout_below="@+id/button_helm"
-            android:layout_marginTop="14dp"
-            android:fontFamily="casual"
-            android:text="@string/chest" />
+                <TextView
+                    android:id="@+id/textView_charName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="casual"
+                    android:text="@string/textview"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    tools:text="Name" />
 
-        <Button
-            android:id="@+id/button_Weapon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button_chest"
-            android:layout_below="@+id/button_chest"
-            android:layout_marginTop="13dp"
-            android:elevation="2dp"
-            android:fontFamily="casual"
-            android:text="@string/weapon" />
+            </TableRow>
 
-        <Button
-            android:id="@+id/button_offhand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button_Weapon"
-            android:layout_below="@+id/button_Weapon"
-            android:layout_marginTop="12dp"
-            android:elevation="1dp"
-            android:fontFamily="casual"
-            android:text="@string/off_hand" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-        <Button
-            android:id="@+id/button_Legs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/button_offhand"
-            android:layout_below="@+id/button_offhand"
-            android:layout_marginTop="18dp"
-            android:fontFamily="casual"
-            android:text="@string/legs" />
+                <Spinner
+                    android:id="@+id/spinnerSpecies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/button_helm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/spinnerSpecies"
-            android:layout_marginEnd="19dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="casual"
-            android:text="@string/helm" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textGold"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textRock"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textWood"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/charGold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/gold"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/charStone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/stone"
+                            android:scaleType="fitCenter" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/charWood"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/wood"
+                            android:scaleType="fitCenter" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:id="@+id/characterImage"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="center"
+                        android:layout_row="0"
+                        android:layout_rowSpan="5"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/c_anime" />
+
+                    <Button
+                        android:id="@+id/button_offhand"
+                        android:fontFamily="casual"
+                        android:text="@string/off_hand"
+                        android:layout_column="2"
+                        android:layout_columnSpan="1"
+                        android:layout_row="0"/>
+
+                    <Button
+                        android:id="@+id/button_Weapon"
+                        android:fontFamily="casual"
+                        android:text="@string/weapon"
+                        android:layout_column="2"
+                        android:layout_columnSpan="1"
+                        android:layout_row="1"/>
+
+                    <Button
+                        android:id="@+id/button_Legs"
+                        android:fontFamily="casual"
+                        android:text="@string/legs"
+                        android:layout_column="2"
+                        android:layout_columnSpan="1"
+                        android:layout_row="2"/>
+
+                    <Button
+                        android:id="@+id/button_helm"
+                        android:fontFamily="casual"
+                        android:text="@string/helm"
+                        android:layout_column="2"
+                        android:layout_columnSpan="1"
+                        android:layout_row="3"/>
+
+                    <Button
+                        android:id="@+id/button_chest"
+                        android:fontFamily="casual"
+                        android:text="@string/chest"
+                        android:layout_column="2"
+                        android:layout_columnSpan="1"
+                        android:layout_row="4"/>
+
+
+                </GridLayout>
+            </TableRow>
+
+        </TableLayout>
 
 
     </RelativeLayout>
