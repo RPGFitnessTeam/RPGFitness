@@ -63,7 +63,6 @@ public class QuestActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK) {
             configureQuests();
-            //replaceQuest();
             applyButtonText();
         }
     }
@@ -137,21 +136,32 @@ public class QuestActivity extends AppCompatActivity {
 
     private void configureQuests() {
         quests = new ArrayList<>();
+        quests.add(null);
+        quests.add(null);
+        quests.add(null);
         allQuests = mdataSource.getAllQuests();
         for(int i = 0; i < allQuests.size(); i++) {
             if(allQuests.get(i).getHoursRemaining().equals("200") || allQuests.get(i).getHoursRemaining().equals("250")) {
                 masterQuest = allQuests.get(i);
+                allQuests.remove(i);
                 if(masterQuest.getHoursRemaining().equals("200")) {
                     masterQuest.setHoursRemaining(200);
                     mdataSource.updateQuest(masterQuest);
                 }
-                allQuests.remove(i);
-                i--;
             }
         }
         int questFilled = 0;
         int curr = 0;
         boolean done = false;
+        for (int i = 0; i < allQuests.size(); i ++) {
+            if (!allQuests.get(i).getHoursRemaining().equals("100") && !allQuests.get(i).getHoursRemaining().equals("200")) {
+                Quest quest = allQuests.get(i);
+                int position = Integer.parseInt(quest.getHoursRemaining());
+                quests.set(position, quest);
+                questFilled += 1;
+            }
+        }
+        if (questFilled > 2) done = true;
         while(!done) {
             if(curr == allQuests.size()) {
                 for (int i = 0; i < allQuests.size(); i++) {
@@ -173,18 +183,24 @@ public class QuestActivity extends AppCompatActivity {
             if(!allQuests.get(curr).getQuestSkipped() && !allQuests.get(curr).getQuestComplete() &&
                     !quests.contains(allQuests.get(curr))) {
                 if(allQuests.get(curr).getHoursRemaining().equals("100")) {
-                    Quest quest = allQuests.get(curr);
-                    quest.setHoursRemaining(72);
-                    Calendar cal = Calendar.getInstance();
-                    String date = cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DAY_OF_YEAR) + "/"
-                            + cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.HOUR_OF_DAY) +
-                            "/" + cal.get(Calendar.MINUTE);
-                    quest.setStartDate(date);
-                    mdataSource.updateQuest(quest);
-                    quests.add(quest);
-                    questFilled += 1;
+                    for(int i = 0; i < quests.size(); i++) {
+                        if(quests.get(i) == null) {
+                            Quest quest = allQuests.get(curr);
+                            quest.setHoursRemaining(i);
+                            Calendar cal = Calendar.getInstance();
+                            String date = cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DAY_OF_YEAR) + "/"
+                                    + cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.HOUR_OF_DAY) +
+                                    "/" + cal.get(Calendar.MINUTE);
+                            quest.setStartDate(date);
+                            mdataSource.updateQuest(quest);
+                            quests.set(i, quest);
+                            questFilled += 1;
+                            break;
+                           // i = 4;//// TODO: 4/30/2017
+                        }
+                    }
                 }
-                else {
+                /*else {
                     Quest quest = allQuests.get(curr);
                     quest.setQuestExpired();
                     mdataSource.updateQuest(quest);
@@ -192,7 +208,7 @@ public class QuestActivity extends AppCompatActivity {
                         quests.add(quest);
                         questFilled += 1;
                     }
-                }
+                }*/
             }
             curr += 1;
             if (questFilled > 2) {
