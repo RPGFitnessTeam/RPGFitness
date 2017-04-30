@@ -229,7 +229,7 @@ public class KingdomActivity extends Activity {
                 case 16: g = gearList.get(16);
                     break;
             }
-            if(g!=null) {
+            if(g!=null && tile.getMyBuilding() == null) {
                 g.setOwned(true);
                 c.addGear(g);
                 mDataSource.updateCharacter(c);
