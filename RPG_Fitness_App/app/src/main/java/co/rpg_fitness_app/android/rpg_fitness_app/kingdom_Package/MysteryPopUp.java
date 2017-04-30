@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
 
@@ -143,6 +144,8 @@ public class MysteryPopUp extends Activity {
             return true;
         }
         else{
+            String s = "Insufficient funds!!! Obtain more resources!!!";
+            Toast.makeText(this,s,Toast.LENGTH_LONG).show();
             return false;
         }
     }

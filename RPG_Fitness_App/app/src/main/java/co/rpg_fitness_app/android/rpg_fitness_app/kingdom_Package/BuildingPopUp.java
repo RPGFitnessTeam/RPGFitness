@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -129,6 +130,8 @@ public class BuildingPopUp extends Activity {
                 }
             }
         }
+        String s = "Insufficient funds!!! Obtain more resources!!!";
+        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
         return false;
     }
 
