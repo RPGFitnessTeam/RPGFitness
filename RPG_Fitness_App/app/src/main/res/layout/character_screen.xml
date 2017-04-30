@@ -33,22 +33,19 @@
             android:id="@+id/charGold"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:background="@drawable/gold"
             android:layout_below="@+id/textView_charName"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="11dp" />
+            android:layout_toStartOf="@+id/textGold" />
 
         <ImageView
             android:id="@+id/charWood"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_marginStart="28dp"
-            android:layout_toEndOf="@+id/textGold"
             android:layout_weight="1"
-            android:background="@drawable/wood" />
+            android:background="@drawable/wood"
+            android:layout_above="@+id/spinnerSpecies"
+            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/charStone"
@@ -64,12 +61,11 @@
             android:id="@+id/textWood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="TextView"
             android:layout_alignBaseline="@+id/textGold"
             android:layout_alignBottom="@+id/textGold"
-            android:layout_alignStart="@+id/textView_charName"
-            android:layout_marginStart="19dp"
-            android:fontFamily="casual"
-            android:text="TextView" />
+            android:layout_toEndOf="@+id/charWood" />
 
         <TextView
             android:id="@+id/textRock"
@@ -85,27 +81,30 @@
             android:id="@+id/textGold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/charGold"
-            android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/charGold"
             android:fontFamily="casual"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_above="@+id/spinnerSpecies"
+            android:layout_toStartOf="@+id/textView_charName"
+            android:layout_marginEnd="33dp" />
 
         <Spinner
             android:id="@+id/spinnerSpecies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_marginTop="11dp"
             android:layout_below="@+id/charGold"
-            android:layout_marginTop="11dp" />
+            android:layout_alignParentStart="true" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/c_anime"
-            android:layout_below="@+id/spinnerSpecies"
-            android:layout_alignEnd="@+id/charWood" />
+            android:layout_alignBottom="@+id/button_Legs"
+            android:layout_alignStart="@+id/textGold"
+            android:layout_marginStart="13dp" />
 
         <Button
             android:id="@+id/button_chest"
