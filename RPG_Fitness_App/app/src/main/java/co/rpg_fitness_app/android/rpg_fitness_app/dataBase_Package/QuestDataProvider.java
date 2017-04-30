@@ -40,7 +40,6 @@ public class QuestDataProvider {
         name = "Orc Invasion";
         description = "A tribe of rogue orcs has invaded your kingdom!\n\n" +
                 "Protect it with your might.\n\n-perform 50 push-ups(total)";
-        //parameters = "parameters 2";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
@@ -71,6 +70,12 @@ public class QuestDataProvider {
         name = "Boulder Blockade";
         description = "a boulder is preventing you from expanding your kingdom!\n\n" +
                         "Clear them out.\n\n-Perform upper body lifting routine";
+        quest = new Quest(isMasterQuest, reward, name, description);
+        addQuest(quest);
+
+        name = "Champion";
+        description = "Prove your worth, by completing multiple feats of strength!";
+        isMasterQuest = true;
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
