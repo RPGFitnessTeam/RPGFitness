@@ -63,7 +63,7 @@ public class GoalActive extends AppCompatActivity {
             }
         });
         //Add new LogEntry
-        Button button = ((Button) findViewById(R.id.button_create_goal));
+        ImageButton button = ((ImageButton) findViewById(R.id.button_create_goal));
         button.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
