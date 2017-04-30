@@ -26,7 +26,9 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/woodImage"
@@ -39,7 +41,9 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/stoneImage"
@@ -52,34 +56,41 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/purchaseBuilding4Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:layout_below="@+id/purchaseBuilding3"
-        android:layout_above="@+id/purchaseBuilding5"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/purchaseBuilding5" />
 
-    <TextView
-        android:id="@+id/purchaseBuilding6Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/purchaseBuilding6"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/purchaseBuilding5Text"
-        android:layout_toEndOf="@+id/purchaseBuilding5"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <TextView
+            android:id="@+id/purchaseBuilding4Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/purchaseBuilding5"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/purchaseBuilding3"
+            android:layout_toEndOf="@+id/purchaseBuilding5"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/purchaseBuilding6Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/purchaseBuilding6"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/purchaseBuilding5Text"
+            android:layout_toEndOf="@+id/purchaseBuilding5"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/purchaseBuilding5"
@@ -95,38 +106,44 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/purchaseBuilding3"/>
 
-    <TextView
-        android:id="@+id/purchaseBuilding5Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/purchaseBuilding5"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/purchaseBuilding4Text"
-        android:layout_toEndOf="@+id/purchaseBuilding5"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <TextView
+            android:id="@+id/purchaseBuilding5Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/purchaseBuilding5"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/purchaseBuilding4Text"
+            android:layout_toEndOf="@+id/purchaseBuilding5"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/purchaseBuilding1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/purchaseBuilding2Text"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/purchaseBuilding1"
-        android:layout_toEndOf="@+id/purchaseBuilding2"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <TextView
+            android:id="@+id/purchaseBuilding1Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/purchaseBuilding2Text"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/purchaseBuilding1"
+            android:layout_toEndOf="@+id/purchaseBuilding2"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/purchaseBuilding3Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:layout_below="@+id/purchaseBuilding2Text"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/purchaseBuilding2"
-        android:layout_above="@+id/purchaseBuilding4Text" />
+        <TextView
+            android:id="@+id/purchaseBuilding3Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/purchaseBuilding4Text"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/purchaseBuilding2Text"
+            android:layout_toEndOf="@+id/purchaseBuilding2"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/purchaseBuilding2"
@@ -148,16 +165,18 @@
         android:layout_height="75dp"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:id="@+id/purchaseBuilding2Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/purchaseBuilding1"
-        android:layout_toEndOf="@+id/purchaseBuilding2"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:layout_above="@+id/purchaseBuilding3" />
+        <TextView
+            android:id="@+id/purchaseBuilding2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/purchaseBuilding3"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/purchaseBuilding1"
+            android:layout_toEndOf="@+id/purchaseBuilding2"
+            android:fontFamily="casual"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/purchaseBuilding6"
