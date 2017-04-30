@@ -18,7 +18,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class QuestPopUp extends Activity {
-//// TODO: 4/29/2017  add boosts 
+//// TODO: 4/29/2017  add boosts
     private Currency reward;
     private Currency moneyChest;
     private Quest quest;
@@ -64,7 +64,6 @@ public class QuestPopUp extends Activity {
     }
 
 
-    //TODO
     private void configureCompleteButton() {
         Button Button = (Button) findViewById(R.id.completeQuest);
         Button.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +118,7 @@ public class QuestPopUp extends Activity {
         parameters.setTextColor(Color.RED);
         parameters.setText(rewards);
     }
+
 
     private void configureBoosts() {
         ArrayList<Boost> boosts = mdataSource.getAllBoosts();
