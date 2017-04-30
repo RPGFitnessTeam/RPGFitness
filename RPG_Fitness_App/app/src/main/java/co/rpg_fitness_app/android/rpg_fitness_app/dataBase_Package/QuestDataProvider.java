@@ -57,7 +57,7 @@ public class QuestDataProvider {
 
         name = "Sea Orcs???";
         description = "Some Sea Orcs need a shipment from your kingdom!\n\n" +
-                "Deliver it to them.\n\n-perform 30 minutes of activity in water.";
+                "Deliver it to them.\n\n-perform 30 minutes of water activity";
         quest = new Quest(isMasterQuest, reward, name, description);
         addQuest(quest);
 
