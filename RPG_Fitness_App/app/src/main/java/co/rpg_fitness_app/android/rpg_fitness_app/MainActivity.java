@@ -10,13 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
-
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-
-
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
@@ -47,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-        mDataSource.upgrade();
-        //mDataSource.open();
+        //mDataSource.upgrade();
+        mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
         //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
@@ -120,9 +118,12 @@ public class MainActivity extends AppCompatActivity {
             this.kingdom = new Kingdom();
             mDataSource.insertKingdom(kingdom);
             Currency moneyChest = new Currency();
-            moneyChest.updateResource(true,1,1,1,0,0,0,0,0);
+            moneyChest.updateResource(true,5,5,5,0,0,0,0,0);
             moneyChest.setId("moneyChest");
             mDataSource.updateCurrency(moneyChest);
+            Character character = new Character();
+            character.setCurrency(moneyChest);
+            mDataSource.updateCharacter(character);
         }
     }
 

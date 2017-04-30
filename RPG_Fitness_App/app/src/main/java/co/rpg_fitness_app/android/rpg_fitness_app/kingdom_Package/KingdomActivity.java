@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.rpg_fitness_app.android.rpg_fitness_app.R;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Gear;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
-//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
-import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
+import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
 import co.rpg_fitness_app.android.rpg_fitness_app.quest_Package.QuestActivity;
+
+//import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 
 /**
  * Created by Tanner on 3/9/2017.
@@ -199,6 +203,40 @@ public class KingdomActivity extends Activity {
             Log.d("onActivityResult", "CLicked on tile: " +tile.getTileNumber()+"");
             moneyChest = (Currency) data.getSerializableExtra("money chest");//updated money chest
             configureTileButton(tile.getTileNumber(), tile);
+
+            //check if user gets new gear
+            Character c = mDataSource.getAllCharacters().get(0);
+            int tileNum = tile.getTileNumber();
+            ArrayList<Gear> gearList = mDataSource.getAllGear();
+            Gear g = null;
+            switch (tileNum){
+                case 0: g = gearList.get(0);
+                    break;
+                case 2: g = gearList.get(2);
+                    break;
+                case 4: g = gearList.get(4);
+                    break;
+                case 6: g = gearList.get(6);
+                    break;
+                case 8: g = gearList.get(8);
+                    break;
+                case 10: g = gearList.get(10);
+                    break;
+                case 12: g = gearList.get(12);
+                    break;
+                case 14: g = gearList.get(14);
+                    break;
+                case 16: g = gearList.get(16);
+                    break;
+            }
+            if(g!=null) {
+                g.setOwned(true);
+                c.addGear(g);
+                mDataSource.updateCharacter(c);
+                mDataSource.updateGear(g);
+                String s = "You found gear: "+g.getName().toString();
+                Toast.makeText(this,s,Toast.LENGTH_LONG).show();
+            }
         }
     }
 
