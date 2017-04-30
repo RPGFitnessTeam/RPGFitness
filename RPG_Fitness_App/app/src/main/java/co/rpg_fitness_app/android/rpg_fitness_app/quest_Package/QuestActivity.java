@@ -27,11 +27,13 @@ public class QuestActivity extends AppCompatActivity {
     private ArrayList<Quest> quests;
     private ArrayList<Integer> finishedQuests;
     private ArrayList<Quest> allQuests;
+    private Quest masterQuest;
     private Button MasterButton;
     private Button questButton1;
     private Button questButton2;
     private Button questButton3;
     private DataSource mdataSource;
+    private Currency moneyChest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class QuestActivity extends AppCompatActivity {
 
         mdataSource = new DataSource(this);
         mdataSource.open();
+        moneyChest = mdataSource.getCurrency("moneyChest");
 
 
         MasterButton = (Button)findViewById(R.id.masterButton);
@@ -69,6 +72,7 @@ public class QuestActivity extends AppCompatActivity {
         MasterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(QuestActivity.this, MainQuestPopUp.class);
+                startIntent.putExtra("master", masterQuest);
                 startActivity(startIntent);
             }
         });
@@ -134,6 +138,17 @@ public class QuestActivity extends AppCompatActivity {
     private void configureQuests() {
         quests = new ArrayList<>();
         allQuests = mdataSource.getAllQuests();
+        for(int i = 0; i < allQuests.size(); i++) {
+            if(allQuests.get(i).getHoursRemaining().equals("200") || allQuests.get(i).getHoursRemaining().equals("250")) {
+                masterQuest = allQuests.get(i);
+                if(masterQuest.getHoursRemaining().equals("200")) {
+                    masterQuest.setHoursRemaining(200);
+                    mdataSource.updateQuest(masterQuest);
+                }
+                allQuests.remove(i);
+                i--;
+            }
+        }
         int questFilled = 0;
         int curr = 0;
         boolean done = false;
@@ -184,13 +199,6 @@ public class QuestActivity extends AppCompatActivity {
                 done = true;
             }
         }
-    }
-
-    private void replaceQuest() {
-        //TODO pull new quest from database
-        Quest newQuest = new Quest(false, new Currency(), "quest4", "Description4");
-        quests.set(0, newQuest);
-        applyButtonText();
     }
 
     private void configureToolBarButtons() {
