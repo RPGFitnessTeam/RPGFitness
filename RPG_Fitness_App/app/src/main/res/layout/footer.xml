@@ -16,10 +16,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#FFFFFF"
-            android:src="@drawable/quest_map"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:scaleType="fitCenter"
+            android:src="@drawable/quest_map" />
 
         <ImageButton
             android:id="@+id/fitnessLogFooterButton"
@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@android:color/holo_blue_light"
             android:scaleType="fitCenter"
             android:src="@drawable/scroll" />
 
@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@android:color/holo_orange_dark"
             android:scaleType="fitCenter"
             android:src="@drawable/knight" />
 
@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@android:color/holo_purple"
             android:scaleType="fitCenter"
             android:src="@drawable/question_mark_symbol" />
 
@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@android:color/holo_green_dark"
             android:scaleType="fitCenter"
             android:src="@drawable/castle" />
 
@@ -68,7 +68,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@android:color/holo_orange_light"
             android:scaleType="fitCenter"
             android:src="@drawable/shield" />
     </TableRow>

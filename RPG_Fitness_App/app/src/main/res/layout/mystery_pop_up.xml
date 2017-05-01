@@ -27,6 +27,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="casual"
             android:text="TextView" />
 
         <ImageView
@@ -41,6 +42,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="casual"
             android:text="TextView" />
 
         <ImageView
@@ -55,6 +57,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="casual"
             android:text="TextView" />
 
     </LinearLayout>
@@ -68,6 +71,7 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/exitMysteryTilePopUp"
         android:layout_toStartOf="@+id/exitMysteryTilePopUp"
+        android:fontFamily="casual"
         android:text="Mystery Tile Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -81,6 +85,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/mysteryTileName"
         android:layout_weight="1"
+        android:fontFamily="casual"
         android:text="description"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -92,6 +97,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="Unlock Cost" />
+        android:fontFamily="casual"
+        android:text="Unlock Cost"
+        android:textStyle="bold" />
 
 </LinearLayout>
