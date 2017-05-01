@@ -246,18 +246,20 @@ public class DataSource {
 
         if (building.getGoldBoost() == null)
             values.put(BuildingTable.COLUMN_GOLD_BOOST, "");
-        else
+        else { Log.d("Building", "Found Gold Boost!"+building.getGoldBoost().getAmount());
             values.put(BuildingTable.COLUMN_GOLD_BOOST, building.getGoldBoost().getID());
+        }
 
         if (building.getWoodBoost() == null)
             values.put(BuildingTable.COLUMN_WOOD_BOOST, "");
-        else
+        else { Log.d("Building", "Found Wood Boost!"+building.getWoodBoost().getAmount());
             values.put(BuildingTable.COLUMN_WOOD_BOOST, building.getWoodBoost().getID());
-
+        }
         if (building.getStoneBoost() == null)
             values.put(BuildingTable.COLUMN_STONE_BOOST, "");
-        else
+        else {Log.d("Building", "Found Stone Boost!"+building.getStoneBoost().getAmount());
             values.put(BuildingTable.COLUMN_STONE_BOOST, building.getStoneBoost().getID());
+        }
 
         values.put(BuildingTable.COLUMN_IMAGE, building.getImageName());
 
@@ -1658,7 +1660,6 @@ public class DataSource {
 
         mDatabase.update(TileTable.TABLE_TILE, values, TileTable.COLUMN_ID+"=?", new String[]{tile.getId()});
         updateCurrency(tile.getTileCost());
-        updateBuilding(tile.getMyBuilding());
 
         cursor.close();
         return true;
