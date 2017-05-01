@@ -10,6 +10,7 @@ public class LogEntryTable {
     public static final String COLUMN_ID = "LogEntryID";
     public static final String COLUMN_DATE = "LogEntryDate";
     public static final String COLUMN_ACTIVITY = "LogEntryActivity";
+    public static final String COLUMN_TYPE = "LogEntryType";
     public static final String COLUMN_SUB_TYPE = "LogEntrySubType";
     public static final String COLUMN_DURATION = "Duration";
     public static final String COLUMN_DISTANCE = "Distance";
@@ -18,7 +19,7 @@ public class LogEntryTable {
     public static final String COLUMN_WEIGHT = "Weight";
 
     public static final String[] ALL_COLUMNS =
-            {COLUMN_ID, COLUMN_DATE, COLUMN_ACTIVITY,
+            {COLUMN_ID, COLUMN_DATE, COLUMN_ACTIVITY, COLUMN_TYPE,
                     COLUMN_SUB_TYPE, COLUMN_DURATION, COLUMN_DISTANCE,
                     COLUMN_COUNT, COLUMN_INTENSITY, COLUMN_WEIGHT};
 
@@ -27,6 +28,7 @@ public class LogEntryTable {
                     COLUMN_ID + " TEXT PRIMARY KEY," +
                     COLUMN_DATE + " TEXT," +
                     COLUMN_ACTIVITY + " INTEGER," +
+                    COLUMN_TYPE + " TEXT," +
                     COLUMN_SUB_TYPE + " INTEGER," +
                     COLUMN_DURATION + " INTEGER," +
                     COLUMN_DISTANCE + " INTEGER," +

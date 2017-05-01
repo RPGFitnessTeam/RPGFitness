@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -226,6 +227,8 @@ public class TilePopUp extends Activity{
             return false;
         }
        else{
+            String s = "Insufficient funds!!! Obtain more resources!!!";
+            Toast.makeText(this,s,Toast.LENGTH_LONG).show();
             return false;
         }
     }

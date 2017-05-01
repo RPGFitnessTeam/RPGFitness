@@ -69,6 +69,7 @@ public class ExpandableListAdapterFitness extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
+        convertView = null;
         if(convertView == null)
         {
             convertView = inflater.inflate(R.layout.fragment_date, parent, false);
@@ -80,6 +81,8 @@ public class ExpandableListAdapterFitness extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+
+        convertView = null;
 
         if(convertView == null)
         {
