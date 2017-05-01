@@ -448,11 +448,12 @@ public class DataSource {
             return false;
         }
 
-        ContentValues values = new ContentValues(9);
+        ContentValues values = new ContentValues(10);
         values.put(LogEntryTable.COLUMN_ID, logEntry.getID());
         values.put(LogEntryTable.COLUMN_DATE, logEntry.getDate());
        // System.out.println("DUYA::" + logEntry.getDate());
         values.put(LogEntryTable.COLUMN_ACTIVITY, logEntry.getActivityInt());
+        values.put(LogEntryTable.COLUMN_TYPE, logEntry.getTypeName());
         values.put(LogEntryTable.COLUMN_SUB_TYPE, logEntry.getSubTypeInt());
         values.put(LogEntryTable.COLUMN_DURATION, logEntry.getDuration());
         values.put(LogEntryTable.COLUMN_DISTANCE, logEntry.getDistance());
@@ -863,6 +864,8 @@ public class DataSource {
                     cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
             logEntry.setDateString(cursor.getString(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
+            logEntry.setTypeName(cursor.getString(
+                    cursor.getColumnIndex(LogEntryTable.COLUMN_TYPE)));
             logEntry.setSubType(cursor.getInt(
                     cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
             logEntry.setDuration(cursor.getInt(
@@ -1232,6 +1235,8 @@ public class DataSource {
                 cursor.getColumnIndex(LogEntryTable.COLUMN_ID)));
         logEntry.setDateString(cursor.getString(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_DATE)));
+        logEntry.setTypeName(cursor.getString(
+                cursor.getColumnIndex(LogEntryTable.COLUMN_TYPE)));
         logEntry.setSubType(cursor.getInt(
                 cursor.getColumnIndex(LogEntryTable.COLUMN_SUB_TYPE)));
         logEntry.setDuration(cursor.getInt(
@@ -1380,6 +1385,61 @@ public class DataSource {
         return tip;
     }
 
+    public boolean updateBuilding(Building building) {
+        if (building == null)
+            return false;
+
+        String compare[] = {building.getId()};
+        Cursor cursor = mDatabase.query(BuildingTable.TABLE_BUILDINGS, BuildingTable.ALL_COLUMNS,
+                BuildingTable.COLUMN_ID + "=?", compare, null, null, null);
+
+        if (cursor.getCount() <= 0) {
+            insertBuilding(building);
+            cursor.close();
+            return false;
+        } else if (cursor.getCount() > 1) {
+            System.out.println("Duplicated ID found! "+building.getId());
+            cursor.close();
+            return false;
+        }
+
+        ContentValues values = new ContentValues(9);
+        values.put(BuildingTable.COLUMN_ID, building.getId());
+        values.put(BuildingTable.COLUMN_NAME, building.getName());
+
+        if (building.getCost() == null)
+            values.put(BuildingTable.COLUMN_COST, "");
+        else
+            values.put(BuildingTable.COLUMN_COST, building.getCost().getId());
+
+        values.put(BuildingTable.COLUMN_CATEGORY, building.getCategory());
+        values.put(BuildingTable.COLUMN_TIER, building.getTier());
+
+        if (building.getGoldBoost() == null)
+            values.put(BuildingTable.COLUMN_GOLD_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_GOLD_BOOST, building.getGoldBoost().getID());
+
+        if (building.getWoodBoost() == null)
+            values.put(BuildingTable.COLUMN_WOOD_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_WOOD_BOOST, building.getWoodBoost().getID());
+
+        if (building.getStoneBoost() == null)
+            values.put(BuildingTable.COLUMN_STONE_BOOST, "");
+        else
+            values.put(BuildingTable.COLUMN_STONE_BOOST, building.getStoneBoost().getID());
+
+        values.put(BuildingTable.COLUMN_IMAGE, building.getImageName());
+
+        mDatabase.update(BuildingTable.TABLE_BUILDINGS, values, BuildingTable.COLUMN_ID+"=?",
+                new String[]{building.getId()});
+        updateCurrency(building.getCost());
+
+        cursor.close();
+        return true;
+    }
+
     public boolean updateCharacter(Character character) {
         if (character == null)
             return false;
@@ -1401,9 +1461,16 @@ public class DataSource {
         ContentValues values = new ContentValues(4);
         values.put(CharacterTable.COLUMN_ID, character.getID());
         values.put(CharacterTable.COLUMN_NAME, character.getName());
-        values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
-        values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
-
+        if (character.getSpecies() != null) {
+            values.put(CharacterTable.COLUMN_SPECIES, character.getSpecies().getID());
+        } else {
+            values.put(CharacterTable.COLUMN_SPECIES, "");
+        }
+        if (character.getCurrency() != null) {
+            values.put(CharacterTable.COLUMN_CURRENCY, character.getCurrency().getId());
+        } else {
+            values.put(CharacterTable.COLUMN_CURRENCY, "");
+        }
         mDatabase.update(CharacterTable.TABLE_CHARACTER, values, CharacterTable.COLUMN_ID+"=?",
                 new String[]{character.getID()});
         updateCurrency(character.getCurrency());
@@ -1591,20 +1658,7 @@ public class DataSource {
 
         mDatabase.update(TileTable.TABLE_TILE, values, TileTable.COLUMN_ID+"=?", new String[]{tile.getId()});
         updateCurrency(tile.getTileCost());
-
-        Tile tempTile = getTile(tile.getId());
-        if (tempTile == null) {
-            Log.d("updateTile", "Couldn't find tile!");
-        } else {
-            Log.d("updateTile", tempTile.getTileNumber()+"");
-            Log.d("updateTile", tempTile.getId());
-            if (tempTile.getMyBuilding() != null) {
-                Log.d("updateTile", tempTile.getMyBuilding().getName());
-            }
-            else {
-                Log.d("updateTile", "null");
-            }
-        }
+        updateBuilding(tile.getMyBuilding());
 
         cursor.close();
         return true;

@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-        //mDataSource.upgrade();
-        mDataSource.open();
+        mDataSource.upgrade();
+        //mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
         //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         mquestsMainButton = (ImageButton)findViewById(R.id.questsMainButton);
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
+
+        ///// TESTING BUILDING BOOSTS /////
 
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
