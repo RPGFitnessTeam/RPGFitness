@@ -178,7 +178,7 @@ public class TilePopUp extends Activity{
         i = (ImageButton) findViewById(R.id.purchaseBuilding2);
         i.setBackgroundResource(R.drawable.b_bridge1);
         t = (TextView) findViewById(R.id.purchaseBuilding2Text);
-        t.setText("Wood Bridge:\nA wood bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
+        t.setText("Wood Bridge:\nA bridge will give you extra wood!\nConstruction Cost: 1 wood, 1 gold");
         //cave
         i = (ImageButton) findViewById(R.id.purchaseBuilding3);
         i.setBackgroundResource(R.drawable.b_mining1);
