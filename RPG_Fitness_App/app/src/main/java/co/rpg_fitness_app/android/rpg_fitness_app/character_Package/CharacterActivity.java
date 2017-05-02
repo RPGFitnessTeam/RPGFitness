@@ -3,7 +3,6 @@ package co.rpg_fitness_app.android.rpg_fitness_app.character_Package;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,13 +55,11 @@ public class CharacterActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_screen);
 
-
         mDataSource = new DataSource(this);
         mDataSource.open();
 
         // retrieve character from data source
         character = mDataSource.getAllCharacters().get(0);
-
 
         // set character name view to proper name
         nameText = (TextView) findViewById(R.id.textView_charName);
@@ -117,6 +114,19 @@ public class CharacterActivity extends Activity{
             }
         }
 
+        ImageView charImg = (ImageView) findViewById(R.id.characterImage);
+        if(character.getSpecies().getName().equals("Elf")) {
+            charImg.setImageResource(R.drawable.c_elf);
+        }
+        else if(character.getSpecies().getName().equals("Orc")) {
+            charImg.setImageResource(R.drawable.c_orc);
+        }
+        else if(character.getSpecies().getName().equals("Human")) {
+            charImg.setImageResource(R.drawable.c_anime);
+        }
+        else if(character.getSpecies().getName().equals("Dwarf")) {
+            charImg.setImageResource(R.drawable.c_dwarf);
+        }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, speciesList);
@@ -292,24 +302,6 @@ public class CharacterActivity extends Activity{
                 finish();
             }
         });
-
-
-        ImageView charImg1 = (ImageView) findViewById(R.id.characterImage);
-        Log.d("Character Species", "CS " + character.getSpecies().getName());
-        if(character.getSpecies().getName().equals("Elf")) {
-            Log.d("cs", "character set to elf");
-            charImg1.setImageResource(R.drawable.c_elf);
-        }
-        else if(character.getSpecies().getName().equals("Orc")) {
-            charImg1.setImageResource(R.drawable.c_orc);
-        }
-        else if(character.getSpecies().getName().equals("Human")) {
-            charImg1.setImageResource(R.drawable.c_anime);
-        }
-        else if(character.getSpecies().getName().equals("Dwarf")) {
-            charImg1.setImageResource(R.drawable.c_dwarf);
-        }
-
     }
 
 }
