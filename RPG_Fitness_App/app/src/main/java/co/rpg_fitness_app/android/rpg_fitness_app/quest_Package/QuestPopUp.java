@@ -18,7 +18,7 @@ import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 
 public class QuestPopUp extends Activity {
-//// TODO: 4/29/2017  add boosts 
+//// TODO: 4/29/2017  add boosts
     private Currency reward;
     private Currency moneyChest;
     private Quest quest;
@@ -64,7 +64,6 @@ public class QuestPopUp extends Activity {
     }
 
 
-    //TODO
     private void configureCompleteButton() {
         Button Button = (Button) findViewById(R.id.completeQuest);
         Button.setOnClickListener(new View.OnClickListener() {
@@ -72,11 +71,12 @@ public class QuestPopUp extends Activity {
             public void onClick(View view) {
 
                Intent intent = new Intent();
-                intent.putExtra("quest", quest);
+                //intent.putExtra("quest", quest);
                 moneyChest.updateResource(true, reward.getWood(), reward.getGold(), reward.getStone(),
                         0, 0, 0, 0, 0);
                 mdataSource.updateCurrency(moneyChest);
                 quest.setIsQuestComplete(true);
+                quest.setHoursRemaining(100);
                 mdataSource.updateQuest(quest);
                setResult(Activity.RESULT_OK, intent);
                 finish();
@@ -90,8 +90,9 @@ public class QuestPopUp extends Activity {
             @Override
             public void onClick(View view) {
                Intent intent = new Intent();
-                intent.putExtra("quest", quest);
+               // intent.putExtra("quest", quest);
                 quest.setIsQuestSkipped(true);
+                quest.setHoursRemaining(100);
                 mdataSource.updateQuest(quest);
                setResult(Activity.RESULT_OK, intent);
                 finish();
@@ -119,6 +120,7 @@ public class QuestPopUp extends Activity {
         parameters.setTextColor(Color.RED);
         parameters.setText(rewards);
     }
+
 
     private void configureBoosts() {
         ArrayList<Boost> boosts = mdataSource.getAllBoosts();
