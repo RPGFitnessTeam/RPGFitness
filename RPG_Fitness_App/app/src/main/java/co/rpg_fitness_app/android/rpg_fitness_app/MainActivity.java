@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Boost;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.Character;
 import co.rpg_fitness_app.android.rpg_fitness_app.character_Package.CharacterActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.dataBase_Package.DataSource;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.FitnessLogActivity;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.GoalActive;
 import co.rpg_fitness_app.android.rpg_fitness_app.fitness_Package.TipMaster;
+import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Building;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Currency;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.Kingdom;
 import co.rpg_fitness_app.android.rpg_fitness_app.kingdom_Package.KingdomActivity;
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataSource = new DataSource(this);
-        //mDataSource.upgrade();
-        mDataSource.open();
+        mDataSource.upgrade();
+        //mDataSource.open();
         mDataSource.seedDatabase();
         getKingdom();
         //mDataSource.upgrade();//FOR DB REDO: comment out above 4 lines
@@ -60,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         mquestsMainButton = (ImageButton)findViewById(R.id.questsMainButton);
         mgoalsMainButton = (ImageButton)findViewById(R.id.goalsMainButton);
         mcharacterMainButton = (ImageButton)findViewById(R.id.characterMainButton);
+
+        for (Building building : mDataSource.getAllBuildings()) {
+            Log.d("Building", building.getName()+":\n"+building.getGoldBoost().getAmount()+"\n"
+                    +building.getWoodBoost().getAmount()+"\n"
+                    +building.getStoneBoost().getAmount()+" ");
+        }
 
         mkingdomMainButton.setOnClickListener(new View.OnClickListener() {
             @Override

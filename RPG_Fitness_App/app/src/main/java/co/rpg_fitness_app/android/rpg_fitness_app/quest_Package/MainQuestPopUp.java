@@ -46,6 +46,11 @@ public class MainQuestPopUp extends Activity {
         mdataSource.open();
         master = (Quest) getIntent().getSerializableExtra("master");
         masterGoal = master.getGoal();
+        if (masterGoal == null) {
+            LogEntry lg = new LogEntry(UUID.randomUUID().toString(), 0);
+            Goal goal = new Goal(lg, UUID.randomUUID().toString(), 0 , 18 , 25, false, true, true);
+            masterGoal = goal;
+        }
         moneyChest = mdataSource.getCurrency("moneyChest");
 
         configureCompleteButton();

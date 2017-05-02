@@ -21,7 +21,13 @@ public class BuildingDataProvider {
         buildingMap = new HashMap<String, Building>();
 
         // Below here is where we will add all items to the database
-        String name; Currency cost = new Currency(); String category; int tier; Boost goldBoost = new Boost(); Boost woodBoost = new Boost(); Boost stoneBoost = new Boost();
+        String name;
+        Currency cost = new Currency();
+        String category;
+        int tier;
+        Boost goldBoost = new Boost();
+        Boost woodBoost = new Boost();
+        Boost stoneBoost = new Boost();
         Building house, castle, woodBridge, stoneBridge, cave, mine, tavern, innAndTavern, fort, fortress, pond, fountain;
         goldBoost.setBoostType("gold"); woodBoost.setBoostType("wood");stoneBoost.setBoostType("stone");
 
@@ -35,6 +41,9 @@ public class BuildingDataProvider {
         house = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(house);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "castle";
         cost = new Currency();
         cost.updateResource(true,5,0,0,1,1,1,1,1);
@@ -46,6 +55,9 @@ public class BuildingDataProvider {
         castle = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(castle);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "wood bridge";
         cost = new Currency();
         cost.updateResource(true,0,0,2,1,0,0,0,0);
@@ -57,6 +69,9 @@ public class BuildingDataProvider {
         woodBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(woodBridge);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "stone bridge";
         cost = new Currency();
         cost.updateResource(true,0,0,2,1,0,0,0,0);
@@ -68,6 +83,9 @@ public class BuildingDataProvider {
         stoneBridge = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(stoneBridge);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "cave";
         cost = new Currency();
         cost.updateResource(true,2,0,0,0,1,0,0,0);
@@ -79,6 +97,9 @@ public class BuildingDataProvider {
         cave = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(cave);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "mine";
         cost = new Currency();
         cost.updateResource(true,2,0,0,0,1,0,0,0);
@@ -90,6 +111,9 @@ public class BuildingDataProvider {
         mine = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(mine);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "tavern";
         cost = new Currency();
         cost.updateResource(true,0,0,2,0,0,1,0,0);
@@ -101,6 +125,9 @@ public class BuildingDataProvider {
         tavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(tavern);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "inn and tavern";
         cost = new Currency();
         cost.updateResource(true,0,0,2,0,0,1,0,0);
@@ -112,6 +139,9 @@ public class BuildingDataProvider {
         innAndTavern = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(innAndTavern);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "fort";
         cost = new Currency();
         cost.updateResource(true,2,0,0,0,0,0,1,0);
@@ -123,6 +153,9 @@ public class BuildingDataProvider {
         fort = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fort);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "fortress";
         cost = new Currency();
         cost.updateResource(true,2,0,0,0,0,0,1,0);
@@ -134,6 +167,9 @@ public class BuildingDataProvider {
         fortress = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(fortress);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "pond";
         cost = new Currency();
         cost.updateResource(true,0,0,2,0,0,0,0,1);
@@ -145,6 +181,9 @@ public class BuildingDataProvider {
         pond = new Building(name, cost, category, tier, goldBoost, woodBoost, stoneBoost, null);
         addBuilding(pond);
 
+        goldBoost = new Boost();
+        woodBoost = new Boost();
+        stoneBoost = new Boost();
         name = "fountain";
         cost = new Currency();
         cost.updateResource(true,0,0,2,0,0,0,0,1);
@@ -157,7 +196,6 @@ public class BuildingDataProvider {
         addBuilding(fountain);
     }
 
-    //TODO Building needs getID method
     private static void addBuilding(Building building) {
         buildingList.add(building);
         buildingMap.put(building.getId(), building);
