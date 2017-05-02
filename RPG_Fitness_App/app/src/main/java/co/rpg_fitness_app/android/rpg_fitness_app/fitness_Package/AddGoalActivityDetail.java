@@ -80,53 +80,12 @@ public class AddGoalActivityDetail extends DialogFragment {
         activityTypeView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Medium);
         ((LinearLayout) rV).addView(activityTypeView);
 
-        if(activity == 0 || activity == 1) {
-            createSubTypeView(rV);
-        }
-        else if(activity == 2)
-        {
-            createSecondDropView(rV);
-            createThirdDropView(rV);
-            createNext(rV);
-        }
-        else
-        {
-            createSecondDropView(rV);
-            createNext(rV);
-        }
-
-
+        createSubTypeView(rV);
 
         return rV;
 
     }
-    private void createNext(View rV)
-    {
 
-        Button next = new Button(getActivity());
-        next.setText("Next");
-        next.setTypeface(null, Typeface.BOLD);
-        ((LinearLayout) rV).addView(next);
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dismiss();
-                android.app.FragmentManager fm = getFragmentManager();
-
-                DialogFragment dF = new AddGoalSaveExit();
-                Bundle argument = new Bundle();
-                argument.putInt("thirdType", thirdType);
-                argument.putInt("secondType",secondType );
-                argument.putString("firstType", firstType);
-                argument.putInt("subType", subType);
-                argument.putInt("activity", activity );
-                dF.setArguments(argument);
-                dF.show(fm, "saveexit");
-            }
-        });
-    }
 
     private void createSubTypeView(View rV)
     {
@@ -152,239 +111,22 @@ public class AddGoalActivityDetail extends DialogFragment {
         return new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 subType = button.getId();
 
-                switch(activity)
-                {
-                    case 0:
-                        createFirstDropView(rV);
-                        createSecondDropView(rV);
-                        if(subType == 0 || subType == 2)
-                        {
-                            createThirdDropView(rV);
+                android.app.FragmentManager fm = getFragmentManager();
+                DialogFragment dF = new AddGoalActivityDetailNext();
 
-                        }
-                        createNext(rV);
-                        break;
-
-                    case 1:
-                        createSecondDropView(rV);
-                        createNext(rV);
-                        break;
-
-                    default: break;
-                }
-
+                Bundle arguments = new Bundle();
+                arguments.putInt("activity", activity);
+                arguments.putInt("subType", subType);
+                dF.setArguments(arguments);
+                dF.show(fm, "id2goal");
+                dismiss();
 
             }
 
         };
     }
-    private void createFirstDropView(View rV)
-    {
-        TextView type = new TextView(getActivity());
-        switch(this.subType)
-        {
-            case 0:  type.setText("Type of Recreation");
-                break;
-            case 1:  type.setText("Type of Calisthenics");
-                break;
-            case 2:  type.setText("Type of Aerobics");
-                break;
-            case 3:  type.setText("Body Part targeted during lifting");
-                break;
-            default:break;
-        }
-        type.setTypeface(null, Typeface.BOLD);
 
-        ((LinearLayout) rV).addView(type);
-        editView = new EditText(getActivity());
-        ((LinearLayout) rV).addView(editView);
-
-        editView.setInputType(0);
-
-        editView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                firstType = s.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-    }
-    private void createSecondDropView(View rV)
-    {
-        TextView type = new TextView(getActivity());
-        switch(this.activity)
-        {
-            case 0 :
-            {
-                switch(this.subType) {
-                    case 0:
-                        type.setText("Enter Duration");
-                        break;
-                    case 1:
-                        type.setText("Enter Duration/Count");
-                        break;
-                    case 2:
-                        type.setText("Enter Distance");
-                        break;
-                    case 3:
-                        type.setText("Enter Intensity");
-                        break;
-                    default: break;
-                }
-                break;
-            }
-            case 1 :
-            {
-                switch(this.subType)
-                {
-                    case 0:
-                        type.setText("Enter Servings");
-                        break;
-                    case 1:
-                        type.setText("Enter Glasses");
-                        break;
-                    case 2:
-                        type.setText("Enter Servings");
-                        break;
-                    default: break;
-                }
-                break;
-            }
-            case 2 :
-            {
-                type.setText("Enter Quality of Sleep");
-                break;
-            }
-            case 3 : {
-                type.setText("Enter Current Weight");
-                break;
-            }
-            default : break;
-        }
-        type.setTypeface(null, Typeface.BOLD);
-        ((LinearLayout) rV).addView(type);
-
-        int secondDropMax = LogEntry.getSecondDropdownMax(this.activity, this.subType);
-        SeekBar seekBar = new SeekBar(getActivity());
-        seekBar.setMax(secondDropMax);
-
-        ((LinearLayout) rV).addView(seekBar);
-
-        final TextView secondText = new TextView(getActivity());
-        final String secondDropUnit = LogEntry.getSecondDropdownUnit(this.activity, this.subType);
-        secondText.setText(secondDropUnit);
-        secondText.setGravity(Gravity.CENTER);
-        ((LinearLayout) rV).addView(secondText);
-
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                secondType = progress;
-
-                if(activity == 0 && subType == 3)
-                {
-                    secondText.setText(LogEntry.convertIntensity(progress));
-                }
-                else if(activity == 2)
-                {
-                    secondText.setText(LogEntry.convertQuality(progress));
-                }
-                else {
-                    secondText.setText(progress + " " + secondDropUnit);
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-    }
-
-    private void createThirdDropView(View rV)
-    {
-
-        TextView type = new TextView(getActivity());
-        switch(this.activity)
-        {
-            case 0 :
-            {
-                switch(this.subType) {
-                    case 0:
-                        type.setText("Enter Intensity");
-                        break;
-                    case 2:
-                        type.setText("Enter Duration");
-                        break;
-                    default: break;
-                }
-                break;
-            }
-            case 2 :
-            {
-                type.setText("Enter Duration");
-                break;
-            }
-            default: break;
-        }
-        type.setTypeface(null, Typeface.BOLD);
-
-        ((LinearLayout) rV).addView(type);
-
-        int thirdDropMax = LogEntry.getThirdDropdownMax(this.activity, this.subType);
-        SeekBar seekBar = new SeekBar(getActivity());
-        seekBar.setMax(thirdDropMax);
-
-        ((LinearLayout) rV).addView(seekBar);
-
-        final TextView thirdText = new TextView(getActivity());
-        final String thirdDropUnit = LogEntry.getThirdDropdownUnit(this.activity, this.subType);
-        thirdText.setText(thirdDropUnit);
-        thirdText.setGravity(Gravity.CENTER);
-        ((LinearLayout) rV).addView(thirdText);
-
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                thirdType = progress;
-
-                if(activity == 0 && subType == 0){
-                    thirdText.setText(LogEntry.convertIntensity(progress));
-                }
-                else {
-                    thirdText.setText(progress + " " + thirdDropUnit);
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-    }
 }

@@ -79,13 +79,22 @@ public class AddLogTypeDialogFragment  extends DialogFragment{
     }
     private void onClickHandler(int activity)
     {
-        dismiss();
+
         android.app.FragmentManager fm = getFragmentManager();
-        DialogFragment dF = new AddActivityDetail();
+        DialogFragment dF;
+        if(activity == 0 || activity == 1) {
+            dF = new AddActivityDetail(); //subtype
+        }
+        else
+        {
+            dF = new AddActivityDetailNext();
+        }
+
         Bundle arguments = new Bundle();
         arguments.putInt("activity", activity);
         dF.setArguments(arguments);
         dF.show(fm, "id2");
+        dismiss();
     }
 
 }
