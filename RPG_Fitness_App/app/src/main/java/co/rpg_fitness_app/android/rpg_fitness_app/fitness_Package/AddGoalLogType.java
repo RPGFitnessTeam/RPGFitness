@@ -80,13 +80,22 @@ public class AddGoalLogType  extends DialogFragment{
     }
     private void onClickHandler(int activity)
     {
-        dismiss();
+
         android.app.FragmentManager fm = getFragmentManager();
-        DialogFragment dF = new AddGoalActivityDetail();
+        DialogFragment dF;
+        if(activity == 0 || activity == 1) {
+            dF = new AddGoalActivityDetail(); //subtype
+        }
+        else
+        {
+            dF = new AddGoalActivityDetailNext();
+        }
+
         Bundle arguments = new Bundle();
         arguments.putInt("activity", activity);
         dF.setArguments(arguments);
         dF.show(fm, "id2goal");
+        dismiss();
     }
 
 }

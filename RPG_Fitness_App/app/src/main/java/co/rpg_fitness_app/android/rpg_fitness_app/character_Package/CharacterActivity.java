@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -45,6 +46,7 @@ public class CharacterActivity extends Activity{
     ArrayList<String> speciesList;
     ArrayList<Species> speciesAL;
     Character character;
+    int rogueSpinner;
 
 
 
@@ -72,7 +74,7 @@ public class CharacterActivity extends Activity{
         enterName.setTitle("Enter your Character's name");
         enterName.setView(editName);
 
-
+        rogueSpinner = 0;
 
         goldText = (TextView) findViewById(R.id.textGold);
         goldText.setText(""+character.getCurrency().getGold());
@@ -85,29 +87,41 @@ public class CharacterActivity extends Activity{
 
 
 
+
+
+
         // sets up the proper components of the species drop down menu
         final Spinner speciesSpinner = (Spinner) findViewById(R.id.spinnerSpecies);
 
         // sets name of species for spinner
         speciesAL = mDataSource.getAllSpecies();
+        speciesAL.add(0, null);
         speciesList = new ArrayList<String>();
-        for(int i = 0; i < speciesAL.size(); i++) {
+
+        if(character.getSpecies() == null) {
+            character.setSpecies(speciesAL.get(1));
+        }
+
+        speciesList.add("Species: " + character.getSpecies().getName());
+
+
+        for(int i = 1; i < speciesAL.size(); i++) {
             speciesList.add(speciesAL.get(i).getName());
         }
 
-        if(character.getSpecies() == null) {
-            character.setSpecies(speciesAL.get(0));
+
+        ImageView charImg = (ImageView) findViewById(R.id.characterImage);
+        if(character.getSpecies().getName().equals("Elf")) {
+            charImg.setImageResource(R.drawable.c_elf);
         }
-
-
-        for(int i = 0; i < speciesList.size(); i++){
-            String currSpecies;
-            if(speciesList.get(i).equals(character.getSpecies().getName()) )
-            {
-                currSpecies = speciesList.get(i);
-                speciesList.remove(i);
-                speciesList.add(0, currSpecies);
-            }
+        else if(character.getSpecies().getName().equals("Orc")) {
+            charImg.setImageResource(R.drawable.c_orc);
+        }
+        else if(character.getSpecies().getName().equals("Human")) {
+            charImg.setImageResource(R.drawable.c_anime);
+        }
+        else if(character.getSpecies().getName().equals("Dwarf")) {
+            charImg.setImageResource(R.drawable.c_dwarf);
         }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
@@ -197,11 +211,31 @@ public class CharacterActivity extends Activity{
 
         //listener for the species drop down menu
         speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            final ImageView charImg = (ImageView) findViewById(R.id.characterImage);
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long ID) {
+                if(rogueSpinner != 0) {
+                    if(pos != 0) {
+                        character.setSpecies(speciesAL.get(pos));
+                        if (character.getSpecies().getName().equals("Elf")) {
+                            charImg.setImageResource(R.drawable.c_elf);
+                        } else if (character.getSpecies().getName().equals("Orc")) {
+                            charImg.setImageResource(R.drawable.c_orc);
+                        } else if (character.getSpecies().getName().equals("Human")) {
+                            charImg.setImageResource(R.drawable.c_anime);
+                        } else if (character.getSpecies().getName().equals("Dwarf")) {
+                            charImg.setImageResource(R.drawable.c_dwarf);
+                        }
 
-                character.setSpecies(speciesAL.get(pos));
-                Log.d("string", speciesAL.get(pos).getName());
-                mDataSource.updateCharacter(character);
+                        Log.d("string", speciesAL.get(pos).getName());
+                        mDataSource.updateCharacter(character);
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                }
+                else {
+                    rogueSpinner++;
+                }
 
             }
 
